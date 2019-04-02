@@ -11,6 +11,7 @@ pids
 logs
 results
 output/dist
+output/output.zip
 
 .nyc_output
 npm-debug.log*

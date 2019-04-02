@@ -1,0 +1,209 @@
+<app-wallet-header></app-wallet-header>
+<div class="sectionPadded" style="background: #efefef;">
+    <div class="container">
+        <div class="row" style="background: #fff; border-radius: 5px;">
+            <div class="page-header m-b-30">
+                <div class="header-title text-uppercase"><b>Client Registration Form</b></div>
+            </div>
+            <div class="col-lg-12 col-md-8 col-sm-8 col-md-offset-2">
+                <form [formGroup]="clientRegisterForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Customer ID with us<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Your Customer ID" formControlName="customerId" name="customerId" id="customerId" class="form-control" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Monthly Payment Volume<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="paymentVolume" class="form-control" maxlength="15" placeholder="Monthly Payment Volume" />
+                        </div>
+                        <div *ngIf="(submitted && f.paymentVolume.errors) || (f.paymentVolume.touched && !f.paymentVolume.valid)" class="validation">
+                            <div *ngIf="f.paymentVolume.errors.required">{{AddressLineMsg}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Amount limit per File</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="amtLmtPerFile" class="form-control" placeholder="Amount limit per File" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Amount limit per Payment</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="amtLmtPerPayment" class="form-control" placeholder="Amount limit per Payment" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Maximum Number of Payments per File</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="payLmtPerFile" class="form-control" placeholder="Payments limit per File" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Maximum Number of Files per Day</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="filesLmtPerday" class="form-control" placeholder="Files limit per Day" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Maximum Number of Messages per Day</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="msgsLmtPerday" class="form-control" placeholder="Messages limit per Day" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Number of days payments to be active<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="RoadNo" [(ngModel)]="activeDaysForPayment" id="activeDaysForPayment" class="form-control" placeholder="Number of days payments to be active" />
+                            <div *ngIf="(submitted && f.activeDaysForPayment.errors) || (f.activeDaysForPayment.touched && !f.activeDaysForPayment.valid)" class="validation">
+                                <div *ngIf="f.RoadNo.activeDaysForPayment.required">{{BuildingMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Currency Format for Payments<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="currencyFmtForPayments" [(ngModel)]="currencyFmtForPayments" id="currencyFmtForPayments" class="form-control" placeholder="Currency Format for Payments" />
+                            <div *ngIf="(submitted && f.currencyFmtForPayments.errors) || (f.currencyFmtForPayments.touched && !f.currencyFmtForPayments.valid)" class="validation">
+                                <div *ngIf="f.currencyFmtForPayments.errors.required">{{AddressLineMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Currency Format for Beneficiary<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="currencyFmtForBene" [(ngModel)]="currencyFmtForBene" id="currencyFmtForBene" class="form-control" placeholder="Currency Format for Beneficiary" />
+                            <div *ngIf="(submitted && f.currencyFmtForBene.errors) || (f.currencyFmtForBene.touched && !f.currencyFmtForBene.valid)" class="validation">
+                                <div *ngIf="f.currencyFmtForBene.errors.required">{{AddressLineMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Country for Beneficiary<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="countryForBene" class="form-control" [(ngModel)]="countryForBene" id="countryForBene" placeholder="Country for Beneficiary" />
+                            <div *ngIf="(submitted && f.countryForBene.errors) || (f.countryForBene.touched && !f.countryForBene.valid)" class="validation">
+                                <div *ngIf="f.countryForBene.errors.required">{{TownMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">State/Country<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="stateCountryName" class="form-control" [(ngModel)]="stateCountryName" id="stateCountryName" placeholder="State Name" />
+                            <div *ngIf="(submitted && f.stateCountryName.errors) || (f.stateCountryName.touched && !f.stateCountryName.valid)" class="validation">
+                                <div *ngIf="f.stateCountryName.errors.required">{{StateMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Country<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="countryName" class="form-control" [(ngModel)]="countryName" id="countryName" placeholder="Country Name" />
+                            <div *ngIf="(submitted && f.countryName.errors) || (f.countryName.touched && !f.countryName.valid)" class="validation">
+                                <div *ngIf="f.countryName.errors.required">{{CountryMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="postCode" [(ngModel)]="postCode" id="postCode" class="form-control" placeholder="Post Code" />
+                            <div *ngIf="(submitted && f.postCode.errors) || (f.postCode.touched && !f.postCode.valid)" class="validation">
+                                <div *ngIf="f.postCode.errors.required">{{PostCodeMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Contact Number</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="contactNumber" class="form-control" placeholder="Contact Number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Full Name<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="yourName" class="form-control" placeholder="Full Name" />
+                            <div *ngIf="(submitted && f.yourName.errors)|| (f.yourName.touched && !f.yourName.valid)" class="validation">
+                                <div *ngIf="f.yourName.errors.required">{{FullNameMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Role<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="role" class="form-control" placeholder="Role" />
+                            <div *ngIf="(submitted && f.role.errors) || (f.role.touched && !f.role.valid)" class="validation">
+                                <div *ngIf="f.role.errors.required">{{RoleMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Email Address<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="email" formControlName="yourEmailAddress" class="form-control" placeholder="Email Address" />
+                            <div *ngIf="(submitted && f.yourEmailAddress.errors) || (f.yourEmailAddress.touched && !f.yourEmailAddress.valid)" class="validation">
+                                <div *ngIf="f.yourEmailAddress.errors.required">{{EmailReqMsg}}</div>
+                                <div *ngIf="f.yourEmailAddress.errors.email">{{EmailValidMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Mobile Number<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="yourContactNumber" class="form-control" placeholder="Mobile Number" />
+                            <div *ngIf="(submitted && f.yourContactNumber.errors) || (f.yourContactNumber.touched && !f.yourContactNumber.valid)" class="validation">
+                                <div *ngIf="f.yourContactNumber.errors.required">{{ContactNumMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Desk Number</label>
+                        <div class="col-md-5">
+                            <input type="text" pattern="[0-9]{13}" formControlName="yourDeskNumber" class="form-control" placeholder="Desk Number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="formPostCode" class="form-control" placeholder="Post Code" />
+                            <div *ngIf="(submitted && f.formPostCode.errors)||(f.formPostCode.touched && !f.formPostCode.valid)" class="validation">
+                                <div *ngIf="f.formPostCode.errors.required">{{PostCodeMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Security Question<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <select formControlName="securityQuestion" class="form-control">
+                                <option>--Select Question--</option>
+                                <option>Here Goes Question1.</option>
+                                <option>Here Goes Question2.</option>
+                                <option>Here Goes Question3.</option>
+                            </select>
+                            <div *ngIf="(submitted && f.securityQuestion.errors) || (f.securityQuestion.touched && !f.securityQuestion.valid)" class="validation">
+                                <div *ngIf="f.securityQuestion.errors.required">{{SecurityQuesMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Security Answer<sup>*</sup></label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="securityAnswer" class="form-control" placeholder="Security Answer" />
+                            <div *ngIf="(submitted && f.securityAnswer.errors)||(f.securityAnswer.touched && !f.securityAnswer.valid)" class="validation">
+                                <div *ngIf="f.securityAnswer.errors.required">{{SecuirtyAnsMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--group">
+                        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

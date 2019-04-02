@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef  } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { AppConstantsComponent } from 'src/app/app-constants/app-constants.component';
+import { WalletService } from 'src/app/wallet.service';
 
 @Component({
   selector: 'app-client-reg',
@@ -29,7 +31,10 @@ export class ClientRegComponent implements OnInit {
 
 
     constructor(private formBuilder: FormBuilder,
-        private router: Router,) { }
+        private router: Router,
+        private elRef: ElementRef,
+        private WalletService: WalletService,
+    ) { }
 
     ngOnInit() {
         this.clientRegisterForm = this.formBuilder.group({
@@ -68,18 +73,39 @@ export class ClientRegComponent implements OnInit {
     onSubmit() {
         debugger;
         this.submitted = true;
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.clientRegisterForm.value))
-        // stop here if form is invalid
-        if (this.clientRegisterForm.invalid) {
-            return;
-        }
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.clientRegisterForm.value))
-
+      
+        this.WalletService.AdEnquiryForm(JSON.stringify(this.clientRegisterForm.value))
+            .pipe(first())
+            .subscribe(data => {
+                //alert(data);
+                 //this.Response = data;
+                
+            });
     }
 
     addressChecked(e) {
+        debugger
         if (e.target.checked) {
-            //alert(AppConstantsComponent.Key1);
+            this.clientRegisterForm.patchValue({
+                RegRoadNo: this.clientRegisterForm.value.RoadNo,
+                RegaddressLine1: this.clientRegisterForm.value.addressLine1,
+                RegaddressLine2: this.clientRegisterForm.value.addressLine2,
+                RegtownCityName: this.clientRegisterForm.value.townCityName,
+                RegstateCountryName: this.clientRegisterForm.value.stateCountryName,
+                RegcountryName: this.clientRegisterForm.value.countryName,
+                RegpostCode: this.clientRegisterForm.value.postCode,
+            })
+        }
+        else {
+            this.clientRegisterForm.patchValue({
+                RegRoadNo: '',
+                RegaddressLine1:'',
+                RegaddressLine2: '',
+                RegtownCityName: '',
+                RegstateCountryName: '',
+                RegcountryName: '',
+                RegpostCode: '',
+            })
         }
     }
     

@@ -1225,3 +1225,18 @@ label.label-wrapper {
 		left: 18%;
 	}
 }
+
+.validation{
+    color:red;
+}
+.form-title{
+    background: #006a51;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+}
+sup {
+    top: -0.5em;
+    color: #ef7b25;
+    font-size: 14px;
+}

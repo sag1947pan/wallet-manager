@@ -1,20 +1,25 @@
-/// <reference path="self-registration/self-registration.component.ts" />
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
+
 import { SelfRegistrationComponent } from './self-registration/self-registration.component';
 import { WalletHeaderComponent } from './wallet-header/wallet-header.component';
+import { WalletBodyComponent } from './wallet-body/wallet-body.component';
 import { WalletFooterComponent } from './wallet-footer/wallet-footer.component';
-import { ClientRegComponent } from './client-reg/client-reg.component';
+import { ClientRegComponent } from './client-reg/client-reg.component'; 
+import { Clientreg2Component } from './clientreg2/clientreg2.component'; 
 
 const routes: Routes = [
 
     { path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'Dash', component: AppComponent },
-    { path: 'Main', component: WalletHeaderComponent },
+    { path: 'Main', component: WalletBodyComponent },
     { path: 'Self', component: SelfRegistrationComponent },
     { path: 'ClientReg', component: ClientRegComponent },
+    { path: 'ClientReg2', component: Clientreg2Component },
 ];
 
 @NgModule({

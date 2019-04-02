@@ -1,63 +1,17 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-logo" [routerLink]="['/Main']"><img src="assets/images/logo.png" class="logo-big" /></a>
-        </div>
-
-        <div id="menu-button"><a href="#">Menu</a></div>
-        <div id="menu" class="mainNavbar">
-            <ul id="nav" class="dropdown">
-                <li class="active">
-                    <a href="#">Instiutions</a>
-                    <ul class="submenu">
-                        <li><a href="/Wallet/index.html">Corporate and Businesses</a></li>
-                        <li><a href="#">Banks and Financial Insitutinos</a></li>
-                        <li><a href="#">Government and Public sector</a></li>
-                        <li><a href="#">Airlines and Transport companies</a></li>
-                        <li><a href="#">Technology firms</a></li>
-                        <li><a href="#">Retailers and Market places</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Payee Consumers</a>
-                    <ul class="submenu">
-                        <li><a href="/Wallet/index.html">Freelancers</a></li>
-                        <li><a href="#">Consumers</a></li>
-                        <li><a href="#">Suppliers</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Partners</a>
-                    <ul class="submenu">
-                        <li><a href="/Wallet/index.html">Banks</a></li>
-                        <li><a href="#">Fintech</a></li>
-                        <li><a href="#">Retailers</a></li>
-                        <li><a href="#">Market places</a></li>
-                        <li><a href="#">eCommerce providers</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Speak to Us</a></li>
-            </ul>
-        </div>
-        <ul class="list-inline navbar-menu-right">
-            <li class="navbar-register-btn"><a [routerLink]="['/ClientReg']">Register</a></li>
-            <li class="navbar-login-btn"><a href="/Wallet/login.html">Login</a></li>
-        </ul>
-    </div>
-</nav>
-<div class="sectionPadded">
+<app-wallet-header></app-wallet-header>
+<div class="sectionPadded" style="background: #efefef;">
     <div class="container">
-                <div class="page-header m-b-30">
-                    <div class="header-title text-uppercase">Client Registration Form</div>
-                </div>
+        <div class="row" style="background: #fff; border-radius: 5px;">
+            <div class="page-header m-b-30">
+                <div class="header-title text-uppercase"><b>Client Registration Form</b></div>
+            </div>
+            <div class="col-lg-12 col-md-8 col-sm-8 col-md-offset-2">
                 <form [formGroup]="clientRegisterForm" (ngSubmit)="onSubmit()" class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Company Name</label>
+                        <label class="col-md-3 control-label">Company Name<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" formControlName="companyName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.companyName.errors }" maxlength="50" />
-                            <div *ngIf="submitted && f.companyName.errors" class="invalid-feedback">
+                            <input type="text" placeholder="Company Name" formControlName="companyName" name="companyName" id="companyName" class="form-control"  maxlength="50" />
+                            <div *ngIf="(submitted && f.companyName.errors) || (f.companyName.touched && !f.companyName.valid)" class="validation">
                                 <div *ngIf="f.companyName.errors.required">{{companyNameMsg}}</div>
                             </div>
                         </div>
@@ -65,30 +19,30 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Company Registration Number</label>
                         <div class="col-md-5">
-                            <input type="text" formControlName="companyRegNumber" class="form-control" maxlength="15" />
+                            <input type="text" formControlName="companyRegNumber" class="form-control" maxlength="15" placeholder="Company Registration Number"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Website Address</label>
                         <div class="col-md-5">
-                            <input type="text" formControlName="webSiteAddress" class="form-control"  pattern="[a-z0-9.-](30)+\.[a-z]{3}$"/>
+                            <input type="text" formControlName="webSiteAddress" class="form-control" placeholder="Website Address" />
                         </div>
                     </div>
                     <h5>Trading Address</h5>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number</label>
+                        <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" formControlName="RoadNo" maxlength="15" [(ngModel)]="RoadNo" id="RoadNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.RoadNo.errors }" />
-                            <div *ngIf="submitted && f.RoadNo.errors" class="invalid-feedback">
+                            <input type="text" formControlName="RoadNo" maxlength="15" [(ngModel)]="RoadNo" id="RoadNo" class="form-control" placeholder="Building No Or Street Name"/>
+                            <div *ngIf="(submitted && f.RoadNo.errors) || (f.RoadNo.touched && !f.RoadNo.valid)" class="validation">
                                 <div *ngIf="f.RoadNo.errors.required">{{BuildingMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Address Line 1</label>
+                        <label class="col-md-3 control-label">Address Line 1<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" formControlName="addressLine1" maxlength="35" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.addressLine1.errors }" />
-                            <div *ngIf="submitted && f.addressLine1.errors" class="invalid-feedback">
+                            <input type="text" formControlName="addressLine1" [(ngModel)]="addressLine1" id="addressLine1" maxlength="35" class="form-control" placeholder="AddressLine 1"/>
+                            <div *ngIf="(submitted && f.addressLine1.errors) || (f.addressLine1.touched && !f.addressLine1.valid)" class="validation">
                                 <div *ngIf="f.addressLine1.errors.required">{{AddressLineMsg}}</div>
                             </div>
                         </div>
@@ -96,127 +50,127 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Address Lne 2</label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35"  formControlName="addressLine2" class="form-control" />
+                            <input type="text" maxlength="35" formControlName="addressLine2" [(ngModel)]="addressLine2" id="addressLine2" class="form-control" placeholder="AddressLine 2"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Town/City</label>
+                        <label class="col-md-3 control-label">Town/City<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35"  formControlName="townCityName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.townCityName.errors }" />
-                            <div *ngIf="submitted && f.townCityName.errors" class="invalid-feedback">
+                            <input type="text" maxlength="35" formControlName="townCityName" class="form-control" [(ngModel)]="townCityName" id="townCityName" placeholder="Town/City Name" />
+                            <div *ngIf="(submitted && f.townCityName.errors) || (f.townCityName.touched && !f.townCityName.valid)" class="validation">
                                 <div *ngIf="f.townCityName.errors.required">{{TownMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">State/Country</label>
+                        <label class="col-md-3 control-label">State/Country<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35"  formControlName="stateCountryName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stateCountryName.errors }" />
-                            <div *ngIf="submitted && f.stateCountryName.errors" class="invalid-feedback">
+                            <input type="text" maxlength="35" formControlName="stateCountryName" class="form-control" [(ngModel)]="stateCountryName" id="stateCountryName" placeholder="State Name"/>
+                            <div *ngIf="(submitted && f.stateCountryName.errors) || (f.stateCountryName.touched && !f.stateCountryName.valid)" class="validation">
                                 <div *ngIf="f.stateCountryName.errors.required">{{StateMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Country</label>
+                        <label class="col-md-3 control-label">Country<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35"  formControlName="countryName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.countryName.errors }" />
-                            <div *ngIf="submitted && f.countryName.errors" class="invalid-feedback">
+                            <input type="text" maxlength="35" formControlName="countryName" class="form-control" [(ngModel)]="countryName" id="countryName" placeholder="Country Name"/>
+                            <div *ngIf="(submitted && f.countryName.errors) || (f.countryName.touched && !f.countryName.valid)" class="validation">
                                 <div *ngIf="f.countryName.errors.required">{{CountryMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">PostCode</label>
+                        <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text"  pattern="[A-Za-z0-9]{8}" formControlName="postCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.postCode.errors }" />
-                            <div *ngIf="submitted && f.postCode.errors" class="invalid-feedback">
+                            <input type="text"  formControlName="postCode" [(ngModel)]="postCode" id="postCode" class="form-control" placeholder="Post Code"/>
+                            <div *ngIf="(submitted && f.postCode.errors) || (f.postCode.touched && !f.postCode.valid)" class="validation">
                                 <div *ngIf="f.postCode.errors.required">{{PostCodeMsg}}</div>
                             </div>
                         </div>
                     </div>
-                    <h5>Registered Address</h5> <input type="checkbox" id="isAddressSame" (change)="addressChecked($event)"/>Registerd Address is same as Trading Address.
+                    <h5>Registered Address</h5> <input type="checkbox" id="isAddressSame" (change)="addressChecked($event)" />Registerd Address is same as Trading Address.
                     <div class="form-group">
                         <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number</label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="15" formControlName="RegRoadNo" class="form-control" />
+                            <input type="text" maxlength="15" formControlName="RegRoadNo" class="form-control"  placeholder="Building No Or Street Name"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Address Line 1</label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegaddressLine1" class="form-control" />
+                            <input type="text" maxlength="35" formControlName="RegaddressLine1" class="form-control" placeholder="AddressLine 1"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Address Lne 2</label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegaddressLine2" class="form-control" />
+                            <input type="text" maxlength="35" formControlName="RegaddressLine2" class="form-control" placeholder="AddressLine 2" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Town/City</label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegtownCityName" class="form-control" />
+                            <input type="text" maxlength="35" formControlName="RegtownCityName" class="form-control" placeholder="Town/City Name"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">State/Country</label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegstateCountryName" class="form-control" />
+                            <input type="text" maxlength="35" formControlName="RegstateCountryName" class="form-control" placeholder="State Name"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Country</label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegcountryName" class="form-control" />
+                            <input type="text" maxlength="35" formControlName="RegcountryName" class="form-control" placeholder="Country Name"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">PostCode</label>
                         <div class="col-md-5">
-                            <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="RegpostCode" class="form-control" />
+                            <input type="text"  formControlName="RegpostCode" class="form-control" placeholder="Post Code"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Contact Number</label>
                         <div class="col-md-5">
-                            <input type="text" pattern="[0-9]{13}" formControlName="contactNumber" class="form-control" />
+                            <input type="text"  formControlName="contactNumber" class="form-control" placeholder="Contact Number"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Full Name</label>
+                        <label class="col-md-3 control-label">Full Name<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text"  pattern="[A-Za-z.]{30}" formControlName="yourName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.yourName.errors }" />
-                            <div *ngIf="submitted && f.yourName.errors" class="invalid-feedback">
+                            <input type="text" formControlName="yourName" class="form-control"  placeholder="Full Name"/>
+                            <div *ngIf="(submitted && f.yourName.errors)|| (f.yourName.touched && !f.yourName.valid)" class="validation">
                                 <div *ngIf="f.yourName.errors.required">{{FullNameMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Role</label>
+                        <label class="col-md-3 control-label">Role<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text"  pattern="[A-Za-z.]{30}" formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" />
-                            <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                            <input type="text" formControlName="role" class="form-control" placeholder="Role" />
+                            <div *ngIf="(submitted && f.role.errors) || (f.role.touched && !f.role.valid)" class="validation">
                                 <div *ngIf="f.role.errors.required">{{RoleMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Your Email Address</label>
+                        <label class="col-md-3 control-label">Your Email Address<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="email"  pattern="[a-z0-9._%+-]{30}+@[a-z0-9.-]{30}+\.[a-z]{2,3}$" formControlName="yourEmailAddress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.yourEmailAddress.errors }" />
-                            <div *ngIf="submitted && f.yourEmailAddress.errors" class="invalid-feedback">
+                            <input type="email" formControlName="yourEmailAddress" class="form-control"  placeholder="Email Address"/>
+                            <div *ngIf="(submitted && f.yourEmailAddress.errors) || (f.yourEmailAddress.touched && !f.yourEmailAddress.valid)" class="validation">
                                 <div *ngIf="f.yourEmailAddress.errors.required">{{EmailReqMsg}}</div>
                                 <div *ngIf="f.yourEmailAddress.errors.email">{{EmailValidMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Your Mobile Number</label>
+                        <label class="col-md-3 control-label">Your Mobile Number<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" pattern="[0-9]{13}" formControlName="yourContactNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.yourContactNumber.errors }" />
-                            <div *ngIf="submitted && f.yourContactNumber.errors" class="invalid-feedback">
+                            <input type="text" formControlName="yourContactNumber" class="form-control" placeholder="Mobile Number"/>
+                            <div *ngIf="(submitted && f.yourContactNumber.errors) || (f.yourContactNumber.touched && !f.yourContactNumber.valid)" class="validation">
                                 <div *ngIf="f.yourContactNumber.errors.required">{{ContactNumMsg}}</div>
                             </div>
                         </div>
@@ -224,37 +178,37 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Your Desk Number</label>
                         <div class="col-md-5">
-                            <input type="text" pattern="[0-9]{13}" formControlName="yourDeskNumber" class="form-control" />
+                            <input type="text" pattern="[0-9]{13}" formControlName="yourDeskNumber" class="form-control" placeholder="Desk Number"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">PostCode</label>
+                        <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="formPostCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.formPostCode.errors }" />
-                            <div *ngIf="submitted && f.formPostCode.errors" class="invalid-feedback">
+                            <input type="text"  formControlName="formPostCode" class="form-control" placeholder="Post Code"/>
+                            <div *ngIf="(submitted && f.formPostCode.errors)||(f.formPostCode.touched && !f.formPostCode.valid)" class="validation">
                                 <div *ngIf="f.formPostCode.errors.required">{{PostCodeMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Security Question</label>
+                        <label class="col-md-3 control-label">Security Question<sup>*</sup></label>
                         <div class="col-md-5">
-                            <select formControlName="securityQuestion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.securityQuestion.errors }">
-                                <option>--Select Question--</option>
+                            <select formControlName="securityQuestion" class="form-control">
+                                <option >--Select Question--</option>
                                 <option>Here Goes Question1.</option>
                                 <option>Here Goes Question2.</option>
                                 <option>Here Goes Question3.</option>
                             </select>
-                            <div *ngIf="submitted && f.securityQuestion.errors" class="invalid-feedback">
+                            <div *ngIf="(submitted && f.securityQuestion.errors) || (f.securityQuestion.touched && !f.securityQuestion.valid)" class="validation">
                                 <div *ngIf="f.securityQuestion.errors.required">{{SecurityQuesMsg}}</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label">Security Answer</label>
+                        <label class="col-md-3 control-label">Security Answer<sup>*</sup></label>
                         <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="securityAnswer" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.securityAnswer.errors }" />
-                            <div *ngIf="submitted && f.securityAnswer.errors" class="invalid-feedback">
+                            <input type="text" maxlength="35" formControlName="securityAnswer" class="form-control" placeholder="Security Answer"/>
+                            <div *ngIf="(submitted && f.securityAnswer.errors)||(f.securityAnswer.touched && !f.securityAnswer.valid)" class="validation">
                                 <div *ngIf="f.securityAnswer.errors.required">{{SecuirtyAnsMsg}}</div>
                             </div>
                         </div>
@@ -266,5 +220,7 @@
                         <button class="btn btn-primary">Register</button>
                     </div>
                 </form>
+            </div>
+        </div>
     </div>
 </div>
