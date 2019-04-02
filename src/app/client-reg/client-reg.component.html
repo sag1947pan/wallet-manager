@@ -1,0 +1,270 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-logo" [routerLink]="['/Main']"><img src="assets/images/logo.png" class="logo-big" /></a>
+        </div>
+
+        <div id="menu-button"><a href="#">Menu</a></div>
+        <div id="menu" class="mainNavbar">
+            <ul id="nav" class="dropdown">
+                <li class="active">
+                    <a href="#">Instiutions</a>
+                    <ul class="submenu">
+                        <li><a href="/Wallet/index.html">Corporate and Businesses</a></li>
+                        <li><a href="#">Banks and Financial Insitutinos</a></li>
+                        <li><a href="#">Government and Public sector</a></li>
+                        <li><a href="#">Airlines and Transport companies</a></li>
+                        <li><a href="#">Technology firms</a></li>
+                        <li><a href="#">Retailers and Market places</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Payee Consumers</a>
+                    <ul class="submenu">
+                        <li><a href="/Wallet/index.html">Freelancers</a></li>
+                        <li><a href="#">Consumers</a></li>
+                        <li><a href="#">Suppliers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Partners</a>
+                    <ul class="submenu">
+                        <li><a href="/Wallet/index.html">Banks</a></li>
+                        <li><a href="#">Fintech</a></li>
+                        <li><a href="#">Retailers</a></li>
+                        <li><a href="#">Market places</a></li>
+                        <li><a href="#">eCommerce providers</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Speak to Us</a></li>
+            </ul>
+        </div>
+        <ul class="list-inline navbar-menu-right">
+            <li class="navbar-register-btn"><a [routerLink]="['/ClientReg']">Register</a></li>
+            <li class="navbar-login-btn"><a href="/Wallet/login.html">Login</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="sectionPadded">
+    <div class="container">
+                <div class="page-header m-b-30">
+                    <div class="header-title text-uppercase">Client Registration Form</div>
+                </div>
+                <form [formGroup]="clientRegisterForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Company Name</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="companyName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.companyName.errors }" maxlength="50" />
+                            <div *ngIf="submitted && f.companyName.errors" class="invalid-feedback">
+                                <div *ngIf="f.companyName.errors.required">{{companyNameMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Company Registration Number</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="companyRegNumber" class="form-control" maxlength="15" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Website Address</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="webSiteAddress" class="form-control"  pattern="[a-z0-9.-](30)+\.[a-z]{3}$"/>
+                        </div>
+                    </div>
+                    <h5>Trading Address</h5>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="RoadNo" maxlength="15" [(ngModel)]="RoadNo" id="RoadNo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.RoadNo.errors }" />
+                            <div *ngIf="submitted && f.RoadNo.errors" class="invalid-feedback">
+                                <div *ngIf="f.RoadNo.errors.required">{{BuildingMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Address Line 1</label>
+                        <div class="col-md-5">
+                            <input type="text" formControlName="addressLine1" maxlength="35" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.addressLine1.errors }" />
+                            <div *ngIf="submitted && f.addressLine1.errors" class="invalid-feedback">
+                                <div *ngIf="f.addressLine1.errors.required">{{AddressLineMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Address Lne 2</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35"  formControlName="addressLine2" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Town/City</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35"  formControlName="townCityName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.townCityName.errors }" />
+                            <div *ngIf="submitted && f.townCityName.errors" class="invalid-feedback">
+                                <div *ngIf="f.townCityName.errors.required">{{TownMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">State/Country</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35"  formControlName="stateCountryName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stateCountryName.errors }" />
+                            <div *ngIf="submitted && f.stateCountryName.errors" class="invalid-feedback">
+                                <div *ngIf="f.stateCountryName.errors.required">{{StateMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Country</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35"  formControlName="countryName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.countryName.errors }" />
+                            <div *ngIf="submitted && f.countryName.errors" class="invalid-feedback">
+                                <div *ngIf="f.countryName.errors.required">{{CountryMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">PostCode</label>
+                        <div class="col-md-5">
+                            <input type="text"  pattern="[A-Za-z0-9]{8}" formControlName="postCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.postCode.errors }" />
+                            <div *ngIf="submitted && f.postCode.errors" class="invalid-feedback">
+                                <div *ngIf="f.postCode.errors.required">{{PostCodeMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Registered Address</h5> <input type="checkbox" id="isAddressSame" (change)="addressChecked($event)"/>Registerd Address is same as Trading Address.
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="15" formControlName="RegRoadNo" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Address Line 1</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="RegaddressLine1" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Address Lne 2</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="RegaddressLine2" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Town/City</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="RegtownCityName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">State/Country</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="RegstateCountryName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Country</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="RegcountryName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">PostCode</label>
+                        <div class="col-md-5">
+                            <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="RegpostCode" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Contact Number</label>
+                        <div class="col-md-5">
+                            <input type="text" pattern="[0-9]{13}" formControlName="contactNumber" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Full Name</label>
+                        <div class="col-md-5">
+                            <input type="text"  pattern="[A-Za-z.]{30}" formControlName="yourName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.yourName.errors }" />
+                            <div *ngIf="submitted && f.yourName.errors" class="invalid-feedback">
+                                <div *ngIf="f.yourName.errors.required">{{FullNameMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Role</label>
+                        <div class="col-md-5">
+                            <input type="text"  pattern="[A-Za-z.]{30}" formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" />
+                            <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                                <div *ngIf="f.role.errors.required">{{RoleMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Email Address</label>
+                        <div class="col-md-5">
+                            <input type="email"  pattern="[a-z0-9._%+-]{30}+@[a-z0-9.-]{30}+\.[a-z]{2,3}$" formControlName="yourEmailAddress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.yourEmailAddress.errors }" />
+                            <div *ngIf="submitted && f.yourEmailAddress.errors" class="invalid-feedback">
+                                <div *ngIf="f.yourEmailAddress.errors.required">{{EmailReqMsg}}</div>
+                                <div *ngIf="f.yourEmailAddress.errors.email">{{EmailValidMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Mobile Number</label>
+                        <div class="col-md-5">
+                            <input type="text" pattern="[0-9]{13}" formControlName="yourContactNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.yourContactNumber.errors }" />
+                            <div *ngIf="submitted && f.yourContactNumber.errors" class="invalid-feedback">
+                                <div *ngIf="f.yourContactNumber.errors.required">{{ContactNumMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Your Desk Number</label>
+                        <div class="col-md-5">
+                            <input type="text" pattern="[0-9]{13}" formControlName="yourDeskNumber" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">PostCode</label>
+                        <div class="col-md-5">
+                            <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="formPostCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.formPostCode.errors }" />
+                            <div *ngIf="submitted && f.formPostCode.errors" class="invalid-feedback">
+                                <div *ngIf="f.formPostCode.errors.required">{{PostCodeMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Security Question</label>
+                        <div class="col-md-5">
+                            <select formControlName="securityQuestion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.securityQuestion.errors }">
+                                <option>--Select Question--</option>
+                                <option>Here Goes Question1.</option>
+                                <option>Here Goes Question2.</option>
+                                <option>Here Goes Question3.</option>
+                            </select>
+                            <div *ngIf="submitted && f.securityQuestion.errors" class="invalid-feedback">
+                                <div *ngIf="f.securityQuestion.errors.required">{{SecurityQuesMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Security Answer</label>
+                        <div class="col-md-5">
+                            <input type="text" maxlength="35" formControlName="securityAnswer" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.securityAnswer.errors }" />
+                            <div *ngIf="submitted && f.securityAnswer.errors" class="invalid-feedback">
+                                <div *ngIf="f.securityAnswer.errors.required">{{SecuirtyAnsMsg}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form--group">
+                        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+    </div>
+</div>
