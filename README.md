@@ -1,5 +1,5 @@
 # wallet-manager
-
+st
 #Pre-requisites
 1. install node and npm manager
 2. install angular cli globally, command is npm install -g @angular/cli
