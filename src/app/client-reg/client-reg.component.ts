@@ -78,7 +78,7 @@ export class ClientRegComponent implements OnInit {
             .pipe(first())
             .subscribe(data => {
                 //alert(data);
-                 //this.Response = data;
+                this.router.navigate(['/ClientReg2']);
                 
             });
     }

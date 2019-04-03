@@ -1,12 +1,16 @@
 import * as tslib_1 from "tslib";
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { AppConstantsComponent } from 'src/app/app-constants/app-constants.component';
+import { WalletService } from 'src/app/wallet.service';
 var ClientRegComponent = /** @class */ (function () {
-    function ClientRegComponent(formBuilder, router) {
+    function ClientRegComponent(formBuilder, router, elRef, WalletService) {
         this.formBuilder = formBuilder;
         this.router = router;
+        this.elRef = elRef;
+        this.WalletService = WalletService;
         this.submitted = false;
         this.companyNameMsg = AppConstantsComponent.companyNameMsg;
         this.BuildingMsg = AppConstantsComponent.BuildingMsg;
@@ -59,28 +63,49 @@ var ClientRegComponent = /** @class */ (function () {
         configurable: true
     });
     ClientRegComponent.prototype.onSubmit = function () {
+        var _this = this;
         debugger;
         this.submitted = true;
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.clientRegisterForm.value));
-        // stop here if form is invalid
-        if (this.clientRegisterForm.invalid) {
-            return;
-        }
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.clientRegisterForm.value));
+        this.WalletService.AdEnquiryForm(JSON.stringify(this.clientRegisterForm.value))
+            .pipe(first())
+            .subscribe(function (data) {
+            //alert(data);
+            _this.router.navigate(['/ClientReg2']);
+        });
     };
     ClientRegComponent.prototype.addressChecked = function (e) {
+        debugger;
         if (e.target.checked) {
-            //alert(AppConstantsComponent.Key1);
+            this.clientRegisterForm.patchValue({
+                RegRoadNo: this.clientRegisterForm.value.RoadNo,
+                RegaddressLine1: this.clientRegisterForm.value.addressLine1,
+                RegaddressLine2: this.clientRegisterForm.value.addressLine2,
+                RegtownCityName: this.clientRegisterForm.value.townCityName,
+                RegstateCountryName: this.clientRegisterForm.value.stateCountryName,
+                RegcountryName: this.clientRegisterForm.value.countryName,
+                RegpostCode: this.clientRegisterForm.value.postCode,
+            });
+        }
+        else {
+            this.clientRegisterForm.patchValue({
+                RegRoadNo: '',
+                RegaddressLine1: '',
+                RegaddressLine2: '',
+                RegtownCityName: '',
+                RegstateCountryName: '',
+                RegcountryName: '',
+                RegpostCode: '',
+            });
         }
     };
+    var _a, _b, _c;
     ClientRegComponent = tslib_1.__decorate([
         Component({
             selector: 'app-client-reg',
             templateUrl: './client-reg.component.html',
             styleUrls: ['./client-reg.component.css']
         }),
-        tslib_1.__metadata("design:paramtypes", [FormBuilder,
-            Router])
+        tslib_1.__metadata("design:paramtypes", [typeof (_a = typeof FormBuilder !== "undefined" && FormBuilder) === "function" ? _a : Object, typeof (_b = typeof Router !== "undefined" && Router) === "function" ? _b : Object, typeof (_c = typeof ElementRef !== "undefined" && ElementRef) === "function" ? _c : Object, WalletService])
     ], ClientRegComponent);
     return ClientRegComponent;
 }());
