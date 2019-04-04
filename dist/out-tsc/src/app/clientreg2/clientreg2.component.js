@@ -1,21 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
+import * as tslib_1 from "tslib";
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-
-@Component({
-  selector: 'app-clientreg2',
-  templateUrl: './clientreg2.component.html',
-  styleUrls: ['./clientreg2.component.css']
-})
-export class Clientreg2Component implements OnInit {
-    clientRegisterForm2: FormGroup;
-    submitted = false;
-
-    constructor(private formBuilder: FormBuilder,
-        private router: Router,) { }
-
-    ngOnInit() {
+var Clientreg2Component = /** @class */ (function () {
+    function Clientreg2Component(formBuilder, router) {
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.submitted = false;
+    }
+    Clientreg2Component.prototype.ngOnInit = function () {
         this.clientRegisterForm2 = this.formBuilder.group({
             customerId: ['', Validators.required],
             paymentVolume: ['', Validators.required],
@@ -56,7 +49,22 @@ export class Clientreg2Component implements OnInit {
             securityQuestion: ['', Validators.required],
             securityAnswer: ['', Validators.required],
         });
-    }
-    get f() { return this.clientRegisterForm2.controls; }
-
-}
+    };
+    Object.defineProperty(Clientreg2Component.prototype, "f", {
+        get: function () { return this.clientRegisterForm2.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    Clientreg2Component = tslib_1.__decorate([
+        Component({
+            selector: 'app-clientreg2',
+            templateUrl: './clientreg2.component.html',
+            styleUrls: ['./clientreg2.component.css']
+        }),
+        tslib_1.__metadata("design:paramtypes", [FormBuilder,
+            Router])
+    ], Clientreg2Component);
+    return Clientreg2Component;
+}());
+export { Clientreg2Component };
+//# sourceMappingURL=clientreg2.component.js.map

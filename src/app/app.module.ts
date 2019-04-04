@@ -15,6 +15,7 @@ import { ClientRegComponent } from './client-reg/client-reg.component';
 import { AppConstantsComponent } from './app-constants/app-constants.component';
 import { WalletBodyComponent } from './wallet-body/wallet-body.component';
 import { Clientreg2Component } from './clientreg2/clientreg2.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Clientreg2Component } from './clientreg2/clientreg2.component';
         ClientRegComponent,
         AppConstantsComponent,
         WalletBodyComponent,
-        Clientreg2Component
+        Clientreg2Component,
+        LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { Clientreg2Component } from './clientreg2/clientreg2.component';
           { path: 'Self', component: SelfRegistrationComponent },
           { path: 'ClientReg', component: ClientRegComponent },
           { path: 'ClientReg2', component: Clientreg2Component },
+          { path: 'Login', component: LoginComponent },
 
       ])
   ],

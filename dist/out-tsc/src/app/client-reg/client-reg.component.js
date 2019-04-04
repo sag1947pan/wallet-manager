@@ -66,12 +66,20 @@ var ClientRegComponent = /** @class */ (function () {
         var _this = this;
         debugger;
         this.submitted = true;
-        this.WalletService.AdEnquiryForm(JSON.stringify(this.clientRegisterForm.value))
-            .pipe(first())
-            .subscribe(function (data) {
-            //alert(data);
-            _this.router.navigate(['/ClientReg2']);
-        });
+        if (this.clientRegisterForm.invalid) {
+            return;
+        }
+        else {
+            this.WalletService.customerRegService(JSON.stringify(this.clientRegisterForm.value))
+                .pipe(first())
+                .subscribe(function (data) {
+                _this.Status = data.Status;
+                _this.CustomerCode = data.CustomerCode;
+                _this.SuccessMessage = data.SuccessMessage;
+                _this.router.navigate(['/ClientReg2']);
+                alert("Your Customer Id is :" + (_this.CustomerCode));
+            }, function (error) { return (_this.error = error); });
+        }
     };
     ClientRegComponent.prototype.addressChecked = function (e) {
         debugger;
@@ -98,14 +106,16 @@ var ClientRegComponent = /** @class */ (function () {
             });
         }
     };
-    var _a, _b, _c;
     ClientRegComponent = tslib_1.__decorate([
         Component({
             selector: 'app-client-reg',
             templateUrl: './client-reg.component.html',
             styleUrls: ['./client-reg.component.css']
         }),
-        tslib_1.__metadata("design:paramtypes", [typeof (_a = typeof FormBuilder !== "undefined" && FormBuilder) === "function" ? _a : Object, typeof (_b = typeof Router !== "undefined" && Router) === "function" ? _b : Object, typeof (_c = typeof ElementRef !== "undefined" && ElementRef) === "function" ? _c : Object, WalletService])
+        tslib_1.__metadata("design:paramtypes", [FormBuilder,
+            Router,
+            ElementRef,
+            WalletService])
     ], ClientRegComponent);
     return ClientRegComponent;
 }());

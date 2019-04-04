@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef  } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, Params } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AppConstantsComponent } from 'src/app/app-constants/app-constants.component';
 import { WalletService } from 'src/app/wallet.service';
@@ -13,6 +13,10 @@ import { WalletService } from 'src/app/wallet.service';
 export class ClientRegComponent implements OnInit {
     clientRegisterForm: FormGroup;
     submitted = false;
+    error: any;
+    Status: string;
+    CustomerCode; string;
+    SuccessMessage: string;
 
     public companyNameMsg = AppConstantsComponent.companyNameMsg;
     public BuildingMsg = AppConstantsComponent.BuildingMsg;
@@ -28,7 +32,6 @@ export class ClientRegComponent implements OnInit {
     public ContactNumMsg = AppConstantsComponent.ContactNumMsg;
     public SecurityQuesMsg = AppConstantsComponent.SecurityQuesMsg;
     public SecuirtyAnsMsg = AppConstantsComponent.SecurityQuesMsg;
-
 
     constructor(private formBuilder: FormBuilder,
         private router: Router,
@@ -73,14 +76,24 @@ export class ClientRegComponent implements OnInit {
     onSubmit() {
         debugger;
         this.submitted = true;
-      
-        this.WalletService.AdEnquiryForm(JSON.stringify(this.clientRegisterForm.value))
-            .pipe(first())
-            .subscribe(data => {
-                //alert(data);
-                this.router.navigate(['/ClientReg2']);
-                
-            });
+
+        if (this.clientRegisterForm.invalid) {
+
+            return;
+
+        }
+        else {
+            this.WalletService.customerRegService(JSON.stringify(this.clientRegisterForm.value))
+                .pipe(first())
+                .subscribe(data => {
+                    this.Status = data.Status;
+                    this.CustomerCode = data.CustomerCode;
+                    this.SuccessMessage = data.SuccessMessage;
+                    this.router.navigate(['/ClientReg2']);
+                    alert("Your Customer Id is :" + (this.CustomerCode));
+                }, error => (this.error = error));
+        }
+        
     }
 
     addressChecked(e) {

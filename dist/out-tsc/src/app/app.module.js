@@ -5,14 +5,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SelfRegistrationComponent } from './self-registration/self-registration.component';
-import { BeneDetailsComponent } from './bene-details/bene-details.component';
 import { WalletHeaderComponent } from './wallet-header/wallet-header.component';
 import { WalletFooterComponent } from './wallet-footer/wallet-footer.component';
 import { ClientRegComponent } from './client-reg/client-reg.component';
 import { AppConstantsComponent } from './app-constants/app-constants.component';
+import { WalletBodyComponent } from './wallet-body/wallet-body.component';
+import { Clientreg2Component } from './clientreg2/clientreg2.component';
+import { LoginComponent } from './login/login.component';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -21,11 +24,13 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 AppComponent,
                 SelfRegistrationComponent,
-                BeneDetailsComponent,
                 WalletHeaderComponent,
                 WalletFooterComponent,
                 ClientRegComponent,
-                AppConstantsComponent
+                AppConstantsComponent,
+                WalletBodyComponent,
+                Clientreg2Component,
+                LoginComponent
             ],
             imports: [
                 BrowserModule,
@@ -33,12 +38,15 @@ var AppModule = /** @class */ (function () {
                 ReactiveFormsModule,
                 FormlyModule.forRoot(),
                 FormlyBootstrapModule,
+                HttpClientModule,
                 RouterModule.forRoot([
                     { path: '', redirectTo: '/Main', pathMatch: 'full' },
                     { path: 'Dash', component: AppComponent },
-                    { path: 'Main', component: WalletHeaderComponent },
+                    { path: 'Main', component: WalletBodyComponent },
                     { path: 'Self', component: SelfRegistrationComponent },
                     { path: 'ClientReg', component: ClientRegComponent },
+                    { path: 'ClientReg2', component: Clientreg2Component },
+                    { path: 'Login', component: LoginComponent },
                 ])
             ],
             providers: [],

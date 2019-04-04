@@ -11,6 +11,7 @@ import { WalletBodyComponent } from './wallet-body/wallet-body.component';
 import { WalletFooterComponent } from './wallet-footer/wallet-footer.component';
 import { ClientRegComponent } from './client-reg/client-reg.component'; 
 import { Clientreg2Component } from './clientreg2/clientreg2.component'; 
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'Self', component: SelfRegistrationComponent },
     { path: 'ClientReg', component: ClientRegComponent },
     { path: 'ClientReg2', component: Clientreg2Component },
+    { path: 'Login', component: LoginComponent },
 ];
 
 @NgModule({

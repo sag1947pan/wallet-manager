@@ -18,6 +18,7 @@ var AppConstantsComponent = /** @class */ (function () {
     AppConstantsComponent.EmailValidMsg = "Email must be a valid email address";
     AppConstantsComponent.ContactNumMsg = "Mobile Number is required";
     AppConstantsComponent.SecurityQuesMsg = "Secuirty Question is reuired";
+    AppConstantsComponent.SecuirtyAnsMsg = "Secuirty Answer is reuired";
     AppConstantsComponent = tslib_1.__decorate([
         Component({
             selector: 'app-app-constants',
