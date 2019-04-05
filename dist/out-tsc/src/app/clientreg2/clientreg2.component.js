@@ -7,9 +7,13 @@ var Clientreg2Component = /** @class */ (function () {
         this.formBuilder = formBuilder;
         this.router = router;
         this.submitted = false;
+        this.tab1 = true;
+        this.tab2 = false;
+        this.tab3 = false;
+        this.tab4 = false;
     }
     Clientreg2Component.prototype.ngOnInit = function () {
-        this.clientRegisterForm2 = this.formBuilder.group({
+        this.clientRegisterForm2Tab1 = this.formBuilder.group({
             customerId: ['', Validators.required],
             paymentVolume: ['', Validators.required],
             Amountlimit: ['', Validators.required],
@@ -20,6 +24,8 @@ var Clientreg2Component = /** @class */ (function () {
             activeDaysForPayment: ['', Validators.required],
             currency1: ['', Validators.required],
             currencyFmtForPayments: ['', Validators.required],
+        });
+        this.clientRegisterForm2Tab2 = this.formBuilder.group({
             currencyFmtForBene: ['', Validators.required],
             reminderemail: ['', Validators.required],
             remindersms: ['', Validators.required],
@@ -30,6 +36,8 @@ var Clientreg2Component = /** @class */ (function () {
             method: ['', Validators.required],
             debitprofile: ['', Validators.required],
             countrybank: ['', Validators.required],
+        });
+        this.clientRegisterForm2Tab3 = this.formBuilder.group({
             bankname: ['', Validators.required],
             clearingcode: ['', Validators.required],
             accountnumber: ['', Validators.required],
@@ -40,6 +48,8 @@ var Clientreg2Component = /** @class */ (function () {
             securitycode: ['', Validators.required],
             firstname: ['', Validators.required],
             lastname: ['', Validators.required],
+        });
+        this.clientRegisterForm2Tab4 = this.formBuilder.group({
             role: ['', Validators.required],
             email: ['', Validators.required],
             usertype: ['', Validators.required],
@@ -50,11 +60,50 @@ var Clientreg2Component = /** @class */ (function () {
             securityAnswer: ['', Validators.required],
         });
     };
-    Object.defineProperty(Clientreg2Component.prototype, "f", {
-        get: function () { return this.clientRegisterForm2.controls; },
+    Object.defineProperty(Clientreg2Component.prototype, "f1", {
+        get: function () { return this.clientRegisterForm2Tab1.controls; },
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Clientreg2Component.prototype, "f2", {
+        get: function () { return this.clientRegisterForm2Tab2.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Clientreg2Component.prototype, "f3", {
+        get: function () { return this.clientRegisterForm2Tab3.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Clientreg2Component.prototype, "f4", {
+        get: function () { return this.clientRegisterForm2Tab4.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    Clientreg2Component.prototype.onSubmitTab1 = function () {
+        this.tab1 = false;
+        this.tab2 = true;
+        this.tab3 = false;
+        this.tab4 = false;
+    };
+    Clientreg2Component.prototype.onSubmitTab2 = function () {
+        this.tab1 = false;
+        this.tab2 = false;
+        this.tab3 = true;
+        this.tab4 = false;
+    };
+    Clientreg2Component.prototype.onSubmitTab3 = function () {
+        this.tab1 = false;
+        this.tab2 = false;
+        this.tab3 = false;
+        this.tab4 = true;
+    };
+    Clientreg2Component.prototype.onSubmitTab4 = function () {
+        this.tab1 = false;
+        this.tab2 = true;
+        this.tab3 = false;
+        this.tab4 = false;
+    };
     Clientreg2Component = tslib_1.__decorate([
         Component({
             selector: 'app-clientreg2',
