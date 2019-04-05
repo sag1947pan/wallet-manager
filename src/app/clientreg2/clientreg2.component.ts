@@ -132,4 +132,29 @@ export class Clientreg2Component implements OnInit {
         this.router.navigate(['/Main']);
     }
 
+    tab1clk() {
+        this.tab1 = true;
+        this.tab2 = false;
+        this.tab3 = false;
+        this.tab4 = false;
+    }
+    tab2clk() {
+        this.tab1 = false;
+        this.tab2 = true;
+        this.tab3 = false;
+        this.tab4 = false;
+    }
+    tab3clk() {
+        this.tab1 = false;
+        this.tab2 = false;
+        this.tab3 = true;
+        this.tab4 = false;
+    }
+    tab4clk() {
+        this.tab1 = false;
+        this.tab2 = false;
+        this.tab3 = false;
+        this.tab4 = true;
+    }
+
 }

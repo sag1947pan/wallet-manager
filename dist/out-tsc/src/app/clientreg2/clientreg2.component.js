@@ -129,6 +129,30 @@ var Clientreg2Component = /** @class */ (function () {
         alert("Your Details Saved Successfully!");
         this.router.navigate(['/Main']);
     };
+    Clientreg2Component.prototype.tab1clk = function () {
+        this.tab1 = true;
+        this.tab2 = false;
+        this.tab3 = false;
+        this.tab4 = false;
+    };
+    Clientreg2Component.prototype.tab2clk = function () {
+        this.tab1 = false;
+        this.tab2 = true;
+        this.tab3 = false;
+        this.tab4 = false;
+    };
+    Clientreg2Component.prototype.tab3clk = function () {
+        this.tab1 = false;
+        this.tab2 = false;
+        this.tab3 = true;
+        this.tab4 = false;
+    };
+    Clientreg2Component.prototype.tab4clk = function () {
+        this.tab1 = false;
+        this.tab2 = false;
+        this.tab3 = false;
+        this.tab4 = true;
+    };
     Clientreg2Component = tslib_1.__decorate([
         Component({
             selector: 'app-clientreg2',
