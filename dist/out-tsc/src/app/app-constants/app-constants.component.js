@@ -5,6 +5,7 @@ var AppConstantsComponent = /** @class */ (function () {
     }
     AppConstantsComponent.prototype.ngOnInit = function () {
     };
+    AppConstantsComponent.commonreqMsg = "This Field is required";
     AppConstantsComponent.companyNameMsg = "Company Name is required";
     AppConstantsComponent.BuildingMsg = "BuildingNo/Street(Or)Road Name/Number is required";
     AppConstantsComponent.AddressLineMsg = "Address Line 1 is required";

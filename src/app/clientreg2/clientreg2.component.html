@@ -5,17 +5,28 @@
             <div class="page-header m-b-30">
                 <div class="header-title text-uppercase"><b>Client Post Registration Form</b></div>
             </div>
+            <div id="menu" class="mainNavbar">
+                <ul id="nav" class="dropdown">
+                    <li class="active">
+                        <a href="#">Tab1</a>
+                    </li>
+                    <li>
+                        <a href="#">Tab2</a>
+                    </li>
+                    <li>
+                        <a href="#">Tab3</a>
+                    </li>
+                    <li><a href="#">Tab4</a></li>
+                </ul>
+            </div>
             <div class="col-lg-12 col-md-8 col-sm-8 col-md-offset-2">
                 <!--<form [formGroup]="clientRegisterForm2" (ngSubmit)="onSubmit()" class="form-horizontal">-->
                 <div *ngIf="tab1">
                     <form [formGroup]="clientRegisterForm2Tab1" (ngSubmit)="onSubmitTab1()" class="form-horizontal">
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Your Customer ID with us<sup>*</sup></label>
+                            <label class="col-md-3 control-label">Your Customer ID with us</label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="7" pattern="[0-9]{7}" title="Please enter a Valid Customer ID. eg-1234567" placeholder="Your Customer ID" [(ngModel)]="customerId" formControlName="customerId" name="customerId" id="customerId" class="form-control" />
-                                <div *ngIf="submitted && f.customerId.errors || (f.customerId.touched && !f.customerId.valid)" class="validation">
-                                    <div *ngIf="f.custid.errors.required">{{customerIdMsg}}</div>
-                                </div>
+                                <input type="text" maxlength="7" pattern="[0-9]{7}" title="Please enter a Valid Customer ID. eg-1234567" placeholder="Your Customer ID" [(ngModel)]="customerId" formControlName="customerId" id="customerId" disabled class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -24,81 +35,72 @@
                                 <input type="text" formControlName="paymentVolume" class="form-control" maxlength="15" placeholder="Monthly Payment Volume" [(ngModel)]="paymentVolume" name="paymentVolume" id="paymentVolume" />
                             </div>
                             <div *ngIf="(submitted && f.paymentVolume.errors) || (f.paymentVolume.touched && !f.paymentVolume.valid)" class="validation">
-                                <div *ngIf="f.paymentVolume.errors.required">{{paymentVolumeMsg}}</div>
+                                <div *ngIf="f.paymentVolume.errors.required">{{commonReqMsg}}</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Amount limit per file</label>
                             <div class="col-md-5">
                                 <input type="text" title="PLease enter the amount with decimal points eg-1234.00" placeholder="Amount limit per file" [(ngModel)]="Amountlimit" formControlName="Amountlimit" class="form-control" name="Amountlimit" id="Amountlimit" />
-                                <div *ngIf="submitted && f.Amountlimit.errors || (f.Amountlimit.touched && !f.Amountlimit.valid)" class="validation">
-                                    <div *ngIf="f.amountlimite.errors.required">{{AmountlimitMsg}}</div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Amount limit per payement</label>
                             <div class="col-md-5">
                                 <input type="text" title="Please enter the amount with decimal points eg-1234567.00" formControlName="amtLmtPerPayment" class="form-control" placeholder="Amount limit per Payment" [(ngModel)]="amtLmtPerPayment" name="amtLmtPerPayment" id="amtLmtPerPayment" />
-                                <div *ngIf="submitted && f.amtLmtPerPayment.errors || (f.amtLmtPerPayment.touched && !f.amtLmtPerPayment.valid)" class="validation">
-                                    <div *ngIf="f.amtLmtPerPayment.errors.required">{{amtLmtPerPaymentMsg}}</div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Maximum number of payments per file</label>
                             <div class="col-md-5">
                                 <input type="text" maxlength="5" pattern="[0-9]{5}" title="Number of Payments per file should not exceed 99999" formControlName="payLmtPerFile" class="form-control" placeholder="Payments limit per File" [(ngModel)]="payLmtPerFile" name="payLmtPerFile" id="payLmtPerFile" />
-                                <div *ngIf="submitted && f.payLmtPerFile.errors || (f.payLmtPerFile.touched && !f.payLmtPerFile)" class="validation">
-                                    <div *ngIf="f.payLmtPerFile.errors.required">{{payLmtPerFileMsg}}</div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Maximum number of files per day</label>
                             <div class="col-md-5">
                                 <input type="text" maxlength="2" pattern="[0-9]{2}" title="Maximum number of files per day should not exceed 99" formControlName="filesLmtPerday" class="form-control" placeholder="Files limit per Day" [(ngModel)]="filesLmtPerday" name="filesLmtPerday" id="filesLmtPerday" />
-                                <div *ngIf="submitted && f.filesLmtPerday.errors || (f.filesLmtPerday.touched && !f.filesLmtPerday.valid)" class="validation">
-                                    <div *ngIf="f.filesLmtPerday.errors.required">{{filesLmtPerdayMsg}}</div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Maximum number of messages per day</label>
                             <div class="col-md-5">
                                 <input type="text" maxlength="3" pattern="[0-9]{3}" title="Maximum number of messages per day should not exceed 999" formControlName="msgsLmtPerday" class="form-control" placeholder="Messages limit per Day" [(ngModel)]="msgsLmtPerday" name="msgsLmtPerday" id="msgsLmtPerday" />
-                                <div *ngIf="submitted && f.msgsLmtPerday.errors || (f.msgsLmtPerday.touched && !f.msgsLmtPerday.valid)" class="validation">
-                                    <div *ngIf="f.msgsLmtPerday.errors.required">{{msgsLmtPerdayMsg}}</div>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Number of days payments to be active</label>
+                            <label class="col-md-3 control-label">Number of days payments to be active<sup>*</sup></label>
                             <div class="col-md-5">
                                 <input type="text" maxlength="3" pattern="[0-9]{3}" title="Number of days payments to be activeshould not exceed 999" formControlName="activeDaysForPayment" id="activeDaysForPayment" class="form-control" placeholder="Number of days payments to be active" />
-                                <div *ngIf="submitted && f.activeDaysForPayment.errors || (f.activeDaysForPayment.touched && !f.activeDaysForPayment.valid)" class="validation">
-                                    <div *ngIf="f.activeDaysForPayment.errors.required">{{activeDaysForPaymentMsg}}</div>
+                                <div *ngIf="(submitted && f.activeDaysForPayment.errors) || (f.activeDaysForPayment.touched && !f.activeDaysForPayment.valid)" class="validation">
+                                    <div *ngIf="f.activeDaysForPayment.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Select the currencies in which you send payments i.e. you want to pay-in to us</label>
+                            <label class="col-md-3 control-label">Select the currencies in which you send payments i.e. you want to pay-in to us<sup>*</sup></label>
                             <div class="col-md-5">
                                 <select formControlName="currency1" class="form-control">
                                     <option value="GBP" selected>United Kingdom Pounds</option>
                                     <option value="SGD">Singapore Dollars</option>
                                     <option value="INR">India Rupees</option>
                                 </select>
+                                <div *ngIf="(submitted && f.currency1.errors )|| (f.currency1.touched && !f.currency1.valid)" class="validation">
+                                    <div *ngIf="f.currency1.errors.required">{{commonReqMsg}}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Select the countries in which you want to enable for beneficiaries</label>
+                            <label class="col-md-3 control-label">Select the countries in which you want to enable for beneficiaries<sup>*</sup></label>
                             <div class="col-md-5">
                                 <select formControlName="currencyFmtForPayments" id="currencyFmtForPayments" class="form-control">
                                     <option value="GBP" selected>United Kingdom Pounds</option>
                                     <option value="SGD">Singapore Dollars</option>
                                     <option value="INR">India Rupees</option>
                                 </select>
+                                <div *ngIf="(submitted && f.currencyFmtForPayments.errors) || (f.currencyFmtForPayments.touched && !f.currencyFmtForPayments.valid)" class="validation">
+                                    <div *ngIf="f.currencyFmtForPayments.errors.required">{{commonReqMsg}}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -112,48 +114,57 @@
                 <div *ngIf="tab2">
                     <form [formGroup]="clientRegisterForm2Tab2" (ngSubmit)="onSubmitTab2()" class="form-horizontal">
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Select the countries in which you want to enable for beneficiaries</label>
+                            <label class="col-md-3 control-label">Select the countries in which you want to enable for beneficiaries<sup>*</sup></label>
                             <div class="col-md-5">
                                 <select formControlName="currencyFmtForBene" [(ngModel)]="currencyFmtForBene" id="currencyFmtForBene" class="form-control">
                                     <option value="United Kingdom " selected>United Kingdom Pounds</option>
                                     <option value="Singapore">Singapore Dollars</option>
                                     <option value="India">India Rupees</option>
                                 </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"> # of reminders on email  (with max limit)</label>
-                            <div class="col-md-5">
-                                <input type="text" maxlength="2" pattern="[0-9]{2}" title="max limit of reminders must be below 99" placeholder="Reminders on email" formControlName="reminderemail" class="form-control" [(ngModel)]="reminderemail" id="reminderemail" />
-                                <div *ngIf="submitted && f.reminderemail.errors || (f.reminderemail.touched && !f.reminderemail.valid)" class="validation">
-                                    <div *ngIf="f.reminderemail.errors.required">{{reminderemailMsg}}</div>
+                                <div *ngIf="(submitted && f2.currencyFmtForBene.errors) || (f2.currencyFmtForBene.touched && !f2.currencyFmtForBene.valid)" class="validation">
+                                    <div *ngIf="f2.currencyFmtForBene.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">  # of reminders on SMS  (with max limit)</label>
+                            <label class="col-md-3 control-label"> # of reminders on email  (with max limit)<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="2" pattern="[0-9]{2}" title="max limit of reminders must be below 99" formControlName="remindersms" class="form-control" [(ngModel)]="remindersms" id="remindersms" />
-                                <div *ngIf="submitted && f.remindersms.errors || (f.remindersms.touched && !f.remindersms.valid)" class="validation">
-                                    <div *ngIf="f.remindersms.errors.required">{{remindersmsMsg}}</div>
+                                <input type="text" maxlength="2"  title="max limit of reminders must be below 99" placeholder="Reminders on email" formControlName="reminderemail" class="form-control" [(ngModel)]="reminderemail" id="reminderemail" />
+                                <div *ngIf="(submitted && f2.reminderemail.errors) || (f2.reminderemail.touched && !f2.reminderemail.valid)" class="validation">
+                                    <div *ngIf="f2.reminderemail.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">  Is your file to be authorized before processing by us?</label>
+                            <label class="col-md-3 control-label">  # of reminders on SMS  (with max limit)<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="radio" formControlName="fileauthorization" name="fileauthorization" value="" checked>only if Operational user uploads<br />
-                                <input type="radio" formControlName="fileauthorization" name="fileauthorization" value="">yes, in all the cases<br />
-                                <input type="radio" formControlName="fileauthorization" name="fileauthorization" value="">Never
+                                <input type="text" maxlength="2" title="max limit of reminders must be below 99" formControlName="remindersms" class="form-control" [(ngModel)]="remindersms" id="remindersms" />
+                                <div *ngIf="(submitted && f2.remindersms.errors) || (f2.remindersms.touched && !f2.remindersms.valid)" class="validation">
+                                    <div *ngIf="f2.remindersms.errors.required">{{commonReqMsg}}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">  Do you want to offer different Fx margins to different set of your customers?</label>
+                            <label class="col-md-3 control-label">  Is your file to be authorized before processing by us?<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="radio" formControlName="fileauthorization" name="fileauthorization" value="1" >only if Operational user uploads<br />
+                                <input type="radio" formControlName="fileauthorization" name="fileauthorization" value="2">yes, in all the cases<br />
+                                <input type="radio" formControlName="fileauthorization" name="fileauthorization" value="0">Never
+                                <div *ngIf="(submitted && f2.fileauthorization.errors) || (f2.fileauthorization.touched && !f2.fileauthorization.valid)" class="validation">
+                                    <div *ngIf="f2.fileauthorization.errors.required">{{commonReqMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">  Do you want to offer different Fx margins to different set of your customers?<sup>*</sup></label>
                             <div class="col-md-5">
                                 <select name="margins" formControlName="margins" class="form-control">
                                     <option value="yes" selected>Yes</option>
                                     <option value="no">No</option>
                                 </select>
+                                <div *ngIf="(submitted && f2.margins.errors) || (f2.margins.touched && !f2.margins.valid)" class="validation">
+                                    <div *ngIf="f2.margins.errors.required">{{commonReqMsg}}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -166,29 +177,32 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Team email address</label>
+                            <label class="col-md-3 control-label"> Team email address<sup>*</sup></label>
                             <div class="col-md-5">
                                 <input type="email" title="Please enter a valid email address" formControlName="teamemail" class="form-control" [(ngModel)]="teamemail" id="teamemail" />
-                                <div *ngIf="submitted && f.remindersms.errors || (f.remindersms.touched && !f.remindersms.valid)" class="validation">
-                                    <div *ngIf="f.teamemail.errors.required">{{teamemailMsg}}</div>
+                                <div *ngIf="(submitted && f2.remindersms.errors) || (f2.remindersms.touched && !f2.remindersms.valid)" class="validation">
+                                    <div *ngIf="f2.remindersms.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Method of your payment to us</label>
+                            <label class="col-md-3 control-label"> Method of your payment to us<sup>*</sup></label>
                             <div class="col-md-5">
                                 <select formControlName="method" class="form-control">
-                                    <option name="method" value="" selected>Bank A/c OR Card number </option>
-                                    <option name="method" value="">Pre-fund OR post-claimed by Beneficiary </option>
+                                    <option name="method" value="0">Bank A/c OR Card number </option>
+                                    <option name="method" value="1">Pre-fund OR post-claimed by Beneficiary </option>
                                 </select>
+                                <div *ngIf="(submitted && f2.method.errors) || (f2.method.touched && !f2.method.valid)" class="validation">
+                                    <div *ngIf="f2.method.errors.required">{{commonReqMsg}}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Debit Profile name</label>
+                            <label class="col-md-3 control-label"> Debit Profile name<sup>*</sup></label>
                             <div class="col-md-5">
                                 <input type="text" maxlength="20" formControlName="debitprofile" class="form-control" placeholder="Debit Profile Name" [(ngModel)]="debitprofile" id="debitprofile" />
-                                <div *ngIf="submitted && f.debitprofile.errors || (f.debitprofile.touched && !f.debitprofile.valid)" class="validation">
-                                    <div *ngIf="f.debitprofile.errors.required">{{debitprofileMsg}}</div>
+                                <div *ngIf="(submitted && f2.debitprofile.errors) || (f2.debitprofile.touched && !f2.debitprofile.valid)" class="validation">
+                                    <div *ngIf="f2.debitprofile.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
@@ -196,8 +210,8 @@
                             <label class="col-md-3 control-label"> Country of your bank account</label>
                             <div class="col-md-5">
                                 <input type="text" maxlength="20" formControlName="countrybank" class="form-control" placeholder="Country of your bank account" [(ngModel)]="countrybank" id="countrybank" />
-                                <div *ngIf="submitted && f.countrybank.errors || (f.remindersms.touched && !f.countrybank.valid)" class="validation">
-                                    <div *ngIf="f.countrybank.errors.required">{{countrybankMsg}}</div>
+                                <div *ngIf="(submitted && f2.countrybank.errors) || (f2.remindersms.touched && !f2.countrybank.valid)" class="validation">
+                                    <div *ngIf="f2.countrybank.errors.required">{{countrybankMsg}}</div>
                                 </div>
                             </div>
                         </div>
@@ -212,102 +226,109 @@
                 <div *ngIf="tab3">
                     <form [formGroup]="clientRegisterForm2Tab3" (ngSubmit)="onSubmitTab3()" class="form-horizontal">
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Bank name</label>
+                            <label class="col-md-3 control-label"> Bank name<sup>*</sup></label>
                             <div class="col-md-5">
                                 <input type="text" maxlength="20" formControlName="bankname" class="form-control" placeholder="Bank Name" [(ngModel)]="bankname" id="bankname" />
-                                <div *ngIf="submitted && f.bankname.errors || (f.bankname.touched && !f.bankname.valid)" class="validation">
-                                    <div *ngIf="f.bankname.errors.required">{{banknameMsg}}</div>
+                                <div *ngIf="submitted && f3.bankname.errors || (f3.bankname.touched && !f3.bankname.valid)" class="validation">
+                                    <div *ngIf="f3.bankname.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Clearing code or BIC</label>
+                            <label class="col-md-3 control-label"> Clearing code or BIC<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="15" pattern="[a-zA-Z0-9]" formControlName="clearingcode" class="form-control" placeholder="Clearing code or BIC" [(ngModel)]="clearingcode" id="clearingcode" />
-                                <div *ngIf="submitted && f.clearingcode.errors || (f.clearingcode.touched && !f.clearingcode.valid)" class="validation">
-                                    <div *ngIf="f.clearingcode.errors.required">{{clearingcodeMsg}}</div>
+                                <input type="text" maxlength="15" formControlName="clearingcode" class="form-control" placeholder="Clearing code or BIC" [(ngModel)]="clearingcode" id="clearingcode" />
+                                <div *ngIf="submitted && f3.clearingcode.errors || (f3.clearingcode.touched && !f3.clearingcode.valid)" class="validation">
+                                    <div *ngIf="f3.clearingcode.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Account number or IBAN</label>
+                            <label class="col-md-3 control-label"> Account number or IBAN<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="38" pattern="[a-zA-Z0-9]" formControlName="accountnumber" class="form-control" placeholder="Account number or IBAN" [(ngModel)]="accountnumber" id="accountnumber" />
-                                <div *ngIf="submitted && f.accountnumber.errors || (f.accountnumber.touched && !f.accountnumber.valid)" class="validation">
-                                    <div *ngIf="f.accountnumber.errors.required">{{accountnumberMsg}}</div>
+                                <input type="text" maxlength="38" formControlName="accountnumber" class="form-control" placeholder="Account number or IBAN" [(ngModel)]="accountnumber" id="accountnumber" />
+                                <div *ngIf="submitted && f3.accountnumber.errors || (f3.accountnumber.touched && !f3.accountnumber.valid)" class="validation">
+                                    <div *ngIf="f3.accountnumber.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Card Type</label>
+                            <label class="col-md-3 control-label"> Card Type<sup>*</sup></label>
                             <div class="col-md-5">
                                 <select formControlName="cardtype" class="form-control">
-                                    <option name="cardtype" value="" selected>Master Card-Dr </option>
-                                    <option name="cardtype" value="">Master Card</option>
-                                    <option name="cardtype" value="">Visa</option>
-                                    <option name="cardtype" value="">Amex</option>
-                                    <option name="cardtype" value="">Others</option>
+                                    <option name="cardtype" value="0">Master Card-Dr </option>
+                                    <option name="cardtype" value="1">Master Card</option>
+                                    <option name="cardtype" value="2">Visa</option>
+                                    <option name="cardtype" value="3">Amex</option>
+                                    <option name="cardtype" value="4">Others</option>
                                 </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"> Name on the Card</label>
-                            <div class="col-md-5">
-                                <input type="text" maxlength="25" pattern="[a-zA-z]" formControlName="cardname" class="form-control" placeholder="Card Name" [(ngModel)]="cardname" id="cardname" />
-                                <div *ngIf="submitted && f.cardname.errors || (f.cardname.touched && !f.cardname.valid)" class="validation">
-                                    <div *ngIf="f.cardname.errors.required">{{cardnameMsg}}</div>
+                                <div *ngIf="submitted && f3.cardtype.errors || (f3.cardtype.touched && !f3.cardtype.valid)" class="validation">
+                                    <div *ngIf="f3.cardtype.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Card Number</label>
+                            <label class="col-md-3 control-label"> Name on the Card<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="16" pattern="[0-9]{13,16}" formControlName="cardnumber" class="form-control" placeholder="Card Number" [(ngModel)]="cardnumber" id="cardnumber" />
-                                <div *ngIf="submitted && f.cardnumber.errors || (f.cardnumber.touched && !f.cardnumber.valid)" class="validation">
-                                    <div *ngIf="f.cardnumber.errors.required">{{cardnumberMsg}}</div>
+                                <input type="text" maxlength="25" formControlName="cardname" class="form-control" placeholder="Card Name" [(ngModel)]="cardname" id="cardname" />
+                                <div *ngIf="submitted && f3.cardname.errors || (f3.cardname.touched && !f3.cardname.valid)" class="validation">
+                                    <div *ngIf="f3.cardname.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Expiry Date</label>
+                            <label class="col-md-3 control-label"> Card Number<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="date" formControlName="expirydate" class="form-control" [(ngModel)]="expirydate" id="expirydate" />
-                                <div *ngIf="submitted && f.expirydate.errors || (f.expirydate.touched && !f.expirydate.valid)" class="validation">
-                                    <div *ngIf="f.expirydate.errors.required">{{expirydateMsg}}</div>
+                                <input type="text" maxlength="16" formControlName="cardnumber" class="form-control" placeholder="Card Number" [(ngModel)]="cardnumber" id="cardnumber" />
+                                <div *ngIf="submitted && f3.cardnumber.errors || (f3.cardnumber.touched && !f3.cardnumber.valid)" class="validation">
+                                    <div *ngIf="f3.cardnumber.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Security code</label>
+                            <label class="col-md-3 control-label"> Expiry Date<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="3" pattern="[0-9]{3}" formControlName="securitycode" class="form-control" placeholder="Security Code" [(ngModel)]="securitycode" id="securitycode" />
-                                <div *ngIf="submitted && f.securitycode.errors || (f.securitycode.touched && !f.securitycode.valid)" class="validation">
-                                    <div *ngIf="f.securitycode.errors.required">{{securitycodeMsg}}</div>
+                                <input type="text" formControlName="expirydate" class="col-md-3" [(ngModel)]="expirydate" id="expirydate" placeholder="Month"/>
+                                <div *ngIf="submitted && f3.expirydate.errors || (f3.expirydate.touched && !f3.expirydate.valid)" class="validation">
+                                    <div *ngIf="f3.expirydate.errors.required">{{commonReqMsg}}</div>
+                                </div>
+                                <input type="text" formControlName="expiryyear" class="col-md-3" [(ngModel)]="expiryyear" id="expiryyear" placeholder="Year"/>
+                                <div *ngIf="submitted && f3.expiryyear.errors || (f3.expiryyear.touched && !f3.expiryyear.valid)" class="validation">
+                                    <div *ngIf="f3.expiryyear.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> First Name</label>
+                            <label class="col-md-3 control-label"> Security code<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="30" pattern="[A-Za-z]" formControlName="firstname" class="form-control" placeholder="First Name" [(ngModel)]="firstname" id="firstname" />
-                                <div *ngIf="submitted && f.firstname.errors || (f.firstname.touched && !f.firstname.valid)" class="validation">
-                                    <div *ngIf="f.firstname.errors.required">{{firstnameMsg}}</div>
+                                <input type="text" maxlength="3" formControlName="securitycode" class="form-control" placeholder="Security Code" [(ngModel)]="securitycode" id="securitycode" />
+                                <div *ngIf="submitted && f3.securitycode.errors || (f3.securitycode.touched && !f3.securitycode.valid)" class="validation">
+                                    <div *ngIf="f3.securitycode.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Last Name</label>
+                            <label class="col-md-3 control-label"> First Name<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="30" pattern="[A-Za-z]" formControlName="lastname" class="form-control" placeholder="Last Name" [(ngModel)]="lastname" id="lastname" />
-                                <div *ngIf="submitted && f.lastname.errors || (f.lastname.touched && !f.lastname.valid)" class="validation">
-                                    <div *ngIf="f.lastname.errors.required">{{lastnameMsg}}</div>
+                                <input type="text" maxlength="30" formControlName="firstname" class="form-control" placeholder="First Name" [(ngModel)]="firstname" id="firstname" />
+                                <div *ngIf="submitted && f3.firstname.errors || (f3.firstname.touched && !f3.firstname.valid)" class="validation">
+                                    <div *ngIf="f3.firstname.errors.required">{{commonReqMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"> Last Name<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="30" formControlName="lastname" class="form-control" placeholder="Last Name" [(ngModel)]="lastname" id="lastname" />
+                                <div *ngIf="submitted && f3.lastname.errors || (f3.lastname.touched && !f3.lastname.valid)" class="validation">
+                                    <div *ngIf="f3.lastname.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-5">
-                                <button class="btn btn-primary" (click)="submitTab3()">Save & Next</button>
+                                <button class="btn btn-primary" (click)="onSubmitTab3()">Save & Next</button>
                             </div>
                         </div>
                     </form>
@@ -315,56 +336,62 @@
                 <div *ngIf="tab4">
                     <form [formGroup]="clientRegisterForm2Tab4" (ngSubmit)="onSubmitTab4()" class="form-horizontal">
                         <div class="form-group">
-                            <label class="col-md-3 control-label"> Role</label>
+                            <label class="col-md-3 control-label"> Role<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="text" maxlength="30" pattern="[A-Za-z]" formControlName="role" class="form-control" placeholder="Role" [(ngModel)]="role" id="role" />
-                                <div *ngIf="submitted && f.role.errors || (f.role.touched && !f.role.valid)" class="validation">
-                                    <div *ngIf="f.role.errors.required">{{roleMsg}}</div>
+                                <input type="text" maxlength="30" formControlName="role" class="form-control" placeholder="Role" [(ngModel)]="role" id="role" />
+                                <div *ngIf="(submitted && f4.role.errors) || (f4.role.touched && !f4.role.valid)" class="validation">
+                                    <div *ngIf="f4.role.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">eMail address</label>
+                            <label class="col-md-3 control-label">eMail address<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="email" title="Please enter a valid email address" formControlName="email" class="form-control" placeholder="email" [(ngModel)]="email" id="email" />
-                                <div *ngIf="submitted && f.email.errors || (f.email.touched && !f.email.valid)" class="validation">
-                                    <div *ngIf="f.role.email.required">{{emailMsg}}</div>
+                                <input type="email" title="Please enter a valid email address" formControlName="emailId" class="form-control" placeholder="emailId" [(ngModel)]="emailId" id="emailId" />
+                                <div *ngIf="(submitted && f4.emailId.errors) || (f4.emailId.touched && !f4.emailId.valid)" class="validation">
+                                    <div *ngIf="f4.emailId.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">User Type</label>
+                            <label class="col-md-3 control-label">User Type<sup>*</sup></label>
                             <div class="col-md-5">
-                                <input type="checkbox" formControlName="usertype" value="adminuser" Checked />Admin User<br />
+                                <input type="checkbox" formControlName="usertype" value="adminuser" />Admin User<br />
                                 <input type="checkbox" formControlName="usertype" value="operationsuser" />Operations User<br />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Your Mobile Number</label>
-                            <div class="col-md-5">
-                                <input type="text" maxlength="13" pattern="[0-9]{13}" formControlName="yourmobileNumber" class="form-control" placeholder="Your Mobile Number" [(ngModel)]="yourmobileNumber" id="yourmobileNumber" />
-                                <div *ngIf="submitted && f.yourmobileNumber.errors || (f.yourmobileNumber.touched && !f.yourmobileNumber.valid)" class="validation">
-                                    <div *ngIf="f.yourmobileNumber.errors.required">{{yourmobileNumberMsg}}</div>
+                                <div *ngIf="(submitted && f4.usertype.errors) || (f4.usertype.touched && !f4.usertype.valid)" class="validation">
+                                    <div *ngIf="f4.usertype.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Your Desk Number</label>
+                            <label class="col-md-3 control-label">Your Mobile Number<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="13" formControlName="yourmobileNumber" class="form-control" placeholder="Your Mobile Number" [(ngModel)]="yourmobileNumber" id="yourmobileNumber" />
+                                <div *ngIf="submitted && f4.yourmobileNumber.errors || (f4.yourmobileNumber.touched && !f4.yourmobileNumber.valid)" class="validation">
+                                    <div *ngIf="f4.yourmobileNumber.errors.required">{{commonReqMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Your Desk Number<sup>*</sup></label>
                             <div class="col-md-5">
                                 <input type="text" formControlName="yourdeskNumber" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Password</label>
-                            <div class="col-md-5">
-                                <input type="password" formControlName="password" class="form-control" placeholder="Password" [(ngModel)]="password" id="password" />
-                                <div *ngIf="submitted && f.password.errors || (f.password.touched && !f.password.valid)" class="validation">
-                                    <div *ngIf="f.password.errors.required">{{passwordMsg}}</div>
+                                <div *ngIf="(submitted && f4.yourdeskNumber.errors) || (f4.yourdeskNumber.touched && !f4.yourdeskNumber.valid)" class="validation">
+                                    <div *ngIf="f4.yourdeskNumber.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Security Question</label>
+                            <label class="col-md-3 control-label">Password<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="password" formControlName="password" class="form-control" placeholder="Password" [(ngModel)]="password" id="password" />
+                                <div *ngIf="submitted && f4.password.errors || (f4.password.touched && !f4.password.valid)" class="validation">
+                                    <div *ngIf="f4.password.errors.required">{{commonReqMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Security Question<sup>*</sup></label>
                             <div class="col-md-5">
                                 <select formControlName="securityQuestion" class="form-control" [(ngModel)]="securityQuestion" id="securityQuestion">
                                     <option>--Select Question--</option>
@@ -372,24 +399,24 @@
                                     <option>Here Goes Question2.</option>
                                     <option>Here Goes Question3.</option>
                                 </select>
-                                <div *ngIf="submitted && f.securityQuestion.errors || (f.securityQuestion.touched && !f.securityQuestion.valid)" class="validation">
-                                    <div *ngIf="f.securityQuestion.errors.required">{{securityQuestionMsg}}</div>
+                                <div *ngIf="submitted && f4.securityQuestion.errors || (f4.securityQuestion.touched && !f4.securityQuestion.valid)" class="validation">
+                                    <div *ngIf="f4.securityQuestion.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Security Answer</label>
+                            <label class="col-md-3 control-label">Security Answer<sup>*</sup></label>
                             <div class="col-md-5">
                                 <input type="text" formControlName="securityAnswer" class="form-control" placeholder="Security Answer" [(ngModel)]="securityAnswer" id="securityAnswer" />
-                                <div *ngIf="submitted && f.securityAnswer.errors || (f.securityAnswer.touched && !f.securityAnswer.valid)" class="validation">
-                                    <div *ngIf="f.securityAnswer.errors.required">{{securityAnswerMsg}}</div>
+                                <div *ngIf="submitted && f4.securityAnswer.errors || (f4.securityAnswer.touched && !f4.securityAnswer.valid)" class="validation">
+                                    <div *ngIf="f4.securityAnswer.errors.required">{{commonReqMsg}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label"></label>
                             <div class="col-md-5">
-                                <button class="btn btn-primary" (click)="submitTab4()">Save</button>
+                                <button class="btn btn-primary" (click)="onSubmitTab4()">Save</button>
                             </div>
                         </div>
                     </form>

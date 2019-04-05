@@ -2,6 +2,7 @@ import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppConstantsComponent } from 'src/app/app-constants/app-constants.component';
 var Clientreg2Component = /** @class */ (function () {
     function Clientreg2Component(formBuilder, router) {
         this.formBuilder = formBuilder;
@@ -11,16 +12,17 @@ var Clientreg2Component = /** @class */ (function () {
         this.tab2 = false;
         this.tab3 = false;
         this.tab4 = false;
+        this.commonReqMsg = AppConstantsComponent.commonreqMsg;
     }
     Clientreg2Component.prototype.ngOnInit = function () {
         this.clientRegisterForm2Tab1 = this.formBuilder.group({
-            customerId: ['', Validators.required],
+            customerId: [''],
             paymentVolume: ['', Validators.required],
-            Amountlimit: ['', Validators.required],
-            amtLmtPerPayment: ['', Validators.required],
-            payLmtPerFile: ['', Validators.required],
-            filesLmtPerday: ['', Validators.required],
-            msgsLmtPerday: ['', Validators.required],
+            Amountlimit: [''],
+            amtLmtPerPayment: [''],
+            payLmtPerFile: [''],
+            filesLmtPerday: [''],
+            msgsLmtPerday: [''],
             activeDaysForPayment: ['', Validators.required],
             currency1: ['', Validators.required],
             currencyFmtForPayments: ['', Validators.required],
@@ -30,7 +32,7 @@ var Clientreg2Component = /** @class */ (function () {
             reminderemail: ['', Validators.required],
             remindersms: ['', Validators.required],
             fileauthorization: ['', Validators.required],
-            margins: [''],
+            margins: ['', Validators.required],
             FxTiers: [''],
             teamemail: ['', Validators.required],
             method: ['', Validators.required],
@@ -45,13 +47,14 @@ var Clientreg2Component = /** @class */ (function () {
             cardname: ['', Validators.required],
             cardnumber: ['', Validators.required],
             expirydate: ['', Validators.required],
+            expiryyear: ['', Validators.required],
             securitycode: ['', Validators.required],
             firstname: ['', Validators.required],
             lastname: ['', Validators.required],
         });
         this.clientRegisterForm2Tab4 = this.formBuilder.group({
             role: ['', Validators.required],
-            email: ['', Validators.required],
+            emailId: ['', Validators.required],
             usertype: ['', Validators.required],
             yourmobileNumber: ['', Validators.required],
             yourdeskNumber: ['', Validators.required],
@@ -60,7 +63,7 @@ var Clientreg2Component = /** @class */ (function () {
             securityAnswer: ['', Validators.required],
         });
     };
-    Object.defineProperty(Clientreg2Component.prototype, "f1", {
+    Object.defineProperty(Clientreg2Component.prototype, "f", {
         get: function () { return this.clientRegisterForm2Tab1.controls; },
         enumerable: true,
         configurable: true
@@ -81,28 +84,50 @@ var Clientreg2Component = /** @class */ (function () {
         configurable: true
     });
     Clientreg2Component.prototype.onSubmitTab1 = function () {
+        ;
+        this.submitted = true;
+        if (this.clientRegisterForm2Tab1.invalid) {
+            return;
+        }
         this.tab1 = false;
         this.tab2 = true;
         this.tab3 = false;
         this.tab4 = false;
     };
     Clientreg2Component.prototype.onSubmitTab2 = function () {
+        this.submitted = true;
+        debugger;
+        if (this.clientRegisterForm2Tab2.invalid) {
+            return;
+        }
         this.tab1 = false;
         this.tab2 = false;
         this.tab3 = true;
         this.tab4 = false;
     };
     Clientreg2Component.prototype.onSubmitTab3 = function () {
+        this.submitted = true;
+        debugger;
+        if (this.clientRegisterForm2Tab3.invalid) {
+            return;
+        }
         this.tab1 = false;
         this.tab2 = false;
         this.tab3 = false;
         this.tab4 = true;
     };
     Clientreg2Component.prototype.onSubmitTab4 = function () {
+        this.submitted = true;
+        debugger;
+        if (this.clientRegisterForm2Tab4.invalid) {
+            return;
+        }
         this.tab1 = false;
-        this.tab2 = true;
+        this.tab2 = false;
         this.tab3 = false;
         this.tab4 = false;
+        alert("Your Details Saved Successfully!");
+        this.router.navigate(['/Main']);
     };
     Clientreg2Component = tslib_1.__decorate([
         Component({

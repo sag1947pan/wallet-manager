@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppConstantsComponent implements OnInit {
 
+    public static commonreqMsg = "This Field is required";
     public static companyNameMsg = "Company Name is required";
     public static BuildingMsg = "BuildingNo/Street(Or)Road Name/Number is required"; 
     public static AddressLineMsg = "Address Line 1 is required";
