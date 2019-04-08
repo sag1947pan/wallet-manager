@@ -12,11 +12,16 @@ import { WalletService } from 'src/app/wallet.service';
 })
 export class ClientRegComponent implements OnInit {
     clientRegisterForm: FormGroup;
+    clientRegisterForm2: FormGroup;
     submitted = false;
+    Submitted2 = false;
     error: any;
     Status: string;
     CustomerCode; string;
     SuccessMessage: string;
+    Tab1Validated = false;
+    Det1= true;
+    Det2= false;
 
     public companyNameMsg = AppConstantsComponent.companyNameMsg;
     public BuildingMsg = AppConstantsComponent.BuildingMsg;
@@ -42,12 +47,6 @@ export class ClientRegComponent implements OnInit {
     ngOnInit() {
         this.clientRegisterForm = this.formBuilder.group({
             companyName: ['', Validators.required],
-            RoadNo: ['', Validators.required],
-            addressLine1: ['', Validators.required],
-            townCityName: ['', Validators.required],
-            stateCountryName: ['', Validators.required],
-            countryName: ['', Validators.required],
-            postCode: ['', Validators.required],
             yourName: ['', Validators.required],
             role: ['', Validators.required],
             yourContactNumber: ['', Validators.required],
@@ -57,6 +56,17 @@ export class ClientRegComponent implements OnInit {
             yourEmailAddress: ['', [Validators.required, Validators.email]],
             companyRegNumber: [''],
             webSiteAddress: [''],
+            contactNumber: [''],
+            yourDeskNumber: [''],
+            Password:[''],
+        });
+        this.clientRegisterForm2 = this.formBuilder.group({
+            RoadNo: ['', Validators.required],
+            addressLine1: ['', Validators.required],
+            townCityName: ['', Validators.required],
+            stateCountryName: ['', Validators.required],
+            countryName: ['', Validators.required],
+            postCode: ['', Validators.required],
             addressLine2: [''],
             RegRoadNo: [''],
             RegaddressLine1: [''],
@@ -65,22 +75,32 @@ export class ClientRegComponent implements OnInit {
             RegstateCountryName: [''],
             RegcountryName: [''],
             RegpostCode: [''],
-            contactNumber: [''],
-            yourDeskNumber: [''],
         });
 
     }
 
     get f() { return this.clientRegisterForm.controls; }
+    get f2() { return this.clientRegisterForm2.controls; }
 
     onSubmit() {
         debugger;
         this.submitted = true;
-
         if (this.clientRegisterForm.invalid) {
-
             return;
+        }
+        else {
+            this.Tab1Validated = true;
+            this.Det1 = false;
+            this.Det2 = true;
+        }
+        
+    }
 
+    onSubmitTab2() {
+        debugger;
+        this.Submitted2 = true;
+        if (this.clientRegisterForm2.invalid) {
+            return;
         }
         else {
             this.WalletService.customerRegService(JSON.stringify(this.clientRegisterForm.value))
@@ -93,24 +113,24 @@ export class ClientRegComponent implements OnInit {
                     alert("Your Customer Id is :" + (this.CustomerCode));
                 }, error => (this.error = error));
         }
-        
+
     }
 
     addressChecked(e) {
         debugger
         if (e.target.checked) {
-            this.clientRegisterForm.patchValue({
-                RegRoadNo: this.clientRegisterForm.value.RoadNo,
-                RegaddressLine1: this.clientRegisterForm.value.addressLine1,
-                RegaddressLine2: this.clientRegisterForm.value.addressLine2,
-                RegtownCityName: this.clientRegisterForm.value.townCityName,
-                RegstateCountryName: this.clientRegisterForm.value.stateCountryName,
-                RegcountryName: this.clientRegisterForm.value.countryName,
-                RegpostCode: this.clientRegisterForm.value.postCode,
+            this.clientRegisterForm2.patchValue({
+                RegRoadNo: this.clientRegisterForm2.value.RoadNo,
+                RegaddressLine1: this.clientRegisterForm2.value.addressLine1,
+                RegaddressLine2: this.clientRegisterForm2.value.addressLine2,
+                RegtownCityName: this.clientRegisterForm2.value.townCityName,
+                RegstateCountryName: this.clientRegisterForm2.value.stateCountryName,
+                RegcountryName: this.clientRegisterForm2.value.countryName,
+                RegpostCode: this.clientRegisterForm2.value.postCode,
             })
         }
         else {
-            this.clientRegisterForm.patchValue({
+            this.clientRegisterForm2.patchValue({
                 RegRoadNo: '',
                 RegaddressLine1:'',
                 RegaddressLine2: '',
@@ -121,5 +141,12 @@ export class ClientRegComponent implements OnInit {
             })
         }
     }
-    
+    tab1clk() {
+        this.Det1 = true;
+        this.Det2 = false;
+    }
+    tab2clk() {
+        this.Det1 = false;
+        this.Det2 = true;
+    }
 }

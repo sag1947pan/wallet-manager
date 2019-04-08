@@ -12,6 +12,10 @@ var ClientRegComponent = /** @class */ (function () {
         this.elRef = elRef;
         this.WalletService = WalletService;
         this.submitted = false;
+        this.Submitted2 = false;
+        this.Tab1Validated = false;
+        this.Det1 = true;
+        this.Det2 = false;
         this.companyNameMsg = AppConstantsComponent.companyNameMsg;
         this.BuildingMsg = AppConstantsComponent.BuildingMsg;
         this.AddressLineMsg = AppConstantsComponent.AddressLineMsg;
@@ -30,12 +34,6 @@ var ClientRegComponent = /** @class */ (function () {
     ClientRegComponent.prototype.ngOnInit = function () {
         this.clientRegisterForm = this.formBuilder.group({
             companyName: ['', Validators.required],
-            RoadNo: ['', Validators.required],
-            addressLine1: ['', Validators.required],
-            townCityName: ['', Validators.required],
-            stateCountryName: ['', Validators.required],
-            countryName: ['', Validators.required],
-            postCode: ['', Validators.required],
             yourName: ['', Validators.required],
             role: ['', Validators.required],
             yourContactNumber: ['', Validators.required],
@@ -45,6 +43,17 @@ var ClientRegComponent = /** @class */ (function () {
             yourEmailAddress: ['', [Validators.required, Validators.email]],
             companyRegNumber: [''],
             webSiteAddress: [''],
+            contactNumber: [''],
+            yourDeskNumber: [''],
+            Password: [''],
+        });
+        this.clientRegisterForm2 = this.formBuilder.group({
+            RoadNo: ['', Validators.required],
+            addressLine1: ['', Validators.required],
+            townCityName: ['', Validators.required],
+            stateCountryName: ['', Validators.required],
+            countryName: ['', Validators.required],
+            postCode: ['', Validators.required],
             addressLine2: [''],
             RegRoadNo: [''],
             RegaddressLine1: [''],
@@ -53,8 +62,6 @@ var ClientRegComponent = /** @class */ (function () {
             RegstateCountryName: [''],
             RegcountryName: [''],
             RegpostCode: [''],
-            contactNumber: [''],
-            yourDeskNumber: [''],
         });
     };
     Object.defineProperty(ClientRegComponent.prototype, "f", {
@@ -62,11 +69,28 @@ var ClientRegComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(ClientRegComponent.prototype, "f2", {
+        get: function () { return this.clientRegisterForm2.controls; },
+        enumerable: true,
+        configurable: true
+    });
     ClientRegComponent.prototype.onSubmit = function () {
-        var _this = this;
         debugger;
         this.submitted = true;
         if (this.clientRegisterForm.invalid) {
+            return;
+        }
+        else {
+            this.Tab1Validated = true;
+            this.Det1 = false;
+            this.Det2 = true;
+        }
+    };
+    ClientRegComponent.prototype.onSubmitTab2 = function () {
+        var _this = this;
+        debugger;
+        this.submitted = true;
+        if (this.clientRegisterForm2.invalid) {
             return;
         }
         else {
@@ -84,18 +108,18 @@ var ClientRegComponent = /** @class */ (function () {
     ClientRegComponent.prototype.addressChecked = function (e) {
         debugger;
         if (e.target.checked) {
-            this.clientRegisterForm.patchValue({
-                RegRoadNo: this.clientRegisterForm.value.RoadNo,
-                RegaddressLine1: this.clientRegisterForm.value.addressLine1,
-                RegaddressLine2: this.clientRegisterForm.value.addressLine2,
-                RegtownCityName: this.clientRegisterForm.value.townCityName,
-                RegstateCountryName: this.clientRegisterForm.value.stateCountryName,
-                RegcountryName: this.clientRegisterForm.value.countryName,
-                RegpostCode: this.clientRegisterForm.value.postCode,
+            this.clientRegisterForm2.patchValue({
+                RegRoadNo: this.clientRegisterForm2.value.RoadNo,
+                RegaddressLine1: this.clientRegisterForm2.value.addressLine1,
+                RegaddressLine2: this.clientRegisterForm2.value.addressLine2,
+                RegtownCityName: this.clientRegisterForm2.value.townCityName,
+                RegstateCountryName: this.clientRegisterForm2.value.stateCountryName,
+                RegcountryName: this.clientRegisterForm2.value.countryName,
+                RegpostCode: this.clientRegisterForm2.value.postCode,
             });
         }
         else {
-            this.clientRegisterForm.patchValue({
+            this.clientRegisterForm2.patchValue({
                 RegRoadNo: '',
                 RegaddressLine1: '',
                 RegaddressLine2: '',
@@ -105,6 +129,14 @@ var ClientRegComponent = /** @class */ (function () {
                 RegpostCode: '',
             });
         }
+    };
+    ClientRegComponent.prototype.tab1clk = function () {
+        this.Det1 = true;
+        this.Det2 = false;
+    };
+    ClientRegComponent.prototype.tab2clk = function () {
+        this.Det1 = false;
+        this.Det2 = true;
     };
     ClientRegComponent = tslib_1.__decorate([
         Component({

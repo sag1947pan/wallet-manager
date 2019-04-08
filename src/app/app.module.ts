@@ -5,6 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
+import { FileUploadModule } from "ng2-file-upload";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { AppConstantsComponent } from './app-constants/app-constants.component';
 import { WalletBodyComponent } from './wallet-body/wallet-body.component';
 import { Clientreg2Component } from './clientreg2/clientreg2.component';
 import { LoginComponent } from './login/login.component';
+import { ClientFileUploadComponent } from './client-file-upload/client-file-upload.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { LoginComponent } from './login/login.component';
         AppConstantsComponent,
         WalletBodyComponent,
         Clientreg2Component,
-        LoginComponent
+        LoginComponent,
+        ClientFileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { LoginComponent } from './login/login.component';
       FormlyModule.forRoot(),
       FormlyBootstrapModule,
       HttpClientModule,
+      FileUploadModule ,
       RouterModule.forRoot([
 
           { path: '', redirectTo: '/Main', pathMatch: 'full' },
@@ -45,6 +49,7 @@ import { LoginComponent } from './login/login.component';
           { path: 'ClientReg', component: ClientRegComponent },
           { path: 'ClientReg2', component: Clientreg2Component },
           { path: 'Login', component: LoginComponent },
+          { path: 'FileUpload', component: ClientFileUploadComponent },
 
       ])
   ],

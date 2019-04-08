@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BeneDetailsComponent } from './bene-details.component';
+import { ClientFileUploadComponent } from './client-file-upload.component';
 
-describe('BeneDetailsComponent', () => {
-  let component: BeneDetailsComponent;
-  let fixture: ComponentFixture<BeneDetailsComponent>;
+describe('ClientFileUploadComponent', () => {
+  let component: ClientFileUploadComponent;
+  let fixture: ComponentFixture<ClientFileUploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BeneDetailsComponent ]
+      declarations: [ ClientFileUploadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BeneDetailsComponent);
+    fixture = TestBed.createComponent(ClientFileUploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

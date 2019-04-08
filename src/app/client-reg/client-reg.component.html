@@ -5,221 +5,252 @@
             <div class="page-header m-b-30">
                 <div class="header-title text-uppercase"><b>Client Registration Form</b></div>
             </div>
+            <div id="menu" class="mainNavbar">
+                <ul id="nav" class="dropdown">
+                    <li class="active">
+                        <button class="btn btn-primary" (click)="tab1clk()">Tab1</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" (click)="tab2clk()" [disabled]="!Tab1Validated">Tab2</button>
+                    </li>
+                </ul>
+            </div>
             <div class="col-lg-12 col-md-8 col-sm-8 col-md-offset-2">
-                <form [formGroup]="clientRegisterForm" (ngSubmit)="onSubmit()" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Company Name<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="50" placeholder="Company Name" formControlName="companyName" name="companyName" id="companyName" class="form-control" />
-                            <div *ngIf="(submitted && f.companyName.errors) || (f.companyName.touched && !f.companyName.valid)" class="validation">
-                                <div *ngIf="f.companyName.errors.required">{{companyNameMsg}}</div>
+                <div *ngIf="Det1">
+                    <form [formGroup]="clientRegisterForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Company Name<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="50" placeholder="Company Name" formControlName="companyName" name="companyName" id="companyName" class="form-control" />
+                                <div *ngIf="(submitted && f.companyName.errors) || (f.companyName.touched && !f.companyName.valid)" class="validation">
+                                    <div *ngIf="f.companyName.errors.required">{{companyNameMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Company Registration Number</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="15" formControlName="companyRegNumber" class="form-control" placeholder="Company Registration Number" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Website Address</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="34" pattern="[a-z0-9.-](30)+\.[a-z]{3}$" title="Please enter a Valid Website Address. example: abc.com" formControlName="webSiteAddress" class="form-control" placeholder="Website Address" />
-                        </div>
-                    </div>
-                    <h5>Trading Address</h5>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="15" pattern="[a-zA-Z0-9]{15}" title="Please enter without any chracters like !@#-." formControlName="RoadNo" [(ngModel)]="RoadNo" id="RoadNo" class="form-control" placeholder="Building No Or Street Name" />
-                            <div *ngIf="(submitted && f.RoadNo.errors) || (f.RoadNo.touched && !f.RoadNo.valid)" class="validation">
-                                <div *ngIf="f.RoadNo.errors.required">{{BuildingMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Company Registration Number</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="15" formControlName="companyRegNumber" class="form-control" placeholder="Company Registration Number" />
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Address Line 1<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" formControlName="addressLine1" [(ngModel)]="addressLine1" id="addressLine1" maxlength="35" class="form-control" placeholder="AddressLine 1" />
-                            <div *ngIf="(submitted && f.addressLine1.errors) || (f.addressLine1.touched && !f.addressLine1.valid)" class="validation">
-                                <div *ngIf="f.addressLine1.errors.required">{{AddressLineMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Website Address</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="34" title="Please enter a Valid Website Address. example: abc.com" formControlName="webSiteAddress" class="form-control" placeholder="Website Address" />
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Address Lne 2</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="addressLine2" [(ngModel)]="addressLine2" id="addressLine2" class="form-control" placeholder="AddressLine 2" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Town/City<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="townCityName" class="form-control" [(ngModel)]="townCityName" id="townCityName" placeholder="Town/City Name" />
-                            <div *ngIf="(submitted && f.townCityName.errors) || (f.townCityName.touched && !f.townCityName.valid)" class="validation">
-                                <div *ngIf="f.townCityName.errors.required">{{TownMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Contact Number</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="13"  title="Phone number must be numeric and should not exceed 13 characters" formControlName="contactNumber" class="form-control" placeholder="Contact Number" />
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">State/Country<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="stateCountryName" class="form-control" [(ngModel)]="stateCountryName" id="stateCountryName" placeholder="State Name" />
-                            <div *ngIf="(submitted && f.stateCountryName.errors) || (f.stateCountryName.touched && !f.stateCountryName.valid)" class="validation">
-                                <div *ngIf="f.stateCountryName.errors.required">{{StateMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Full Name<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="30" formControlName="yourName" class="form-control" placeholder="Full Name" />
+                                <div *ngIf="(submitted && f.yourName.errors)|| (f.yourName.touched && !f.yourName.valid)" class="validation">
+                                    <div *ngIf="f.yourName.errors.required">{{FullNameMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Country<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="countryName" class="form-control" [(ngModel)]="countryName" id="countryName" placeholder="Country Name" />
-                            <div *ngIf="(submitted && f.countryName.errors) || (f.countryName.touched && !f.countryName.valid)" class="validation">
-                                <div *ngIf="f.countryName.errors.required">{{CountryMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Role<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="30" formControlName="role" class="form-control" placeholder="Role" />
+                                <div *ngIf="(submitted && f.role.errors) || (f.role.touched && !f.role.valid)" class="validation">
+                                    <div *ngIf="f.role.errors.required">{{RoleMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="postCode" [(ngModel)]="postCode" id="postCode" class="form-control" placeholder="Post Code" />
-                            <div *ngIf="(submitted && f.postCode.errors) || (f.postCode.touched && !f.postCode.valid)" class="validation">
-                                <div *ngIf="f.postCode.errors.required">{{PostCodeMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Your Email Address<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="email" formControlName="yourEmailAddress" class="form-control" placeholder="Email Address" />
+                                <div *ngIf="(submitted && f.yourEmailAddress.errors) || (f.yourEmailAddress.touched && !f.yourEmailAddress.valid)" class="validation">
+                                    <div *ngIf="f.yourEmailAddress.errors.required">{{EmailReqMsg}}</div>
+                                    <div *ngIf="f.yourEmailAddress.errors.email">{{EmailValidMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <h5>Registered Address</h5> <input type="checkbox" id="isAddressSame" (change)="addressChecked($event)" />Registerd Address is same as Trading Address.
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="15" formControlName="RegRoadNo" class="form-control" placeholder="Building No Or Street Name" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Address Line 1</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegaddressLine1" class="form-control" placeholder="AddressLine 1" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Address Lne 2</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegaddressLine2" class="form-control" placeholder="AddressLine 2" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Town/City</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegtownCityName" class="form-control" placeholder="Town/City Name" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">State/Country</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegstateCountryName" class="form-control" placeholder="State Name" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Country</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="RegcountryName" class="form-control" placeholder="Country Name" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">PostCode</label>
-                        <div class="col-md-5">
-                            <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="RegpostCode" class="form-control" placeholder="Post Code" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Contact Number</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="13" pattern="[0-9]{13}" title="Phone number must be numeric and should not exceed 13 characters" formControlName="contactNumber" class="form-control" placeholder="Contact Number" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Full Name<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="30" formControlName="yourName" class="form-control" placeholder="Full Name" />
-                            <div *ngIf="(submitted && f.yourName.errors)|| (f.yourName.touched && !f.yourName.valid)" class="validation">
-                                <div *ngIf="f.yourName.errors.required">{{FullNameMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Your Mobile Number<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="13"  title="Phone number must be numeric and should not exceed 13 characters" formControlName="yourContactNumber" class="form-control" placeholder="Mobile Number" />
+                                <div *ngIf="(submitted && f.yourContactNumber.errors) || (f.yourContactNumber.touched && !f.yourContactNumber.valid)" class="validation">
+                                    <div *ngIf="f.yourContactNumber.errors.required">{{ContactNumMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Role<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="30" formControlName="role" class="form-control" placeholder="Role" />
-                            <div *ngIf="(submitted && f.role.errors) || (f.role.touched && !f.role.valid)" class="validation">
-                                <div *ngIf="f.role.errors.required">{{RoleMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Your Desk Number</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="13" formControlName="yourDeskNumber" class="form-control" placeholder="Desk Number" />
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Your Email Address<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="email" formControlName="yourEmailAddress" class="form-control" placeholder="Email Address" />
-                            <div *ngIf="(submitted && f.yourEmailAddress.errors) || (f.yourEmailAddress.touched && !f.yourEmailAddress.valid)" class="validation">
-                                <div *ngIf="f.yourEmailAddress.errors.required">{{EmailReqMsg}}</div>
-                                <div *ngIf="f.yourEmailAddress.errors.email">{{EmailValidMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="8" formControlName="formPostCode" class="form-control" placeholder="Post Code" />
+                                <div *ngIf="(submitted && f.formPostCode.errors)||(f.formPostCode.touched && !f.formPostCode.valid)" class="validation">
+                                    <div *ngIf="f.formPostCode.errors.required">{{PostCodeMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Your Mobile Number<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="13" pattern="[0-9]{13}" title="Phone number must be numeric and should not exceed 13 characters" formControlName="yourContactNumber" class="form-control" placeholder="Mobile Number" />
-                            <div *ngIf="(submitted && f.yourContactNumber.errors) || (f.yourContactNumber.touched && !f.yourContactNumber.valid)" class="validation">
-                                <div *ngIf="f.yourContactNumber.errors.required">{{ContactNumMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Security Question<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <select formControlName="securityQuestion" class="form-control">
+                                    <option>--Select Question--</option>
+                                    <option>Here Goes Question1.</option>
+                                    <option>Here Goes Question2.</option>
+                                    <option>Here Goes Question3.</option>
+                                </select>
+                                <div *ngIf="(submitted && f.securityQuestion.errors) || (f.securityQuestion.touched && !f.securityQuestion.valid)" class="validation">
+                                    <div *ngIf="f.securityQuestion.errors.required">{{SecurityQuesMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Your Desk Number</label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="13" pattern="[0-9]{13}" formControlName="yourDeskNumber" class="form-control" placeholder="Desk Number" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="8" pattern="[A-Za-z0-9]{8}" formControlName="formPostCode" class="form-control" placeholder="Post Code" />
-                            <div *ngIf="(submitted && f.formPostCode.errors)||(f.formPostCode.touched && !f.formPostCode.valid)" class="validation">
-                                <div *ngIf="f.formPostCode.errors.required">{{PostCodeMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Security Answer<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="securityAnswer" class="form-control" placeholder="Security Answer" />
+                                <div *ngIf="(submitted && f.securityAnswer.errors)||(f.securityAnswer.touched && !f.securityAnswer.valid)" class="validation">
+                                    <div *ngIf="f.securityAnswer.errors.required">{{SecuirtyAnsMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Security Question<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <select formControlName="securityQuestion" class="form-control">
-                                <option>--Select Question--</option>
-                                <option>Here Goes Question1.</option>
-                                <option>Here Goes Question2.</option>
-                                <option>Here Goes Question3.</option>
-                            </select>
-                            <div *ngIf="(submitted && f.securityQuestion.errors) || (f.securityQuestion.touched && !f.securityQuestion.valid)" class="validation">
-                                <div *ngIf="f.securityQuestion.errors.required">{{SecurityQuesMsg}}</div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Password<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="password" formControlName="Password" class="form-control" placeholder="Password" />
+                                <div *ngIf="(submitted && f.Password.errors)||(f.Password.touched && !f.Password.valid)" class="validation">
+                                    <div *ngIf="f.Password.errors.required">{{companyNameMsg}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Security Answer<sup>*</sup></label>
-                        <div class="col-md-5">
-                            <input type="text" maxlength="35" formControlName="securityAnswer" class="form-control" placeholder="Security Answer" />
-                            <div *ngIf="(submitted && f.securityAnswer.errors)||(f.securityAnswer.touched && !f.securityAnswer.valid)" class="validation">
-                                <div *ngIf="f.securityAnswer.errors.required">{{SecuirtyAnsMsg}}</div>
+                        <div class="form--group">
+                            <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-5">
+                                <button class="btn btn-primary">Save & Next</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="form--group">
-                        <div class="g-recaptcha" data-sitekey="your_site_key"></div>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary">Register</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div *ngIf="Det2">
+                    <form [formGroup]="clientRegisterForm2" (ngSubmit)="onSubmitTab2()" class="form-horizontal">
+                        <h5>Trading Address</h5>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="15" pattern="[a-zA-Z0-9]{15}" title="Please enter without any chracters like !@#-." formControlName="RoadNo" [(ngModel)]="RoadNo" id="RoadNo" class="form-control" placeholder="Building No Or Street Name" />
+                                <div *ngIf="(submitted && f2.RoadNo.errors) || (f2.RoadNo.touched && !f2.RoadNo.valid)" class="validation">
+                                    <div *ngIf="f2.RoadNo.errors.required">{{BuildingMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Address Line 1<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" formControlName="addressLine1" [(ngModel)]="addressLine1" id="addressLine1" maxlength="35" class="form-control" placeholder="AddressLine 1" />
+                                <div *ngIf="(submitted && f2.addressLine1.errors) || (f2.addressLine1.touched && !f2.addressLine1.valid)" class="validation">
+                                    <div *ngIf="f2.addressLine1.errors.required">{{AddressLineMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Address Lne 2</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="addressLine2" [(ngModel)]="addressLine2" id="addressLine2" class="form-control" placeholder="AddressLine 2" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Town/City<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="townCityName" class="form-control" [(ngModel)]="townCityName" id="townCityName" placeholder="Town/City Name" />
+                                <div *ngIf="(submitted && f2.townCityName.errors) || (f2.townCityName.touched && !f2.townCityName.valid)" class="validation">
+                                    <div *ngIf="f2.townCityName.errors.required">{{TownMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">State/Country<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="stateCountryName" class="form-control" [(ngModel)]="stateCountryName" id="stateCountryName" placeholder="State Name" />
+                                <div *ngIf="(submitted && f2.stateCountryName.errors) || (f2.stateCountryName.touched && !f2.stateCountryName.valid)" class="validation">
+                                    <div *ngIf="f2.stateCountryName.errors.required">{{StateMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Country<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="countryName" class="form-control" [(ngModel)]="countryName" id="countryName" placeholder="Country Name" />
+                                <div *ngIf="(submitted && f2.countryName.errors) || (f2.countryName.touched && !f2.countryName.valid)" class="validation">
+                                    <div *ngIf="f2.countryName.errors.required">{{CountryMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">PostCode<sup>*</sup></label>
+                            <div class="col-md-5">
+                                <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="postCode" [(ngModel)]="postCode" id="postCode" class="form-control" placeholder="Post Code" />
+                                <div *ngIf="(submitted && f2.postCode.errors) || (f2.postCode.touched && !f2.postCode.valid)" class="validation">
+                                    <div *ngIf="f2.postCode.errors.required">{{PostCodeMsg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Registered Address</h5> <input type="checkbox" id="isAddressSame" (change)="addressChecked($event)" />Registerd Address is same as Trading Address.
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">BuildingNo/Street(Or)Road Name/Number</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="15" formControlName="RegRoadNo" class="form-control" placeholder="Building No Or Street Name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Address Line 1</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="RegaddressLine1" class="form-control" placeholder="AddressLine 1" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Address Lne 2</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="RegaddressLine2" class="form-control" placeholder="AddressLine 2" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Town/City</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="RegtownCityName" class="form-control" placeholder="Town/City Name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">State/Country</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="RegstateCountryName" class="form-control" placeholder="State Name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Country</label>
+                            <div class="col-md-5">
+                                <input type="text" maxlength="35" formControlName="RegcountryName" class="form-control" placeholder="Country Name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">PostCode</label>
+                            <div class="col-md-5">
+                                <input type="text" pattern="[A-Za-z0-9]{8}" formControlName="RegpostCode" class="form-control" placeholder="Post Code" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
