@@ -78,6 +78,8 @@
     <Content Include="server.js" />
     <Content Include="src\app\app-constants\app-constants.component.css" />
     <Content Include="src\app\app-constants\app-constants.component.html" />
+    <Content Include="src\app\client-file-upload\client-file-upload.component.css" />
+    <Content Include="src\app\client-file-upload\client-file-upload.component.html" />
     <Content Include="src\app\client-reg\client-reg.component.css" />
     <Content Include="src\app\client-reg\client-reg.component.html" />
     <Content Include="src\app\clientreg2\clientreg2.component.css" />
@@ -224,6 +226,8 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\client-file-upload\client-file-upload.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\client-file-upload\client-file-upload.component.ts" />
     <TypeScriptCompile Include="src\app\client-reg\client-reg.component.spec.ts" />
     <TypeScriptCompile Include="src\app\client-reg\client-reg.component.ts" />
     <TypeScriptCompile Include="src\app\client-reg\client-reg.ts" />

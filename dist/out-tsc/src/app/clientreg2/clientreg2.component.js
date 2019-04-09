@@ -1,9 +1,17 @@
-import * as tslib_1 from "tslib";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppConstantsComponent } from 'src/app/app-constants/app-constants.component';
-var Clientreg2Component = /** @class */ (function () {
+var Clientreg2Component = (function () {
     function Clientreg2Component(formBuilder, router) {
         this.formBuilder = formBuilder;
         this.router = router;
@@ -153,16 +161,15 @@ var Clientreg2Component = /** @class */ (function () {
         this.tab3 = false;
         this.tab4 = true;
     };
-    Clientreg2Component = tslib_1.__decorate([
+    Clientreg2Component = __decorate([
         Component({
             selector: 'app-clientreg2',
             templateUrl: './clientreg2.component.html',
             styleUrls: ['./clientreg2.component.css']
-        }),
-        tslib_1.__metadata("design:paramtypes", [FormBuilder,
-            Router])
+        }), 
+        __metadata('design:paramtypes', [FormBuilder, Router])
     ], Clientreg2Component);
     return Clientreg2Component;
 }());
-export { Clientreg2Component };
+Clientreg2Component = Clientreg2Component;
 //# sourceMappingURL=clientreg2.component.js.map
