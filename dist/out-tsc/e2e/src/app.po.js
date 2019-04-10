@@ -1,5 +1,5 @@
 import { browser, by, element } from 'protractor';
-var AppPage = (function () {
+var AppPage = /** @class */ (function () {
     function AppPage() {
     }
     AppPage.prototype.navigateTo = function () {
@@ -10,5 +10,5 @@ var AppPage = (function () {
     };
     return AppPage;
 }());
-AppPage = AppPage;
+export { AppPage };
 //# sourceMappingURL=app.po.js.map

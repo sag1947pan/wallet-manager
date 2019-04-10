@@ -18,6 +18,7 @@ import { WalletBodyComponent } from './wallet-body/wallet-body.component';
 import { Clientreg2Component } from './clientreg2/clientreg2.component';
 import { LoginComponent } from './login/login.component';
 import { ClientFileUploadComponent } from './client-file-upload/client-file-upload.component';
+import { UserRegComponent } from './user-reg/user-reg.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ClientFileUploadComponent } from './client-file-upload/client-file-uplo
         WalletBodyComponent,
         Clientreg2Component,
         LoginComponent,
-        ClientFileUploadComponent
+        ClientFileUploadComponent,
+        UserRegComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ import { ClientFileUploadComponent } from './client-file-upload/client-file-uplo
           { path: 'ClientReg2', component: Clientreg2Component },
           { path: 'Login', component: LoginComponent },
           { path: 'FileUpload', component: ClientFileUploadComponent },
+          { path: 'UserReg', component: UserRegComponent },
 
       ])
   ],

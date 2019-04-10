@@ -1,0 +1,482 @@
+<app-wallet-header></app-wallet-header>
+<div class="sectionPadded" style="background: #f9f9f9;">
+    <div class="container formContainer">
+        <div class="formContent">
+            <h2 class="section-title">Client Registration Form</h2>
+            <div class="stepsTabContainer">
+                <ul class="nav nav-pills nav-justified stepsTab">
+                    <li class="active step-tab">
+                        <a class="" (click)="tab1clk()">Tab1</a>
+                    </li>
+                    <li class="step-tab">
+                        <a class="" (click)="tab2clk()">Tab2</a><!--[disabled]="!Tab1Validated"-->
+                    </li>
+                    <li class="step-tab">
+                        <a class="" (click)="tab3clk()">Tab3</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="">
+                <div class="">
+                    <div *ngIf="Det1">
+                        <form [formGroup]="userRegisterForm" (ngSubmit)="onSubmitTab1()" class="formV">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">User Id - eMail address<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="email" placeholder="Enter Mobile Number" formControlName="Email" name="Email" id="Email" class="form-control" [(ngModel)]="Email" />
+                                        <div *ngIf="(submitted && f.Email.errors) || (f.Email.touched && !f.Email.valid)" class="validation">
+                                            <div *ngIf="f.Email.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Your Mobile Number</label>
+                                    <div class="">
+                                        <input type="text" maxlength="13" title="Phone number must be numeric and should not exceed 13 characters" placeholder="Enter Mobile Number" formControlName="Mobilenumber" name="Mobilenumber" id="Email" class="form-control" [(ngModel)]="Mobilenumber" />
+                                        <div *ngIf="(submitted && f.Mobilenumber.errors) || (f.Mobilenumber.touched && !f.Mobilenumber.valid)" class="validation">
+                                            <div *ngIf="f.Mobilenumber.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Password<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="password" placeholder="Enter Password" formControlName="Password" name="Password" id="Password" class="form-control" [(ngModel)]="Password" />
+                                        <div *ngIf="(submitted && f.Password.errors) || (f.Password.touched && !f.Password.valid)" class="validation">
+                                            <div *ngIf="f.Password.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Security Question<sup>*</sup></label>
+                                    <div class="">
+                                        <select formControlName="securityQuestion" name="securityQuestion" id="securityQuestion" class="form-control" [(ngModel)]="securityQuestion">
+                                            <option>--Select Question--</option>
+                                            <option>Here Goes Question1.</option>
+                                            <option>Here Goes Question2.</option>
+                                            <option>Here Goes Question3.</option>
+                                        </select>
+                                        <div *ngIf="(submitted && f.securityQuestion.errors) || (f.securityQuestion.touched && !f.securityQuestion.valid)" class="validation">
+                                            <div *ngIf="f.securityQuestion.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Security Answer<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" formControlName="securityAnswer" name="securityAnswer" id="securityAnswer" class="form-control" [(ngModel)]="securityAnswer" />
+                                        <div *ngIf="(submitted && f.securityAnswer.errors) || (f.securityAnswer.touched && !f.securityAnswer.valid)" class="validation">
+                                            <div *ngIf="f.securityAnswer.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Name<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="30" title="Please Enter a Valid Name" formControlName="Name" name="Name" id="Name" class="form-control" [(ngModel)]="Name" />
+                                        <div *ngIf="(submitted && f.Name.errors) || (f.Name.touched && !f.Name.valid)" class="validation">
+                                            <div *ngIf="f.Name.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>Address</h5>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">BuildingNo/Street(Or)Road Name/Number<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="15" title="Please enter without any chracters like !@#-." placeholder="Enter Bulding No" formControlName="Roadno" name="Roadno" id="Roadno" class="form-control" [(ngModel)]="Roadno" />
+                                        <div *ngIf="(submitted && f.Roadno.errors) || (f.Roadno.touched && !f.Roadno.valid)" class="validation">
+                                            <div *ngIf="f.Roadno.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Address Line 1<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="addressLine1" class="form-control" placeholder="Enter AddressLine1" name="addressLine1" id="addressLine1" [(ngModel)]="addressLine1" />
+                                        <div *ngIf="(submitted && f.addressLine1.errors) || (f.addressLine1.touched && !f.addressLine1.valid)" class="validation">
+                                            <div *ngIf="f.addressLine1.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Address Line 2</label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="addressLine2" placeholder="Enter AddressLine2" class="form-control" name="addressLine2" id="addressLine2" [(ngModel)]="addressLine2" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Town/City<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="townCityName" placeholder="Enter Town/City" class="form-control" name="townCityName" id="townCityName" [(ngModel)]="townCityName" />
+                                        <div *ngIf="(submitted && f.townCityName.errors) || (f.townCityName.touched && !f.townCityName.valid)" class="validation">
+                                            <div *ngIf="f.townCityName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">State/Country<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="stateCountryName" placeholder="Enter State/Country" class="form-control" name="stateCountryName" id="stateCountryName" [(ngModel)]="stateCountryName" />
+                                        <div *ngIf="(submitted && f.stateCountryName.errors) || (f.stateCountryName.touched && !f.stateCountryName.valid)" class="validation">
+                                            <div *ngIf="f.stateCountryName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Country<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="countryName" class="form-control" name="countryName" id="countryName" [(ngModel)]="countryName" />
+                                        <div *ngIf="(submitted && f.countryName.errors) || (f.countryName.touched && !f.countryName.valid)" class="validation">
+                                            <div *ngIf="f.countryName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">PostCode<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" title="Postal Code must be Numeric or AlphaNumeric with 8 Characters" placeholder="Enter PostCode" formControlName="PostCode" class="form-control" name="PostCode" id="PostCode" [(ngModel)]="PostCode" />
+                                        <div *ngIf="(submitted && f.PostCode.errors) || (f.PostCode.touched && !f.PostCode.valid)" class="validation">
+                                            <div *ngIf="f.PostCode.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group foot-btns">
+                                <div class="form-btn move-right">
+                                    <button class="btn btn-next">Save & Next</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div *ngIf="Det2">
+                        <form [formGroup]="userRegisterFormTab2" (ngSubmit)="onSubmitTab2()" class="formV">
+                            <h5>Payout details</h5>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Currency + Payment amount<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" title="Please Enter as 1234567.00" formControlName="Currency" class="form-control" name="Currency" id="Currency" [(ngModel)]="Currency" />
+                                        <div *ngIf="(submitted1 && f2.Currency.errors) || (f2.Currency.touched && !f2.Currency.valid)" class="validation">
+                                            <div *ngIf="f2.Currency.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">currency in which you would like your payment<sup>*</sup></label>
+                                    <div class="">
+                                        <select formControlName="currency1" class="form-control" name="currency1" id="currency1" [(ngModel)]="currency1">
+                                            <option value="GBP" selected>United Kingdom Pounds</option>
+                                            <option value="SGD">Singapore Dollars</option>
+                                            <option value="INR">India Rupees</option>
+                                        </select>
+                                        <div *ngIf="(submitted1 && f2.currency1.errors) || (f2.currency1.touched && !f2.currency1.valid)" class="validation">
+                                            <div *ngIf="f2.currency1.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Country of your bank account where you want your payment to be made<sup>*</sup></label>
+                                    <div class="">
+                                        <select formControlName="CountryBank" class="form-control" name="CountryBank" id="CountryBank" [(ngModel)]="CountryBank">
+                                            <option value="UnitedKingdom" selected>United Kingdom</option>
+                                            <option value="Singapore">Singapore</option>
+                                            <option value="India">India</option>
+                                        </select>
+                                        <div *ngIf="(submitted1 && f2.CountryBank.errors) || (f2.CountryBank.touched && !f2.CountryBank.valid)" class="validation">
+                                            <div *ngIf="f2.CountryBank.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Fx rate to be applied<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" title="Please Enter as 1234567.00" placeholder="Fx rate to be applied" formControlName="Fxrate" name="Fxrate" id="Fxrate" class="form-control" [(ngModel)]="Fxrate">
+                                        <div *ngIf="(submitted1 && f2.Fxrate.errors) || (f2.Fxrate.touched && !f2.Fxrate.valid)" class="validation">
+                                            <div *ngIf="f2.Fxrate.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Amount to be Credited to you<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" title="Please Enter as 1234567.00" placeholder="Amount to be Credited to you" formControlName="Amount" name="Amount" id="Amount" class="form-control" [(ngModel)]="Amount">
+                                        <div *ngIf="(submitted1 && f2.Amount.errors) || (f2.Amount.touched && !f2.Amount.valid)" class="validation">
+                                            <div *ngIf="f2.Amount.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Bank name<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="30" placeholder="Bank name" formControlName="Bankname" id="Bankname" class="form-control" [(ngModel)]="Bankname">
+                                        <div *ngIf="(submitted1 && f2.Bankname.errors) || (f2.Bankname.touched && !f2.Bankname.valid)" class="validation">
+                                            <div *ngIf="f2.Bankname.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Clearing code or BIC<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="14" Pattern="[a-zA-Z0-9]{14}" placeholder="Enter Clearing code or BIC" formControlName="ClearingCode" id="ClearingCode" class="form-control" [(ngModel)]="ClearingCode">
+                                        <div *ngIf="(submitted1 && f2.ClearingCode.errors) || (f2.ClearingCode.touched && !f2.ClearingCode.valid)" class="validation">
+                                            <div *ngIf="f2.ClearingCode.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Account number or IBAN<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="38" Pattern="[a-zA-Z0-9]{14}" placeholder="Enter Account Numnber or IBAN" formControlName="AccountNumber" id="AccountNumber" class="form-control" [(ngModel)]="AccountNumber">
+                                        <div *ngIf="(submitted1 && f2.AccountNumber.errors) || (f2.AccountNumber.touched && !f2.AccountNumber.valid)" class="validation">
+                                            <div *ngIf="f2.AccountNumber.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Name of Company from whom you are to get payment<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="50" placeholder="Enter Company Name" formControlName="CompanyName" id="CompanyName" class="form-control" [(ngModel)]="CompanyName">
+                                        <div *ngIf="(submitted1 && f2.CompanyName.errors) || (f2.CompanyName.touched && !f2.CompanyName.valid)" class="validation">
+                                            <div *ngIf="f2.CompanyName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group foot-btns">
+                                <div class="form-btn">
+                                    <button class="btn btn-back" (onclick)="tab1clk">Back</button>
+                                </div>
+                                <div class="form-btn move-right">
+                                    <button class="btn btn-next" (onclick)="tab1clk">Save & Next</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div *ngIf="Det3">
+                        <form [formGroup]="userRegisterFormTab3" (ngSubmit)="onSubmitTab3()" class="formV">
+                            <h3>Company address</h3>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Company Name<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="15"  placeholder="Company Name" formControlName="CompanyName" name="CompanyName" id="CompanyName" class="form-control" [(ngModel)]="CompanyName" />
+                                        <div *ngIf="(submitted2 && f3.CompanyName.errors) || (f3.CompanyName.touched && !f3.CompanyName.valid)" class="validation">
+                                            <div *ngIf="f3.CompanyName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">BuildingNo/Street(Or)Road Name/Number<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="15"   placeholder="Enter Bulding No" formControlName="comRoadno" name="comRoadno" id="comRoadno" class="form-control" [(ngModel)]="comRoadno" />
+                                        <div *ngIf="(submitted2 && f3.comRoadno.errors) || (f3.comRoadno.touched && !f3.comRoadno.valid)" class="validation">
+                                            <div *ngIf="f3.comRoadno.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Address Line 1<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="comaddressLine1" class="form-control" placeholder="Enter AddressLine1" name="comaddressLine1" id="comaddressLine1" [(ngModel)]="comaddressLine1" />
+                                        <div *ngIf="(submitted2 && f3.comaddressLine1.errors) || (f3.comaddressLine1.touched && !f3.comaddressLine1.valid)" class="validation">
+                                            <div *ngIf="f3.comaddressLine1.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Address Line 2<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="comaddressLine2" class="form-control" placeholder="Enter AddressLine2" name="comaddressLine2" id="comaddressLine2" [(ngModel)]="comaddressLine2" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Town/City<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="comtownCityName" placeholder="Enter Town/City" class="form-control" name="comtownCityName" id="comtownCityName" [(ngModel)]="comtownCityName" />
+                                        <div *ngIf="(submitted2 && f3.comtownCityName.errors) || (f3.comtownCityName.touched && !f3.comtownCityName.valid)" class="validation">
+                                            <div *ngIf="f3.comtownCityName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">State/Country<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="comstateCountryName" placeholder="Enter State/Country" class="form-control" name="comstateCountryName" id="comstateCountryName" [(ngModel)]="comstateCountryName" />
+                                        <div *ngIf="(submitted2 && f3.comstateCountryName.errors) || (f3.comstateCountryName.touched && !f3.comstateCountryName.valid)" class="validation">
+                                            <div *ngIf="f3.comstateCountryName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Country<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" formControlName="comcountryName" class="form-control" name="comcountryName" id="comcountryName" [(ngModel)]="comcountryName" />
+                                        <div *ngIf="(submitted2 && f3.comcountryName.errors) || (f3.comcountryName.touched && !f3.comcountryName.valid)" class="validation">
+                                            <div *ngIf="f3.comcountryName.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">PostCode<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" title="Postal Code must be Numeric or AlphaNumeric with 8 Characters" placeholder="Enter PostCode" formControlName="comPostCode" class="form-control" name="comPostCode" id="comPostCode" [(ngModel)]="comPostCode" />
+                                        <div *ngIf="(submitted2 && f3.comPostCode.errors) || (f3.comPostCode.touched && !f3.comPostCode.valid)" class="validation">
+                                            <div *ngIf="f3.comPostCode.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">unique number (invoice#, travel card#, complaint ref# customer acct#<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="35" placeholder="Enter Unique Number" formControlName="UniqueNumber" class="form-control" name="UniqueNumber" id="UniqueNumber" [(ngModel)]="UniqueNumber" />
+                                        <div *ngIf="(submitted2 && f3.UniqueNumber.errors) || (f3.UniqueNumber.touched && !f3.UniqueNumber.valid)" class="validation">
+                                            <div *ngIf="f3.UniqueNumber.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">office email contact<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="email" placeholder="Enter Office Email" formControlName="OfficeEmail" name="OfficeEmail" id="OfficeEmail" class="form-control" [(ngModel)]="OfficeEmail" />
+                                        <div *ngIf="(submitted2 && f3.OfficeEmail.errors) || (f3.OfficeEmail.touched && !f3.OfficeEmail.valid)" class="validation">
+                                            <div *ngIf="f3.OfficeEmail.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Contact Number<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="email" placeholder="Enter Contact number" formControlName="contactNumber" name="contactNumber" id="contactNumber" class="form-control" [(ngModel)]="contactNumber" />
+                                        <div *ngIf="(submitted2 && f3.contactNumber.errors) || (f3.contactNumber.touched && !f3.contactNumber.valid)" class="validation">
+                                            <div *ngIf="f3.contactNumber.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Additional inputs or message to Client<sup>*</sup></label>
+                                    <div class="">
+                                        <input textarea rows="4" cols="50" placeholder="Additional inputs to Client" formControlName="AdditionalInputs" name="AdditionalInputs" id="AdditionalInputs" class="form-control" [(ngModel)]="AdditionalInputs" />
+                                        <div *ngIf="(submitted2 && f3.AdditionalInputs.errors) || (f3.AdditionalInputs.touched && !f3.AdditionalInputs.valid)" class="validation">
+                                            <div *ngIf="f3.AdditionalInputs.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Upload supporting docs<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="file" formControlName="UploadSupporting" name="UploadSupporting" id="UploadSupporting" class="form-control" [(ngModel)]="UploadSupporting">
+                                        <div *ngIf="(submitted2 && f3.UploadSupporting.errors) || (f3.UploadSupporting.touched && !f3.UploadSupporting.valid)" class="validation">
+                                            <div *ngIf="f3.UploadSupporting.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Enter OTP sent to confirm to mobile number<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="password" placeholder="Enter OTP" formControlName="EnterOTP" name="EnterOTP" id="EnterOTP" class="form-control" [(ngModel)]="EnterOTP">
+                                        <div *ngIf="(submitted2 && f3.EnterOTP.errors) || (f3.EnterOTP.touched && !f3.EnterOTP.valid)" class="validation">
+                                            <div *ngIf="f3.EnterOTP.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Captcha<sup>*</sup></label>
+                                    <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Your customer ID with us<sup>*</sup></label>
+                                    <div class="">
+                                        <input type="text" maxlength="7" title="Custermer id must be numeric eg.1234567" formControlName="Customerid" name="Customerid" id="Customerid" class="form-control" [(ngModel)]="Customerid">
+                                        <div *ngIf="(submitted2 && f3.Customerid.errors) || (f3.Customerid.touched && !f3.Customerid.valid)" class="validation">
+                                            <div *ngIf="f3.Customerid.errors.required">{{commonReqMsg}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group foot-btns">
+                                <div class="form-btn">
+                                    <button class="btn btn-back">Back</button>
+                                </div>
+                                <div class="form-btn move-right">
+                                    <button class="btn btn-next">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-wallet-footer></app-wallet-footer>

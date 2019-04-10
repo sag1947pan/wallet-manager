@@ -1,7 +1,7 @@
-var clientreg = (function () {
+var clientreg = /** @class */ (function () {
     function clientreg() {
     }
     return clientreg;
 }());
-clientreg = clientreg;
+export { clientreg };
 //# sourceMappingURL=client-reg.js.map

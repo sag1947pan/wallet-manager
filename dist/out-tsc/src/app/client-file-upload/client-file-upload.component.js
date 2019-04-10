@@ -1,16 +1,8 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 var URL = 'https://1oxit4pdx0.execute-api.eu-west-2.amazonaws.com/dev/Customers';
-var ClientFileUploadComponent = (function () {
+var ClientFileUploadComponent = /** @class */ (function () {
     function ClientFileUploadComponent() {
         this.uploader = new FileUploader({ url: URL });
         this.hasBaseDropZoneOver = false;
@@ -36,15 +28,15 @@ var ClientFileUploadComponent = (function () {
             return;
         }
     };
-    ClientFileUploadComponent = __decorate([
+    ClientFileUploadComponent = tslib_1.__decorate([
         Component({
             selector: 'app-client-file-upload',
             templateUrl: './client-file-upload.component.html',
             styleUrls: ['./client-file-upload.component.css']
-        }), 
-        __metadata('design:paramtypes', [])
+        }),
+        tslib_1.__metadata("design:paramtypes", [])
     ], ClientFileUploadComponent);
     return ClientFileUploadComponent;
 }());
-ClientFileUploadComponent = ClientFileUploadComponent;
+export { ClientFileUploadComponent };
 //# sourceMappingURL=client-file-upload.component.js.map
