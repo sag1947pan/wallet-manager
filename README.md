@@ -9,7 +9,7 @@
 2. go to wallet-manager folder and run command npm install
 3. build code using the command ng build
 4.Run command ng serve --open , this command starts the application on  http://localhost:4200/
-5. Test Ranjith 
+5. Test Ranjith
 
 #Pushing the Changes to Git
 1.The (git status) command can be used to obtain a summary of which files have changes that are staged for the next commit. 
