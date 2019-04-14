@@ -9,3 +9,4 @@ st
 2. go to wallet-manager folder and run command npm install
 3. build code using the command ng build
 4.Run command ng serve --open , this command starts the application on  http://localhost:4200/
+5. Test Ranjith
