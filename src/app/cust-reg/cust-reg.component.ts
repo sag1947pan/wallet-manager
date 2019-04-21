@@ -86,11 +86,11 @@ export class CustRegComponent implements OnInit {
     onSubmitTradingInfo() {
         debugger;
         this.Submitted2 = true;
-     //   this.stepper.selected.completed = true;
-        if (this.tradingAddressGroup.invalid) {
-            return;
-        }
-        else {
+   
+       // if (this.tradingAddressGroup.invalid) {
+     //       return;
+     //   }
+      //  else {
             this.WalletService.customerRegService(JSON.stringify(this.compInfoGroup.value))
                 .pipe(first())
                 .subscribe(data => {
@@ -101,12 +101,9 @@ export class CustRegComponent implements OnInit {
                     alert("Your Customer Id is :" + (this.CustomerCode));
                 }, error => (this.error = error));
 
-        }
+       // }
 
-        alert("status message" + (this.Status));
-        alert("cutomer code" + (this.CustomerCode));
-        alert("Success message" + (this.SuccessMessage));
-
+       
 
 
     }

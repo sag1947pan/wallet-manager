@@ -16,7 +16,8 @@ export class WalletService {
     customerRegService(RegDetails) {
         const headers = new HttpHeaders().set('content-type', 'application/json');
         
-        return this.http.post<any>('https://1oxit4pdx0.execute-api.eu-west-2.amazonaws.com/dev/Customers', RegDetails, {
+      //  return this.http.post<any>('https://1oxit4pdx0.execute-api.eu-west-2.amazonaws.com/dev/Customers', RegDetails, {
+        return this.http.post<any>('https://jwetj5otq1.execute-api.eu-west-2.amazonaws.com/dev/customer', RegDetails, {
            // headers
         })
     }
