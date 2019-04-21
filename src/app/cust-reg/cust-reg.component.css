@@ -1,0 +1,17 @@
+
+AccordianControl .mat-expansion-panel-header-title,
+.AccordianControl .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.AccordianControl .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-form-field {
+    margin-right: 100px;
+}
+.example-margin{
+    margin-left : 12px;
+}

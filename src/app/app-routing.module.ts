@@ -12,6 +12,7 @@ import { WalletFooterComponent } from './wallet-footer/wallet-footer.component';
 import { ClientRegComponent } from './client-reg/client-reg.component'; 
 import { Clientreg2Component } from './clientreg2/clientreg2.component'; 
 import { LoginComponent } from './login/login.component';
+import { CustRegComponent } from './cust-reg/cust-reg.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'ClientReg', component: ClientRegComponent },
     { path: 'ClientReg2', component: Clientreg2Component },
     { path: 'Login', component: LoginComponent },
+    { path: 'CustReg', component: CustRegComponent },
 ];
 
 @NgModule({

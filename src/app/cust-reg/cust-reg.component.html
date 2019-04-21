@@ -1,0 +1,267 @@
+<app-wallet-header></app-wallet-header>
+
+<div class="custRegContent" style="background: #f9f9f9;">
+    <div class="container formContainer">
+        <div class="formContent">
+            <h2 class="section-title">Client Registration Form</h2>
+
+            <!--<form [formGroup]="compInfoGroup">-->
+                <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <!-- User Information-->
+                    <mat-step [stepControl]="compInfoGroup" errorMessage="Name is required.">
+
+                        <form [formGroup]="compInfoGroup" (ngSubmit)="onSubmitCompInfo()">
+                        <ng-template matStepLabel>Company Information</ng-template>
+                        <mat-accordion class="AccordianControl">
+                            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Company details
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Enter Company details
+                                        <mat-icon>account_circle</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <ng-template matExpansionPanelContent>
+                                    <div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Company Name" formControlName="companyName" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Company Registration Number" formControlName="companyRegNumber" required>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Website Address" formControlName="webSiteAddress" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Contact Number" formControlName="contactNumber" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                </ng-template>
+
+
+                                <mat-action-row>
+                                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                                </mat-action-row>
+
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Personal details
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        Enter Personal details
+                                        <mat-icon>map</mat-icon>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <ng-template matExpansionPanelContent>
+                                    <div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Full Name" formControlName="yourName" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Role" formControlName="role" required>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Email Address" formControlName="yourEmailAddress" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Mobile Number" formControlName="yourContactNumber" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Desk Number" formControlName="yourDeskNumber" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Post Code" formControlName="formPostCode" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div>
+                                        <!-- New Selection Control-->
+                                        <mat-form-field>
+                                            <!--<mat-label>Favorite food</mat-label>-->
+                                            <mat-select placeholder="Security Question" formControlName="securityQuestion">
+                                                <mat-option *ngFor="let option of options" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Security Answer" formControlName="securityAnswer" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Password" formControlName="Password" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                </ng-template>
+
+                            </mat-expansion-panel>
+
+
+                        </mat-accordion>
+
+                        <div>
+                            <button mat-raised-button color="primary" matStepperNext type="button">Next</button>
+
+                        </div>
+            </form>
+            </mat-step>
+
+            <!-- Trading Address-->
+            <mat-step [stepControl]="tradingAddressGroup" errorMessage="Name is required.">
+
+                <form [formGroup]="tradingAddressGroup">
+                    <ng-template matStepLabel>Trading Address</ng-template>
+                    <mat-accordion class="AccordianControl">
+                        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Trading Address
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Enter Trading Address
+                                    <mat-icon>account_circle</mat-icon>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <ng-template matExpansionPanelContent>
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="BuildingNo/Street(Or)Road Name/Number" formControlName="RoadNo" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="AddressLine 1" formControlName="addressLine1" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="AddressLine 2" formControlName="addressLine2">
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Town/City Name" formControlName="townCityName" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="State Name" formControlName="stateCountryName">
+                                    </mat-form-field>
+                                </div>
+                                <!-- Country/Zip Code-->
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Country Name" formControlName="countryName" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Post Code" formControlName="postCode">
+                                    </mat-form-field>
+                                </div>
+
+                            </ng-template>
+
+                            <mat-action-row>
+                                <mat-checkbox color="primary" (change)="addressChecked($event)">Checked</mat-checkbox>
+                                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                            </mat-action-row>
+
+                        </mat-expansion-panel>
+                        <!-- REGISTERED ADDRESS-->
+                        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Registered Address
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Enter Registered Address
+                                    <mat-icon>account_circle</mat-icon>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <ng-template matExpansionPanelContent>
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Building No Or Street Name" formControlName="RegRoadNo" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="AddressLine 1" formControlName="RegaddressLine1" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="AddressLine 2" formControlName="RegaddressLine2">
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Town/City Name" formControlName="RegtownCityName" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="State Name" formControlName="RegstateCountryName">
+                                    </mat-form-field>
+                                </div>
+                                <!-- Country/Zip Code-->
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Country Name" formControlName="RegcountryName" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Post Code" formControlName="RegpostCode">
+                                    </mat-form-field>
+                                </div>
+
+                            </ng-template>
+
+
+
+                        </mat-expansion-panel>
+
+                        <div>
+                            <!--<button mat-raised-button color="primary" matStepperNext type="button">Register</button>-->
+
+                            <button mat-raised-button color="primary" matStepperPrevious>Back </button>
+                            <button mat-raised-button color="primary" (click)="onSubmitTradingInfo()"> Register</button>
+
+                        </div>
+                    </mat-accordion>
+                </form>
+            </mat-step>
+            </mat-horizontal-stepper>
+
+        </div>
+        </div>
+    </div>
+
+    <app-wallet-footer></app-wallet-footer>

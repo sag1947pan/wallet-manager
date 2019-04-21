@@ -6,6 +6,8 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from "ng2-file-upload";
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { Clientreg2Component } from './clientreg2/clientreg2.component';
 import { LoginComponent } from './login/login.component';
 import { ClientFileUploadComponent } from './client-file-upload/client-file-upload.component';
 import { UserRegComponent } from './user-reg/user-reg.component';
+import { CustRegComponent } from './cust-reg/cust-reg.component';
 
 @NgModule({
   declarations: [
@@ -32,16 +35,28 @@ import { UserRegComponent } from './user-reg/user-reg.component';
         Clientreg2Component,
         LoginComponent,
         ClientFileUploadComponent,
-        UserRegComponent
+        UserRegComponent,
+        CustRegComponent
   ],
   imports: [
     BrowserModule,
       AppRoutingModule,
       ReactiveFormsModule,
+      FormsModule,
       FormlyModule.forRoot(),
       FormlyBootstrapModule,
       HttpClientModule,
-      FileUploadModule ,
+      FileUploadModule,
+      MatStepperModule,
+      MatInputModule,
+      MatButtonModule,
+      MatAutocompleteModule,
+      MatChipsModule,
+      MatExpansionModule,
+      MatIconModule,
+      MatSelectModule,
+      MatCheckboxModule,
+      BrowserAnimationsModule,  
       RouterModule.forRoot([
 
           { path: '', redirectTo: '/Main', pathMatch: 'full' },
@@ -53,6 +68,8 @@ import { UserRegComponent } from './user-reg/user-reg.component';
           { path: 'Login', component: LoginComponent },
           { path: 'FileUpload', component: ClientFileUploadComponent },
           { path: 'UserReg', component: UserRegComponent },
+          { path: 'CustReg', component: CustRegComponent },
+          
 
       ])
   ],
