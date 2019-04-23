@@ -74,10 +74,7 @@ export class CustRegComponent implements OnInit {
             yourContactNumber: ['', Validators.required],
             formPostCode: ['', Validators.required],
             yourDeskNumber: [''],
-            //securityQuestion: ['', Validators.required],
-            //securityAnswer: ['', Validators.required],
-
-            //Password: [''],
+           
         });
 
         this.tradingAddressGroup = this.formBuilder.group({
