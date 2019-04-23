@@ -12,7 +12,9 @@ import { first } from 'rxjs/operators';
 export class CustRegComponent implements OnInit {
     
     compInfoGroup: FormGroup;
+    personalInfoGroup: FormGroup;
     tradingAddressGroup: FormGroup;
+    securityInfoGroup: FormGroup;
     submitted = false;
     Submitted2 = false;
     error: any;
@@ -63,6 +65,21 @@ export class CustRegComponent implements OnInit {
             Password: [''],
         });
 
+        this.personalInfoGroup = this.formBuilder.group({
+           
+
+            yourName: ['', Validators.required],
+            role: ['', Validators.required],
+            yourEmailAddress: ['', [Validators.required, Validators.email]],
+            yourContactNumber: ['', Validators.required],
+            formPostCode: ['', Validators.required],
+            yourDeskNumber: [''],
+            //securityQuestion: ['', Validators.required],
+            //securityAnswer: ['', Validators.required],
+
+            //Password: [''],
+        });
+
         this.tradingAddressGroup = this.formBuilder.group({
             RoadNo: ['', Validators.required],
             addressLine1: ['', Validators.required],
@@ -79,6 +96,15 @@ export class CustRegComponent implements OnInit {
             RegstateCountryName: [''],
             RegcountryName: [''],
             RegpostCode: [''],
+        });
+
+
+        this.securityInfoGroup = this.formBuilder.group({
+            
+            securityQuestion: ['', Validators.required],
+            securityAnswer: ['', Validators.required],
+
+            Password: [''],
         });
     }
 
