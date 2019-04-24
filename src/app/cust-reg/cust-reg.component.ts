@@ -4,13 +4,15 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { WalletService } from 'src/app/wallet.service';
 import { first } from 'rxjs/operators';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 @Component({
     selector: 'app-cust-reg',
     templateUrl: './cust-reg.component.html',
     styleUrls: ['./cust-reg.component.css']
 })
 export class CustRegComponent implements OnInit {
-    
+
     compInfoGroup: FormGroup;
     personalInfoGroup: FormGroup;
     tradingAddressGroup: FormGroup;
@@ -21,6 +23,7 @@ export class CustRegComponent implements OnInit {
     Status: string;
     CustomerCode; string;
     SuccessMessage: string;
+     dialogRef: MatDialogRef<DialogComponent>;
 
     securityquestion = new FormControl();
 
@@ -42,9 +45,8 @@ export class CustRegComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
         private router: Router,
-    private WalletService: WalletService,
-)
-    { }
+        private WalletService: WalletService,
+        public dialog: MatDialog, ) { }
 
     ngOnInit() {
         this.compInfoGroup = this.formBuilder.group({
@@ -60,13 +62,13 @@ export class CustRegComponent implements OnInit {
             formPostCode: ['', Validators.required],
             yourDeskNumber: [''],
             securityQuestion: ['', Validators.required],
-            securityAnswer: ['', Validators.required],         
-           
+            securityAnswer: ['', Validators.required],
+
             Password: [''],
         });
 
         this.personalInfoGroup = this.formBuilder.group({
-           
+
 
             yourName: ['', Validators.required],
             role: ['', Validators.required],
@@ -74,7 +76,7 @@ export class CustRegComponent implements OnInit {
             yourContactNumber: ['', Validators.required],
             formPostCode: ['', Validators.required],
             yourDeskNumber: [''],
-           
+
         });
 
         this.tradingAddressGroup = this.formBuilder.group({
@@ -97,7 +99,7 @@ export class CustRegComponent implements OnInit {
 
 
         this.securityInfoGroup = this.formBuilder.group({
-            
+
             securityQuestion: ['', Validators.required],
             securityAnswer: ['', Validators.required],
 
@@ -109,41 +111,47 @@ export class CustRegComponent implements OnInit {
     onSubmitTradingInfo() {
         debugger;
         this.Submitted2 = true;
-   
-       // if (this.tradingAddressGroup.invalid) {
-     //       return;
-     //   }
-      //  else {
-            this.WalletService.customerRegService(JSON.stringify(this.compInfoGroup.value))
-                .pipe(first())
-                .subscribe(data => {
-                    this.Status = data.Status;
-                    this.CustomerCode = data.CustomerCode;
-                    this.SuccessMessage = data.SuccessMessage;
-                    this.router.navigate(['/ClientReg2']);
-                    alert("Your Customer Id is :" + (this.CustomerCode));
-                }, error => (this.error = error));
 
-       // }
+        // if (this.tradingAddressGroup.invalid) {
+        //       return;
+        //   }
+        //  else {
+        this.WalletService.customerRegService(JSON.stringify(this.compInfoGroup.value))
+            .pipe(first())
+            .subscribe(data => {
+                this.Status = data.Status;
+                this.CustomerCode = data.CustomerCode;
+                this.SuccessMessage = data.SuccessMessage;
+                this.router.navigate(['/ClientReg2']);
+                // alert("Your Customer Id is :" + (this.CustomerCode));
+            }, error => (this.error = error));
 
-       
+        // }
+
+        //Once we receive a Proper JSON response mesage we will show a dialog.
+
+        //const dialogRef = this.dialog.open(DialogComponent, {
+        //    width: '250px',
+
+        this.dialogRef = this.dialog.open(DialogComponent, { hasBackdrop: false },);
+        //});      
 
 
     }
 
     addressChecked($event) {
-       // debugger
-      //  if ($event.target.checked) {
-           // this.tradingAddressGroup.patchValue({
-            RegRoadNo: this.tradingAddressGroup.value.RoadNo;
-            RegaddressLine1: this.tradingAddressGroup.value.addressLine1;
-            RegaddressLine2: this.tradingAddressGroup.value.addressLine2;
-            RegtownCityName: this.tradingAddressGroup.value.townCityName;
-            RegstateCountryName: this.tradingAddressGroup.value.stateCountryName;
-            RegcountryName: this.tradingAddressGroup.value.countryName;
-            RegpostCode: this.tradingAddressGroup.value.postCode;
-            //})
-     //   }
+        // debugger
+        //  if ($event.target.checked) {
+        // this.tradingAddressGroup.patchValue({
+        RegRoadNo: this.tradingAddressGroup.value.RoadNo;
+        RegaddressLine1: this.tradingAddressGroup.value.addressLine1;
+        RegaddressLine2: this.tradingAddressGroup.value.addressLine2;
+        RegtownCityName: this.tradingAddressGroup.value.townCityName;
+        RegstateCountryName: this.tradingAddressGroup.value.stateCountryName;
+        RegcountryName: this.tradingAddressGroup.value.countryName;
+        RegpostCode: this.tradingAddressGroup.value.postCode;
+        //})
+        //   }
         //else {
         //    this.tradingAddressGroup.patchValue({
         //        RegRoadNo: '',
@@ -157,4 +165,10 @@ export class CustRegComponent implements OnInit {
         //}
     }
 
+    
+
+
 }
+
+
+

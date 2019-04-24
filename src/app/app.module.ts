@@ -6,7 +6,7 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from "ng2-file-upload";
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { ClientFileUploadComponent } from './client-file-upload/client-file-upload.component';
 import { UserRegComponent } from './user-reg/user-reg.component';
 import { CustRegComponent } from './cust-reg/cust-reg.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CustRegComponent } from './cust-reg/cust-reg.component';
         LoginComponent,
         ClientFileUploadComponent,
         UserRegComponent,
-        CustRegComponent
+        CustRegComponent,
+        DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { CustRegComponent } from './cust-reg/cust-reg.component';
       MatIconModule,
       MatSelectModule,
       MatCheckboxModule,
-      BrowserAnimationsModule,  
+      BrowserAnimationsModule,
+      MatDialogModule,
       RouterModule.forRoot([
 
           { path: '', redirectTo: '/Main', pathMatch: 'full' },
@@ -74,6 +77,7 @@ import { CustRegComponent } from './cust-reg/cust-reg.component';
       ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }
