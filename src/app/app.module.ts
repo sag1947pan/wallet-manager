@@ -25,7 +25,7 @@ import { UserRegComponent } from './user-reg/user-reg.component';
 import { CustRegComponent } from './cust-reg/cust-reg.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
-import { NewLoginComponent } from './new-login/new-login.component';
+//import { NewLoginComponent } from './new-login/new-login.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
 
 @NgModule({
@@ -44,7 +44,7 @@ import { PostRegComponent } from './post-reg/post-reg.component';
         CustRegComponent,
         DialogComponent,
         BeneRegComponent,
-        NewLoginComponent,
+        //NewLoginComponent,
         PostRegComponent
   ],
   imports: [
