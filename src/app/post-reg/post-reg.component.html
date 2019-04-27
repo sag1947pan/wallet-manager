@@ -1,0 +1,114 @@
+<app-wallet-header></app-wallet-header>
+
+<div class="custPostRegContent" style="background: #f9f9f9;">
+    <div class="container formContainer">
+        <div class="formContent">
+            <h2 class="section-title">Client Post Registration Form</h2>
+            <mat-tab-group class="Cust-Tab-Group">
+                <mat-tab label="Payment Information">
+                    <form [formGroup]="PaymentInfoGroup">
+                        <ng-template matTabContent>
+                            <!--<matTabContent>-->
+                            <mat-card>
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Customer ID" formControlName="customerId" maxlength="7" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Monthly Payment Volume" formControlName="paymentVolume" maxlength="15" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Amount limit per file" formControlName="Amountlimit">
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Amount limit per Payment" formControlName="amtLmtPerPayment">
+                                    </mat-form-field>
+                                </div>
+                            </mat-card>
+                            <!--</matTabContent>-->
+
+                        </ng-template>
+                    </form>
+                </mat-tab>
+                <mat-tab label="Beneficiary Information">
+                    <form [formGroup]="BenefInfoGroup">
+                        <ng-template matTabContent>
+
+                            <mat-card>
+                                <div>
+                                    <!-- New Selection Control-->
+                                    <mat-form-field>
+                                      
+                                        <mat-select placeholder="Select the countries in which you want to enable for beneficiaries" formControlName="currencyFmtForBene">
+                                            <mat-option *ngFor="let option of options" [value]="option">
+                                                {{option}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    </div>
+                                <div>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Reminders on email" formControlName="reminderemail" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Remainders on SMS" formControlName="remindersms" required>
+                                    </mat-form-field>
+                                </div>
+                               
+                            </mat-card>
+
+
+                        </ng-template>
+                        </form>
+                </mat-tab>
+                <mat-tab label="Credit Information">
+                    <form [formGroup]="CreditInfoGroup">
+                        <ng-template matTabContent>
+                            <!--<matTabContent>-->
+                            <mat-card>
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Bank Name" formControlName="bankname" maxlength="20" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Clearing code or BIC" formControlName="clearingcode" maxlength="15" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Account Number or IBAN" formControlName="accountnumber" maxlength="38" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Amount limit per Payment" formControlName="amtLmtPerPayment">
+                                    </mat-form-field>
+                                </div>
+                            </mat-card>
+                            <!--</matTabContent>-->
+
+                        </ng-template>
+                        </form>
+                </mat-tab>
+                <mat-tab label="Admin">
+                    <form [formGroup]="UserInfoGroup">
+                        <ng-template matTabContent>
+                           
+                        </ng-template>
+                        </form>
+                </mat-tab>
+            </mat-tab-group>
+
+        </div> 
+        </div>
+    </div>
+
+            <app-wallet-footer></app-wallet-footer>

@@ -6,7 +6,7 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from "ng2-file-upload";
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule, MatTabsModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,6 +25,8 @@ import { UserRegComponent } from './user-reg/user-reg.component';
 import { CustRegComponent } from './cust-reg/cust-reg.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
+import { NewLoginComponent } from './new-login/new-login.component';
+import { PostRegComponent } from './post-reg/post-reg.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { BeneRegComponent } from './bene-reg/bene-reg.component';
         UserRegComponent,
         CustRegComponent,
         DialogComponent,
-        BeneRegComponent
+        BeneRegComponent,
+        NewLoginComponent,
+        PostRegComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,7 @@ import { BeneRegComponent } from './bene-reg/bene-reg.component';
       BrowserAnimationsModule,
       MatDialogModule,
       MatCardModule,
+      MatTabsModule,
       RouterModule.forRoot([
 
           { path: '', redirectTo: '/Main', pathMatch: 'full' },
@@ -77,6 +82,8 @@ import { BeneRegComponent } from './bene-reg/bene-reg.component';
           { path: 'UserReg', component: UserRegComponent },
           { path: 'CustReg', component: CustRegComponent },
           { path: 'BeneReg', component: BeneRegComponent },
+          { path: 'PostReg', component: PostRegComponent },
+          //{ path: 'NewLogin', component: NewLoginComponent },
           
 
       ])

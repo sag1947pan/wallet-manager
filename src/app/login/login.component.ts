@@ -34,10 +34,12 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate(['/ClientReg2']);
+                    /*this.router.navigate(['/ClientReg2']);*/ //
+                    this.router.navigate(['/PostReg']);
                 },
                 error => {
-                    this.router.navigate(['/ClientReg2']);
+                    //this.router.navigate(['/ClientReg2']);
+                    this.router.navigate(['/PostReg']);
                 });
     }
 
