@@ -1,0 +1,204 @@
+<app-wallet-header></app-wallet-header>
+<div class="formContent" style="background: #f9f9f9;">
+    <h2 class="section-title">Client Registration Form</h2>
+
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <!-- User Information-->
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>User Information</ng-template>
+                <!-- Here should go Expander Control-->
+                <mat-accordion class="AccordianControl">
+                    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Personal details
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Enter your details
+                                <mat-icon>account_circle</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <!--<div>-->
+                            <mat-form-field>
+                                <input matInput placeholder="First name" formControlName="nameCtrl" required>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <input matInput placeholder="Last name" formControlName="lastnameCtrl" required>
+                            </mat-form-field>
+                            <!--</div>-->
+                            <div>
+                                <mat-form-field>
+                                    <input matInput placeholder="Email" formControlName="emailCtrl" required>
+                                </mat-form-field>
+
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Mobile" formControlName="mobileCtrl" required>
+                                </mat-form-field>
+                            </div>
+
+                            <!-- Combobox Control kind-->
+
+
+                            <div>
+                                <!-- New Selection Control-->
+                                <mat-form-field>
+                                    <!--<mat-label>Favorite food</mat-label>-->
+                                    <mat-select placeholder="Security Question" formControlName="securityquestionCtrl">
+                                        <mat-option *ngFor="let option of options" [value]="option">
+                                            {{option}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field>
+                                    <input matInput placeholder="Security Answer" formControlName="secanswerCtrl" required>
+                                </mat-form-field>
+
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Password" formControlName="pwdCtrl" required>
+                                </mat-form-field>
+                            </div>
+                        </ng-template>
+                        <mat-action-row>
+                            <button mat-button color="primary" (click)="nextStep()">Next</button>
+                        </mat-action-row>
+
+
+
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Address
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Fill Address details
+                                <mat-icon>map</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <ng-template matExpansionPanelContent>
+
+                            <mat-form-field>
+                                <input matInput placeholder="Street" formControlName="streetCtrl" required>
+                            </mat-form-field>
+                            <div>
+                                <mat-form-field>
+                                    <input matInput placeholder="Address Line 1" formControlName="addr1Ctrl" required>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Address Line 2" formControlName="addr2Ctrl" required>
+                                </mat-form-field>
+                            </div>
+
+                            <div>
+                                <mat-form-field>
+                                    <input matInput placeholder="City" formControlName="cityCtrl" required>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="State" formControlName="stateCtrl" required>
+                                </mat-form-field>
+
+                            </div>
+
+
+                            <div>
+                                <mat-form-field>
+                                    <input matInput placeholder="Country" formControlName="countryCtrl" required>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="PostCode" formControlName="postcodeCtrl" required>
+                                </mat-form-field>
+
+                            </div>
+                        </ng-template>
+
+                        <mat-action-row>
+                            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                            <button mat-button color="primary" (click)="nextStep()">Next</button>
+                            <!--<mat-chip-list>
+                                <mat-chip color="warn" (click)="prevStep()" selected>Previous</mat-chip>
+                                <mat-chip color="primary" (click)="nextStep()"selected>Next</mat-chip>
+                            </mat-chip-list>-->
+                        </mat-action-row>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext type="button">Next</button>
+                    <!--<button mat-button matStepperNext>Next</button>-->
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- Payment Tab-->
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Payment Information</ng-template>
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Currency" formControlName="currencyCtrl" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Currency1" formControlName="currency1Ctrl" required>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Country Bank" formControlName="ctrybnkCtrl" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Amount" formControlName="amountCtrl" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Forex Rate" formControlName="forexrateCtrl" required>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Bank Name" formControlName="bankNameCtrl" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Clearing Code" formControlName="ClearingcodeCtrl" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Account Number" formControlName="AccountNoCtrl" required>
+                    </mat-form-field>
+                </div>
+
+                <div>
+
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <!-- Company Information-->
+        <mat-step>
+            <ng-template matStepLabel>Company Information</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+    <!--</div>-->
+
+</div>
+
+<app-wallet-footer></app-wallet-footer>

@@ -24,6 +24,7 @@ import { ClientFileUploadComponent } from './client-file-upload/client-file-uplo
 import { UserRegComponent } from './user-reg/user-reg.component';
 import { CustRegComponent } from './cust-reg/cust-reg.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { BeneRegComponent } from './bene-reg/bene-reg.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DialogComponent } from './dialog/dialog.component';
         ClientFileUploadComponent,
         UserRegComponent,
         CustRegComponent,
-        DialogComponent
+        DialogComponent,
+        BeneRegComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,7 @@ import { DialogComponent } from './dialog/dialog.component';
           { path: 'FileUpload', component: ClientFileUploadComponent },
           { path: 'UserReg', component: UserRegComponent },
           { path: 'CustReg', component: CustRegComponent },
+          { path: 'BeneReg', component: BeneRegComponent },
           
 
       ])
