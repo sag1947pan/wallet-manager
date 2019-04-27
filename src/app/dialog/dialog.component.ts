@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog',
@@ -8,7 +9,8 @@ import { MatDialogRef } from '@angular/material';
 })
 export class DialogComponent implements OnInit {
 
-    constructor(private dialogRef: MatDialogRef<DialogComponent>) { }
+    constructor(private dialogRef: MatDialogRef<DialogComponent>,
+        private router: Router,) { }
 
   ngOnInit() {
   }
@@ -16,6 +18,7 @@ export class DialogComponent implements OnInit {
     OkClick() {
 
         this.dialogRef.close();
+        this.router.navigate(['/Main']);
 
 
     }

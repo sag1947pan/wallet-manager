@@ -122,7 +122,8 @@ export class CustRegComponent implements OnInit {
                 this.Status = data.Status;
                 this.CustomerCode = data.CustomerCode;
                 this.SuccessMessage = data.SuccessMessage;
-                this.router.navigate(['/ClientReg2']);
+               // this.router.navigate(['/ClientReg2']);
+               // this.router.navigate(['/Main']);
                 // alert("Your Customer Id is :" + (this.CustomerCode));
             }, error => (this.error = error));
 
