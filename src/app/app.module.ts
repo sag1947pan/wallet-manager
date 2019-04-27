@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from "ng2-file-upload";
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -60,6 +61,7 @@ import { DialogComponent } from './dialog/dialog.component';
       MatCheckboxModule,
       BrowserAnimationsModule,
       MatDialogModule,
+      MatCardModule,
       RouterModule.forRoot([
 
           { path: '', redirectTo: '/Main', pathMatch: 'full' },
