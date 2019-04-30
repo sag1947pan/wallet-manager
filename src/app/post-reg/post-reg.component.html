@@ -5,37 +5,195 @@
         <div class="formContent">
             <h2 class="section-title">Client Post Registration Form</h2>
             <mat-tab-group class="Cust-Tab-Group">
-                <mat-tab label="Payment Information">
-                    <form [formGroup]="PaymentInfoGroup">
+                <mat-tab label="Company Profile">
+                    <form [formGroup]="CompInfoGroup">
                         <ng-template matTabContent>
                             <!--<matTabContent>-->
-                            <mat-card>
-                                <div>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Customer ID" formControlName="customerId" maxlength="7" required>
-                                    </mat-form-field>
+                            <!--<mat-card>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Customer ID" formControlName="customerId" maxlength="7" required>
+            </mat-form-field>
 
-                                    <mat-form-field>
-                                        <input matInput placeholder="Monthly Payment Volume" formControlName="paymentVolume" maxlength="15" required>
-                                    </mat-form-field>
-                                </div>
+            <mat-form-field>
+                <input matInput placeholder="Monthly Payment Volume" formControlName="paymentVolume" maxlength="15" required>
+            </mat-form-field>
+        </div>
 
-                                <div>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Amount limit per file" formControlName="Amountlimit">
-                                    </mat-form-field>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Amount limit per file" formControlName="Amountlimit">
+            </mat-form-field>
 
-                                    <mat-form-field>
-                                        <input matInput placeholder="Amount limit per Payment" formControlName="amtLmtPerPayment">
-                                    </mat-form-field>
-                                </div>
-                            </mat-card>
+            <mat-form-field>
+                <input matInput placeholder="Amount limit per Payment" formControlName="amtLmtPerPayment">
+            </mat-form-field>
+        </div>
+    </mat-card>-->
                             <!--</matTabContent>-->
+                            <mat-accordion class="AccordianControl">
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Details
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            Your details
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent>
+                                        <!--<div>-->
+                                        <mat-form-field>
+                                            <input matInput placeholder="Company Name" formControlName="compnameCtrl" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Company Registration No" formControlName="compregnCtrl" required>
+                                        </mat-form-field>
+                                        <!--</div>-->
+                                        <div>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Industry" formControlName="industryCtrl" required>
+                                            </mat-form-field>
+
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="Trading Address" formControlName="tradingAddrCtrl" required>
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="Registered Address" formControlName="registerdAddrCtrl" required>
+                                            </mat-form-field>
+                                        </div>
+
+
+                                    </ng-template>
+                                    <!--<mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>-->
+
+
+
+                                </mat-expansion-panel>
+
+                                <!-- Users-->
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Users
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            User details
+
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent>
+                                        <!--<div>-->
+                                        <mat-form-field>
+                                            <input matInput placeholder="Number of Admin Users" formControlName="adminuserCtrl" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Number of Operational Users" formControlName="operuserCtrl" required>
+                                        </mat-form-field>
+                                        <!--</div>-->
+                                        <div>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Authorised Users" formControlName="authuserCtrl" required>
+                                            </mat-form-field>
+                                        </div>
+                                    </ng-template>
+
+                                </mat-expansion-panel>
+
+                                <!-- Payment Profile-->
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Payment Profile
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            Payment details
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <ng-template matExpansionPanelContent>
+                                        <!--<div>-->
+                                        <mat-form-field>
+                                            <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
+                                        </mat-form-field>
+                                        <!--</div>-->
+                                        <div>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Average Value" formControlName="avgValue" required>
+                                            </mat-form-field>
+                                        </div>
+                                    </ng-template>
+
+                                </mat-expansion-panel>
+
+
+                                <!--<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Address
+            </mat-panel-title>
+            <mat-panel-description>
+                Fill Address details
+                <mat-icon>map</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+
+            <mat-form-field>
+                <input matInput placeholder="Street" formControlName="streetCtrl" required>
+            </mat-form-field>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Address Line 1" formControlName="addr1Ctrl" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Address Line 2" formControlName="addr2Ctrl" required>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="City" formControlName="cityCtrl" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="State" formControlName="stateCtrl" required>
+                </mat-form-field>
+
+            </div>
+
+
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Country" formControlName="countryCtrl" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="PostCode" formControlName="postcodeCtrl" required>
+                </mat-form-field>
+
+            </div>
+        </ng-template>
+    </mat-expansion-panel>-->
+
+                            </mat-accordion>
 
                         </ng-template>
                     </form>
                 </mat-tab>
-                <mat-tab label="Beneficiary Information">
+                <mat-tab label="My Profile">
                     <form [formGroup]="BenefInfoGroup">
                         <ng-template matTabContent>
 
@@ -68,7 +226,7 @@
                         </ng-template>
                         </form>
                 </mat-tab>
-                <mat-tab label="Credit Information">
+                <mat-tab label="Payment Transfers">
                     <form [formGroup]="CreditInfoGroup">
                         <ng-template matTabContent>
                             <!--<matTabContent>-->
@@ -98,7 +256,7 @@
                         </ng-template>
                         </form>
                 </mat-tab>
-                <mat-tab label="Admin">
+                <mat-tab label="Invoices & Statements">
                     <form [formGroup]="UserInfoGroup">
                         <ng-template matTabContent>
                            

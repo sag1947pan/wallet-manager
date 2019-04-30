@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
     encapsulation: ViewEncapsulation.None
 })
 export class PostRegComponent implements OnInit {
-    PaymentInfoGroup: FormGroup;
+    CompInfoGroup: FormGroup;
     BenefInfoGroup: FormGroup;
     CreditInfoGroup: FormGroup;
     UserInfoGroup: FormGroup;
@@ -22,17 +22,18 @@ export class PostRegComponent implements OnInit {
         private router: Router,) { }
 
     ngOnInit() {
-        this.PaymentInfoGroup = this.formBuilder.group({
-            customerId: [''],
-            paymentVolume: ['', Validators.required],
-            Amountlimit: [''],
-            //amtLmtPerPayment: [''],
-            //payLmtPerFile: [''],
-            //filesLmtPerday: [''],
-            //msgsLmtPerday: [''],
-            //activeDaysForPayment: ['', Validators.required],
-            //currency1: ['', Validators.required],
-            //currencyFmtForPayments: ['', Validators.required],
+        this.CompInfoGroup = this.formBuilder.group({
+            compnameCtrl: [''],
+            compregnCtrl: ['', Validators.required],
+            industryCtrl: [''],
+            tradingAddrCtrl: [''],
+            registerdAddrCtrl: [''],
+            adminuserCtrl: [''],
+            operuserCtrl: [''],
+            authuserCtrl: [''],
+            avgmonthlyValue: [''],
+            avgIntPayments: ['', Validators.required],
+            avgValue: ['', Validators.required],           
 
         });
 
