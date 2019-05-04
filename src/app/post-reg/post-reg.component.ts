@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-post-reg',
@@ -10,10 +11,10 @@ import { Router } from '@angular/router';
 })
 export class PostRegComponent implements OnInit {
     CompInfoGroup: FormGroup;
-    BenefInfoGroup: FormGroup;
+    MyProfileGroup: FormGroup;
     CreditInfoGroup: FormGroup;
     UserInfoGroup: FormGroup;
-
+    DashboardGroup: FormGroup;
     currencyFmtForBene = new FormControl();
 
     options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
@@ -22,6 +23,9 @@ export class PostRegComponent implements OnInit {
         private router: Router,) { }
 
     ngOnInit() {
+
+        this.DashboardGroup = this.formBuilder.group({});
+
         this.CompInfoGroup = this.formBuilder.group({
             compnameCtrl: [''],
             compregnCtrl: ['', Validators.required],
@@ -37,17 +41,22 @@ export class PostRegComponent implements OnInit {
 
         });
 
-        this.BenefInfoGroup = this.formBuilder.group({
-            currencyFmtForBene: ['', Validators.required],
-            reminderemail: ['', Validators.required],
-            remindersms: ['', Validators.required],
-            fileauthorization: ['', Validators.required],
-            margins: ['', Validators.required],
-            FxTiers: [''],
-            teamemail: ['', Validators.required],
-            method: ['', Validators.required],
-            debitprofile: ['', Validators.required],
-            countrybank: ['', Validators.required],
+        this.MyProfileGroup = this.formBuilder.group({
+            //currencyFmtForBene: ['', Validators.required],
+            //reminderemail: ['', Validators.required],
+            //remindersms: ['', Validators.required],
+            //fileauthorization: ['', Validators.required],
+            //margins: ['', Validators.required],
+            //FxTiers: [''],
+            //teamemail: ['', Validators.required],
+            //method: ['', Validators.required],
+            //debitprofile: ['', Validators.required],
+            //countrybank: ['', Validators.required],
+
+            myName: ['', Validators.required],
+            myEmail: ['', Validators.required],
+            myMobile: ['', Validators.required],
+            mywork: ['', Validators.required],
 
         });
         this.CreditInfoGroup = this.formBuilder.group({
@@ -74,6 +83,28 @@ export class PostRegComponent implements OnInit {
             securityQuestion: ['', Validators.required],
             securityAnswer: ['', Validators.required],
         });
-  }
+    }
+
+     openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
 
 }

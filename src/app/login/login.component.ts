@@ -43,4 +43,13 @@ export class LoginComponent implements OnInit {
                 });
     }
 
+    RegisterInfo() {
+
+        this.router.navigate(['/CustReg']);
+    }
+    ForgotPasswordPage() {
+        this.router.navigate(['/ForgotPwd']);
+
+    }
+
 }

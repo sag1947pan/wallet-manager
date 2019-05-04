@@ -1,10 +1,12 @@
+
 <div class="sectionPadded" style="background: #efefef;">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <div class="container">
         <div class="row" style="background: #fff; border-radius: 5px;">
             <div class="page-header m-b-30">
                 <div class="header-title text-uppercase"><b>Wallet Manager customer Login</b></div>
             </div>
-            <div class="col-lg-12 col-md-8 col-sm-8 col-md-offset-2">
+            <!--<div class="col-lg-12 col-md-8 col-sm-8 col-md-offset-2">
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-md-3 control-label">CustomerId<sup>*</sup></label>
@@ -26,7 +28,43 @@
                         <button class="btn btn-primary">Login</button>
                     </div>
                 </form>
-            </div>
+            </div>-->
+            <!-- New Code-->
+            <!--<form action="/action_page.php">-->
+            <form [formGroup]="loginForm" style="max-width:500px;margin:auto" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+                <!--<div class="input-container">
+                    <i class="fa fa-user icon"></i>
+                    <input class="input-field" type="text" placeholder="Username" name="usrnm">
+                </div>-->
+
+                <div class="input-container">
+                    <i class="fa fa-envelope icon"></i>
+                    <input class="input-field" type="text" placeholder="Email" name="email" maxlength="50">
+                </div>
+                <!--<mat-form-field>-->
+
+                <div class="input-container">
+                    <i class="fa fa-key icon"></i>
+                    <input class="input-field" type="password" placeholder="Password" name="psw" maxlength="15">
+
+
+                </div>
+                <div>
+                    <a mat-button color="primary" (click)="ForgotPasswordPage()">Forgot Password?</a>
+                </div>
+                <!--</mat-form-field>-->
+
+
+                <button type="submit" mat-raised-button>Login</button>
+
+
+                <!--<div class="separator">New to Wallet Manager?</div>-->
+
+                <button type="button" mat-raised-button (click)="RegisterInfo()"> New to Wallet Manager? Signup</button>
+
+            </form>
         </div>
     </div>
+
 </div>

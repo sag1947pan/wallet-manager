@@ -9,6 +9,7 @@ import { FileUploadModule } from "ng2-file-upload";
 import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule, MatTabsModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
 //import { NewLoginComponent } from './new-login/new-login.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
+import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { PostRegComponent } from './post-reg/post-reg.component';
         DialogComponent,
         BeneRegComponent,
         //NewLoginComponent,
-        PostRegComponent
+        PostRegComponent,
+        PasswordForgotComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { PostRegComponent } from './post-reg/post-reg.component';
       MatDialogModule,
       MatCardModule,
       MatTabsModule,
+      MatGridListModule,
       RouterModule.forRoot([
 
           { path: '', redirectTo: '/Main', pathMatch: 'full' },
@@ -83,7 +87,7 @@ import { PostRegComponent } from './post-reg/post-reg.component';
           { path: 'CustReg', component: CustRegComponent },
           { path: 'BeneReg', component: BeneRegComponent },
           { path: 'PostReg', component: PostRegComponent },
-          //{ path: 'NewLogin', component: NewLoginComponent },
+          { path: 'ForgotPwd', component: PasswordForgotComponent },
           
 
       ])

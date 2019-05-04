@@ -1,272 +1,227 @@
+
+
 <app-wallet-header></app-wallet-header>
 
 <div class="custPostRegContent" style="background: #f9f9f9;">
     <div class="container formContainer">
         <div class="formContent">
+            <!-- Comment start-->
             <h2 class="section-title">Client Post Registration Form</h2>
             <mat-tab-group class="Cust-Tab-Group">
-                <mat-tab label="Company Profile">
-                    <form [formGroup]="CompInfoGroup">
+                <mat-tab label="Dashboard">
+                    <form [formGroup]="DashboardGroup">
                         <ng-template matTabContent>
-                            <!--<matTabContent>-->
-                            <!--<mat-card>
-        <div>
-            <mat-form-field>
-                <input matInput placeholder="Customer ID" formControlName="customerId" maxlength="7" required>
-            </mat-form-field>
 
-            <mat-form-field>
-                <input matInput placeholder="Monthly Payment Volume" formControlName="paymentVolume" maxlength="15" required>
-            </mat-form-field>
-        </div>
+                            <mat-grid-list cols="2" rowHeight="3:1">
+                                <mat-grid-tile class="PaymentsRejected">
+                                    Payments files Rejected:
+                                    <br />
+                                    Payment messages Rejected:
+                                    <br />
+                                    Payments awaiting Authroisation:
+                                </mat-grid-tile>
 
-        <div>
-            <mat-form-field>
-                <input matInput placeholder="Amount limit per file" formControlName="Amountlimit">
-            </mat-form-field>
+                                <mat-grid-tile class="PaymentsAwaiting">
 
-            <mat-form-field>
-                <input matInput placeholder="Amount limit per Payment" formControlName="amtLmtPerPayment">
-            </mat-form-field>
-        </div>
-    </mat-card>-->
-                            <!--</matTabContent>-->
-                            <mat-accordion class="AccordianControl">
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Details
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            Your details
+                                    Payments awaiting funding from you:
+                                    <br />
+                                    Invoices pending payment:
+                                </mat-grid-tile>
 
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <ng-template matExpansionPanelContent>
-                                        <!--<div>-->
-                                        <mat-form-field>
-                                            <input matInput placeholder="Company Name" formControlName="compnameCtrl" required>
-                                        </mat-form-field>
+                                <mat-grid-tile class="PaymentsOthers">
+                                    Total Payments this month
+                                </mat-grid-tile>
 
-                                        <mat-form-field>
-                                            <input matInput placeholder="Company Registration No" formControlName="compregnCtrl" required>
-                                        </mat-form-field>
-                                        <!--</div>-->
-                                        <div>
-                                            <mat-form-field>
-                                                <input matInput placeholder="Industry" formControlName="industryCtrl" required>
-                                            </mat-form-field>
+                                <mat-grid-tile class="PaymentsClaimed">
+                                    % of payments claimed by beneficiaries
+                                </mat-grid-tile>
+                                 
+                                <mat-grid-tile class="PaymentsOthers">
+                                    Our new features Coming Soon.
+                                </mat-grid-tile>
 
+                                <mat-grid-tile class="PaymentsOthers">
+                                    Blogs, News, industry changes
+                                </mat-grid-tile>
+                            </mat-grid-list>
 
-                                            <mat-form-field>
-                                                <input matInput placeholder="Trading Address" formControlName="tradingAddrCtrl" required>
-                                            </mat-form-field>
-
-                                            <mat-form-field>
-                                                <input matInput placeholder="Registered Address" formControlName="registerdAddrCtrl" required>
-                                            </mat-form-field>
-                                        </div>
-
-
-                                    </ng-template>
-                                    <!--<mat-action-row>
-            <button mat-button color="primary" (click)="nextStep()">Next</button>
-        </mat-action-row>-->
-
-
-
-                                </mat-expansion-panel>
-
-                                <!-- Users-->
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Users
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            User details
-
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <ng-template matExpansionPanelContent>
-                                        <!--<div>-->
-                                        <mat-form-field>
-                                            <input matInput placeholder="Number of Admin Users" formControlName="adminuserCtrl" required>
-                                        </mat-form-field>
-
-                                        <mat-form-field>
-                                            <input matInput placeholder="Number of Operational Users" formControlName="operuserCtrl" required>
-                                        </mat-form-field>
-                                        <!--</div>-->
-                                        <div>
-                                            <mat-form-field>
-                                                <input matInput placeholder="Authorised Users" formControlName="authuserCtrl" required>
-                                            </mat-form-field>
-                                        </div>
-                                    </ng-template>
-
-                                </mat-expansion-panel>
-
-                                <!-- Payment Profile-->
-                                <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Payment Profile
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            Payment details
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <ng-template matExpansionPanelContent>
-                                        <!--<div>-->
-                                        <mat-form-field>
-                                            <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
-                                        </mat-form-field>
-
-                                        <mat-form-field>
-                                            <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
-                                        </mat-form-field>
-                                        <!--</div>-->
-                                        <div>
-                                            <mat-form-field>
-                                                <input matInput placeholder="Average Value" formControlName="avgValue" required>
-                                            </mat-form-field>
-                                        </div>
-                                    </ng-template>
-
-                                </mat-expansion-panel>
-
-
-                                <!--<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Address
-            </mat-panel-title>
-            <mat-panel-description>
-                Fill Address details
-                <mat-icon>map</mat-icon>
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <ng-template matExpansionPanelContent>
-
-            <mat-form-field>
-                <input matInput placeholder="Street" formControlName="streetCtrl" required>
-            </mat-form-field>
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="Address Line 1" formControlName="addr1Ctrl" required>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <input matInput placeholder="Address Line 2" formControlName="addr2Ctrl" required>
-                </mat-form-field>
-            </div>
-
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="City" formControlName="cityCtrl" required>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <input matInput placeholder="State" formControlName="stateCtrl" required>
-                </mat-form-field>
-
-            </div>
-
-
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="Country" formControlName="countryCtrl" required>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <input matInput placeholder="PostCode" formControlName="postcodeCtrl" required>
-                </mat-form-field>
-
-            </div>
-        </ng-template>
-    </mat-expansion-panel>-->
-
-                            </mat-accordion>
 
                         </ng-template>
                     </form>
-                </mat-tab>
-                <mat-tab label="My Profile">
-                    <form [formGroup]="BenefInfoGroup">
-                        <ng-template matTabContent>
+                    </mat-tab>
+                    <mat-tab label="Company Profile">
+                        <form [formGroup]="CompInfoGroup">
+                            <ng-template matTabContent>
 
-                            <mat-card>
-                                <div>
-                                    <!-- New Selection Control-->
+                                <div class="tab">
+                                    <button class="tablinks" (click)="openCity(event, 'Company Details')">Company Details</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Users')">Users</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Payment Profile')">Payment Profile</button>
+                                </div>
+
+                                <div id="Company Details" class="tabcontent">
                                     <mat-form-field>
-                                      
-                                        <mat-select placeholder="Select the countries in which you want to enable for beneficiaries" formControlName="currencyFmtForBene">
-                                            <mat-option *ngFor="let option of options" [value]="option">
-                                                {{option}}
-                                            </mat-option>
-                                        </mat-select>
+                                        <input matInput placeholder="Company Name" formControlName="compnameCtrl" required>
                                     </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Company Registration No" formControlName="compregnCtrl" required>
+                                    </mat-form-field>
+
+                                    <div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Industry" formControlName="industryCtrl" required>
+                                        </mat-form-field>
+
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Trading Address" formControlName="tradingAddrCtrl" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Registered Address" formControlName="registerdAddrCtrl" required>
+                                        </mat-form-field>
                                     </div>
-                                <div>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Reminders on email" formControlName="reminderemail" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Remainders on SMS" formControlName="remindersms" required>
-                                    </mat-form-field>
-                                </div>
-                               
-                            </mat-card>
-
-
-                        </ng-template>
-                        </form>
-                </mat-tab>
-                <mat-tab label="Payment Transfers">
-                    <form [formGroup]="CreditInfoGroup">
-                        <ng-template matTabContent>
-                            <!--<matTabContent>-->
-                            <mat-card>
-                                <div>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Bank Name" formControlName="bankname" maxlength="20" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Clearing code or BIC" formControlName="clearingcode" maxlength="15" required>
-                                    </mat-form-field>
                                 </div>
 
+                                <div id="Users" class="tabcontent">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Number of Admin Users" formControlName="adminuserCtrl" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Number of Operational Users" formControlName="operuserCtrl" required>
+                                    </mat-form-field>
+
+                                    <div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Authorised Users" formControlName="authuserCtrl" required>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
+                                    </mat-form-field>
+                                    <!--</div>-->
+                                    <div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Average Value" formControlName="avgValue" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div id="Payment Profile" class="tabcontent">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
+                                    </mat-form-field>
+                                    <!--</div>-->
+                                    <div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Average Value" formControlName="avgValue" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </ng-template>
+
+                        </form>
+                    </mat-tab>
+                    <mat-tab label="My Profile">
+                        <form [formGroup]="MyProfileGroup">
+                            <ng-template matTabContent>
+
+                                <div class="tab">
+                                    <button class="tablinks" (click)="openCity(event, 'My Details')">My Details</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Role Profile')">Role Profile</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Add User')">Add User</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Update Password')">Update Password</button>
+                                </div>
+
+                                <div id="My Details" class="tabcontent">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Name" formControlName="myName" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field>
+                                        <input matInput placeholder="E-mail" formControlName="myEmail" required>
+                                    </mat-form-field>
+
+                                    <div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Mobile" formControlName="myMobile" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Work" formControlName="mywork" required>
+                                        </mat-form-field>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </ng-template>
+                        </form>
+                    </mat-tab>
+                    <mat-tab label="Payment Transfers">
+                        <form [formGroup]="CreditInfoGroup">
+                            <ng-template matTabContent>
+
+                                <div class="tab">
+                                    <button class="tablinks" (click)="openCity(event, 'My Details')">Initiate Payments</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Role Profile')">Authorise</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Add User')">Status</button>
+                                    <button class="tablinks" (click)="openCity(event, 'Update Password')">Search</button>
+                                </div>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
+                                </mat-form-field>
+
                                 <div>
                                     <mat-form-field>
-                                        <input matInput placeholder="Account Number or IBAN" formControlName="accountnumber" maxlength="38" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Amount limit per Payment" formControlName="amtLmtPerPayment">
+                                        <input matInput placeholder="Average Value" formControlName="avgValue" required>
                                     </mat-form-field>
                                 </div>
-                            </mat-card>
-                            <!--</matTabContent>-->
 
-                        </ng-template>
+
+
+
+
+
+
+                            </ng-template>
                         </form>
-                </mat-tab>
-                <mat-tab label="Invoices & Statements">
-                    <form [formGroup]="UserInfoGroup">
-                        <ng-template matTabContent>
-                           
-                        </ng-template>
+                    </mat-tab>
+                    <mat-tab label="Invoices & Statements">
+
+                        <form [formGroup]="UserInfoGroup">
+                            <ng-template matTabContent>
+
+                                
+
+                            </ng-template>
                         </form>
-                </mat-tab>
+                    </mat-tab>
             </mat-tab-group>
+            <!-- Comment End-->
 
-        </div> 
         </div>
     </div>
+</div>
 
-            <app-wallet-footer></app-wallet-footer>
+<app-wallet-footer></app-wallet-footer>
+
