@@ -6,10 +6,11 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from "ng2-file-upload";
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule, MatTabsModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatSidenavModule, MatListModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -73,6 +74,9 @@ import { PasswordForgotComponent } from './password-forgot/password-forgot.compo
       MatCardModule,
       MatTabsModule,
       MatGridListModule,
+      MatSidenavModule,
+      MatToolbarModule,
+      MatListModule,
       RouterModule.forRoot([
 
           { path: '', redirectTo: '/Main', pathMatch: 'full' },

@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
-  selector: 'app-post-reg',
+    selector: 'app-post-reg', //
+    //selector: 'app-navigation',
   templateUrl: './post-reg.component.html',
     styleUrls: ['./post-reg.component.css'],
     encapsulation: ViewEncapsulation.None
@@ -84,6 +85,13 @@ export class PostRegComponent implements OnInit {
             securityAnswer: ['', Validators.required],
         });
     }
+
+    visible: boolean;
+
+    show(event: boolean) {
+        this.visible = event;
+    }
+
 
      openCity(evt, cityName) {
     // Declare all variables
