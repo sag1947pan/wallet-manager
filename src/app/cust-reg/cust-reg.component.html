@@ -12,7 +12,18 @@
 
                     <form [formGroup]="compInfoGroup" (ngSubmit)="onSubmitCompInfo()">
                         <ng-template matStepLabel>Company Information</ng-template>
-                     
+                        <!--<mat-accordion class="AccordianControl">-->
+                        <!--<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">-->
+                        <!--<mat-expansion-panel-header>
+        <mat-panel-title>
+            Company details
+        </mat-panel-title>
+        <mat-panel-description>
+            Enter Company details
+            <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+    </mat-expansion-panel-header>-->
+                        <!--<ng-template matExpansionPanelContent>-->
                         <mat-card>
                             <div>
                                 <mat-form-field>
@@ -23,14 +34,18 @@
                                     <input matInput placeholder="Company Registration Number" formControlName="companyRegNumber" maxlength="15"  required>
                                 </mat-form-field>
                             </div>
-                            <div>
-
+                            <div> <!--list of countries to be pre-populated This should read from config file-->
+                                
+                                
                                 <mat-form-field>
-                                    <input matInput placeholder="Website Address" formControlName="webSiteAddress" maxlength="34" required>
-                                </mat-form-field>
+                                    <mat-select placeholder="Company Location">
+                                            <mat-option value="C1">India</mat-option>
+                                            <mat-option value="C2">Singapore</mat-option>
+                                            <mat-option value="C3">USA</mat-option>
+                                            <mat-option value="C4">UK</mat-option>
+                                            <mat-option value="C5">AUS</mat-option>
+                                    </mat-select>
 
-                                <mat-form-field>
-                                    <input matInput placeholder="Contact Number" formControlName="contactNumber" maxlength="13" required>
                                 </mat-form-field>
                             </div>
 
@@ -58,7 +73,15 @@
                         <mat-card>
                             <div>
                                 <mat-form-field>
-                                    <input matInput placeholder="Full Name" formControlName="yourName" maxlength="30" required>
+                                    <input matInput placeholder="First Name" formControlName="userFirstName" maxlength="30" required>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Middle Name" formControlName="userMiddleName" maxlength="30" required>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Last Name" formControlName="userLastName" maxlength="30" required>
                                 </mat-form-field>
 
                                 <!--<mat-form-field>
@@ -79,11 +102,11 @@
                             <div>
 
                                 <mat-form-field>
-                                    <input matInput placeholder="Desk Number" formControlName="yourDeskNumber" maxlength="13" required>
+                                    <input matInput placeholder="Password" formControlName="userPassword" maxlength="13" required>
                                 </mat-form-field>
 
                                 <mat-form-field>
-                                    <input matInput placeholder="Post Code" formControlName="formPostCode" maxlength="8" required>
+                                    <input matInput placeholder="Confirm Password" formControlName="userConfirmPassword" maxlength="8" required>
                                 </mat-form-field>
                             </div>
                             </mat-card>
@@ -100,10 +123,10 @@
                 </mat-step>
 
                 <!-- Trading Address-->
-                <mat-step [stepControl]="tradingAddressGroup" errorMessage="Name is required.">
+                <!--<mat-step [stepControl]="tradingAddressGroup" errorMessage="Name is required.">
 
                     <form [formGroup]="tradingAddressGroup">
-                        <ng-template matStepLabel>Trading Address</ng-template>
+                        <ng-template matStepLabel>Trading Address</ng-template>-->
                         <!--<mat-accordion class="AccordianControl">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
         <mat-expansion-panel-header>
@@ -116,7 +139,7 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>-->
-                        <mat-card>
+                       <!-- <mat-card>
                             <div>
                                 <mat-form-field>
                                     <input matInput placeholder="BuildingNo/Street(Or)Road Name/Number" formControlName="RoadNo" maxlength="15" required>
@@ -143,7 +166,6 @@
                                     <input matInput placeholder="State" formControlName="stateCountryName" maxlength="35">
                                 </mat-form-field>
                             </div>
-                            <!-- Country/Zip Code-->
                             <div>
                                 <mat-form-field>
                                     <input matInput placeholder="Country" formControlName="countryName" maxlength="35" required>
@@ -155,12 +177,11 @@
                             </div>
                         </mat-card>
 
-                        <!--</ng-template>-->
-
+                       
                         <mat-action-row>
                             <mat-checkbox color="primary" (change)="addressChecked($event)"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
                             <!--<button mat-button color="primary" (click)="nextStep()">Next</button>-->
-                        </mat-action-row>
+                     <!--   </mat-action-row>
 
                         <!--</mat-expansion-panel>-->
                         <!-- REGISTERED ADDRESS-->
@@ -175,7 +196,7 @@
         </mat-panel-description>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>-->
-                        <mat-card>
+                      <!--  <mat-card>
                             <div>
                                 <mat-form-field>
                                     <input matInput placeholder="BuildingNo/Street(Or)Road Name/Number" formControlName="RegRoadNo" required>
@@ -202,7 +223,6 @@
                                     <input matInput placeholder="State" formControlName="RegstateCountryName">
                                 </mat-form-field>
                             </div>
-                            <!-- Country/Zip Code-->
                             <div>
                                 <mat-form-field>
                                     <input matInput placeholder="Country" formControlName="RegcountryName" required>
@@ -213,17 +233,15 @@
                                 </mat-form-field>
                             </div>
 
-                            <!--</ng-template>-->
-                            <!--</mat-expansion-panel>-->
-
+                          
                             </mat-card>
                             <div>
                                 <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button>
                                 <button style='margin:16px' mat-raised-button color="primary" matStepperNext type="button">Next</button>
                             </div>
-                            <!--</mat-accordion>-->
+                           
                     </form>
-                </mat-step>
+                </mat-step>-->
 
                 <!-- Security Information-->
                 <mat-step [stepControl]="securityInfoGroup" errorMessage="Name is required.">
@@ -246,9 +264,7 @@
                                     <input matInput placeholder="Security Answer" formControlName="securityAnswer" maxlength="35" required>
                                 </mat-form-field>
 
-                                <mat-form-field>
-                                    <input matInput placeholder="Password" formControlName="Password" required>
-                                </mat-form-field>
+                             
                             </div>
                             </mat-card>
                                 <div>

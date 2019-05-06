@@ -52,30 +52,34 @@ export class CustRegComponent implements OnInit {
         this.compInfoGroup = this.formBuilder.group({
             companyName: ['', Validators.required],
             companyRegNumber: [''],
-            webSiteAddress: [''],
-            contactNumber: [''],
+            companyLocation:['', Validators.required],
 
-            yourName: ['', Validators.required],
+            userFirstName: ['', Validators.required],
+            userMiddleName: [''],
+            userLastName: ['', Validators.required],
+
             role: ['', Validators.required],
             yourEmailAddress: ['', [Validators.required, Validators.email]],
             yourContactNumber: ['', Validators.required],
-            formPostCode: ['', Validators.required],
-            yourDeskNumber: [''],
+            userPassword: ['', Validators.required],
+            userConfirmPassword: ['', Validators.required],
+
             securityQuestion: ['', Validators.required],
             securityAnswer: ['', Validators.required],
-
-            Password: [''],
         });
 
         this.personalInfoGroup = this.formBuilder.group({
 
 
-            yourName: ['', Validators.required],
+            userFirstName: ['', Validators.required],
+            userMiddleName: [''],
+            userLastName: ['', Validators.required],
+           
             role: ['', Validators.required],
             yourEmailAddress: ['', [Validators.required, Validators.email]],
             yourContactNumber: ['', Validators.required],
-            formPostCode: ['', Validators.required],
-            yourDeskNumber: [''],
+            userPassword: ['', Validators.required],
+            userConfirmPassword: ['', Validators.required],
 
         });
 
