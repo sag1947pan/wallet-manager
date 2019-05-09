@@ -12,7 +12,7 @@ import { DialogComponent } from '../dialog/dialog.component';
     styleUrls: ['./cust-reg.component.css']
 })
 export class CustRegComponent implements OnInit {
-
+    regGroup: FormGroup;
     compInfoGroup: FormGroup;
     personalInfoGroup: FormGroup;
     tradingAddressGroup: FormGroup;
@@ -49,23 +49,41 @@ export class CustRegComponent implements OnInit {
         public dialog: MatDialog, ) { }
 
     ngOnInit() {
+        this.regGroup = this.registerFields();/*this.formBuilder.group({
+            companyName: [undefined, Validators.required],
+            companyRegNumber: [undefined],
+            companyLocation:[undefined, Validators.required],
+
+            userFirstName: [undefined, Validators.required],
+            userMiddleName: [undefined],
+            userLastName: [undefined, Validators.required],
+
+            role: [undefined, Validators.required],
+            yourEmailAddress: [undefined, [Validators.required, Validators.email]],
+            yourContactNumber: [undefined, Validators.required],
+            userPassword: [undefined, Validators.required],
+            userConfirmPassword: [undefined, Validators.required],
+
+            securityQuestion: [undefined, Validators.required],
+            securityAnswer: [undefined, Validators.required],
+        })*/
         this.compInfoGroup = this.formBuilder.group({
-            companyName: ['', Validators.required],
-            companyRegNumber: [''],
-            companyLocation:['', Validators.required],
+            companyName: [undefined, Validators.required],
+            companyRegNumber: [undefined],
+            companyLocation:[undefined, Validators.required],
 
-            userFirstName: ['', Validators.required],
-            userMiddleName: [''],
-            userLastName: ['', Validators.required],
+           /* userFirstName: [undefined, Validators.required],
+            userMiddleName: [undefined],
+            userLastName: [undefined, Validators.required],
 
-            role: ['', Validators.required],
-            yourEmailAddress: ['', [Validators.required, Validators.email]],
-            yourContactNumber: ['', Validators.required],
-            userPassword: ['', Validators.required],
-            userConfirmPassword: ['', Validators.required],
+            role: [undefined, Validators.required],
+            yourEmailAddress: [undefined, [Validators.required, Validators.email]],
+            yourContactNumber: [undefined, Validators.required],
+            userPassword: [undefined, Validators.required],
+            userConfirmPassword: [undefined, Validators.required],
 
-            securityQuestion: ['', Validators.required],
-            securityAnswer: ['', Validators.required],
+            securityQuestion: [undefined, Validators.required],
+            securityAnswer: [undefined, Validators.required],*/
         });
 
         this.personalInfoGroup = this.formBuilder.group({
@@ -111,6 +129,26 @@ export class CustRegComponent implements OnInit {
         });
     }
 
+    registerFields(){
+        return this.formBuilder.group({
+            companyName: new FormControl(),
+            companyRegNumber: new FormControl(),
+            companyLocation:new FormControl(),
+
+            userFirstName: new FormControl(),
+            userMiddleName: new FormControl(),
+            userLastName: new FormControl(),
+
+            role: new FormControl(),
+            yourEmailAddress: new FormControl(),
+            yourContactNumber: new FormControl(),
+            userPassword: new FormControl(),
+            userConfirmPassword: new FormControl(),
+
+            securityQuestion: new FormControl(),
+            securityAnswer: new FormControl(),
+        })
+    }
     // on Submitting Register button
     onSubmitTradingInfo() {
         debugger;
@@ -120,7 +158,7 @@ export class CustRegComponent implements OnInit {
         //       return;
         //   }
         //  else {
-        this.WalletService.customerRegService(JSON.stringify(this.compInfoGroup.value))
+        this.WalletService.customerRegService(JSON.stringify(this.regGroup.value))
             .pipe(first())
             .subscribe(data => {
                 this.Status = data.Status;

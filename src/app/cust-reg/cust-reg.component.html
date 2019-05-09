@@ -4,7 +4,7 @@
     <div class="container formContainer">
         <div class="formContent">
             <h2 class="section-title">Client Registration Form</h2>
-
+            <form [formGroup]="regGroup">
             <!--<form [formGroup]="compInfoGroup">-->
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <!-- User Information-->
@@ -276,7 +276,7 @@
 </form>
                 </mat-step>
             </mat-horizontal-stepper>
-
+            </form>
         </div>
         </div>
     </div>
