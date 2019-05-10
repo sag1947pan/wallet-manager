@@ -31,6 +31,7 @@ export class PostRegComponent implements OnInit {
             compnameCtrl: [''],
             compregnCtrl: ['', Validators.required],
             industryCtrl: [''],
+            yourAccountID:[''],
             tradingAddrCtrl: [''],
             registerdAddrCtrl: [''],
             adminuserCtrl: [''],
