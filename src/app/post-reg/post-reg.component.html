@@ -1,152 +1,209 @@
 
 
 <app-wallet-header></app-wallet-header>
+<!--<div class="sectionPadded" style="background: #efefef;">-->
+<div class="container">
+    <div class="row" style="background: #fff; border-radius: 5px;">
 
-<div class="custPostRegContent" style="background: #f9f9f9;">
-    <div class="container formContainer">
-        <div class="formContent">
-            <!-- Comment start-->
-            <h2 class="section-title">Client Post Registration Form</h2>
-            <mat-tab-group class="Cust-Tab-Group">
+        <div class="custPostRegContent" style="background: #f9f9f9;">
+            <div class="container formContainer">
+                <div class="formContent">
+                    <!-- Comment start-->
+                    <h2 class="section-title">Client Post Registration Form</h2>
+                    <!--<div class="col-md-4">-->
 
-                <mat-tab label="Admin">
-                    <form [formGroup]="CompInfoGroup">
-                        <ng-template matTabContent>
+                    <mat-tab-group class="Cust-Tab-Group">
 
-                            <div class="tab">
-                                <button class="tablinks" (click)="openCity(event, 'Company Details')">Company Details</button>
-                                <button class="tablinks" (click)="openCity(event, 'Add User')">Add User</button>
-                                <button class="tablinks" (click)="openCity(event, 'Payment Profile')">Payment Profile</button>
-                                <button class="tablinks" (click)="openCity(event, 'Bank/Card Details')">Bank/Card Details</button>
-                            </div>
-                            <div id="Company Details" class="tabcontent">
-                                <mat-form-field>
-                                    <input matInput placeholder="Company Name" formControlName="compnameCtrl">
-                                </mat-form-field>
+                        <mat-tab label="Admin">
+                            <form [formGroup]="CompInfoGroup">
+                                <ng-template matTabContent>
 
-                                <mat-form-field>
-                                    <input matInput placeholder="Company Registration No" formControlName="compregnCtrl">
-                                </mat-form-field>
+                                    <div class="tab">
+                                        <button class="tablinks" (click)="openCity(event, 'Company Details')">Company Details</button>
+                                        <button class="tablinks" (click)="openCity(event, 'Add User')">Add User</button>
+                                        <button class="tablinks" (click)="openCity(event, 'Payment Profile')">Payment Profile</button>
+                                        <button class="tablinks" (click)="openCity(event, 'Bank/Card Details')">Bank/Card Details</button>
+                                    </div>
+                                    <div id="Company Details" class="tabcontent">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Company Name</mat-label>
+                                            <input matInput placeholder="Company Name" formControlName="compnameCtrl">
+                                        </mat-form-field>
 
-                                <div>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Industry" formControlName="industryCtrl" required>
-                                    </mat-form-field>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Your Account Id" formControlName="yourAccountID" required>
-                                    </mat-form-field>
-                                </div>
-                                <div>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Trading Address" formControlName="tradingAddrCtrl" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Registered Address" formControlName="registerdAddrCtrl" required>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div id="Add User" class="tabcontent">
-                                <div>
-                                    <mat-form-field>
-                                        <mat-select placeholder="Role">
-                                            <mat-option value="C1">Admin</mat-option>
-                                            <mat-option value="C2">Operator</mat-option>
-                                            <mat-option value="C3">Authoriser</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Designation" formControlName="desgCtrl" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Name" formControlName="myName" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="E-mail" formControlName="myEmail" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Mobile" formControlName="myMobile" required>
-                                    </mat-form-field>
-                                </div>
-
-
-                            </div>
-                            <div id="Payment Profile" class="tabcontent">
-                                <div>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
-                                    </mat-form-field>
-
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Average Value" formControlName="avgValue" required>
-                                    </mat-form-field>
-                                </div>
-
-                                <div>
-
-                                    <mat-form-field>
-                                        <mat-select placeholder="Type of Payments">
-                                            <mat-option value="C1">Salary Payments</mat-option>
-                                            <mat-option value="C2">Vendo/ Supplier Payments</mat-option>
-                                            <mat-option value="C3">Rewards/prizes</mat-option>
-                                            <mat-option value="C4">Reimbursements</mat-option>
-
-                                        </mat-select>
-
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <mat-select placeholder="Countries">
-                                            <mat-option value="C1">India</mat-option>
-                                            <mat-option value="C2">Singapore</mat-option>
-                                            <mat-option value="C3">USA</mat-option>
-                                            <mat-option value="C4">UK</mat-option>
-                                            <mat-option value="C5">AUS</mat-option>
-                                        </mat-select>
-
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <mat-select placeholder="Currencies">
-                                            <mat-option value="C1">INR</mat-option>
-                                            <mat-option value="C2">SGD</mat-option>
-                                            <mat-option value="C3">USD</mat-option>
-                                            <mat-option value="C4">GBP</mat-option>
-                                            <mat-option value="C5">AUD</mat-option>
-                                        </mat-select>
-
-                                    </mat-form-field>
-                                </div>
-                            </div>
-
-                            <div id="Bank/Card Details" class="tabcontent">
-
-
-                                <!--<mat-card class="example-card">
-                                    <mat-card-header>
-
-                                        <mat-card-title>Bank Details</mat-card-title>
-
-                                    </mat-card-header>
-
-                                    <mat-card-content>-->
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Company Registration Number</mat-label>
+                                            <input matInput placeholder="Company Registration Number" formControlName="compregnCtrl">
+                                        </mat-form-field>
 
                                         <div>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Industry</mat-label>
+                                                <input matInput placeholder="Industry" formControlName="industryCtrl" required>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Your Account Id</mat-label>
+                                                <input matInput placeholder="Your Account Id" formControlName="yourAccountID" required>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>                                         
+                                           
+                                            <mat-card>
+                                                <mat-card-header>
+
+                                                    <mat-card-title> Trading Address</mat-card-title>
+                                                </mat-card-header>
+
+                                                <mat-card-content>
+                                                     
+                                                    <div>
+                                                      
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Bldg#/Street(Or)Road Name/Number</mat-label>
+                                                            <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="RoadNo" maxlength="15" required>
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>AddressLine 1</mat-label>
+                                                            <input matInput placeholder="AddressLine 1" formControlName="addressLine1" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>AddressLine 2</mat-label>
+                                                            <input matInput placeholder="AddressLine 2" formControlName="addressLine2" maxlength="35">
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Town/City</mat-label>
+                                                            <input matInput placeholder="Town/City" formControlName="townCityName" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>State</mat-label>
+                                                            <input matInput placeholder="State" formControlName="stateCountryName" maxlength="35">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Country</mat-label>
+                                                            <input matInput placeholder="Country" formControlName="countryName" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Post Code"</mat-label>
+                                                            <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    </mat-card-content>
+
+                                            </mat-card>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div id="Add User" class="tabcontent">
+                                        <div>
+                                            <mat-form-field>
+                                                <mat-select placeholder="Role">
+                                                    <mat-option value="C1">Admin</mat-option>
+                                                    <mat-option value="C2">Operator</mat-option>
+                                                    <mat-option value="C3">Authoriser</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="Designation" formControlName="desgCtrl" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Name" formControlName="myName" required>
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="E-mail" formControlName="myEmail" required>
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="Mobile" formControlName="myMobile" required>
+                                            </mat-form-field>
+                                        </div>
+
+
+                                    </div>
+                                    <div id="Payment Profile" class="tabcontent">
+                                        <div>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
+                                            </mat-form-field>
 
 
                                             <mat-form-field>
+                                                <input matInput placeholder="Average Value" formControlName="avgValue" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div>
+
+                                            <mat-form-field>
+                                                <mat-select placeholder="Type of Payments">
+                                                    <mat-option value="C1">Salary Payments</mat-option>
+                                                    <mat-option value="C2">Vendo/ Supplier Payments</mat-option>
+                                                    <mat-option value="C3">Rewards/prizes</mat-option>
+                                                    <mat-option value="C4">Reimbursements</mat-option>
+
+                                                </mat-select>
+
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <mat-select placeholder="Countries">
+                                                    <mat-option value="C1">India</mat-option>
+                                                    <mat-option value="C2">Singapore</mat-option>
+                                                    <mat-option value="C3">USA</mat-option>
+                                                    <mat-option value="C4">UK</mat-option>
+                                                    <mat-option value="C5">AUS</mat-option>
+                                                </mat-select>
+
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <mat-select placeholder="Currencies">
+                                                    <mat-option value="C1">INR</mat-option>
+                                                    <mat-option value="C2">SGD</mat-option>
+                                                    <mat-option value="C3">USD</mat-option>
+                                                    <mat-option value="C4">GBP</mat-option>
+                                                    <mat-option value="C5">AUD</mat-option>
+                                                </mat-select>
+
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div id="Bank/Card Details" class="tabcontent">
+
+                                        <mat-card >
+                                        <mat-card-header>
+
+                                            <mat-card-title>Bank Details</mat-card-title>
+
+                                        </mat-card-header>
+
+                                        <mat-card-content>
+
+                                        <div>
+
+                                            <mat-form-field appearance="Fill">
                                                 <mat-select placeholder="Country of your Bank Account" required>
                                                     <mat-option value="C1">India</mat-option>
                                                     <mat-option value="C2">Singapore</mat-option>
@@ -156,126 +213,123 @@
                                                 </mat-select>
                                             </mat-form-field>
 
-                                            <mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Bank Name</mat-label>
                                                 <input matInput placeholder="Bank Name" formControlName="bankName" required>
                                             </mat-form-field>
 
                                         </div>
                                         <div>
-
-                                            <mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Clearing Code or BIC</mat-label>
                                                 <input matInput placeholder="Clearing Code or BIC" formControlName="clearingCodeorBic" required>
                                             </mat-form-field>
 
-                                            <mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Bank A/c No</mat-label>
                                                 <input matInput placeholder="Bank A/c No" formControlName="bankAccNo" required>
 
                                             </mat-form-field>
-
-
-
                                         </div>
 
-                                    <!--</mat-card-content>
-                                </mat-card>-->
+                                        </mat-card-content>
+                                        </mat-card>
+                                    </div>
+
+                                </ng-template>
+                            </form>
+                        </mat-tab>
+                        <mat-tab label="My Profile">
+                            <form [formGroup]="MyProfileGroup">
+                                <ng-template matTabContent>
+
+                                    <div class="tab">
+                                        <button class="tablinks" (click)="openCity(event, 'My Details')">My Details</button>
+                                        <!--<button class="tablinks" (click)="openCity(event, 'Role Profile')">Role Profile</button>-->
+                                        <!--<button class="tablinks" (click)="openCity(event, 'Add User')">Add User</button>-->
+                                        <button class="tablinks" (click)="openCity(event, 'Update Password')">Update Password</button>
+                                    </div>
+
+                                    <div id="My Details" class="tabcontent">
+                                        <mat-form-field>
+                                            <input matInput placeholder="Name" formControlName="myName" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="E-mail" formControlName="myEmail" required>
+                                        </mat-form-field>
+
+                                        <div>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Mobile" formControlName="myMobile" required>
+                                            </mat-form-field>
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="Work" formControlName="mywork" required>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div id="Update Password" class="tabcontent">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Current Password</mat-label>
+                                            <input matInput placeholder="Current Password" formControlName="currPassword" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>New Password</mat-label>
+                                            <input matInput placeholder="New Password" formControlName="NewPasword" required>
+                                        </mat-form-field>
+
+                                        <div>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Confirm New Password</mat-label>
+
+                                                <input matInput placeholder="Confirm New Password" formControlName="confirmNewPwd" required>
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Confirm OTP</mat-label>
+                                                <input matInput placeholder="Confirm OTP" formControlName="confirmOTP" required>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </form>
+                        </mat-tab>
+                        <mat-tab label="Payment Transfers">
+                            <form [formGroup]="CreditInfoGroup">
+                                <ng-template matTabContent>
+
+                                    <div class="tab">
+                                        <button class="tablinks" (click)="openCity(event, 'Initiate Payments')">Initiate Payments</button>
+                                        <button class="tablinks" (click)="openCity(event, 'Authorise')">Authorise</button>
+                                        <button class="tablinks" (click)="openCity(event, 'Status')">Status</button>
+                                        <button class="tablinks" (click)="openCity(event, 'Search')">Search</button>
+                                    </div>
+
+                                </ng-template>
+                            </form>
+                        </mat-tab>
+                        <mat-tab label="Invoices & Statements">
+
+                            <form [formGroup]="UserInfoGroup">
+                                <ng-template matTabContent>
 
 
 
+                                </ng-template>
+                            </form>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
 
-                            </div>
-
-
-
-                        </ng-template>
-                    </form>
-                </mat-tab>
-                <mat-tab label="My Profile">
-                    <form [formGroup]="MyProfileGroup">
-                        <ng-template matTabContent>
-
-                            <div class="tab">
-                                <button class="tablinks" (click)="openCity(event, 'My Details')">My Details</button>
-                                <!--<button class="tablinks" (click)="openCity(event, 'Role Profile')">Role Profile</button>-->
-                                <!--<button class="tablinks" (click)="openCity(event, 'Add User')">Add User</button>-->
-                                <button class="tablinks" (click)="openCity(event, 'Update Password')">Update Password</button>
-                            </div>
-
-                            <div id="My Details" class="tabcontent">
-                                <mat-form-field>
-                                    <input matInput placeholder="Name" formControlName="myName" required>
-                                </mat-form-field>
-
-                                <mat-form-field>
-                                    <input matInput placeholder="E-mail" formControlName="myEmail" required>
-                                </mat-form-field>
-
-                                <div>
-                                    <mat-form-field>
-                                        <input matInput placeholder="Mobile" formControlName="myMobile" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field>
-                                        <input matInput placeholder="Work" formControlName="mywork" required>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-
-                            <div id="Update Password" class="tabcontent">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Current Password</mat-label>
-                                    <input matInput placeholder="Current Password" formControlName="currPassword" required>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>New Password</mat-label>
-                                    <input matInput placeholder="New Password" formControlName="NewPasword" required>
-                                </mat-form-field>
-
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Confirm New Password</mat-label>
-
-                                        <input matInput placeholder="Confirm New Password" formControlName="confirmNewPwd" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Confirm OTP</mat-label>
-                                        <input matInput placeholder="Confirm OTP" formControlName="confirmOTP" required>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </form>
-                </mat-tab>
-                <mat-tab label="Payment Transfers">
-                    <form [formGroup]="CreditInfoGroup">
-                        <ng-template matTabContent>
-
-                            <div class="tab">
-                                <button class="tablinks" (click)="openCity(event, 'Initiate Payments')">Initiate Payments</button>
-                                <button class="tablinks" (click)="openCity(event, 'Authorise')">Authorise</button>
-                                <button class="tablinks" (click)="openCity(event, 'Status')">Status</button>
-                                <button class="tablinks" (click)="openCity(event, 'Search')">Search</button>
-                            </div>                           
-
-                        </ng-template>
-                    </form>
-                </mat-tab>
-                <mat-tab label="Invoices & Statements">
-
-                    <form [formGroup]="UserInfoGroup">
-                        <ng-template matTabContent>
-
-
-
-                        </ng-template>
-                    </form>
-                </mat-tab>
-            </mat-tab-group>
-            <!-- Comment End-->
-
+            </div>
         </div>
     </div>
+
+    <!--</div>-->
+    <!--</div>-->
 </div>
 
 <app-wallet-footer></app-wallet-footer>

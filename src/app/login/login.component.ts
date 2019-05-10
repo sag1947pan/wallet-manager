@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
-        debugger;
+       // debugger;
         this.submitted = true;
 
         this.WalletService.customerLogin(this.f.customerId.value, this.f.password.value)

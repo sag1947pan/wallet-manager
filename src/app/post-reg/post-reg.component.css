@@ -13,8 +13,8 @@ mat-form-field {
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-    width: 30%;
-    height: 300px;
+    width: 20%;
+    height: 500px;
 }
 
     /* Style the buttons that are used to open the tab content */
@@ -45,9 +45,9 @@ mat-form-field {
     float: left;
     padding: 0px 12px;
     border: 1px solid #ccc;
-    width: 70%;
+    width: 80%;
     border-left: none;
-    height: 300px;
+    height: 500px;
     display: none;
 }
 
@@ -76,6 +76,12 @@ mat-grid-tile {
     margin: 10px;
     border: 1px solid #555;
 }
+
+
+
+    /*.example-container > * {
+        width: 100%;
+    }*/
 
 /*.example-card {
     max-width: 400px;
