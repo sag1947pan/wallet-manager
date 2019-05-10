@@ -1,10 +1,11 @@
 <app-wallet-header></app-wallet-header>
 
 <div class="custRegContent" style="background: #f9f9f9;">
+    <form [formGroup]="regGroup">
     <div class="container formContainer">
         <div class="formContent">
             <h2 class="section-title">Client Registration Form</h2>
-            <form [formGroup]="regGroup">
+            
             <!--<form [formGroup]="compInfoGroup">-->
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <!-- User Information-->
@@ -38,7 +39,7 @@
                                 
                                 
                                 <mat-form-field>
-                                    <mat-select placeholder="Company Location">
+                                    <mat-select placeholder="Company Location" formControlName="companyLocation">
                                             <mat-option value="C1">India</mat-option>
                                             <mat-option value="C2">Singapore</mat-option>
                                             <mat-option value="C3">USA</mat-option>
@@ -61,7 +62,7 @@
                                 <div>
                                     <button style='margin:16px' mat-raised-button color="primary" matStepperNext type="button">Next</button>
                                 </div>
-</form>
+                    </form>
                 </mat-step>
 
                 <!-- Personal Information-->
@@ -273,12 +274,13 @@
                                     <button style='margin:16px' mat-raised-button color="primary" (click)="onSubmitTradingInfo()"> Register</button>
 
                                 </div>
-</form>
+                        </form>
                 </mat-step>
             </mat-horizontal-stepper>
-            </form>
+           
         </div>
         </div>
+    </form>
     </div>
 
     <app-wallet-footer></app-wallet-footer>
