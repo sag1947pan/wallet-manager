@@ -13,22 +13,29 @@ import { ClientRegComponent } from './client-reg/client-reg.component';
 import { Clientreg2Component } from './clientreg2/clientreg2.component'; 
 import { LoginComponent } from './login/login.component';
 import { CustRegComponent } from './cust-reg/cust-reg.component';
+import { UserRegComponent } from './user-reg/user-reg.component';
+import { ClientFileUploadComponent } from './client-file-upload/client-file-upload.component';
+import { BeneRegComponent } from './bene-reg/bene-reg.component';
+import { PostRegComponent } from './post-reg/post-reg.component';
+import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
 
-const routes: Routes = [
-
-    { path: '', redirectTo: '/Main', pathMatch: 'full' },
+const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'Dash', component: AppComponent },
     { path: 'Main', component: WalletBodyComponent },
     { path: 'Self', component: SelfRegistrationComponent },
     { path: 'ClientReg', component: ClientRegComponent },
     { path: 'ClientReg2', component: Clientreg2Component },
     { path: 'Login', component: LoginComponent },
+    { path: 'FileUpload', component: ClientFileUploadComponent },
+    { path: 'UserReg', component: UserRegComponent },
     { path: 'CustReg', component: CustRegComponent },
-];
+    { path: 'BeneReg', component: BeneRegComponent },
+    { path: 'PostReg', component: PostRegComponent },
+    { path: 'ForgotPwd', component: PasswordForgotComponent },]
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes),
-    RouterModule.forChild(routes),
+    imports: [RouterModule.forRoot(appRoutes),
+   // RouterModule.forChild(routes),
         CommonModule],
     exports: [RouterModule]
 })

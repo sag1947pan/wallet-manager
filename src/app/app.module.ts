@@ -6,11 +6,10 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from "ng2-file-upload";
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatSidenavModule, MatListModule } from '@angular/material';
-import { MatCardModule } from '@angular/material/card';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { AppMaterialModule } from './app-material/app-material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +26,6 @@ import { UserRegComponent } from './user-reg/user-reg.component';
 import { CustRegComponent } from './cust-reg/cust-reg.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
-//import { NewLoginComponent } from './new-login/new-login.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
 
@@ -46,55 +44,21 @@ import { PasswordForgotComponent } from './password-forgot/password-forgot.compo
         UserRegComponent,
         CustRegComponent,
         DialogComponent,
-        BeneRegComponent,
-        //NewLoginComponent,
+        BeneRegComponent,       
         PostRegComponent,
         PasswordForgotComponent
   ],
   imports: [
-    BrowserModule,
-      AppRoutingModule,
+    BrowserModule,    
       ReactiveFormsModule,
       FormsModule,
       FormlyModule.forRoot(),
       FormlyBootstrapModule,
       HttpClientModule,
-      FileUploadModule,
-      MatStepperModule,
-      MatInputModule,
-      MatButtonModule,
-      MatAutocompleteModule,
-      MatChipsModule,
-      MatExpansionModule,
-      MatIconModule,
-      MatSelectModule,
-      MatCheckboxModule,
-      BrowserAnimationsModule,
-      MatDialogModule,
-      MatCardModule,
-      MatTabsModule,
-      MatGridListModule,
-      MatSidenavModule,
-      MatToolbarModule,
-      MatListModule,
-      RouterModule.forRoot([
-
-          { path: '', redirectTo: '/Main', pathMatch: 'full' },
-          { path: 'Dash', component: AppComponent },
-          { path: 'Main', component: WalletBodyComponent },
-          { path: 'Self', component: SelfRegistrationComponent },
-          { path: 'ClientReg', component: ClientRegComponent },
-          { path: 'ClientReg2', component: Clientreg2Component },
-          { path: 'Login', component: LoginComponent },
-          { path: 'FileUpload', component: ClientFileUploadComponent },
-          { path: 'UserReg', component: UserRegComponent },
-          { path: 'CustReg', component: CustRegComponent },
-          { path: 'BeneReg', component: BeneRegComponent },
-          { path: 'PostReg', component: PostRegComponent },
-          { path: 'ForgotPwd', component: PasswordForgotComponent },
-          
-
-      ])
+      FileUploadModule,     
+      BrowserAnimationsModule,      
+      AppMaterialModule,
+      AppRoutingModule,      
   ],
   providers: [],
   bootstrap: [AppComponent],
