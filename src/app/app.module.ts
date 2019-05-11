@@ -10,7 +10,6 @@ import { FileUploadModule } from "ng2-file-upload";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppMaterialModule } from './app-material/app-material.module';
-import { clientAccPagemodule } from './client-Acc-Page/client-Acc-Page.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,8 +30,6 @@ import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
-// I think the client home page if at all we need to access we need to add it here.
-//import { HomeComponent } from './client-Acc-Page/home/home.component';
 
 
 
@@ -65,8 +62,7 @@ import { PasswordForgotComponent } from './password-forgot/password-forgot.compo
       HttpClientModule,
       FileUploadModule,     
       BrowserAnimationsModule,      
-      AppMaterialModule,
-     // clientAccPagemodule,
+      AppMaterialModule,     
       AppRoutingModule,
             
   ],
