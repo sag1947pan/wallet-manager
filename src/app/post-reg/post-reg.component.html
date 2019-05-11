@@ -341,6 +341,55 @@
 
                                             </mat-card-content>
                                         </mat-card>
+
+                                        <mat-card>
+                                            <mat-card-header>
+
+                                                <mat-card-title>Card Details</mat-card-title>
+
+                                            </mat-card-header>
+                                            <mat-card-content>
+
+
+
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Card Type</mat-label>
+                                                    <mat-select placeholder="Card Type" formControlName="cardtype" required>
+
+                                                        <mat-option *ngFor="let option of CardTypes" [value]="option">
+                                                            {{option}}
+                                                        </mat-option>
+
+                                                    </mat-select>
+                                                </mat-form-field>
+
+
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Card Number</mat-label>
+                                                    <input matInput placeholder="Card Number" formControlName="cardnumber" required maxlength="16">
+                                                </mat-form-field>
+
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Expiry Date</mat-label>
+                                                    <input matInput placeholder="Expiry Date" formControlName="expirydate" required maxlength="16">
+                                                </mat-form-field>
+
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Security Code</mat-label>
+                                                    <input matInput placeholder="Security Code" formControlName="expirydate" required maxlength="3">
+                                                </mat-form-field>
+
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Name on the Card</mat-label>
+                                                    <input matInput placeholder="Name on the Card" formControlName="cardname" required maxlength="25">
+                                                </mat-form-field>
+
+
+
+
+                                            </mat-card-content>
+                                            </mat-card>
+
                                     </div>
 
                                 </ng-template>

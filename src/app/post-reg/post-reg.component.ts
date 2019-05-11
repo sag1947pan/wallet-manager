@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
     selector: 'app-post-reg',   
@@ -25,6 +24,7 @@ export class PostRegComponent implements OnInit {
     PaymentTypes: string[] = ['Salary Payments', 'Vendor/ Supplier Payments', 'Rewards/prizes', 'Reimbursements'];
     Countries: string[] = ['India', 'USA', 'UK', 'Singapore', 'Australia'];
     Currencies: string[] = ['INR', 'USD', 'GBP', 'SGD', 'AUD'];
+    CardTypes: string[] = ['Master Card', 'Visa', 'Amex'];
 
     constructor(private formBuilder: FormBuilder,
         private router: Router,) { }
@@ -77,7 +77,15 @@ export class PostRegComponent implements OnInit {
             bankName: ['', Validators.required],
             clearingCodeorBic: ['', Validators.required],
             bankAccNo: ['', Validators.required],
-           
+
+            //Credit Card Details (needs to be added here)
+            cardname: ['', Validators.required],
+            cardnumber: ['', Validators.required],
+            expirydate: ['', Validators.required],
+            securitycode: ['', Validators.required],
+            cardtype: ['', Validators.required],
+            firstname: ['', Validators.required],
+            lastname: ['', Validators.required],
 
         });
 
@@ -102,14 +110,15 @@ export class PostRegComponent implements OnInit {
             bankname: ['', Validators.required],
             clearingcode: ['', Validators.required],
             accountnumber: ['', Validators.required],
-            cardtype: ['', Validators.required],
-            cardname: ['', Validators.required],
-            cardnumber: ['', Validators.required],
-            expirydate: ['', Validators.required],
+
+          //  cardtype: ['', Validators.required],
+            //cardname: ['', Validators.required],
+            //cardnumber: ['', Validators.required],
+            //expirydate: ['', Validators.required],
             expiryyear: ['', Validators.required],
-            securitycode: ['', Validators.required],
-            firstname: ['', Validators.required],
-            lastname: ['', Validators.required],
+            //securitycode: ['', Validators.required],
+            //firstname: ['', Validators.required],
+            //lastname: ['', Validators.required],
 
         });
         this.UserInfoGroup = this.formBuilder.group({
