@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
-    selector: 'app-post-reg', //
-    //selector: 'app-navigation',
+    selector: 'app-post-reg',   
   templateUrl: './post-reg.component.html',
     styleUrls: ['./post-reg.component.css'],
     encapsulation: ViewEncapsulation.None
@@ -20,6 +19,13 @@ export class PostRegComponent implements OnInit {
 
     options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
 
+    Industries: string[] = ['Retail', 'Technology', 'Manufacturing', 'Insurance', 'Public Sector', 'Charity / Trust', 'Transportation / Logistics'];
+
+    Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
+    PaymentTypes: string[] = ['Salary Payments', 'Vendor/ Supplier Payments', 'Rewards/prizes', 'Reimbursements'];
+    Countries: string[] = ['India', 'USA', 'UK', 'Singapore', 'Australia'];
+    Currencies: string[] = ['INR', 'USD', 'GBP', 'SGD', 'AUD'];
+
     constructor(private formBuilder: FormBuilder,
         private router: Router,) { }
 
@@ -29,36 +35,67 @@ export class PostRegComponent implements OnInit {
 
         this.CompInfoGroup = this.formBuilder.group({
             compnameCtrl: [''],
+            tradingName:[''],
             compregnCtrl: ['', Validators.required],
             industryCtrl: [''],
-            yourAccountID:[''],
-            tradingAddrCtrl: [''],
-            registerdAddrCtrl: [''],
-            adminuserCtrl: [''],
-            operuserCtrl: [''],
-            authuserCtrl: [''],
-            avgmonthlyValue: [''],
+            yourAccountID: [''],
+            RoadNo: ['', Validators.required],
+            addressLine1: ['', Validators.required],
+            addressLine2: [''],
+            townCityName: ['', Validators.required],
+            state: ['', Validators.required],
+            countryName: ['', Validators.required],
+            postCode: ['', Validators.required],
+
+            //Registered Address
+            RegRoadNo: ['', Validators.required],
+            RegaddressLine1: ['', Validators.required],
+            RegaddressLine2: [''],
+            RegtownCityName: ['', Validators.required],
+            Regstate: ['', Validators.required],
+            RegcountryName: ['', Validators.required],
+            RegpostCode: ['', Validators.required],
+
+            //Add user 
+            userRole: ['',],
+            desgCtrl: ['', Validators.required],
+            myName: ['', Validators.required],
+            myEmail: ['', Validators.required],
+            myMobile: ['', Validators.required],
+
+            //Payment Profile
+           
+            avgmonthlyValue: ['', Validators.required],
             avgIntPayments: ['', Validators.required],
-            avgValue: ['', Validators.required],           
+            avgValue: ['', Validators.required],
+            paymentTypes: ['',],
+            countriesList: ['',],
+            currenciesList: ['',],
+
+            //Bank details
+            BankCountry: ['',],
+            bankName: ['', Validators.required],
+            clearingCodeorBic: ['', Validators.required],
+            bankAccNo: ['', Validators.required],
+           
 
         });
 
         this.MyProfileGroup = this.formBuilder.group({
-            //currencyFmtForBene: ['', Validators.required],
-            //reminderemail: ['', Validators.required],
-            //remindersms: ['', Validators.required],
-            //fileauthorization: ['', Validators.required],
-            //margins: ['', Validators.required],
-            //FxTiers: [''],
-            //teamemail: ['', Validators.required],
-            //method: ['', Validators.required],
-            //debitprofile: ['', Validators.required],
-            //countrybank: ['', Validators.required],
+            
 
             myName: ['', Validators.required],
             myEmail: ['', Validators.required],
             myMobile: ['', Validators.required],
-            mywork: ['', Validators.required],
+            mywork: ['', Validators.required], 
+            currPassword: ['', Validators.required],
+            NewPasword: ['', Validators.required],
+            confirmNewPwd: ['', Validators.required],
+            confirmOTP: ['', Validators.required],
+
+            //Role Profile
+            myRoleProfile: ['', Validators.required], 
+            mydesgCtrl: ['', Validators.required],
 
         });
         this.CreditInfoGroup = this.formBuilder.group({

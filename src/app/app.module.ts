@@ -10,8 +10,11 @@ import { FileUploadModule } from "ng2-file-upload";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppMaterialModule } from './app-material/app-material.module';
+import { clientAccPagemodule } from './client-Acc-Page/client-Acc-Page.module';
 
 import { AppRoutingModule } from './app-routing.module';
+
+//Components
 import { AppComponent } from './app.component';
 import { SelfRegistrationComponent } from './self-registration/self-registration.component';
 import { WalletHeaderComponent } from './wallet-header/wallet-header.component';
@@ -28,6 +31,10 @@ import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
+// I think the client home page if at all we need to access we need to add it here.
+//import { HomeComponent } from './client-Acc-Page/home/home.component';
+
+
 
 @NgModule({
   declarations: [
@@ -46,7 +53,8 @@ import { PasswordForgotComponent } from './password-forgot/password-forgot.compo
         DialogComponent,
         BeneRegComponent,       
         PostRegComponent,
-        PasswordForgotComponent
+      PasswordForgotComponent,
+    
   ],
   imports: [
     BrowserModule,    
@@ -58,7 +66,9 @@ import { PasswordForgotComponent } from './password-forgot/password-forgot.compo
       FileUploadModule,     
       BrowserAnimationsModule,      
       AppMaterialModule,
-      AppRoutingModule,      
+     // clientAccPagemodule,
+      AppRoutingModule,
+            
   ],
   providers: [],
   bootstrap: [AppComponent],

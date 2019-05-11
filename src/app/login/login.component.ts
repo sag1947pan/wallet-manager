@@ -36,10 +36,12 @@ export class LoginComponent implements OnInit {
                 data => {
                     /*this.router.navigate(['/ClientReg2']);*/ //
                     this.router.navigate(['/PostReg']);
+                    
                 },
                 error => {
                     //this.router.navigate(['/ClientReg2']);
                     this.router.navigate(['/PostReg']);
+                    
                 });
     }
 
