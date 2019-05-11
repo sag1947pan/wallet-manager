@@ -6,13 +6,14 @@ import { WalletService } from 'src/app/wallet.service';
 import { first } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+
 @Component({
     selector: 'app-cust-reg',
     templateUrl: './cust-reg.component.html',
     styleUrls: ['./cust-reg.component.css']
 })
 export class CustRegComponent implements OnInit {
-
+    regGroup: FormGroup;
     compInfoGroup: FormGroup;
     personalInfoGroup: FormGroup;
     tradingAddressGroup: FormGroup;
@@ -24,6 +25,8 @@ export class CustRegComponent implements OnInit {
     CustomerCode; string;
     SuccessMessage: string;
      dialogRef: MatDialogRef<DialogComponent>;
+    // formTemplate:Any = form_template;
+   // templateUrl:any;
 
     securityquestion = new FormControl();
 
@@ -49,23 +52,47 @@ export class CustRegComponent implements OnInit {
         public dialog: MatDialog, ) { }
 
     ngOnInit() {
+        this.regGroup = this.registerFields();/*this.formBuilder.group({
+            companyName: [undefined, Validators.required],
+            companyRegNumber: [undefined],
+            companyLocation:[undefined, Validators.required],
+
+            userFirstName: [undefined, Validators.required],
+            userMiddleName: [undefined],
+            userLastName: [undefined, Validators.required],
+
+            role: [undefined, Validators.required],
+            yourEmailAddress: [undefined, [Validators.required, Validators.email]],
+            yourContactNumber: [undefined, Validators.required],
+            userPassword: [undefined, Validators.required],
+            userConfirmPassword: [undefined, Validators.required],
+
+            securityQuestion: [undefined, Validators.required],
+            securityAnswer: [undefined, Validators.required],
+        })*/
+
+       /* let group={}    
+        templateUrl.forEach(input_template=>{
+        group[input_template.label]=new FormControl('');  
+        })
+        this.regGroup = new FromGroup(group);*/
         this.compInfoGroup = this.formBuilder.group({
-            companyName: ['', Validators.required],
-            companyRegNumber: [''],
-            companyLocation:['', Validators.required],
+            companyName: [undefined, Validators.required],
+            companyRegNumber: [undefined],
+            companyLocation:[undefined, Validators.required],
 
-            userFirstName: ['', Validators.required],
-            userMiddleName: [''],
-            userLastName: ['', Validators.required],
+           /* userFirstName: [undefined, Validators.required],
+            userMiddleName: [undefined],
+            userLastName: [undefined, Validators.required],
 
-            role: ['', Validators.required],
-            yourEmailAddress: ['', [Validators.required, Validators.email]],
-            yourContactNumber: ['', Validators.required],
-            userPassword: ['', Validators.required],
-            userConfirmPassword: ['', Validators.required],
+            role: [undefined, Validators.required],
+            yourEmailAddress: [undefined, [Validators.required, Validators.email]],
+            yourContactNumber: [undefined, Validators.required],
+            userPassword: [undefined, Validators.required],
+            userConfirmPassword: [undefined, Validators.required],
 
-            securityQuestion: ['', Validators.required],
-            securityAnswer: ['', Validators.required],
+            securityQuestion: [undefined, Validators.required],
+            securityAnswer: [undefined, Validators.required],*/
         });
 
         this.personalInfoGroup = this.formBuilder.group({
@@ -75,7 +102,7 @@ export class CustRegComponent implements OnInit {
             userMiddleName: [''],
             userLastName: ['', Validators.required],
            
-            role: ['', Validators.required],
+            //role: ['', Validators.required],
             yourEmailAddress: ['', [Validators.required, Validators.email]],
             yourContactNumber: ['', Validators.required],
             userPassword: ['', Validators.required],
@@ -107,20 +134,61 @@ export class CustRegComponent implements OnInit {
             securityQuestion: ['', Validators.required],
             securityAnswer: ['', Validators.required],
 
-            Password: [''],
+           // Password: [''],
         });
     }
 
+    registerFields(){
+        return this.formBuilder.group({
+            companyName: new FormControl(),
+            companyRegNumber: new FormControl(),
+            companyLocation:new FormControl(),
+
+            userFirstName: new FormControl(),
+            userMiddleName: new FormControl(),
+            userLastName: new FormControl(),
+
+            role: new FormControl(),
+            yourEmailAddress: new FormControl(),
+            yourContactNumber: new FormControl(),
+            userPassword: new FormControl(),
+            userConfirmPassword: new FormControl(),
+
+            securityQuestion: new FormControl(),
+            securityAnswer: new FormControl(),
+        })
+    }
+
+    
     // on Submitting Register button
     onSubmitTradingInfo() {
         debugger;
         this.Submitted2 = true;
 
-        // if (this.tradingAddressGroup.invalid) {
-        //       return;
-        //   }
-        //  else {
-        this.WalletService.customerRegService(JSON.stringify(this.compInfoGroup.value))
+        console.log(this.personalInfoGroup.value);
+            console.log(this.securityInfoGroup.value);
+            console.log(this.compInfoGroup.value);
+        //Sending attributes to back end has two ways.. below and ... function
+       /* let __assign = (this && this.__assign) || Object.assign || function(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+              s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                  t[p] = s[p];
+              }
+              return t;
+          }; 
+        let group;
+        group.__assign(this.compInfoGroup.value,this.personalInfoGroup.value,this.securityInfoGroup.value);
+           */
+            
+           let group = {
+               ...this.compInfoGroup.value,
+               ...this.personalInfoGroup.value,
+               ...this.securityInfoGroup.value,
+           }
+            
+       console.log(group);
+        this.WalletService.customerRegService(JSON.stringify(group))
             .pipe(first())
             .subscribe(data => {
                 this.Status = data.Status;
