@@ -100,7 +100,7 @@ mat-form-field {
 .mat-raised-button {
     background-color: dodgerblue;
     margin: 15px;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     width: 20%;
     color: white;
 }
