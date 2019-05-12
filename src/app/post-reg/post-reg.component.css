@@ -4,8 +4,8 @@ mat-form-field {
 
 .Cust-Tab-Group {
     border: 1px solid #e8e8e8;
-    /*background-color: red;
-    opacity: 1 !important;*/
+    /*background-color: darkblue;*/
+    /*opacity: 1 !important;*/
 }
 
 /* Style the tab */
@@ -95,6 +95,14 @@ mat-form-field {
     height: 600px;
     margin: 10px;
     border: 1px solid #555;
+}
+
+.mat-raised-button {
+    background-color: dodgerblue;
+    margin: 15px;
+    margin-top: 15px;
+    width: 20%;
+    color: white;
 }
 
 
