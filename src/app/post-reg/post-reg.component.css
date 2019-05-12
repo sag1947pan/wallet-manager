@@ -1,5 +1,5 @@
 mat-form-field {
-    margin-right: 100px;
+    margin-right: 90px;
 }
 
 .Cust-Tab-Group {
@@ -17,6 +17,12 @@ mat-form-field {
     height: 500px;
 }
 
+.Horizontaltab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
     /* Style the buttons that are used to open the tab content */
     .tab button {
         display: block;
@@ -30,15 +36,16 @@ mat-form-field {
         cursor: pointer;
     }
 
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            background-color: #ddd;
-        }
-
-        /* Create an active/current "tab button" class */
-        .tab button.active {
-            background-color: #ccc;
-        }
+/* Style the buttons that are used to open the tab content */
+.Horizontaltab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}       
 
 /* Style the tab content */
 .tabcontent {
@@ -51,24 +58,33 @@ mat-form-field {
     display: none;
 }
 
-mat-grid-tile {
-    background: lightblue;
+/* Style the tab content */
+.Horizontaltabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
 }
 
-/*.PaymentsRejected{
-    background-color:red;
-}
-.PaymentsAwaiting{
-    background-color:blue;
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
 }
 
-.PaymentsClaimed{
-    background-color :lightgreen;
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
 }
-.PaymentsOthers{
 
-    background-color:seagreen;
-}*/
+.Horizontaltab button:hover {
+    background-color: #ddd;
+}
+.Horizontaltab button:active {
+    background-color: #ccc;
+}
+
+   
+
 
 .example-container {
     width: 800px;
@@ -79,10 +95,4 @@ mat-grid-tile {
 
 
 
-    /*.example-container > * {
-        width: 100%;
-    }*/
-
-/*.example-card {
-    max-width: 400px;
-}*/
+   

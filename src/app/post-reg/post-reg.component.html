@@ -19,380 +19,392 @@
                                 <ng-template matTabContent>
 
                                     <div class="tab">
-                                        <button class="tablinks" (click)="openCity(event, 'Company Details')">Company Details</button>
+                                        <button class="tablinks" (click)="openCity(event, 'Details')">Details</button>
                                         <button class="tablinks" (click)="openCity(event, 'Add User')">Add User</button>
                                         <button class="tablinks" (click)="openCity(event, 'Payment Profile')">Payment Profile</button>
                                         <button class="tablinks" (click)="openCity(event, 'Bank/Card Details')">Bank/Card Details</button>
                                     </div>
-                                    <div id="Company Details" class="tabcontent">
-
-                                        <mat-card>
-                                            <mat-card-header>
-
-                                                <mat-card-title> Company Info</mat-card-title>
-                                            </mat-card-header>
-
-                                            <mat-card-content>
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Company Name</mat-label>
-                                                        <input matInput placeholder="Company Name" formControlName="compnameCtrl">
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Trading Name (If different from Company Name)</mat-label>
-                                                        <input matInput placeholder="Trading Name" formControlName="tradingName" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Company Registration Number</mat-label>
-                                                        <input matInput placeholder="Company Registration Number" formControlName="compregnCtrl">
-                                                    </mat-form-field>
-
-                                                </div>
-
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label> Select Industry</mat-label>
-                                                        <mat-select placeholder="Select Industry" formControlName="industryCtrl">
-                                                            <mat-option *ngFor="let option of Industries" [value]="option">
-                                                                {{option}}
-                                                            </mat-option>
-                                                        </mat-select>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Your Account Id</mat-label>
-                                                        <input matInput placeholder="Your Account Id" formControlName="yourAccountID" required>
-                                                    </mat-form-field>
-
-
-                                                </div>
-                                            </mat-card-content>
-
-                                        </mat-card>
-
-                                        <mat-card>
-                                            <mat-card-header>
-
-                                                <mat-card-title> Trading Address</mat-card-title>
-                                            </mat-card-header>
-                                            <mat-card-content>
-
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Bldg#/Street(Or)Road Name/Number</mat-label>
-                                                        <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="RoadNo" maxlength="15" required>
-                                                    </mat-form-field>
-                                                </div>
-
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>AddressLine 1</mat-label>
-                                                        <input matInput placeholder="AddressLine 1" formControlName="addressLine1" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>AddressLine 2</mat-label>
-                                                        <input matInput placeholder="AddressLine 2" formControlName="addressLine2" maxlength="35">
-                                                    </mat-form-field>
-                                                </div>
-
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Town/City</mat-label>
-                                                        <input matInput placeholder="Town/City" formControlName="townCityName" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>State</mat-label>
-                                                        <input matInput placeholder="State" formControlName="state" maxlength="35">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Country</mat-label>
-                                                        <input matInput placeholder="Country" formControlName="countryName" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Post Code</mat-label>
-                                                        <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
-                                                    </mat-form-field>
-                                                </div>
-                                            </mat-card-content>
-                                        </mat-card>
-
-                                        <mat-action-row>
-                                            <mat-checkbox color="primary"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
-
-                                        </mat-action-row>
-                                        <!-- Registered Address-->
-                                        <mat-card>
-                                            <mat-card-header>
-
-                                                <mat-card-title>Registered Address</mat-card-title>
-                                            </mat-card-header>
-                                            <mat-card-content>
-
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Bldg#/Street(Or)Road Name/Number</mat-label>
-                                                        <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="RegRoadNo" maxlength="15" required>
-                                                    </mat-form-field>
-                                                </div>
-
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>AddressLine 1</mat-label>
-                                                        <input matInput placeholder="AddressLine 1" formControlName="RegaddressLine1" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>AddressLine 2</mat-label>
-                                                        <input matInput placeholder="AddressLine 2" formControlName="RegaddressLine2" maxlength="35">
-                                                    </mat-form-field>
-                                                </div>
-
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Town/City</mat-label>
-                                                        <input matInput placeholder="Town/City" formControlName="RegtownCityName" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>State</mat-label>
-                                                        <input matInput placeholder="State" formControlName="Regstate" maxlength="35">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Country</mat-label>
-                                                        <input matInput placeholder="Country" formControlName="RegcountryName" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Post Code</mat-label>
-                                                        <input matInput placeholder="Post Code" formControlName="RegpostCode" maxlength="8">
-                                                    </mat-form-field>
-                                                </div>
-                                            </mat-card-content>
-                                        </mat-card>
-
-
-
-                                    </div>
-
-                                    <div id="Add User" class="tabcontent">
-                                        <mat-card>
-                                            <mat-card-header>
-
-                                                <mat-card-title>User Details</mat-card-title>
-                                            </mat-card-header>
-
-                                            <mat-card-content>
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Role</mat-label>
-                                                        <mat-select placeholder="Role" formControlName="userRole">
-                                                            <mat-option *ngFor="let option of Roles" [value]="option">
-                                                                {{option}}
-                                                            </mat-option>
-                                                        </mat-select>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Designation</mat-label>
-                                                        <input matInput placeholder="Designation" formControlName="desgCtrl" required>
-                                                    </mat-form-field>
-                                                </div>
-
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Name</mat-label>
-                                                        <input matInput placeholder="Name" formControlName="myName" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>E-mail</mat-label>
-                                                        <input matInput placeholder="E-mail" formControlName="myEmail" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Mobile</mat-label>
-                                                        <input matInput placeholder="Mobile" formControlName="myMobile" required>
-                                                    </mat-form-field>
-                                                </div>
-                                            </mat-card-content>
-                                        </mat-card>
-                                    </div>
-
-                                    <div id="Payment Profile" class="tabcontent">
-                                        <mat-card>
-                                            <mat-card-header>
-
-                                                <mat-card-title>Payment Info</mat-card-title>
-                                            </mat-card-header>
-
-                                            <mat-card-content>
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Average Monthly Volume</mat-label>
-                                                        <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Average International Payments</mat-label>
-                                                        <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
-                                                    </mat-form-field>
-                                                </div>
-                                                <div>
-
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Average Value</mat-label>
-                                                        <input matInput placeholder="Average Value" formControlName="avgValue" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Type of Payments</mat-label>
-                                                        <mat-select placeholder="Role" formControlName="paymentTypes" required>
-                                                            <mat-option *ngFor="let option of PaymentTypes" [value]="option">
-                                                                {{option}}
-                                                            </mat-option>
-                                                        </mat-select>
-                                                    </mat-form-field>
-                                                </div>
-
-                                                <div>
-
-
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Countries</mat-label>
-                                                        <mat-select placeholder="Role" formControlName="countriesList" required>
-                                                            <mat-option *ngFor="let option of Countries" [value]="option">
-                                                                {{option}}
-                                                            </mat-option>
-                                                        </mat-select>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Currencies</mat-label>
-                                                        <mat-select placeholder="Role" formControlName="currenciesList" required>
-                                                            <mat-option *ngFor="let option of Currencies" [value]="option">
-                                                                {{option}}
-                                                            </mat-option>
-                                                        </mat-select>
-
-                                                    </mat-form-field>
-                                                </div>
-                                            </mat-card-content>
-                                        </mat-card>
-                                    </div>
-
-                                    <div id="Bank/Card Details" class="tabcontent">
-
-                                        <mat-card>
-                                            <mat-card-header>
-
-                                                <mat-card-title>Bank Details</mat-card-title>
-
-                                            </mat-card-header>
-                                            <mat-card-content>
-
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Country of your Bank Account</mat-label>
-                                                        <mat-select placeholder="Country of your Bank Account" formControlName="BankCountry" required>
-
-                                                            <mat-option *ngFor="let option of Countries" [value]="option">
-                                                                {{option}}
-                                                            </mat-option>
-
-                                                        </mat-select>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Bank Name</mat-label>
-                                                        <input matInput placeholder="Bank Name" formControlName="bankName" required>
-                                                    </mat-form-field>
-
-                                                </div>
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Clearing Code or BIC</mat-label>
-                                                        <input matInput placeholder="Clearing Code or BIC" formControlName="clearingCodeorBic" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Bank A/c No</mat-label>
-                                                        <input matInput placeholder="Bank A/c No" formControlName="bankAccNo" required>
-
-                                                    </mat-form-field>
-                                                </div>
-
-                                            </mat-card-content>
-                                        </mat-card>
-
-                                        <mat-card>
-                                            <mat-card-header>
-
-                                                <mat-card-title>Card Details</mat-card-title>
-
-                                            </mat-card-header>
-                                            <mat-card-content>
-
-
-
-                                                <mat-form-field appearance="outline">
-                                                    <mat-label>Card Type</mat-label>
-                                                    <mat-select placeholder="Card Type" formControlName="cardtype" required>
-
-                                                        <mat-option *ngFor="let option of CardTypes" [value]="option">
-                                                            {{option}}
-                                                        </mat-option>
-
-                                                    </mat-select>
-                                                </mat-form-field>
-
-
-                                                <mat-form-field appearance="outline">
-                                                    <mat-label>Card Number</mat-label>
-                                                    <input matInput placeholder="Card Number" formControlName="cardnumber" required maxlength="16">
-                                                </mat-form-field>
-
-                                                <mat-form-field appearance="outline">
-                                                    <mat-label>Expiry Date</mat-label>
-                                                    <input matInput placeholder="Expiry Date" formControlName="expirydate" required maxlength="16">
-                                                </mat-form-field>
-
-                                                <mat-form-field appearance="outline">
-                                                    <mat-label>Security Code</mat-label>
-                                                    <input matInput placeholder="Security Code" formControlName="expirydate" required maxlength="3">
-                                                </mat-form-field>
-
-                                                <mat-form-field appearance="outline">
-                                                    <mat-label>Name on the Card</mat-label>
-                                                    <input matInput placeholder="Name on the Card" formControlName="cardname" required maxlength="25">
-                                                </mat-form-field>
-
-
-
-
-                                            </mat-card-content>
+                                    <div id="Details" class="tabcontent">
+
+                                        <div class="Horizontaltab">
+                                            <button class="tablinks" (click)="openHorTab(event, 'Company Info')">Company Info</button>
+                                            <button class="tablinks" (click)="openHorTab(event, 'Address')">Address</button>
+                                        </div>
+                                        <div id="Company Info" class="Horizontaltabcontent">
+                                            <mat-card>
+                                                <mat-card-header>
+
+                                                    <mat-card-title> Company Info</mat-card-title>
+                                                </mat-card-header>
+
+                                                <mat-card-content>
+                                                    <div>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Company Name</mat-label>
+                                                            <input matInput placeholder="Company Name" formControlName="compnameCtrl">
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Trading Name (If different from Company Name)</mat-label>
+                                                            <input matInput placeholder="Trading Name" formControlName="tradingName" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Company Registration Number</mat-label>
+                                                            <input matInput placeholder="Company Registration Number" formControlName="compregnCtrl">
+                                                        </mat-form-field>
+
+                                                    </div>
+
+                                                    <div>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label> Select Industry</mat-label>
+                                                            <mat-select placeholder="Select Industry" formControlName="industryCtrl">
+                                                                <mat-option *ngFor="let option of Industries" [value]="option">
+                                                                    {{option}}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Your Account Id</mat-label>
+                                                            <input matInput placeholder="Your Account Id" formControlName="yourAccountID" required>
+                                                        </mat-form-field>
+
+
+                                                    </div>
+                                                </mat-card-content>
+
+                                            </mat-card>
+                                        </div>
+
+
+                                        <div id="Address" class="Horizontaltabcontent">
+
+                                            <mat-card>
+                                                <mat-card-header>
+                                                    <mat-card-title> Trading Address</mat-card-title>
+                                                </mat-card-header>
+                                                <mat-card-content>
+
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Bldg#/Street(Or)Road Name/Number</mat-label>
+                                                            <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="RoadNo" maxlength="15" required>
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>AddressLine 1</mat-label>
+                                                            <input matInput placeholder="AddressLine 1" formControlName="addressLine1" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>AddressLine 2</mat-label>
+                                                            <input matInput placeholder="AddressLine 2" formControlName="addressLine2" maxlength="35">
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Town/City</mat-label>
+                                                            <input matInput placeholder="Town/City" formControlName="townCityName" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>State</mat-label>
+                                                            <input matInput placeholder="State" formControlName="state" maxlength="35">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Country</mat-label>
+                                                            <input matInput placeholder="Country" formControlName="countryName" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Post Code</mat-label>
+                                                            <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </mat-card-content>
                                             </mat-card>
 
-                                    </div>
+                                            <mat-action-row>
+                                                <mat-checkbox color="primary"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
 
-                                </ng-template>
+                                            </mat-action-row>
+                                            <!-- Registered Address-->
+                                            <mat-card>
+                                                <mat-card-header>
+
+                                                    <mat-card-title>Registered Address</mat-card-title>
+                                                </mat-card-header>
+                                                <mat-card-content>
+
+                                                    <div>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Bldg#/Street(Or)Road Name/Number</mat-label>
+                                                            <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="RegRoadNo" maxlength="15" required>
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>AddressLine 1</mat-label>
+                                                            <input matInput placeholder="AddressLine 1" formControlName="RegaddressLine1" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>AddressLine 2</mat-label>
+                                                            <input matInput placeholder="AddressLine 2" formControlName="RegaddressLine2" maxlength="35">
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Town/City</mat-label>
+                                                            <input matInput placeholder="Town/City" formControlName="RegtownCityName" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>State</mat-label>
+                                                            <input matInput placeholder="State" formControlName="Regstate" maxlength="35">
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Country</mat-label>
+                                                            <input matInput placeholder="Country" formControlName="RegcountryName" maxlength="35" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Post Code</mat-label>
+                                                            <input matInput placeholder="Post Code" formControlName="RegpostCode" maxlength="8">
+                                                        </mat-form-field>
+                                                    </div>
+                                                </mat-card-content>
+                                            </mat-card>
+
+                                        </div>
+
+
+
+                                           
+
+
+
+                                        </div>
+
+                                        <div id="Add User" class="tabcontent">
+                                            <mat-card>
+                                                <mat-card-header>
+
+                                                    <mat-card-title>User Details</mat-card-title>
+                                                </mat-card-header>
+
+                                                <mat-card-content>
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Role</mat-label>
+                                                            <mat-select placeholder="Role" formControlName="userRole">
+                                                                <mat-option *ngFor="let option of Roles" [value]="option">
+                                                                    {{option}}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Designation</mat-label>
+                                                            <input matInput placeholder="Designation" formControlName="desgCtrl" required>
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Name</mat-label>
+                                                            <input matInput placeholder="Name" formControlName="myName" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>E-mail</mat-label>
+                                                            <input matInput placeholder="E-mail" formControlName="myEmail" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Mobile</mat-label>
+                                                            <input matInput placeholder="Mobile" formControlName="myMobile" required>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </mat-card-content>
+                                            </mat-card>
+                                        </div>
+
+                                        <div id="Payment Profile" class="tabcontent">
+                                            <mat-card>
+                                                <mat-card-header>
+
+                                                    <mat-card-title>Payment Info</mat-card-title>
+                                                </mat-card-header>
+
+                                                <mat-card-content>
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Average Monthly Volume</mat-label>
+                                                            <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Average International Payments</mat-label>
+                                                            <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div>
+
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Average Value</mat-label>
+                                                            <input matInput placeholder="Average Value" formControlName="avgValue" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Type of Payments</mat-label>
+                                                            <mat-select placeholder="Role" formControlName="paymentTypes" required>
+                                                                <mat-option *ngFor="let option of PaymentTypes" [value]="option">
+                                                                    {{option}}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                    <div>
+
+
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Countries</mat-label>
+                                                            <mat-select placeholder="Role" formControlName="countriesList" required>
+                                                                <mat-option *ngFor="let option of Countries" [value]="option">
+                                                                    {{option}}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Currencies</mat-label>
+                                                            <mat-select placeholder="Role" formControlName="currenciesList" required>
+                                                                <mat-option *ngFor="let option of Currencies" [value]="option">
+                                                                    {{option}}
+                                                                </mat-option>
+                                                            </mat-select>
+
+                                                        </mat-form-field>
+                                                    </div>
+                                                </mat-card-content>
+                                            </mat-card>
+                                        </div>
+
+                                        <div id="Bank/Card Details" class="tabcontent">
+
+                                            <mat-card>
+                                                <mat-card-header>
+
+                                                    <mat-card-title>Bank Details</mat-card-title>
+
+                                                </mat-card-header>
+                                                <mat-card-content>
+
+                                                    <div>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Country of your Bank Account</mat-label>
+                                                            <mat-select placeholder="Country of your Bank Account" formControlName="BankCountry" required>
+
+                                                                <mat-option *ngFor="let option of Countries" [value]="option">
+                                                                    {{option}}
+                                                                </mat-option>
+
+                                                            </mat-select>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Bank Name</mat-label>
+                                                            <input matInput placeholder="Bank Name" formControlName="bankName" required>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    <div>
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Clearing Code or BIC</mat-label>
+                                                            <input matInput placeholder="Clearing Code or BIC" formControlName="clearingCodeorBic" required>
+                                                        </mat-form-field>
+
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>Bank A/c No</mat-label>
+                                                            <input matInput placeholder="Bank A/c No" formControlName="bankAccNo" required>
+
+                                                        </mat-form-field>
+                                                    </div>
+
+                                                </mat-card-content>
+                                            </mat-card>
+
+                                            <mat-card>
+                                                <mat-card-header>
+
+                                                    <mat-card-title>Card Details</mat-card-title>
+
+                                                </mat-card-header>
+                                                <mat-card-content>
+
+
+
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Card Type</mat-label>
+                                                        <mat-select placeholder="Card Type" formControlName="cardtype" required>
+
+                                                            <mat-option *ngFor="let option of CardTypes" [value]="option">
+                                                                {{option}}
+                                                            </mat-option>
+
+                                                        </mat-select>
+                                                    </mat-form-field>
+
+
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Card Number</mat-label>
+                                                        <input matInput placeholder="Card Number" formControlName="cardnumber" required maxlength="16">
+                                                    </mat-form-field>
+
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Expiry Date</mat-label>
+                                                        <input matInput placeholder="Expiry Date" formControlName="expirydate" required maxlength="16">
+                                                    </mat-form-field>
+
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Security Code</mat-label>
+                                                        <input matInput placeholder="Security Code" formControlName="expirydate" required maxlength="3">
+                                                    </mat-form-field>
+
+                                                    <mat-form-field appearance="outline">
+                                                        <mat-label>Name on the Card</mat-label>
+                                                        <input matInput placeholder="Name on the Card" formControlName="cardname" required maxlength="25">
+                                                    </mat-form-field>
+
+
+
+
+                                                </mat-card-content>
+                                            </mat-card>
+
+                                        </div>
+
+</ng-template>
                             </form>
                         </mat-tab>
 
