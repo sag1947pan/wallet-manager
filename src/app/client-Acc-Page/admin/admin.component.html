@@ -1,0 +1,163 @@
+<div class="container formContainer">
+    <div class="formContent">
+
+        <form [formGroup]="CompInfoGroup">
+
+            <mat-card>
+                <mat-card-header>
+
+                    <mat-card-title> Company Info</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Company Name</mat-label>
+                            <input matInput placeholder="Company Name" formControlName="compnameCtrl">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Trading Name (If different from Company Name)</mat-label>
+                            <input matInput placeholder="Trading Name" formControlName="tradingName" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Company Registration Number</mat-label>
+                            <input matInput placeholder="Company Registration Number" formControlName="compregnCtrl">
+                        </mat-form-field>
+
+                    </div>
+
+                    <div>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label> Select Industry</mat-label>
+                            <mat-select placeholder="Select Industry" formControlName="industryCtrl">
+                                <mat-option *ngFor="let option of Industries" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Your Account Id</mat-label>
+                            <input matInput placeholder="Your Account Id" formControlName="yourAccountID" required>
+                        </mat-form-field>
+
+
+                    </div>
+                </mat-card-content>
+
+            </mat-card>
+
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title> Trading Address</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Bldg#/Street(Or)Road Name/Number</mat-label>
+                            <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="RoadNo" maxlength="15" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>AddressLine 1</mat-label>
+                            <input matInput placeholder="AddressLine 1" formControlName="addressLine1" maxlength="35" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>AddressLine 2</mat-label>
+                            <input matInput placeholder="AddressLine 2" formControlName="addressLine2" maxlength="35">
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Town/City</mat-label>
+                            <input matInput placeholder="Town/City" formControlName="townCityName" maxlength="35" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>State</mat-label>
+                            <input matInput placeholder="State" formControlName="state" maxlength="35">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Country</mat-label>
+                            <input matInput placeholder="Country" formControlName="countryName" maxlength="35" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Post Code</mat-label>
+                            <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-action-row>
+                <mat-checkbox color="primary"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
+
+            </mat-action-row>
+            <!-- Registered Address-->
+            <mat-card>
+                <mat-card-header>
+
+                    <mat-card-title>Registered Address</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+
+                    <div>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Bldg#/Street(Or)Road Name/Number</mat-label>
+                            <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="RegRoadNo" maxlength="15" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>AddressLine 1</mat-label>
+                            <input matInput placeholder="AddressLine 1" formControlName="RegaddressLine1" maxlength="35" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>AddressLine 2</mat-label>
+                            <input matInput placeholder="AddressLine 2" formControlName="RegaddressLine2" maxlength="35">
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Town/City</mat-label>
+                            <input matInput placeholder="Town/City" formControlName="RegtownCityName" maxlength="35" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>State</mat-label>
+                            <input matInput placeholder="State" formControlName="Regstate" maxlength="35">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Country</mat-label>
+                            <input matInput placeholder="Country" formControlName="RegcountryName" maxlength="35" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Post Code</mat-label>
+                            <input matInput placeholder="Post Code" formControlName="RegpostCode" maxlength="8">
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+        </div>
+    </div>

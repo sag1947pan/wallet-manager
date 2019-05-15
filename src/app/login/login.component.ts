@@ -35,12 +35,13 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     /*this.router.navigate(['/ClientReg2']);*/ //
-                    this.router.navigate(['/PostReg']);
-                    
+                    //this.router.navigate(['/PostReg']);
+                    this.router.navigate(['/CliAccPage']);
                 },
                 error => {
                     //this.router.navigate(['/ClientReg2']);
-                    this.router.navigate(['/PostReg']);
+                    //this.router.navigate(['/PostReg']);
+                    this.router.navigate(['/CliAccPage']);
                     
                 });
     }

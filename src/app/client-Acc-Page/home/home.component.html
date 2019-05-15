@@ -1,0 +1,71 @@
+<!--<app-wallet-header></app-wallet-header>-->
+
+<!--<div class="container">
+    <div class="row" style="background: #fff; border-radius: 5px;">
+
+        <div class="clientAccPageContent" style="background: #f9f9f9;">
+            <div class="container formContainer">
+                <div class="formContent">
+                    
+                    <h2 class="section-title">Client Post Registration Form</h2>
+                    
+                    <mat-tab-group >
+                        <mat-tab label="Admin">
+                        </mat-tab>
+                        <mat-tab label="MyProfile">
+                            </mat-tab>
+                    </mat-tab-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+<h2> Welcome to client home page</h2>
+
+<div class="container-fluid">
+   
+    <div class="row">
+        <div class="col-md-3" style="border: 1px solid green; height: 800px">
+            <ul class="nav flex-column">
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Company Profile
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/Admin' routerLinkActive='active'>Company Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/AddUser' routerLinkActive='active'>Add User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/MyProfile' routerLinkActive='active'>Payment Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/MyProfile' routerLinkActive='active'>Bank/Card Details</a>
+                    </li>
+                </mat-expansion-panel>
+                <mat-divider></mat-divider>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                           My Profile
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    </mat-expansion-panel>
+
+            </ul>
+        </div>
+        <div class="col-md-8" style="border: 1px solid green; height: 800px">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+

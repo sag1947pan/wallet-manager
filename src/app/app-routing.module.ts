@@ -31,12 +31,15 @@ const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'CustReg', component: CustRegComponent },
     { path: 'BeneReg', component: BeneRegComponent },
     { path: 'PostReg', component: PostRegComponent },
-    { path: 'ForgotPwd', component: PasswordForgotComponent },]
+    { path: 'ForgotPwd', component: PasswordForgotComponent },
+    { path: 'CliAccPage', loadChildren: './client-Acc-Page/client-Acc-Page.module#clientAccPagemodule' }
+]
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes),
    // RouterModule.forChild(routes),
-        CommonModule],
+        CommonModule
+    ],
     exports: [RouterModule]
 })
 
