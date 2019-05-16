@@ -1,0 +1,34 @@
+<form [formGroup]="RoleGroup">
+
+
+    <mat-card>
+        <mat-card-header>
+
+            <mat-card-title>Role / Designation</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Role</mat-label>
+                    <mat-select placeholder="Role" formControlName="myRoleProfile" required>
+                        <mat-option *ngFor="let option of Roles" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Designation</mat-label>
+                    <input matInput placeholder="Designation" formControlName="mydesgCtrl" required>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-action-row>
+        <div>
+            <button type="button" color="primary" mat-raised-button> Save</button>
+        </div>
+    </mat-action-row>
+</form>

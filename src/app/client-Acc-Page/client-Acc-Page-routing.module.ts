@@ -7,6 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { PaymentProfileComponent } from './payment-profile/payment-profile.component';
 import { BankDetailsComponent } from './bank-details/bank-details.component';
+import { MydetailsComponent } from './mydetails/mydetails.component';
+import { RoleProfileComponent } from './role-profile/role-profile.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+
 
 const clientPageroutes: Routes = [
     { path: '', redirectTo: '/CliAccPage/Home', pathMatch: 'full' },
@@ -18,6 +22,9 @@ const clientPageroutes: Routes = [
             { path: 'AddUser', component: AddUserComponent },
             { path: 'PaymentProfile', component: PaymentProfileComponent },
             { path: 'BankDetails', component: BankDetailsComponent },
+            { path: 'MyDetails', component: MydetailsComponent },
+            { path: 'Role', component: RoleProfileComponent },
+            { path: 'UpdatePassword', component: UpdatePasswordComponent },
             {
                 path: '', component: AdminComponent, pathMatch: 'full'
             }

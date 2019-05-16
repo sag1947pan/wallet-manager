@@ -96,6 +96,7 @@ export class PostRegComponent implements OnInit {
             myEmail: ['', Validators.required],
             myMobile: ['', Validators.required],
             mywork: ['', Validators.required], 
+
             currPassword: ['', Validators.required],
             NewPasword: ['', Validators.required],
             confirmNewPwd: ['', Validators.required],
