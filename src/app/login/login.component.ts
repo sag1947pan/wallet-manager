@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            customerId: ['', Validators.required],
-            password: ['', Validators.required],
+            Email: ['', Validators.required],
+            Password: ['', Validators.required],
         });
     }
 
@@ -29,8 +29,11 @@ export class LoginComponent implements OnInit {
     onSubmit() {
        // debugger;
         this.submitted = true;
-
-        this.WalletService.customerLogin(this.f.customerId.value, this.f.password.value)
+        console.log("username.."+this.f.Email.value);
+        console.log("password.."+this.f.Password.value);
+        console.log("username form value.."+this.loginForm.value);
+        console.log("stringfy.."+JSON.stringify(this.loginForm.value));
+        this.WalletService.customerLogin('myname','mypassword')
             .pipe(first())
             .subscribe(
                 data => {

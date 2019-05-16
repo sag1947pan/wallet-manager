@@ -191,12 +191,12 @@ export class CustRegComponent implements OnInit {
         this.WalletService.customerRegService(JSON.stringify(group))
             .pipe(first())
             .subscribe(data => {
-                this.Status = data.Status;
-                this.CustomerCode = data.CustomerCode;
-                this.SuccessMessage = data.SuccessMessage;
+                console.log("data..."+data);
+                //this.CustomerCode = data.CustomerCode;
+                this.SuccessMessage = data;
                // this.router.navigate(['/ClientReg2']);
                // this.router.navigate(['/Main']);
-                // alert("Your Customer Id is :" + (this.CustomerCode));
+                alert(this.SuccessMessage);
             }, error => (this.error = error));
 
         // }
@@ -206,7 +206,7 @@ export class CustRegComponent implements OnInit {
         //const dialogRef = this.dialog.open(DialogComponent, {
         //    width: '250px',
 
-        this.dialogRef = this.dialog.open(DialogComponent, { hasBackdrop: false },);
+        //.dialogRef = this.dialog.open(DialogComponent, { hasBackdrop: false },);
         //});      
 
 
