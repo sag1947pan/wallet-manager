@@ -27,12 +27,27 @@
 <div class="container-fluid">
    
     <div class="row">
-        <div class="col-md-3" style="border: 1px solid green; height: 800px">
+        <!--<div class="col-md-3" style="border: 1px solid green; height: 800px">-->
+        <div class="col-md-3" style="border: 1px solid green;">
             <ul class="nav flex-column">
 
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
+                            <mat-icon>dashboard</mat-icon>
+                            Dashboard
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                </mat-expansion-panel>
+
+                <mat-divider></mat-divider>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon>business_center</mat-icon>
                             Company Profile
                         </mat-panel-title>
 
@@ -54,6 +69,8 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
+                            <!--<mat-icon>account_circle</mat-icon>-->
+                            <mat-icon>person</mat-icon>
                             My Profile
                         </mat-panel-title>
                     </mat-expansion-panel-header>
@@ -68,9 +85,32 @@
                     </li>
                 </mat-expansion-panel>
 
+                <mat-divider></mat-divider>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon>account_balance_wallet</mat-icon>
+                            Payment Transfers
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Initiate Payments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Authorise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>
+                    </li>
+                </mat-expansion-panel>
+
             </ul>
         </div>
-        <div class="col-md-8" style="border: 1px solid green; height: 800px">
+        <!--<div class="col-md-8" style="border: 1px solid green; height: 800px">-->
+        <div class="col-md-8" style="border: 1px solid green;">
             <router-outlet></router-outlet>
         </div>
     </div>

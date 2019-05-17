@@ -10,6 +10,7 @@ import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { MydetailsComponent } from './mydetails/mydetails.component';
 import { RoleProfileComponent } from './role-profile/role-profile.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { InitiatepaymentsComponent } from './initiatepayments/initiatepayments.component';
 
 
 const clientPageroutes: Routes = [
@@ -25,6 +26,7 @@ const clientPageroutes: Routes = [
             { path: 'MyDetails', component: MydetailsComponent },
             { path: 'Role', component: RoleProfileComponent },
             { path: 'UpdatePassword', component: UpdatePasswordComponent },
+            { path: 'InitiatePayments', component: InitiatepaymentsComponent },
             {
                 path: '', component: AdminComponent, pathMatch: 'full'
             }

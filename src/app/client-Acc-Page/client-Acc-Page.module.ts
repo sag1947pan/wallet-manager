@@ -14,9 +14,10 @@ import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { MydetailsComponent } from './mydetails/mydetails.component';
 import { RoleProfileComponent } from './role-profile/role-profile.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { InitiatepaymentsComponent } from './initiatepayments/initiatepayments.component';
 
 @NgModule({
-  declarations: [AdminComponent, MyProfileComponent, HomeComponent, AddUserComponent, PaymentProfileComponent, BankDetailsComponent, MydetailsComponent, RoleProfileComponent, UpdatePasswordComponent],
+  declarations: [AdminComponent, MyProfileComponent, HomeComponent, AddUserComponent, PaymentProfileComponent, BankDetailsComponent, MydetailsComponent, RoleProfileComponent, UpdatePasswordComponent, InitiatepaymentsComponent],
   imports: [
       CommonModule,
       ReactiveFormsModule,
