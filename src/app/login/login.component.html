@@ -14,21 +14,21 @@
                     <h3 class="col-md-4">Login</h3>
                     <div class="panel-body">
                        
-                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(f)" ng-show="showSuccessAlert">
                             <div class="input-container">
                                 <i class="fa fa-envelope icon"></i>
-                                <input class="input-field" type="text" placeholder="Email" name="Email" maxlength="50">
+                                <input class="input-field" type="text" placeholder="Email" formControlName="userName" maxlength="50" />                               
                             </div>
 
 
                             <div class="input-container">
                                 <i class="fa fa-key icon"></i>
                                
-                                <input class="input-field" type="password" placeholder="Password" name="Password" maxlength="15">
+                                <input class="input-field" type="password" placeholder="Password" formControlName="Password" maxlength="15"/>
                             </div>
 
                             <div>
-                                <button type="submit" mat-raised-button>Login</button>
+                                <button type="submit" mat-raised-button >Login</button>
                             </div>
 
                             <div>

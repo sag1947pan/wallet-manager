@@ -53,12 +53,27 @@ export class WalletService {
         return this.http.get<any>('https://8fpjsh9zha.execute-api.eu-west-2.amazonaws.com/DEV/validatecustuser', { 
             params: new HttpParams()
             .set('Access-Control-Allow-Origin','*')
-            .set('userName', 'myname@email.com')
-            .set('password', '6745'),     
+            .set('userName', customerId)
+            .set('password', password),
             observe: 'response'
         }).pipe( 
             map((res: any) => {
-                console.log("response.."+JSON.stringify(res));
+                if(res !=null && res != ""){
+                    let regResp = JSON.stringify(res);
+                    let regRespParse = JSON.parse(regResp);
+                    if(regRespParse.status == 200 || regRespParse.status == 201){
+                        let respBody = JSON.stringify(res.body);
+                        let respParse = JSON.parse(respBody);
+                        console.log("while returning"+regResp);
+                        //console.log("while returning"+respBody.status);
+                        return respBody;
+                    }else{
+                        console.log("In failure");
+                        return regRespParse.status;
+                    }
+                }else{
+                    return "Something went wrong, please try again!!";
+                }
                 res['playload'] = res;
                 return res['playload'];
             })

@@ -13,14 +13,17 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
 
-    constructor(private formBuilder: FormBuilder,
+    constructor(
+        private formBuilder: FormBuilder,
         private WalletService: WalletService,
-        private router: Router,) { }
+        private router: Router,) 
+        { }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            Email: ['', Validators.required],
+            userName: ['', Validators.required],
             Password: ['', Validators.required],
+            showSuccessAlert:[''],
         });
     }
 
@@ -29,23 +32,30 @@ export class LoginComponent implements OnInit {
     onSubmit() {
        // debugger;
         this.submitted = true;
-        console.log("username.."+this.f.Email.value);
+        console.log("username.."+this.f.userName.value);
         console.log("password.."+this.f.Password.value);
-        console.log("username form value.."+this.loginForm.value);
         console.log("stringfy.."+JSON.stringify(this.loginForm.value));
-        this.WalletService.customerLogin('myname','mypassword')
+        this.WalletService.customerLogin(this.f.userName.value,this.f.Password.value)
             .pipe(first())
             .subscribe(
                 data => {
                     /*this.router.navigate(['/ClientReg2']);*/ //
                     //this.router.navigate(['/PostReg']);
+                    let resBody = {};
+                    resBody = JSON.parse(data);
+                    console.log("data from resBody"+resBody);
+                    console.log("data from resBody status"+resBody.status);
+                    if(resBody.status && resBody.status == 401)
+                        alert("Please enter correct username");
+                        //this.showSuccessAlert = "Please enter correct username";
+                    else
                     this.router.navigate(['/CliAccPage']);
                 },
                 error => {
                     //this.router.navigate(['/ClientReg2']);
                     //this.router.navigate(['/PostReg']);
-                    this.router.navigate(['/CliAccPage']);
-                    
+                    //this.router.navigate(['/CliAccPage']);
+                    //this.message = "Please enter valid username/password";
                 });
     }
 
