@@ -80,6 +80,25 @@ export class WalletService {
         );
     }
 
+    // Add User API
+
+    //AddUser(customerId: string, password: string)
+    AddUser(userInfo){
+        return this.http.post<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users', userInfo, {
+            params: new HttpParams()
+                //.set('Access-Control-Allow-Origin', '*')
+                .set('userName', 'veeratest1@test.com')
+                .set('customerId', '100000000'),
+            observe: 'response'
+        }).pipe(
+            map((res: any) => {
+                console.log("response.." + JSON.stringify(res));
+                res['playload'] = res;
+                return res['playload'];
+            })
+        );
+    }
+
 
 
 }

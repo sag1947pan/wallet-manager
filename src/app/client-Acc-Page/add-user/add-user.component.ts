@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { WalletService } from 'src/app/wallet.service';
+import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -11,6 +13,13 @@ import { Router } from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
     UserInfoGroup: FormGroup;
+    submitted = false;
+
+    error: any;
+    Status: string;
+    CustomerCode; string;
+    SuccessMessage: string;
+
 
     options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
 
@@ -24,20 +33,48 @@ export class AddUserComponent implements OnInit {
 
 
     constructor(private formBuilder: FormBuilder,
-        private router: Router, ) { }
+        private router: Router,
+        private WalletService: WalletService,) { }
 
     ngOnInit() {
 
         this.UserInfoGroup = this.formBuilder.group({
 
-
             //Add user 
-            userRole: ['',],
-            desgCtrl: ['', Validators.required],
-            myName: ['', Validators.required],
-            myEmail: ['', Validators.required],
-            myMobile: ['', Validators.required],
+            userId: ['', Validators.required],
+            firstName: ['', Validators.required],
+            middleName: ['', Validators.required],
+            lastName: [''],
+            role: ['',],
+            mobileNum: ['', Validators.required],
+           // desgCtrl: ['', Validators.required],         
+           
         });
-  }
+
+
+       
+    }
+
+    get f() { return this.UserInfoGroup.controls; }
+
+    onSubmit() {
+
+        debugger;
+        this.submitted = true;
+        if (this.UserInfoGroup.invalid) {
+            return;
+        }
+        else {
+            this.WalletService.AddUser(JSON.stringify(this.UserInfoGroup.value))
+                .pipe(first())
+                .subscribe(data => {
+                    this.Status = data.Status;
+                   // this.CustomerCode = data.CustomerCode;
+                    this.SuccessMessage = data.SuccessMessage;
+                   // this.router.navigate(['/ClientReg2']);
+                    alert("User details added successfully :" + (this.SuccessMessage));
+                }, error => (this.error = error));
+        }
+    }
 
 }
