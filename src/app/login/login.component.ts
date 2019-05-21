@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
+    Status: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -38,23 +39,25 @@ export class LoginComponent implements OnInit {
         this.WalletService.customerLogin(this.f.userName.value,this.f.Password.value)
             .pipe(first())
             .subscribe(
-                data => {
+            data => {
+                this.Status = data.Status;
                     /*this.router.navigate(['/ClientReg2']);*/ //
                     //this.router.navigate(['/PostReg']);
                     let resBody = {};
                     resBody = JSON.parse(data);
+                    
                     console.log("data from resBody"+resBody);
-                    console.log("data from resBody status"+resBody.status);
-                    if(resBody.status && resBody.status == 401)
-                        alert("Please enter correct username");
+                    //console.log("data from resBody status"+resBody.status);
+                    //if(resBody.status && resBody.status == 401)
+                    //    alert("Please enter correct username");
                         //this.showSuccessAlert = "Please enter correct username";
-                    else
+                   // else
+                   // if(data.Status == 200)
                     this.router.navigate(['/CliAccPage']);
                 },
                 error => {
-                    //this.router.navigate(['/ClientReg2']);
-                    //this.router.navigate(['/PostReg']);
-                    //this.router.navigate(['/CliAccPage']);
+                    
+                  // this.router.navigate(['/CliAccPage']);
                     //this.message = "Please enter valid username/password";
                 });
     }
