@@ -13,6 +13,7 @@ import { getLocaleDayNames } from '@angular/common';
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
+    Status: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -39,40 +40,25 @@ export class LoginComponent implements OnInit {
         this.WalletService.customerLogin(this.f.userName.value,this.f.Password.value)
             .pipe(first())
             .subscribe(
-                data => {
+            data => {
                     /*this.router.navigate(['/ClientReg2']);*/ //
                     //this.router.navigate(['/PostReg']);
                     console.log("data from dara"+data);
                     let resBody = {};
                     data = JSON.parse(data);
                     
-                    console.log("data from stringify"+data.role);
-                    console.log("data from stringify"+data.cust_id);
+                    console.log("data from resBody"+data.role);
                     //console.log("data from resBody status"+resBody.status);
-                    //data = JSON.stringify(data);
-                   /*for (var i = 0; i < data.length; i++) {
-                   // for (var key in data) {
-                        var attribute = data[i];
-                        console.log("data from attribute"+attribute);
-                        var attrVal = attribute.role;
-                        console.log("data from key"+attrVal);
-                        userBody.push(attrVal);
-                        var salVer = attribute.sales_verify;
-                        var salVer = attribute.sales_verify;
-                        userBody.push(attrVal);
-                        console.log("userbody is.."+userBody);
-                    }*/
-                    
-                   // if(resBody.status && resBody.status == 401)
-                     //   alert("Please enter correct username");
+                    //if(resBody.status && resBody.status == 401)
+                    //    alert("Please enter correct username");
                         //this.showSuccessAlert = "Please enter correct username";
-                    //else
+                   // else
+                   // if(data.Status == 200)
                     this.router.navigate(['/CliAccPage']);
                 },
                 error => {
-                    //this.router.navigate(['/ClientReg2']);
-                    //this.router.navigate(['/PostReg']);
-                    //this.router.navigate(['/CliAccPage']);
+                    
+                  // this.router.navigate(['/CliAccPage']);
                     //this.message = "Please enter valid username/password";
                 });
     }
