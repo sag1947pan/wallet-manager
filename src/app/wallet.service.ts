@@ -59,19 +59,22 @@ export class WalletService {
         }).pipe( 
             map((res: any) => {
                 if(res !=null && res != ""){
+                    console.log("regResp res"+res);
                     let regResp = JSON.stringify(res);
+                    console.log("regResp regResp"+regResp);
                     let regRespParse = JSON.parse(regResp);
+                    console.log("regResp regRespParse"+regRespParse);
                     if(regRespParse.status == 200 || regRespParse.status == 201){
                         let respBody = JSON.stringify(res.body);
                         let respParse = JSON.parse(respBody);
-                        console.log("while returning"+regResp);
-                        //console.log("while returning"+respBody.status);
+                        // console.log("while returning"+respBody.status);
                         return respBody;
                     }else{
                         console.log("In failure");
                         return regRespParse.status;
                     }
                 }else{
+                    console.log("regResp res"+res);
                     return "Something went wrong, please try again!!";
                 }
                 res['playload'] = res;

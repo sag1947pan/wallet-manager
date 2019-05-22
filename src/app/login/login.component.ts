@@ -3,6 +3,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, Validators } 
 import { WalletService } from 'src/app/wallet.service';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { getLocaleDayNames } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -41,14 +42,31 @@ export class LoginComponent implements OnInit {
                 data => {
                     /*this.router.navigate(['/ClientReg2']);*/ //
                     //this.router.navigate(['/PostReg']);
+                    console.log("data from dara"+data);
                     let resBody = {};
-                    resBody = JSON.parse(data);
-                    console.log("data from resBody"+resBody);
-                    console.log("data from resBody status"+resBody.status);
-                    if(resBody.status && resBody.status == 401)
-                        alert("Please enter correct username");
+                    data = JSON.parse(data);
+                    
+                    console.log("data from stringify"+data.role);
+                    console.log("data from stringify"+data.cust_id);
+                    //console.log("data from resBody status"+resBody.status);
+                    //data = JSON.stringify(data);
+                   /*for (var i = 0; i < data.length; i++) {
+                   // for (var key in data) {
+                        var attribute = data[i];
+                        console.log("data from attribute"+attribute);
+                        var attrVal = attribute.role;
+                        console.log("data from key"+attrVal);
+                        userBody.push(attrVal);
+                        var salVer = attribute.sales_verify;
+                        var salVer = attribute.sales_verify;
+                        userBody.push(attrVal);
+                        console.log("userbody is.."+userBody);
+                    }*/
+                    
+                   // if(resBody.status && resBody.status == 401)
+                     //   alert("Please enter correct username");
                         //this.showSuccessAlert = "Please enter correct username";
-                    else
+                    //else
                     this.router.navigate(['/CliAccPage']);
                 },
                 error => {
