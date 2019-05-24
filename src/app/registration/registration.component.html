@@ -1,0 +1,23 @@
+<app-wallet-header></app-wallet-header>
+
+<div class="custRegContent" style="background: #f9f9f9;">
+      <div class="container formContainer">
+        <div class="formContent">
+            <h2 class="section-title">Registration Form</h2>
+            
+                  <!-- User Information-->
+                      <form [formGroup]="regGroup" (ngsubmit)="onSubmitRegister()">
+                           <mat-radio-group [(ngModel)]="selectedRadio" id="radio1" formControlName="selectedRadio">
+                              <mat-radio-button [value]="Payee">Are you a payee?</mat-radio-button>
+                              <mat-radio-button [value]="Bene">Are you a benefieciery?</mat-radio-button>
+                           </mat-radio-group>
+                                                      
+                           <div>
+                                 <button style='margin:16px' mat-raised-button color="primary" (click)="onSubmitRegister()"> Register</button>
+                           </div> 
+                        </form>
+         </div>
+      </div>
+</div>
+
+            

@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
                         //this.showSuccessAlert = "Please enter correct username";
                    // else
                    // if(data.Status == 200)
-                    this.router.navigate(['/CliAccPage']);
+                    this.router.navigate(['/CliAccPage',data]);
                 },
                 error => {
                     
