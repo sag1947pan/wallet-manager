@@ -8,8 +8,8 @@
                   <!-- User Information-->
                       <form [formGroup]="regGroup" (ngsubmit)="onSubmitRegister()">
                            <mat-radio-group [(ngModel)]="selectedRadio" id="radio1" formControlName="selectedRadio">
-                              <mat-radio-button [value]="Payee">Are you a payee?</mat-radio-button>
-                              <mat-radio-button [value]="Bene">Are you a benefieciery?</mat-radio-button>
+                              <mat-radio-button value="Payee">Are you a payee?</mat-radio-button>
+                              <mat-radio-button value="Bene">Are you a benefieciery?</mat-radio-button>
                            </mat-radio-group>
                                                       
                            <div>
