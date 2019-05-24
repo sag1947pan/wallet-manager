@@ -6,6 +6,7 @@ import { WalletService } from 'src/app/wallet.service';
 import { first } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import {Constants} from 'src/app/resources/constants.services';
 
 @Component({
     selector: 'app-cust-reg',
@@ -30,8 +31,9 @@ export class CustRegComponent implements OnInit {
 
     securityquestion = new FormControl();
 
-    options: string[] = ['Please select Question 1', 'Please select Question 2', 'Please select Question 3'];
-
+   // options: string[] = ['Please select Question 1', 'Please select Question 2', 'Please select Question 3'];
+   options: string[] = Constants.SECURITY_QUESTIONS;
+   countryList: string[] = Constants.COUNTRY_LIST;
     step = 0;
 
     setStep(index: number) {

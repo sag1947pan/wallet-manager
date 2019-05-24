@@ -7,6 +7,7 @@ import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './registration.component.html',

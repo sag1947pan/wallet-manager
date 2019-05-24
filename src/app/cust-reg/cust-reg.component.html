@@ -40,11 +40,9 @@
                                 
                                 <mat-form-field>
                                     <mat-select placeholder="Company Location" formControlName="companyLocation">
-                                            <mat-option value="C1">India</mat-option>
-                                            <mat-option value="C2">Singapore</mat-option>
-                                            <mat-option value="C3">USA</mat-option>
-                                            <mat-option value="C4">UK</mat-option>
-                                            <mat-option value="C5">AUS</mat-option>
+                                        <mat-option *ngFor="let country of countryList" [value]="country">
+                                            {{country}}
+                                        </mat-option>
                                     </mat-select>
 
                                 </mat-form-field>
