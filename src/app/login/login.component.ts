@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { WalletService } from 'src/app/wallet.service';
+import {RegistrationServices} from 'src/app/services/registration.services';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private WalletService: WalletService,
+        private RegistrationServices: RegistrationServices,
         private router: Router,) 
         { }
 
@@ -37,7 +39,8 @@ export class LoginComponent implements OnInit {
         console.log("username.."+this.f.userName.value);
         console.log("password.."+this.f.Password.value);
         console.log("stringfy.."+JSON.stringify(this.loginForm.value));
-        this.WalletService.customerLogin(this.f.userName.value,this.f.Password.value)
+        //this.WalletService.customerLogin(this.f.userName.value,this.f.Password.value)
+        this.RegistrationServices.customerLogin(this.f.userName.value,this.f.Password.value)
             .pipe(first())
             .subscribe(
             data => {

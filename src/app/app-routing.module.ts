@@ -35,7 +35,7 @@ const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'BeneReg', component: BeneRegComponent },
     { path: 'PostReg', component: PostRegComponent },
     { path: 'ForgotPwd', component: PasswordForgotComponent },
-    { path: 'CliAccPage', loadChildren: './client-Acc-Page/client-Acc-Page.module#clientAccPagemodule' }
+   { path: 'CliAccPage', loadChildren: './client-Acc-Page/client-Acc-Page.module#clientAccPagemodule' }
 ]
 
 @NgModule({

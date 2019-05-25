@@ -3,6 +3,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, Validators, F
 import { MatStepperModule } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { WalletService } from 'src/app/wallet.service';
+import { RegistrationServices } from 'src/app/services/registration.services';
 import { first } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -51,6 +52,7 @@ export class CustRegComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
         private router: Router,
         private WalletService: WalletService,
+        private RegistrationServices: RegistrationServices,
         public dialog: MatDialog, ) { }
 
     ngOnInit() {
@@ -190,7 +192,8 @@ export class CustRegComponent implements OnInit {
            }
             
        console.log(group);
-        this.WalletService.customerRegService(JSON.stringify(group))
+      //  this.WalletService.customerRegService(JSON.stringify(group))
+        this.RegistrationServices.customerRegService(JSON.stringify(group))
             .pipe(first())
             .subscribe(data => {
                 console.log("data..."+data);
