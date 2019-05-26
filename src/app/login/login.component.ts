@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
     Status: string;
+    resourcesLoaded: boolean;
+    
 
     constructor(
         private formBuilder: FormBuilder,
@@ -35,6 +37,8 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
        // debugger;
+
+        this.resourcesLoaded = true;
         this.submitted = true;
         console.log("username.."+this.f.userName.value);
         console.log("password.."+this.f.Password.value);
@@ -57,6 +61,7 @@ export class LoginComponent implements OnInit {
                         //this.showSuccessAlert = "Please enter correct username";
                    // else
                    // if(data.Status == 200)
+                this.resourcesLoaded = false;
                     this.router.navigate(['/CliAccPage',data]);
                 },
                 error => {

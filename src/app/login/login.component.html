@@ -17,30 +17,38 @@
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit(f)" ng-show="showSuccessAlert">
                             <div class="input-container">
                                 <i class="fa fa-envelope icon"></i>
-                                <input class="input-field" type="text" placeholder="Email" formControlName="userName" maxlength="50" />                               
+                                <input class="input-field" type="text" placeholder="Email" formControlName="userName" maxlength="50" />
                             </div>
 
 
                             <div class="input-container">
                                 <i class="fa fa-key icon"></i>
-                               
-                                <input class="input-field" type="password" placeholder="Password" formControlName="Password" maxlength="15"/>
+
+                                <input class="input-field" type="password" placeholder="Password" formControlName="Password" maxlength="15" />
                             </div>
 
                             <div>
-                                <button type="submit" mat-raised-button >Login</button>
+                                <button type="submit" mat-raised-button>Login</button>
                             </div>
 
                             <div>
-                                <a mat-raised-button  (click)="ForgotPasswordPage()">Forgot Password?</a>
+                                <a mat-raised-button (click)="ForgotPasswordPage()">Forgot Password?</a>
                             </div>
 
                             <div>
-                                <button type="button" mat-raised-button  (click)="RegisterInfo()"> New to Wallet Manager?  Signup</button>
-                                
+                                <button type="button" mat-raised-button (click)="RegisterInfo()"> New to Wallet Manager?  Signup</button>
+
                             </div>
 
-                        </form>
+                            <div>
+
+                                <mat-spinner style="margin:0 auto" *ngIf="resourcesLoaded"></mat-spinner>
+                            </div>
+                           
+                           
+
+                            
+</form>
 
                     </div>
                 </div>

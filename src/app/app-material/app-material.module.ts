@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatSidenavModule, MatListModule } from '@angular/material';
+import { MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatChipsModule, MatExpansionModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatDialogModule, MatTabsModule, MatSidenavModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,6 +26,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
       MatSidenavModule,
       MatToolbarModule,
       MatListModule,
+      MatProgressSpinnerModule,
   ],
   exports: [
       CommonModule,
@@ -45,6 +46,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
       MatSidenavModule,
       MatToolbarModule,
       MatListModule,
+      MatProgressSpinnerModule,
     ]
 })
 export class AppMaterialModule { }

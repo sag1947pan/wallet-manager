@@ -72,7 +72,7 @@ export class AddUserComponent implements OnInit {
                    // this.CustomerCode = data.CustomerCode;
                     this.SuccessMessage = data.SuccessMessage;
                    // this.router.navigate(['/ClientReg2']);
-                    alert("User details added successfully :" + (this.SuccessMessage));
+                    alert("User details added successfully" );
                 }, error => (this.error = error));
         }
     }
