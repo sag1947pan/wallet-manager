@@ -18,10 +18,10 @@ import { MydetailsComponent } from './mydetails/mydetails.component';
 import { RoleProfileComponent } from './role-profile/role-profile.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { InitiatepaymentsComponent } from './initiatepayments/initiatepayments.component';
-import { ClientAccHeaderComponent } from './client-acc-header/client-acc-header.component';
+//import { ClientAccHeaderComponent } from './client-acc-header/client-acc-header.component';
 
 @NgModule({
-    declarations: [AdminComponent, MyProfileComponent, HomeComponent, AddUserComponent, PaymentProfileComponent, BankDetailsComponent, MydetailsComponent, RoleProfileComponent, UpdatePasswordComponent, InitiatepaymentsComponent, ClientAccHeaderComponent],
+    declarations: [AdminComponent, MyProfileComponent, HomeComponent, AddUserComponent, PaymentProfileComponent, BankDetailsComponent, MydetailsComponent, RoleProfileComponent, UpdatePasswordComponent, InitiatepaymentsComponent,],
   imports: [
       CommonModule,
       ReactiveFormsModule,
