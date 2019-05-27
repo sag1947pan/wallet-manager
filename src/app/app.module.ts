@@ -15,13 +15,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material/app-material.module';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+
 
 //Components
 import { AppComponent } from './app.component';
 import { SelfRegistrationComponent } from './self-registration/self-registration.component';
-import { WalletHeaderComponent } from './wallet-header/wallet-header.component';
-import { WalletFooterComponent } from './wallet-footer/wallet-footer.component';
-import { ClientRegComponent } from './client-reg/client-reg.component';
+//import { WalletHeaderComponent } from './wallet-header/wallet-header.component';
+//import { WalletFooterComponent } from './wallet-footer/wallet-footer.component';
+//import { ClientRegComponent } from './client-reg/client-reg.component';
 import { AppConstantsComponent } from './app-constants/app-constants.component';
 import { WalletBodyComponent } from './wallet-body/wallet-body.component';
 import { Clientreg2Component } from './clientreg2/clientreg2.component';
@@ -37,13 +39,14 @@ import { PasswordForgotComponent } from './password-forgot/password-forgot.compo
 import { from } from 'rxjs';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SelfRegistrationComponent,
-        WalletHeaderComponent,
-        WalletFooterComponent,
-        ClientRegComponent,
+        // WalletHeaderComponent,
+        // WalletFooterComponent,
+       // ClientRegComponent,
         AppConstantsComponent,
         WalletBodyComponent,
         Clientreg2Component,
@@ -56,6 +59,7 @@ import { from } from 'rxjs';
         BeneRegComponent,       
         PostRegComponent,
       PasswordForgotComponent,
+      
 
   ],
   imports: [
@@ -72,6 +76,7 @@ import { from } from 'rxjs';
       MatRadioModule,
       MatFormFieldModule,
       MatInputModule,
+      SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

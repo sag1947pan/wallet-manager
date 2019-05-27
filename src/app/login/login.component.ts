@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
             data => {
+                this.WalletService.isUserLoggedIn = true;
                     /*this.router.navigate(['/ClientReg2']);*/ //
                     //this.router.navigate(['/PostReg']);
                     console.log("data from dara"+data);
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/CliAccPage',data]);
                 },
                 error => {
-                    
+                    this.WalletService.isUserLoggedIn = false;
                   // this.router.navigate(['/CliAccPage']);
                     //this.message = "Please enter valid username/password";
                 });
