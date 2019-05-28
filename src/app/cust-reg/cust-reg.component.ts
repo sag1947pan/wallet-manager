@@ -8,6 +8,7 @@ import { first } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import {Constants} from 'src/app/resources/constants.services';
+import { ErrorMessages} from 'src/app/resources/error.messages';
 
 @Component({
     selector: 'app-cust-reg',
@@ -35,6 +36,7 @@ export class CustRegComponent implements OnInit {
    // options: string[] = ['Please select Question 1', 'Please select Question 2', 'Please select Question 3'];
    options: string[] = Constants.SECURITY_QUESTIONS;
    countryList: string[] = Constants.COUNTRY_LIST;
+  // countryCode: string[] = ['91','44','1','65','61'];
     step = 0;
 
     setStep(index: number) {
@@ -108,11 +110,12 @@ export class CustRegComponent implements OnInit {
            
             //role: ['', Validators.required],
             yourEmailAddress: ['', [Validators.required, Validators.email]],
+           // countryCode: ['', Validators.required],
             yourContactNumber: ['', Validators.required],
             userPassword: ['', Validators.required],
             userConfirmPassword: ['', Validators.required],
 
-        });
+        },{validator: this.checkIfMatchingPasswords('userPassword', 'userConfirmPassword')});
 
         this.tradingAddressGroup = this.formBuilder.group({
             RoadNo: ['', Validators.required],
@@ -141,6 +144,20 @@ export class CustRegComponent implements OnInit {
            // Password: [''],
         });
     }
+//Check the password matching
+checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+    return (group: FormGroup) => {
+      let passwordInput = group.controls[passwordKey],
+         passwordConfirmationInput = group.controls[passwordConfirmationKey];
+       if (passwordInput.value !== passwordConfirmationInput.value) {
+        this.SuccessMessage = "Password and confirm password should be same";
+        return passwordConfirmationInput.setErrors({notEquivalent: true})
+      }
+      else {
+          return passwordConfirmationInput.setErrors(null);
+      }
+    }
+  }
 
     registerFields(){
         return this.formBuilder.group({
@@ -220,7 +237,18 @@ export class CustRegComponent implements OnInit {
                // this.router.navigate(['/Main']);
                 //alert(this.SuccessMessage);
                 
-            }, error => (this.error = error));
+            }, error => {
+                console.log("failure class"+error);
+                let errorStatus = error.status;                    
+                if(errorStatus == '401'){
+                    this.SuccessMessage = ErrorMessages.LOGIN_401;
+                    //  errorMessage = `status: ${error.status},Message: ${ErrorMessages.LOGIN_401}`;                        
+                }else if(errorStatus == '500'){
+                    this.SuccessMessage = ErrorMessages.LOGIN_500;
+                }else{
+                    this.SuccessMessage = "Validation error";
+                }
+            });//(this.error = error));
 
         // }
 
