@@ -11,8 +11,8 @@ import { WalletHeaderComponent } from './wallet-header/wallet-header.component';
 import { WalletBodyComponent } from './wallet-body/wallet-body.component';
 import { WalletFooterComponent } from './wallet-footer/wallet-footer.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { ClientRegComponent } from './client-reg/client-reg.component'; 
-import { Clientreg2Component } from './clientreg2/clientreg2.component'; 
+//import { ClientRegComponent } from './client-reg/client-reg.component'; 
+//import { Clientreg2Component } from './clientreg2/clientreg2.component'; 
 import { LoginComponent } from './login/login.component';
 import { CustRegComponent } from './cust-reg/cust-reg.component';
 import { UserRegComponent } from './user-reg/user-reg.component';
@@ -27,8 +27,8 @@ const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'Main', component: WalletBodyComponent },
     { path: 'Self', component: SelfRegistrationComponent },
     { path: 'Registration', component: RegistrationComponent },
-    { path: 'ClientReg', component: ClientRegComponent },
-    { path: 'ClientReg2', component: Clientreg2Component },
+    //{ path: 'ClientReg', component: ClientRegComponent },
+    //{ path: 'ClientReg2', component: Clientreg2Component },
     { path: 'Login', component: LoginComponent },
     { path: 'FileUpload', component: ClientFileUploadComponent },
     { path: 'UserReg', component: UserRegComponent },

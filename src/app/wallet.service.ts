@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 })
 export class WalletService {
 
+    public isUserLoggedIn: boolean;
+
     constructor(private http: HttpClient) { }
 
 

@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletService } from '../wallet.service';
 
 @Component({
-  selector: 'app-wallet-header',
-  templateUrl: './wallet-header.component.html',
-  styleUrls: ['./wallet-header.component.css']
+    selector: 'app-wallet-header',
+    templateUrl: './wallet-header.component.html',
+    styleUrls: ['./wallet-header.component.css']
 })
 export class WalletHeaderComponent implements OnInit {
 
-  constructor() { }
+    loggedInflag: boolean;
+    constructor(private walletService: WalletService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.loggedInflag = this.walletService.isUserLoggedIn;
+    }
 
 }

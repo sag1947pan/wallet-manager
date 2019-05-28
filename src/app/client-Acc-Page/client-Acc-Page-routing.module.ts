@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import { AdminComponent } from './admin/admin.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { HomeComponent } from './home/home.component';

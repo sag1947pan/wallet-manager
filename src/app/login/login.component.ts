@@ -39,7 +39,10 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
        // debugger;
-
+        if(this.loginForm.invalid){
+            this.errorMessage = "Username or Password can not be empty";
+            return;
+        }
         this.resourcesLoaded = true;
         this.submitted = true;
         console.log("username.."+this.f.userName.value);
@@ -50,6 +53,9 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
             data => {
+                this.WalletService.isUserLoggedIn = true;
+                    /*this.router.navigate(['/ClientReg2']);*/ //
+                    //this.router.navigate(['/PostReg']);
                     console.log("data from dara"+data);
                     let resBody = {};
                     data = JSON.parse(data);
@@ -71,7 +77,10 @@ export class LoginComponent implements OnInit {
                     }
                     //window.alert(errorMessage);
 
-                   //this.message = "Please enter valid username/password";
+                   //this.message = "Please enter valid username/password"
+                    this.WalletService.isUserLoggedIn = false;
+                  // this.router.navigate(['/CliAccPage']);
+                    //this.message = "Please enter valid username/password";
                 });
     }
 
