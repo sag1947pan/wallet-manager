@@ -168,12 +168,17 @@ export class CustRegComponent implements OnInit {
     onSubmitTradingInfo() {
         debugger;
         this.Submitted2 = true;
-        if(this.personalInfoGroup.invalid || this.compInfoGroup.invalid || this.securityInfoGroup.invalid){
-            console.log("not a valid request");
-            this.SuccessMessage = "Please provide registration information";
+        if(this.compInfoGroup.invalid){
+            this.SuccessMessage = "Please provide company information";
+            return;
+        }else if(this.personalInfoGroup.invalid){
+            this.SuccessMessage = "Please provide personal information";
+            return;
+        }else if(this.securityInfoGroup.invalid){
+            this.SuccessMessage = "Please provide security information";
             return;
         }
-        console.log(this.personalInfoGroup.value);
+            console.log(this.personalInfoGroup.value);
             console.log(this.securityInfoGroup.value);
             console.log(this.compInfoGroup.value);
         //Sending attributes to back end has two ways.. below and ... function
@@ -202,7 +207,8 @@ export class CustRegComponent implements OnInit {
             .subscribe(data => {
                 console.log("data..."+data);
                 //this.CustomerCode = data.CustomerCode;
-                if(data.Status == 201){
+                data = JSON.parse(data);
+                if(data.status == 201){
                     this.SuccessMessage = data;
                     this.router.navigate(['/CustRegSuccess']);
                 }else{

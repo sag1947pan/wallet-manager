@@ -35,7 +35,8 @@ export class RegistrationServices {
                     let regRespParse = JSON.parse(regResp)
                     if(regRespParse.status == 201){
                         console.log("In success");
-                        return regRespParse.Message;    
+                        //return regRespParse.Message; 
+                        return regResp;
                     }else{
                         console.log("In failure");
                         //return regRespParse.Message;
