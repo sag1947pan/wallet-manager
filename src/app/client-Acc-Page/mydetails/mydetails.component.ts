@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { FormBuilder, FormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './mydetails.component.html',
   styleUrls: ['./mydetails.component.css']
 })
-export class MydetailsComponent implements OnInit {
+export class MydetailsComponent implements OnInit  {
 
     mydetailsGroup: FormGroup;
+
+    @Input() editable: boolean = false;
 
     options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
 
@@ -31,21 +33,17 @@ export class MydetailsComponent implements OnInit {
         this.mydetailsGroup = this.formBuilder.group({
 
 
-            myName: ['', Validators.required],
-            myEmail: ['', Validators.required],
-            myMobile: ['', Validators.required],
-            mywork: ['', Validators.required],
-
-            //currPassword: ['', Validators.required],
-            //NewPasword: ['', Validators.required],
-            //confirmNewPwd: ['', Validators.required],
-            //confirmOTP: ['', Validators.required],
-
-            ////Role Profile
-            //myRoleProfile: ['', Validators.required],
-            //mydesgCtrl: ['', Validators.required],
+            myName: ['', ''],
+            mymiddleName: ['', ''],
+            myLastName: ['', ''],
+            myRoleProfile: ['', ''],
+            myEmail: ['', ''],
+            myMobile: ['', ''],
+            myworkphone: ['', ''],            
 
         });
+
+       
   }
 
 }
