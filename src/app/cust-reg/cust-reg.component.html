@@ -73,7 +73,7 @@
                                 </mat-form-field>
 
                                 <mat-form-field>
-                                    <input matInput placeholder="Middle Name" formControlName="userMiddleName" maxlength="30" required>
+                                    <input matInput placeholder="Middle Name" formControlName="userMiddleName" maxlength="30">
                                 </mat-form-field>
 
                                 <mat-form-field>
@@ -91,6 +91,13 @@
                                 </mat-form-field>
 
                                 <mat-form-field>
+                                    <!--<mat-select placeholder="Country Code" formControlName="countryCode">
+                                        <mat-option *ngFor="let option of codes" [value]="code">
+                                            {{code}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field>-->
                                     <input matInput placeholder="Mobile Number" formControlName="yourContactNumber" maxlength="13" required>
                                 </mat-form-field>
                             </div>
@@ -98,11 +105,11 @@
                             <div>
 
                                 <mat-form-field>
-                                    <input matInput placeholder="Password" formControlName="userPassword" maxlength="13" required>
+                                    <input matInput placeholder="Password" [type]="'password'" formControlName="userPassword" minlength="8" maxlength="13" required>
                                 </mat-form-field>
 
                                 <mat-form-field>
-                                    <input matInput placeholder="Confirm Password" formControlName="userConfirmPassword" maxlength="8" required>
+                                    <input matInput placeholder="Confirm Password" [type]="'password'" formControlName="userConfirmPassword" minlength="8" maxlength="13" required>
                                 </mat-form-field>
                             </div>
                             </mat-card>
