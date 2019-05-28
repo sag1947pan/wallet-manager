@@ -5,6 +5,7 @@ import {RegistrationServices} from 'src/app/services/registration.services';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
+import { ErrorMessages} from 'src/app/resources/error.messages';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
     Status: string;
+    errorMessage: string;
     resourcesLoaded: boolean;
     
 
@@ -48,26 +50,28 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
             data => {
-                    /*this.router.navigate(['/ClientReg2']);*/ //
-                    //this.router.navigate(['/PostReg']);
                     console.log("data from dara"+data);
                     let resBody = {};
                     data = JSON.parse(data);
                     
-                    console.log("data from resBody"+data.role);
-                    //console.log("data from resBody status"+resBody.status);
-                    //if(resBody.status && resBody.status == 401)
-                    //    alert("Please enter correct username");
-                        //this.showSuccessAlert = "Please enter correct username";
-                   // else
-                   // if(data.Status == 200)
-                this.resourcesLoaded = false;
+                    console.log("data from resBody"+data.role);                    
+                    this.resourcesLoaded = false;
                     this.router.navigate(['/CliAccPage',data]);
                 },
                 error => {
-                    
-                  // this.router.navigate(['/CliAccPage']);
-                    //this.message = "Please enter valid username/password";
+                    console.log("failure class"+error);
+                    let errorStatus = error.status;                    
+                    if(errorStatus == '401'){
+                        this.errorMessage = ErrorMessages.LOGIN_401;
+                      //  errorMessage = `status: ${error.status},Message: ${ErrorMessages.LOGIN_401}`;                        
+                    }else if(errorStatus == '500'){
+                        this.errorMessage = ErrorMessages.LOGIN_500;
+                    }else{
+                        this.errorMessage = "Validation error";
+                    }
+                    //window.alert(errorMessage);
+
+                   //this.message = "Please enter valid username/password";
                 });
     }
 

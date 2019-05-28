@@ -12,8 +12,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
                     <h3 class="col-md-4">Login</h3>
-                    <div class="panel-body">
-                       
+                    <div class="panel-body">                      
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit(f)" ng-show="showSuccessAlert">
                             <div class="input-container">
                                 <i class="fa fa-envelope icon"></i>
@@ -39,11 +38,14 @@
                                 <button type="button" mat-raised-button (click)="RegisterInfo()"> New to Wallet Manager?  Signup</button>
 
                             </div>
-
                             <div>
+                                {{errorMessage}}
+                            </div>
+
+                            <!--div>
 
                                 <mat-spinner style="margin:0 auto" *ngIf="resourcesLoaded"></mat-spinner>
-                            </div>
+                            </div>-->
                            
                            
 

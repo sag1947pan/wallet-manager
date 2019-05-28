@@ -4,8 +4,10 @@
     <form [formGroup]="regGroup">
     <div class="container formContainer">
         <div class="formContent">
-            <h2 class="section-title">Client Registration Form</h2>
-            
+            <h2 class="section-title">Registration Form</h2>
+            <div>
+                    {{SuccessMessage}}
+            </div>
             <!--<form [formGroup]="compInfoGroup">-->
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <!-- User Information-->
@@ -29,6 +31,7 @@
                             <div>
                                 <mat-form-field>
                                     <input matInput placeholder="Company Name" formControlName="companyName" maxlength="50" required>
+                                    <div class="errorMessage" *ngIf="compInfoGroup.controls.companyName.touched && !compInfoGroup.controls.companyName.valid">Company Name is required</div>
                                 </mat-form-field>
 
                                 <mat-form-field>

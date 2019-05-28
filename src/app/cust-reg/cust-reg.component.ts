@@ -81,9 +81,9 @@ export class CustRegComponent implements OnInit {
         })
         this.regGroup = new FromGroup(group);*/
         this.compInfoGroup = this.formBuilder.group({
-            companyName: [undefined, Validators.required],
+            companyName: ['', Validators.required],
             companyRegNumber: [undefined],
-            companyLocation:[undefined, Validators.required],
+            companyLocation:['', Validators.required],
 
            /* userFirstName: [undefined, Validators.required],
             userMiddleName: [undefined],
@@ -168,7 +168,11 @@ export class CustRegComponent implements OnInit {
     onSubmitTradingInfo() {
         debugger;
         this.Submitted2 = true;
-
+        if(this.personalInfoGroup.invalid || this.compInfoGroup.invalid || this.securityInfoGroup.invalid){
+            console.log("not a valid request");
+            this.SuccessMessage = "Please provide registration information";
+            return;
+        }
         console.log(this.personalInfoGroup.value);
             console.log(this.securityInfoGroup.value);
             console.log(this.compInfoGroup.value);
@@ -198,10 +202,18 @@ export class CustRegComponent implements OnInit {
             .subscribe(data => {
                 console.log("data..."+data);
                 //this.CustomerCode = data.CustomerCode;
-                this.SuccessMessage = data;
+                if(data.Status == 201){
+                    this.SuccessMessage = data;
+                    this.router.navigate(['/CustRegSuccess']);
+                }else{
+                    this.SuccessMessage = data.Message;
+                }
+
+                
                // this.router.navigate(['/ClientReg2']);
                // this.router.navigate(['/Main']);
-                alert(this.SuccessMessage);
+                //alert(this.SuccessMessage);
+                
             }, error => (this.error = error));
 
         // }

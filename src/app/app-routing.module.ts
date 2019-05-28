@@ -19,6 +19,7 @@ import { UserRegComponent } from './user-reg/user-reg.component';
 import { ClientFileUploadComponent } from './client-file-upload/client-file-upload.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
+import { SuccessRegComponent } from './registration/cust-reg.success.component'
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
 
 const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'BeneReg', component: BeneRegComponent },
     { path: 'PostReg', component: PostRegComponent },
     { path: 'ForgotPwd', component: PasswordForgotComponent },
+    { path: 'CustRegSuccess', component: SuccessRegComponent},
    { path: 'CliAccPage', loadChildren: './client-Acc-Page/client-Acc-Page.module#clientAccPagemodule' }
 ]
 

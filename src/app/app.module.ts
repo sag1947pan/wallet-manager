@@ -34,6 +34,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
+import { SuccessRegComponent } from './registration/cust-reg.success.component'
 import { from } from 'rxjs';
 
 
@@ -55,6 +56,7 @@ import { from } from 'rxjs';
         DialogComponent,
         BeneRegComponent,       
         PostRegComponent,
+        SuccessRegComponent,
       PasswordForgotComponent,
 
   ],
