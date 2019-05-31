@@ -19,11 +19,13 @@ export interface PeriodicElement {
 const ELEMENT_DATA: PeriodicElement[] = [
     { position: 1, userId: 'veeratest1@test.com', role: 'Admin', status: 'Active' },
     { position: 2, userId: 'veeratest2@test.com', role: 'Operations', status: 'Active' },
-    { position: 3, userId: 'veeratest3@test.com', role: 'Authorizer', status: 'Active' },
-    { position: 4, userId: 'kartheek2@test.com', role: 'Operations', status: 'InActive' },
-    { position: 5, userId: 'ranjith@test.com', role: 'Authorizer', status: 'InActive' },
-    { position: 6, userId: 'ranjith9@test.com', role: 'Operations', status: 'InActive' },   
+    // { position: 3, userId: 'veeratest3@test.com', role: 'Authorizer', status: 'Active' },
+    // { position: 4, userId: 'kartheek2@test.com', role: 'Operations', status: 'InActive' },
+    // { position: 5, userId: 'ranjith@test.com', role: 'Authorizer', status: 'InActive' },
+    // { position: 6, userId: 'ranjith9@test.com', role: 'Operations', status: 'InActive' },   
 ];
+
+
 
 
 
