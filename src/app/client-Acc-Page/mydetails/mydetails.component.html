@@ -9,45 +9,42 @@
             <div>
                 <mat-form-field appearance="outline">
                     <mat-label>Name</mat-label>
-                    <input matInput placeholder="Name" formControlName="myName" [readonly]="!editable">
+                    <input matInput placeholder="Name" formControlName="first_name"
+                           [readonly]="!editable" [value]="mydetailsInfo.first_name">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Middle Name</mat-label>
-                    <input matInput placeholder="Middle Name" formControlName="mymiddleName" [readonly]="!editable">
+                    <input matInput placeholder="Middle Name" formControlName="middle_name" [readonly]="!editable" [value]="mydetailsInfo.middle_name">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Last Name" formControlName="myLastName" [readonly]="!editable">
-                </mat-form-field>               
+                    <input matInput placeholder="Last Name" formControlName="last_name" [readonly]="!editable" [value]="mydetailsInfo.last_name">
+                </mat-form-field>
 
             </div>
             <div>
-                <mat-form-field appearance="outline">
+                <!--<mat-form-field appearance="outline">
                     <mat-label>E-mail</mat-label>
                     <input matInput placeholder="E-mail" formControlName="myEmail" [readonly]="!editable">
-                </mat-form-field>
+                </mat-form-field>-->
 
                 <mat-form-field appearance="outline">
                     <mat-label>Role</mat-label>
-                    <input matInput placeholder="Role" formControlName="myRoleProfile" [readonly]="!editable">
-                    <!--<mat-select placeholder="Role" formControlName="myRoleProfile">
-        <mat-option *ngFor="let option of Roles" [value]="option">
-            {{option}}
-        </mat-option>
-    </mat-select>-->
+                    <input matInput placeholder="Role" formControlName="role" [readonly]="!editable" [value]="mydetailsInfo.role">
+                
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="outline">
                     <mat-label>Mobile</mat-label>
-                    <input matInput placeholder="Mobile" formControlName="myMobile" [readonly]="!editable">
+                    <input matInput placeholder="Mobile" formControlName="mobile_num" [readonly]="!editable" [value]="mydetailsInfo.mobile_num">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Work Phone</mat-label>
-                    <input matInput placeholder="Work Phone" formControlName="myworkphone" [readonly]="!editable">
+                    <input matInput placeholder="Work Phone" formControlName="desk_num" [readonly]="!editable" [value]="mydetailsInfo.desk_num">
                 </mat-form-field>
             </div>
         </mat-card-content>

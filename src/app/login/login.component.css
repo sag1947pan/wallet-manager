@@ -55,6 +55,13 @@
     color: white;
 }
 
+//Spinner
+.md-spinner{
+    float:left;
+    width: 10px;
+    height : 10px;
+}
+
 .separator {
     display: flex;
     align-items: center;
