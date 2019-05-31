@@ -18,6 +18,7 @@ export class MydetailsComponent implements OnInit {
     @Input() editable: boolean = false;
     error: any;
     success: boolean
+    resourcesLoaded :boolean
     private mydetailsInfo: MyDetailsInfo = new MyDetailsInfo();
 
     options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
@@ -50,12 +51,16 @@ export class MydetailsComponent implements OnInit {
 
     ngOnInit() {
 
+       this.resourcesLoaded = true;
+
         this.custUserDetails.GetUserProfile()
             .pipe(first())
             .subscribe((res) => {
 
                 const tempData = JSON.parse(res);
                 this.mydetailsInfo = tempData;
+
+                this.resourcesLoaded = false;
 
                 //console.log("Ranjith Test data" + res);
 
