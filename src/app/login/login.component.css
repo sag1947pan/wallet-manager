@@ -7,7 +7,7 @@
     display: -ms-flexbox; /* IE10 */
     display: flex;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
   
 }
 
@@ -50,38 +50,10 @@
 
 .mat-raised-button {
     background-color: dodgerblue;
-    margin-bottom: 15px;
+  
     width: 100%;
     color: white;
 }
+    
 
-//Spinner
-.md-spinner{
-    float:left;
-    width: 10px;
-    height : 10px;
-}
-
-.separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 15px;
-    width: 15px;
-}
-
-    .separator::before, .separator::after {
-        content: '';
-        flex: 1;
-        border-bottom: 1px solid #000;
-    }
-
-    .separator::before {
-        margin-right: .25em;
-    }
-
-    .separator::after {
-        margin-left: .25em;
-        
-    }
     

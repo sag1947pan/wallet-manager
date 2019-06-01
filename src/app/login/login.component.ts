@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 import { WalletService } from 'src/app/wallet.service';
 import {RegistrationServices} from 'src/app/services/registration.services';
 import { first } from 'rxjs/operators';
@@ -29,14 +29,15 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            userName: ['', Validators.required],
-            Password: ['', Validators.required],
+            userName: ['',Validators.compose([Validators.required, emailValidator])],
+            Password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
             showSuccessAlert:[''],
         });
     }
 
     get f() { return this.loginForm.controls; }
 
+    
     onSubmit() {
        // debugger;
         if(this.loginForm.invalid){
@@ -69,11 +70,14 @@ export class LoginComponent implements OnInit {
                     let errorStatus = error.status;                    
                     if(errorStatus == '401'){
                         this.errorMessage = ErrorMessages.LOGIN_401;
+                        this.resourcesLoaded = false;
                       //  errorMessage = `status: ${error.status},Message: ${ErrorMessages.LOGIN_401}`;                        
                     }else if(errorStatus == '500'){
                         this.errorMessage = ErrorMessages.LOGIN_500;
+                        this.resourcesLoaded = false;
                     }else{
                         this.errorMessage = "Validation error";
+                        this.resourcesLoaded = false;
                     }
                     //window.alert(errorMessage);
 
@@ -93,4 +97,14 @@ export class LoginComponent implements OnInit {
 
     }
 
+    
+
+
+}
+
+export function emailValidator(control: FormControl): {[key: string]: any} {
+    var emailRegexp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;    
+    if (control.value && !emailRegexp.test(control.value)) {
+        return {invalidEmail: true};
+    }
 }
