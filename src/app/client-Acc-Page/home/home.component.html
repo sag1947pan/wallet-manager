@@ -13,9 +13,12 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <mat-icon>dashboard</mat-icon>
-                            Dashboard
+                            <mat-icon>dashboard</mat-icon>                           
                         </mat-panel-title>
+
+                        <mat-panel-description>
+                          Dashboard
+                        </mat-panel-description>
 
                     </mat-expansion-panel-header>
 
@@ -27,10 +30,15 @@
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <mat-icon>business_center</mat-icon>
-                            Company Profile
                         </mat-panel-title>
+                        <mat-panel-description>
+                            Company Profile
+                            </mat-panel-description>
+                      
 
                     </mat-expansion-panel-header>
+                    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+                            <ul fxLayout fxLayoutGap="15px" class="navigation-items">
                     <li class="nav-item">
                         <a class="nav-link" routerLink='/CliAccPage/Home/Admin' routerLinkActive='active'>Company Details</a>
                     </li>
@@ -43,25 +51,36 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink='/CliAccPage/Home/BankDetails' routerLinkActive='active'>Bank/Card Details</a>
                     </li>
+                            </ul>
+                    </div>
                 </mat-expansion-panel>
                 <mat-divider></mat-divider>
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
-                            <!--<mat-icon>account_circle</mat-icon>-->
+                            
                             <mat-icon>person</mat-icon>
-                            My Profile
                         </mat-panel-title>
+                            <mat-panel-description>
+                            My Profile
+                            </mat-panel-description>
+                        
                     </mat-expansion-panel-header>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink='/CliAccPage/Home/MyDetails' routerLinkActive='active'>My Details</a>
-                    </li>
-                    <!--<li class="nav-item">
-                        <a class="nav-link" routerLink='/CliAccPage/Home/Role' routerLinkActive='active'>Role</a>
-                    </li>-->
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink='/CliAccPage/Home/UpdatePassword' routerLinkActive='active'>Update Password</a>
-                    </li>
+
+                    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+                            <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+                   
+					  <li class="nav-item">
+                            <a class="nav-link" routerLink='/CliAccPage/Home/MyDetails' routerLinkActive='active'>My Details</a>
+                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link" routerLink='/CliAccPage/Home/Role' routerLinkActive='active'>Role</a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink='/CliAccPage/Home/UpdatePassword' routerLinkActive='active'>Update Password</a>
+                        </li>
+                            </ul>
+                    </div>
                 </mat-expansion-panel>
 
                 <mat-divider></mat-divider>
@@ -69,9 +88,17 @@
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <mat-icon>account_balance_wallet</mat-icon>
-                            Payment Transfers
                         </mat-panel-title>
+
+                        <mat-panel-description>
+
+                            Payment Transfers
+                        </mat-panel-description>
+                       
                     </mat-expansion-panel-header>
+                    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+                            <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+                  
                     <li class="nav-item">
                         <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Initiate Payments</a>
                     </li>
@@ -84,6 +111,8 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>
                     </li>
+                            </ul>
+                    </div>
                 </mat-expansion-panel>
 
             </ul>
