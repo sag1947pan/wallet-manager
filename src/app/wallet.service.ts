@@ -104,29 +104,33 @@ export class WalletService {
         );
     }
 
-    //Get Users Summary
+    //Get Users Summary    
 
     GetUsersSummary() {
-        return this.http.get<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users-summary', {
+        return this.http.get<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customerUsersSummary', {
             params: new HttpParams()
                 .set('Access-Control-Allow-Origin', '*')
-                .set('userName', 'veeratest1@test.com')
+                .set('userName', 'kartheek1@test.com')
                 .set('customerId', '100000000'),
             observe: 'response'
         }).pipe(
             map((res: any) => {
-                if (res != null && res != "") {
-                    console.log("regResp res" + res);
+            if (res != null && res != "")
+            {
+                    //console.log("regResp res" + res);
                     let regResp = JSON.stringify(res);
-                    console.log("regResp regResp" + regResp);
+                    //console.log("regResp regResp" + regResp);
                     let regRespParse = JSON.parse(regResp);
-                    console.log("regResp regRespParse" + regRespParse);
+                    //console.log("regResp regRespParse" + regRespParse);
+
                     if (regRespParse.status == 200 || regRespParse.status == 201) {
                         let respBody = JSON.stringify(res.body);
                         let respParse = JSON.parse(respBody);
-                        
+
                         return respBody;
-                    } else {
+                       // return respParse;
+                    }
+                    else { // If no proper response
                         console.log("In failure");
                         return regRespParse.status;
                     }
@@ -134,8 +138,6 @@ export class WalletService {
                     console.log("regResp res" + res);
                     return "Something went wrong, please try again!!";
                 }
-                res['playload'] = res;
-                return res['playload'];
             })
         );
     }
