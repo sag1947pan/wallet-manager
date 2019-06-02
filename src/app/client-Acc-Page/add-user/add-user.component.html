@@ -11,19 +11,20 @@
                             <table class="table table-striped">
                               <thead>
                                   <tr>
-                                    <th>Role</th>
-                                    <th>Count</th>                                  
+                                    <th>Name</th>
+                                    <th>User Id</th>     
+                                    <th>Role</th>                             
                                   </tr>
                               </thead>
                               <tbody>
                                 <tr *ngFor="let userInfo of usersInfo">
-                                  <td>{{ userInfo.role }}</td>
-                                  <td>{{ userInfo.count }}</td>                                
+                                  <td>{{ userInfo.full_name}}</td>
+                                  <td>{{ userInfo.user_id }}</td>    
+                                  <td>{{ userInfo.role }}</td>                             
                                 </tr>
                               </tbody>
                             </table>
                           </div>
-
                    
                
             </ng-template>

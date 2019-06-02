@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders, HttpErrorResponse,HttpParams } from '@angular/
 import { Observable, of, throwError } from 'rxjs';
 import { clientreg } from 'src/app/client-reg/client-reg';
 import { map } from 'rxjs/operators';
+import { UsersDetails } from './client-Acc-Page/add-user/UserInfo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WalletService {
 
-    public isUserLoggedIn: boolean;
+    public isUserLoggedIn: boolean;   
 
     constructor(private http: HttpClient) { }
 
@@ -141,6 +142,53 @@ export class WalletService {
             })
         );
     }
+
+
+    GetUsersDetails() {
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json',
+              //'Authorization': 'my-auth-token'
+            })
+          };
+        let options = {headers: HttpHeaders, search:{}};
+
+        return this.http.get<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customerUsersDetails', {
+            params: new HttpParams()
+                .set('Access-Control-Allow-Origin', '*')
+               
+                .set('userName', 'kartheek1@test.com')
+                .set('customerId', '100000000'),
+            observe: 'response'
+        }).pipe(
+            map((res: any) => {
+            if (res != null && res != "")
+            {
+                    //console.log("regResp res" + res);
+                    let regResp = JSON.stringify(res);
+                    //console.log("regResp regResp" + regResp);
+                    let regRespParse = JSON.parse(regResp);
+                    //console.log("regResp regRespParse" + regRespParse);
+
+                    if (regRespParse.status == 200 || regRespParse.status == 201) {
+                        let respBody = JSON.stringify(res.body);
+                        let respParse = JSON.parse(respBody);
+
+                        return respBody;
+                       // return respParse;
+                    }
+                    else { // If no proper response
+                        console.log("In failure");
+                        return regRespParse.status;
+                    }
+                } else {
+                    console.log("regResp res" + res);
+                    return "Something went wrong, please try again!!";
+                }
+            })
+        );
+    }
+
 
 
 

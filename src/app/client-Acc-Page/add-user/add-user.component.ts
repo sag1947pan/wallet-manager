@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { WalletService } from 'src/app/wallet.service';
 import { first } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material'
-import {UserInfo} from './UserInfo'
+import {UsersDetails} from './UserInfo'
 import { from } from 'rxjs';
 
 
@@ -24,8 +24,8 @@ export class AddUserComponent implements OnInit {
     CustomerCode; string;
     SuccessMessage: string;
     
-    private usersInfo : UserInfo[] = []; //Users Info to bind to UI 
-    displayedColumns: string[] = ['role', 'count'];
+    private usersInfo : UsersDetails[] = []; //Users Info to bind to UI 
+  
     
 
     
@@ -86,8 +86,8 @@ export class AddUserComponent implements OnInit {
     //GET API for Users Summary
     GetUsersInformation(){
 
-        this.WalletService.GetUsersSummary()         
-           .subscribe(data => {
+        this.WalletService.GetUsersDetails()         
+           .subscribe((data )=> {
                console.log("data from data" + data);
                
                const tempData  = JSON.parse(data);
