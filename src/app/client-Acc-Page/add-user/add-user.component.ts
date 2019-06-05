@@ -92,9 +92,9 @@ export class AddUserComponent implements OnInit {
                
                const tempData  = JSON.parse(data);
             
-             this.usersInfo = tempData // as UsersDetails[];   //Can I dot his way
+             this.usersInfo = JSON.parse(data).users; // as UsersDetails[];   //Can I dot his way
              
-             console.log(tempData);
+             console.log(this.usersInfo);
 
             
          
