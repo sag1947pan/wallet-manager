@@ -13,17 +13,7 @@ export class UpdatePasswordComponent implements OnInit {
 
     PasswordGroup: FormGroup;
 
-    hide = true;
-
-    options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
-
-    Industries: string[] = ['Retail', 'Technology', 'Manufacturing', 'Insurance', 'Public Sector', 'Charity / Trust', 'Transportation / Logistics'];
-
-    Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
-    PaymentTypes: string[] = ['Salary Payments', 'Vendor/ Supplier Payments', 'Rewards/prizes', 'Reimbursements'];
-    Countries: string[] = ['India', 'USA', 'UK', 'Singapore', 'Australia'];
-    Currencies: string[] = ['INR', 'USD', 'GBP', 'SGD', 'AUD'];
-    CardTypes: string[] = ['Master Card', 'Visa', 'Amex'];
+    hide = true;    
 
     constructor(private formBuilder: FormBuilder,
         private router: Router, ) { }
