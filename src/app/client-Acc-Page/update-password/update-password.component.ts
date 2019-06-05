@@ -13,6 +13,8 @@ export class UpdatePasswordComponent implements OnInit {
 
     PasswordGroup: FormGroup;
 
+    hide = true;
+
     options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
 
     Industries: string[] = ['Retail', 'Technology', 'Manufacturing', 'Insurance', 'Public Sector', 'Charity / Trust', 'Transportation / Logistics'];
@@ -29,9 +31,9 @@ export class UpdatePasswordComponent implements OnInit {
     ngOnInit() {
 
         this.PasswordGroup = this.formBuilder.group({
-           currPassword: ['', Validators.required],
-            NewPasword: ['', Validators.required],
-            confirmNewPwd: ['', Validators.required],
+           currPassword: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+            NewPasword: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+            confirmNewPwd: ['',Validators.compose([Validators.required, Validators.minLength(8)])],
             confirmOTP: ['', Validators.required],
 
         });

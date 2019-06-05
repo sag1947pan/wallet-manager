@@ -83,16 +83,18 @@ export class AddUserComponent implements OnInit {
         }
     }
 
-    //GET API for Users Summary
-    GetUsersInformation(){
+     //GET API for Users Summary
+     GetUsersInformation(){
 
         this.WalletService.GetUsersDetails()         
            .subscribe((data )=> {
-               console.log("data from data" + data);
+               console.log("Ranjith Test data" + data);
                
                const tempData  = JSON.parse(data);
             
-             this.usersInfo = tempData;
+             this.usersInfo = tempData // as UsersDetails[];   //Can I dot his way
+             
+             console.log(tempData);
 
             
          
