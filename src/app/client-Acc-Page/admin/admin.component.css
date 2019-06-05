@@ -1,3 +1,30 @@
-mat-form-field {
-    margin-right: 90px;
+ mat-form-field {
+    margin-right: 20px;
 }
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.example-card {
+    max-width: 800px;
+    margin: 10px auto;
+    background:padding-box;
+    /*background-color:azure;*/
+  
+}
+.mat-card-title-color {
+    color: blue;
+}
+
+/*.mat-card {
+    background:gray;
+}*/
+
+.example-header-image {
+    /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;*/
+}
+
