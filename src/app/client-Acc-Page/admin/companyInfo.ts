@@ -3,6 +3,7 @@ export class RegCompInfo {
     compnameCtrl: string;
     tradingName: string;
     compregnCtrl: string;  
+    yourAccountID : number;
     
     constructor() { 
     }

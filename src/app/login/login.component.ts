@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
                     //Ranjith : Check whether we an store data in local storage/ session storage.
 
                     sessionStorage.setItem("userName", this.f.userName.value);
-                    sessionStorage.setItem("password", this.f.Password.value);
+                   // sessionStorage.setItem("password", this.f.Password.value);
                    
                     sessionStorage.setItem("userData", JSON.stringify(data));
 

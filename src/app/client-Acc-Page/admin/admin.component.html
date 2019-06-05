@@ -14,7 +14,7 @@
 
                         <mat-form-field appearance="outline">
                             <mat-label>Company Name</mat-label>
-                            <input matInput placeholder="Company Name" formControlName="compnameCtrl"  [value]="myRegCompInfo.compnameCtrl">
+                            <input matInput placeholder="Company Name" formControlName="compnameCtrl" [readonly]="!editable"  [value]="myRegCompInfo.compnameCtrl">
                         </mat-form-field>
 
                         <mat-form-field appearance="outline">
@@ -24,7 +24,7 @@
 
                         <mat-form-field appearance="outline">
                             <mat-label>Company Registration Number</mat-label>
-                            <input matInput placeholder="Company Registration Number" formControlName="compregnCtrl">
+                            <input matInput placeholder="Company Registration Number" formControlName="compregnCtrl" [readonly]="!editable" [value]="myRegCompInfo.compregnCtrl">
                         </mat-form-field>
 
                     </div>
@@ -42,7 +42,7 @@
 
                         <mat-form-field appearance="outline">
                             <mat-label>Your Account Id</mat-label>
-                            <input matInput placeholder="Your Account Id" formControlName="yourAccountID" required>
+                            <input matInput placeholder="Your Account Id" formControlName="yourAccountID" [readonly]="!editable" [value]="myRegCompInfo.yourAccountID">
                         </mat-form-field>
 
 
