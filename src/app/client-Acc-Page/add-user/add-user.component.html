@@ -25,13 +25,16 @@
                                 <td>{{ userInfo.full_name}}</td>
                                 <td>{{ userInfo.user_id }}</td>
                                 <td>{{ userInfo.role }}</td>
+                                <button id="remove" (click)="deleteRow(userInfo.user_id)">DELETE</button>
                             </tr>
                             <!-- </ng-template> -->
 
                         </tbody>
                     </table>
                 </div>
-
+                <div>
+                    <a mat-raised-button (click)="deleteSave()">Save</a>
+                </div>
 
             </ng-template>
         </mat-tab>

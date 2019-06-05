@@ -36,7 +36,8 @@ import { DialogComponent } from './dialog/dialog.component';
 import { BeneRegComponent } from './bene-reg/bene-reg.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
-import { SuccessRegComponent } from './registration/cust-reg.success.component'
+import { SuccessRegComponent } from './registration/cust-reg.success.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { from } from 'rxjs';
 
 
@@ -61,7 +62,7 @@ import { from } from 'rxjs';
         PostRegComponent,
         SuccessRegComponent,
       PasswordForgotComponent,
-      
+      ConfirmDialogComponent,
 
   ],
   imports: [
@@ -82,6 +83,6 @@ import { from } from 'rxjs';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [DialogComponent,ConfirmDialogComponent]
 })
 export class AppModule { }

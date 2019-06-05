@@ -4,10 +4,10 @@ import { FormBuilder, FormsModule, FormControl, FormGroup, Validators } from '@a
 import { Router } from '@angular/router';
 import { WalletService } from 'src/app/wallet.service';
 import { first } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material'
+import { MatSnackBar, MatDialog  } from '@angular/material'
 import {UsersDetails} from './UserInfo'
 import { from } from 'rxjs';
-
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-add-user',
@@ -23,11 +23,10 @@ export class AddUserComponent implements OnInit {
     Status: string;
     CustomerCode; string;
     SuccessMessage: string;
-    
+    private deletedRows =[];
+    result: string = '';  
     private usersInfo : UsersDetails[] = []; //Users Info to bind to UI 
-  
     
-
     
     Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
     
@@ -36,6 +35,7 @@ export class AddUserComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
         private router: Router,
         private WalletService: WalletService,
+        public dialog: MatDialog,
         private snackBar: MatSnackBar) { }
 
     ngOnInit() {
@@ -101,6 +101,45 @@ export class AddUserComponent implements OnInit {
                
            }, error => (this.error = error));
 
+    }
+
+    //this is to capture the deleted rows
+    deleteRow(userID){
+        console.log("deleted row.."+userID);
+        for(let i = 0; i < this.usersInfo.length; ++i){
+            console.log("deleted row.id."+this.usersInfo[i].user_id);
+            if (this.usersInfo[i].user_id === userID) {
+                console.log("deleted row.in if."+userID);
+                this.deletedRows.push(userID);
+                this.usersInfo.splice(i,1); 
+                console.log("deleted array length.."+this.deletedRows.length);               
+            }
+        }
+    }
+
+    //This is to confirm the delete the user info in backend
+    deleteSave(){
+        console.log("commiting delete"+this.deletedRows.length);
+        if(this.deletedRows.length && this.deletedRows.length >0){
+            const message = `Do you want to delete users info?`;
+
+            const dialogData = new ConfirmDialogModel("Confirm Action", message);
+        
+            const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            maxWidth: "400px",
+            data: dialogData
+            });
+        
+            dialogRef.afterClosed().subscribe(dialogResult => {
+                this.result = dialogResult;
+                console.log("action resuy.."+this.result);
+                if(this.result){
+                    console.log("trueee.."+this.result);
+                }else{
+                    console.log("falsee.."+this.result);
+                }
+            });
+        }
     }
 
 }
