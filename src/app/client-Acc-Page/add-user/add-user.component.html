@@ -5,18 +5,15 @@
         <mat-tab label="Users Info">
             <ng-template matTabContent>
 
-                <div class="container">
-                    <!-- <table class="table table-striped" [value]="usersInfo"> -->
-                    <table class="table table-striped">
-                        <!-- <p-table  [value]="usersInfo">
-                                        <ng-template pTemplate="header"> -->
+                <div class="container">               
+                    <table class="table table-striped">                      
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>User Id</th>
                                 <th>Role</th>
-                            </tr>
-                            <!-- </ng-template> -->
+                                <th>Delete</th>
+                            </tr>                   
 
                         </thead>
                         <tbody>
@@ -25,15 +22,17 @@
                                 <td>{{ userInfo.full_name}}</td>
                                 <td>{{ userInfo.user_id }}</td>
                                 <td>{{ userInfo.role }}</td>
-                                <button id="remove" (click)="deleteRow(userInfo.user_id)">DELETE</button>
+                                <button mat-icon-button color="warn" id="remove" (click)="deleteRow(userInfo.user_id)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
                             </tr>
-                            <!-- </ng-template> -->
+                           
 
                         </tbody>
                     </table>
                 </div>
                 <div>
-                    <a mat-raised-button (click)="deleteSave()">Save</a>
+                    <a mat-raised-button color="primary" (click)="deleteSave()"> Delete</a>
                 </div>
 
             </ng-template>
