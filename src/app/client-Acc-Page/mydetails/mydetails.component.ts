@@ -13,35 +13,29 @@ import { MyDetailsInfo } from './MyDetailsInfo';
 })
 export class MydetailsComponent implements OnInit {
 
-    mydetailsGroup: FormGroup;
+    // mydetailsGroup: FormGroup;
+    mydetailsGroup = new FormGroup({
+        myEmail: new FormControl()
+    });
+
 
     @Input() editable: boolean = false;
     error: any;
     success: boolean
-    resourcesLoaded :boolean
+    resourcesLoaded: boolean
     private mydetailsInfo: MyDetailsInfo = new MyDetailsInfo();
-
-    options: string[] = ['United Kingdom Pounds', 'Singapore Dollars', 'Indian Rupees'];
-
-    Industries: string[] = ['Retail', 'Technology', 'Manufacturing', 'Insurance', 'Public Sector', 'Charity / Trust', 'Transportation / Logistics'];
-
-    Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
-    PaymentTypes: string[] = ['Salary Payments', 'Vendor/ Supplier Payments', 'Rewards/prizes', 'Reimbursements'];
-    Countries: string[] = ['India', 'USA', 'UK', 'Singapore', 'Australia'];
-    Currencies: string[] = ['INR', 'USD', 'GBP', 'SGD', 'AUD'];
-    CardTypes: string[] = ['Master Card', 'Visa', 'Amex'];
 
     constructor(private formBuilder: FormBuilder,
         private router: Router,
         private custUserDetails: CustUserDetails) {
 
         this.mydetailsGroup = this.formBuilder.group({
-            //  name: ['', ''],
+
             first_name: ['', ''],
             middle_name: ['', ''],
             last_name: ['', ''],
             role: ['', ''],
-            //   myEmail: ['', ''],
+            myEmail: ['', ''],
             mobile_num: ['', ''],
             desk_num: ['', ''],
 
@@ -51,7 +45,7 @@ export class MydetailsComponent implements OnInit {
 
     ngOnInit() {
 
-       this.resourcesLoaded = true;
+        this.resourcesLoaded = true;
 
         this.custUserDetails.GetUserProfile()
             .pipe(first())
@@ -60,22 +54,17 @@ export class MydetailsComponent implements OnInit {
                 const tempData = JSON.parse(res);
                 this.mydetailsInfo = tempData;
 
+                this.GetEmail(); //Try to get email from session storage as it is not present in API response.
+
                 this.resourcesLoaded = false;
 
-                //console.log("Ranjith Test data" + res);
-
-                //  this.mydetailsInfo = res;
-
-
-
-                //this.mydetailsInfo.first_name = res.first_name
-
-
-                // console.log("My Name is " + this.mydetailsInfo.first_name);
-
-
             });
+    }
 
+    GetEmail() {
+        let myItem = sessionStorage.getItem("userName");     
+
+        this.mydetailsInfo.myEmail = myItem;
     }
 
 }
