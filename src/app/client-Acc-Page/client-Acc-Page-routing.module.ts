@@ -12,12 +12,13 @@ import { MydetailsComponent } from './mydetails/mydetails.component';
 import { RoleProfileComponent } from './role-profile/role-profile.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { InitiatepaymentsComponent } from './initiatepayments/initiatepayments.component';
+import { AuthGuard } from '../Guards/auth.guard';
 
 
 const clientPageroutes: Routes = [
     { path: '', redirectTo: '/CliAccPage/Home', pathMatch: 'full' },
     {
-        path: 'Home', component: HomeComponent,
+        path: 'Home', component: HomeComponent, canActivate: [AuthGuard],
         children: [
             { path: 'Admin', component: AdminComponent },
             { path: 'MyProfile', component: MyProfileComponent },
