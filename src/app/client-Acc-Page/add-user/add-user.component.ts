@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WalletService } from 'src/app/wallet.service';
+import { CustUserDetails } from 'src/app/services/cust-user-details';
 import { first } from 'rxjs/operators';
 import { MatSnackBar, MatDialog  } from '@angular/material'
 import {UsersDetails} from './UserInfo'
@@ -35,6 +36,7 @@ export class AddUserComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
         private router: Router,
         private WalletService: WalletService,
+        private services : CustUserDetails,
         public dialog: MatDialog,
         private snackBar: MatSnackBar) { }
 
@@ -47,9 +49,9 @@ export class AddUserComponent implements OnInit {
             //Add user 
             userId: ['', Validators.required],
             firstName: ['', Validators.required],
-            middleName: ['', Validators.required],
-            lastName: [''],
-            role: ['',],
+            middleName: [''],
+            lastName: ['', Validators.required],
+            role: ['',Validators.required],
             mobileNum: ['', Validators.required],
            // desgCtrl: ['', Validators.required],         
            
@@ -69,7 +71,8 @@ export class AddUserComponent implements OnInit {
             return;
         }
         else {
-            this.WalletService.AddUser(JSON.stringify(this.UserInfoGroup.value))
+            //this.WalletService.AddUser(JSON.stringify(this.UserInfoGroup.value))
+            this.services.addUserDetails(JSON.stringify(this.UserInfoGroup.value))
                 .pipe(first())
                 .subscribe(data => {
                     this.Status = data.Status;
@@ -86,30 +89,21 @@ export class AddUserComponent implements OnInit {
      //GET API for Users Summary
      GetUsersInformation(){
 
-        this.WalletService.GetUsersDetails()         
+        //this.WalletService.GetUsersDetails()         
+        this.services.GetUsersDetails()
            .subscribe((data )=> {
-               console.log("Ranjith Test data" + data);
-               
-               const tempData  = JSON.parse(data);
-            
-             this.usersInfo = JSON.parse(data).users; // as UsersDetails[];   //Can I dot his way
+                console.log("usersDetails data.." + data);               
+                const tempData  = JSON.parse(data);            
+                this.usersInfo = JSON.parse(data).users; // as UsersDetails[];   //Can I dot his way
              
-             console.log(this.usersInfo);
-
-            
-         
-               
+                console.log(this.usersInfo);
            }, error => (this.error = error));
-
     }
 
     //this is to capture the deleted rows
     deleteRow(userID){
-        console.log("deleted row.."+userID);
         for(let i = 0; i < this.usersInfo.length; ++i){
-            console.log("deleted row.id."+this.usersInfo[i].user_id);
             if (this.usersInfo[i].user_id === userID) {
-                console.log("deleted row.in if."+userID);
                 this.deletedRows.push(userID);
                 this.usersInfo.splice(i,1); 
                 console.log("deleted array length.."+this.deletedRows.length);               

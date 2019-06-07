@@ -14,6 +14,7 @@ import { catchError, retry } from 'rxjs/operators';
 */
 export class RegistrationServices {
 
+    public isUserLoggedIn: boolean;
     constructor(private http: HttpClient) { }
 /*
     This is being used in Customer Registration
