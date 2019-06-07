@@ -16,8 +16,9 @@ export class AuthenticationService {
         return this.getToken() !== null;
     }
 
-    logout() {
+    Logout() {
         sessionStorage.removeItem("userName");
-        this.myRoute.navigate(["Login"]);
+        sessionStorage.removeItem('userData');
+        this.myRoute.navigate(["/Login"]);
     }
 }
