@@ -75,11 +75,19 @@ export class AddUserComponent implements OnInit {
             this.services.addUserDetails(JSON.stringify(this.UserInfoGroup.value))
                 .pipe(first())
                 .subscribe(data => {
-                    this.Status = data.Status;
-                   // this.CustomerCode = data.CustomerCode;
-                    this.SuccessMessage = data.SuccessMessage;                  
-                 
-                    this.snackBar.open('User details added successfully' , 'Done', {
+                    this.Status = data.status;
+                    console.log("add user data.."+JSON.stringify(data.body));
+                    console.log("add user data.status."+this.Status);
+                    if(data != null && data.status == 201){
+                        data = JSON.stringify(data.body);                        
+                        data = JSON.parse(data);
+                        this.SuccessMessage = data.Message;
+                    }else{
+                        data = JSON.stringify(data.body);
+                        data = JSON.parse(data);
+                        this.SuccessMessage = data.Message;
+                    }
+                    this.snackBar.open(this.SuccessMessage , 'Done', {
                             duration: 3000,
                         });
                 }, error => (this.error = error));
@@ -92,16 +100,18 @@ export class AddUserComponent implements OnInit {
         //this.WalletService.GetUsersDetails()         
         this.services.GetUsersDetails()
            .subscribe((data )=> {
-                console.log("usersDetails data.." + data);               
-                const tempData  = JSON.parse(data);            
-                this.usersInfo = JSON.parse(data).users; // as UsersDetails[];   //Can I dot his way
-             
-                console.log(this.usersInfo);
+            
+            if(data != null && (data.status == 200 || data.status == 201)){
+                data = JSON.stringify(data.body);
+                this.usersInfo = JSON.parse(data).users;
+            }else{
+                // status meggae with no user records.. but this should not be the case
+            }
            }, error => (this.error = error));
     }
 
     //this is to capture the deleted rows
-    deleteRow(userID){
+    /*deleteRow(userID){
         for(let i = 0; i < this.usersInfo.length; ++i){
             if (this.usersInfo[i].user_id === userID) {
                 this.deletedRows.push(userID);
@@ -109,12 +119,16 @@ export class AddUserComponent implements OnInit {
                 console.log("deleted array length.."+this.deletedRows.length);               
             }
         }
-    }
+    }*/
 
     //This is to confirm the delete the user info in backend
-    deleteSave(){
-        console.log("commiting delete"+this.deletedRows.length);
-        if(this.deletedRows.length && this.deletedRows.length >0){
+    deleteRow(userID){
+        console.log("delte user ID.."+userID+"row length.."+this.deletedRows.length);
+        if(this.usersInfo.length && this.usersInfo.length ==1){
+            console.log("only one user can not be deleted");
+
+            return;
+        }else if(this.usersInfo.length >1){
             const message = `Do you want to delete users info?`;
 
             const dialogData = new ConfirmDialogModel("Confirm Action", message);
@@ -126,11 +140,30 @@ export class AddUserComponent implements OnInit {
         
             dialogRef.afterClosed().subscribe(dialogResult => {
                 this.result = dialogResult;
-                console.log("action resuy.."+this.result);
                 if(this.result){
                     console.log("trueee.."+this.result);
+                    //Delete user record
+                    for(let i = 0; i < this.usersInfo.length; ++i){
+                        if (this.usersInfo[i].user_id === userID) {
+                           // this.deletedRows.push(userID);
+                            this.usersInfo.splice(i,1); 
+                            console.log("deleted array length.."+this.deletedRows.length);               
+                        }
+                    }
+                    this.services.deleteUser(userID);
+                   // this.deletedRows = [];
+                   /* .subscribe((data )=> {
+                        
+                        if(data != null && (data.status == 200 || data.status == 201)){
+                            data = JSON.stringify(data.body);
+                            //this.usersInfo = JSON.parse(data).users;
+                        }else{
+                            // status meggae with no user records.. but this should not be the case
+                        }
+                    }, error => (this.error = error));*/
                 }else{
                     console.log("falsee.."+this.result);
+                    this.deletedRows = [];
                 }
             });
         }

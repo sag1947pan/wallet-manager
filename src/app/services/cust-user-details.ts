@@ -4,6 +4,8 @@ import { Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
 import { AdminUserData } from 'src/app/client-Acc-Page/AdminData.model';
+import { PARAMETERS } from '@angular/core/src/util/decorators';
+import { resolve } from 'url';
 
 @Injectable({
     providedIn: 'root'
@@ -139,8 +141,7 @@ export class CustUserDetails {
             //'Authorization': 'my-auth-token'
             })
         };
-    // let options = {headers: HttpHeaders, search:{}};
-
+   
         return this.http.get<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customerUsersDetails', {
             params: new HttpParams()
                 .set('Access-Control-Allow-Origin', '*')            
@@ -155,14 +156,14 @@ export class CustUserDetails {
                     let regResp = JSON.stringify(res);
                     //console.log("regResp regResp" + regResp);
                     let regRespParse = JSON.parse(regResp);
-                    //console.log("regResp regRespParse" + regRespParse);
+                    console.log("regResp status" + regRespParse.status);
 
                     if (regRespParse.status == 200 || regRespParse.status == 201) {
                         let respBody = JSON.stringify(res.body);
                         let respParse = JSON.parse(respBody);
 
-                        return respBody;
-                    // return respParse;
+                        //return respBody;
+                        return res;
                     }
                     else { // If no proper response
                         console.log("In failure");
@@ -174,6 +175,46 @@ export class CustUserDetails {
                 }
             })
         );
+    }
+
+    /* 
+    This is to add a new user for respective ORG
+    Only Admin able to add user details 
+    Input: FirstName, LastName, MiddleName, Email and Phone number
+    Output: Request status as Success or Failure
+    */
+    deleteUser(userID) {
+        let reqJSON = {};
+        if(userID && userID != null && userID != ''){
+            //userInfo = JSON.parse(userInfo);
+            //reqJSON = {"userId":userInfo.userId,"firstName":userInfo.firstName,"middleName":userInfo.middleName,"lastName":userInfo.lastName,"role":userInfo.role,"mobileNum":userInfo.mobileNum};
+        }else{
+        // return "inValid Request";
+        return;
+        }
+        console.log("reqJson is..."+JSON.stringify(reqJSON));
+        let httpParams = new HttpParams();
+        httpParams.set('Access-Control-Allow-Origin', '*');
+        httpParams.set('userName', this.logUserEmail);
+        httpParams.set('customerId', this.custId.toString());
+        
+        let options = { params: httpParams };
+        let headers = new HttpHeaders({ 'Content-Type': 'application/JSON' });
+
+        /*return this.http.delete('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users', options)
+            .map((res: any) => {
+                console.log("response.." + JSON.stringify(res));
+                res['playload'] = res;
+                return res['playload'];
+            })*/
+        return this.http.delete('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users', { headers: headers, params: httpParams })
+        .subscribe((res) =>{
+            console.log("delete response.."+res);
+            
+        },err =>{
+            console.log("delete response failure.."+err);
+            //resolve(res);
+        });
     }
 
 }
