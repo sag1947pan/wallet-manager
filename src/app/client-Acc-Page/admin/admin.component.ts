@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 //import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { FormBuilder, FormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +10,8 @@ import { from } from 'rxjs';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+    styleUrls: ['./admin.component.css'],
+   // encapsulation: ViewEncapsulation.None
 })
 export class AdminComponent implements OnInit {
   //CompInfoGroup: FormGroup;
@@ -47,27 +48,27 @@ export class AdminComponent implements OnInit {
     this.GetStorageInfo();
 
     this.CompInfoGroup = this.formBuilder.group({
-      compnameCtrl: [''],
+      compName: [''],
       tradingName: [''],
-      compregnCtrl: [''],
-      industryCtrl: [''],
+      compRegnNo: [''],
+      industry: [''],
       yourAccountID: [''],
-      RoadNo: ['', Validators.required],
+      roadNo: ['', Validators.required],
       addressLine1: ['', Validators.required],
       addressLine2: [''],
-      townCityName: ['', Validators.required],
+      cityName: ['', Validators.required],
       state: ['', Validators.required],
-      countryName: ['', Validators.required],
+      country: ['', Validators.required],
       postCode: ['', Validators.required],
 
       //Registered Address
-      RegRoadNo: ['', Validators.required],
-      RegaddressLine1: ['', Validators.required],
-      RegaddressLine2: [''],
-      RegtownCityName: ['', Validators.required],
-      Regstate: ['', Validators.required],
-      RegcountryName: ['', Validators.required],
-      RegpostCode: ['', Validators.required],
+      regRoadNo: ['', Validators.required],
+      regaddressLine1: ['', Validators.required],
+      regaddressLine2: [''],
+      regCity: ['', Validators.required],
+      regState: ['', Validators.required],
+      regCountry: ['', Validators.required],
+      regpostCode: ['', Validators.required],
 
     });
 
