@@ -675,13 +675,13 @@ label.label-wrapper {
     width: 50%;    
 	-webkit-transition:all 0.3s;-moz-transition:all 0.3s;transition:all 0.3s;
 }
-/*.navbar-default{background-color: #ffffff;border:none;box-shadow:0 0 5px rgba(0,0,0,0.08)}*/
-.navbar-default {
+.navbar-default{background-color: #ffffff;border:none;box-shadow:0 0 5px rgba(0,0,0,0.08)}
+/*.navbar-default {
     background-color: gray;
     border: none;
     box-shadow: 0 0 5px rgba(0,0,0,0.08);
     color:#fff;
-}
+}*/
 
 .navbar-dropable-right{
     margin-top: 20px;
