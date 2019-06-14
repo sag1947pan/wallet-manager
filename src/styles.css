@@ -3,3 +3,21 @@
 @import "~assets/css/bootstrap.min.css";
 @import "~assets/css/custom.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.wm-expansion-panel-class {
+    background: rgb(103, 58, 183) !important;
+}
+.wm-mat-expansion-panel-header-description {
+    color: #fff !important;
+}
+
+.specific-class > .mat-expansion-indicator, .mat-expansion-indicator:after {
+    color: white !important;
+}
+
+.listyle a{
+    display: inline-block;
+    color: white;
+    text-align: center;  
+   
+}

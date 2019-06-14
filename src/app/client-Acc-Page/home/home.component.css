@@ -10,16 +10,16 @@ mat-panel-title {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #fff;
 }
 
-.listyle {
+/*.listyle {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+    
+    text-decoration-color :white;
+}*/
 
 .jumbotron {
     display: flex;
@@ -28,11 +28,14 @@ mat-panel-title {
     height: 15px;
     
 }
+
+
 /*.jumbotron>*
 {
     width:100%;
     flex:1;
 }*/
+
 
 
    
