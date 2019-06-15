@@ -2,6 +2,17 @@ mat-form-field {
     margin-right: 90px;
 }
 
-table {
+.divcolor {
+    /*background-color:darkgray;*/
+    text-align:center;
+    /*text-decoration:underline;*/
+    color:dodgerblue;
+}
+
+
+/*table {
     width: 100%;
+}*/
+.container{
+    margin-top:20px;
 }

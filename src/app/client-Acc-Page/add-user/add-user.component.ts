@@ -47,7 +47,7 @@ export class AddUserComponent implements OnInit {
         this.UserInfoGroup = this.formBuilder.group({
 
             //Add user 
-            userId: ['', Validators.required],
+            userId: ['', Validators.compose([Validators.required, emailValidator])],
             firstName: ['', Validators.required],
             middleName: [''],
             lastName: ['', Validators.required],
@@ -169,4 +169,11 @@ export class AddUserComponent implements OnInit {
         }
     }
 
+}
+
+export function emailValidator(control: FormControl): { [key: string]: any } {
+    var emailRegexp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+    if (control.value && !emailRegexp.test(control.value)) {
+        return { invalidEmail: true };
+    }
 }
