@@ -1,63 +1,82 @@
 <form [formGroup]="mydetailsGroup">
 
-    <mat-card>
-        <mat-card-header>
-
-            <mat-card-title>My Details</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Name" formControlName="first_name"
-                           [readonly]="!editable" [value]="mydetailsInfo.first_name">
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Middle Name</mat-label>
-                    <input matInput placeholder="Middle Name" formControlName="middle_name" [readonly]="!editable" [value]="mydetailsInfo.middle_name">
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Last Name" formControlName="last_name" [readonly]="!editable" [value]="mydetailsInfo.last_name">
-                </mat-form-field>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
             </div>
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label>E-mail</mat-label>
-                    <input matInput placeholder="E-mail" formControlName="myEmail" [readonly]="!editable" [value]="mydetailsInfo.myEmail">
-                </mat-form-field>
+            <div class="col-md-10">
+                <div class="panel panel-default">
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Role</mat-label>
-                    <input matInput placeholder="Role" formControlName="role" [readonly]="!editable" [value]="mydetailsInfo.role">
-                
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label>Mobile</mat-label>
-                    <input matInput placeholder="Mobile" formControlName="mobile_num" [readonly]="!editable" [value]="mydetailsInfo.mobile_num">
-                </mat-form-field>
+                    <mat-card>
+                        <mat-card-header>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Work Phone</mat-label>
-                    <input matInput placeholder="Work Phone" formControlName="desk_num" [readonly]="!editable" [value]="mydetailsInfo.desk_num">
-                </mat-form-field>
-            </div>
-        </mat-card-content>
-    </mat-card>
-     <div>
+                            <mat-card-title>My Details</mat-card-title>
+                        </mat-card-header>
+                    </mat-card>
+                        <div class="panel-body">
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Name" formControlName="first_name"
+                                           [readonly]="!editable" [value]="mydetailsInfo.first_name">
+                                </mat-form-field>
 
-                                <mat-spinner style="margin:0 auto" *ngIf="resourcesLoaded"></mat-spinner>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Middle Name</mat-label>
+                                    <input matInput placeholder="Middle Name" formControlName="middle_name" [readonly]="!editable" [value]="mydetailsInfo.middle_name">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput placeholder="Last Name" formControlName="last_name" [readonly]="!editable" [value]="mydetailsInfo.last_name">
+                                </mat-form-field>
+
                             </div>
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>E-mail</mat-label>
+                                    <input matInput placeholder="E-mail" formControlName="myEmail" [readonly]="!editable" [value]="mydetailsInfo.myEmail">
+                                </mat-form-field>
 
-    <!--<mat-action-row>
-        <div>
-            <button type="button" color="primary" mat-raised-button> Save</button>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Role</mat-label>
+                                    <input matInput placeholder="Role" formControlName="role" [readonly]="!editable" [value]="mydetailsInfo.role">
+
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Mobile</mat-label>
+                                    <input matInput placeholder="Mobile" formControlName="mobile_num" [readonly]="!editable" [value]="mydetailsInfo.mobile_num">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Work Phone</mat-label>
+                                    <input matInput placeholder="Work Phone" formControlName="desk_num" [readonly]="!editable" [value]="mydetailsInfo.desk_num">
+                                </mat-form-field>
+                            </div>
+                           </div>
+                  
+                </div>
+            </div>
+
+            <div class="col-md-1"></div>
+
         </div>
-    </mat-action-row>-->
+            </div>
+
+
+
+            <!-- Spinner Control-->
+            <div>
+
+                <mat-spinner style="margin:0 auto" *ngIf="resourcesLoaded"></mat-spinner>
+            </div>
+
+            <mat-action-row>
+        <div>
+            <button type="button" style="margin:0 auto" color="primary" mat-raised-button> Edit</button>
+        </div>
+    </mat-action-row>
 
 </form>
