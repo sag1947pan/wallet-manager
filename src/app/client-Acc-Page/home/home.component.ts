@@ -10,9 +10,12 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
     authenticationService: AuthenticationService;
 
+    name: string;
     constructor(private router: Router,) { }
 
-  ngOnInit() {
+    ngOnInit() {
+        let userName = sessionStorage.getItem("userName");
+        this.name = userName;
   }
 
     logout() {
