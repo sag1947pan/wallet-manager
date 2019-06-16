@@ -1,11 +1,35 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
 
-    <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
-    <!--<ul class="list-inline navbar-menu-right">-->
+    <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>    
     <ul class="navbar-menu-right">
-        <button type="submit" color="primary" mat-raised-button (click)="logout()"> Logout</button>
-        <label for="name">{{name}}</label>
+        <!--<button type="submit" color="primary" mat-raised-button (click)="logout()"> Logout</button>
+    <label for="name">{{name}}</label>-->
+
+        <li class="nav-item">
+            <div class="dropdown float-right user-menu">
+                <!--<a class="dropdown-toggle user-link" data-toggle="dropdown" href="#" role="button" aria-expanded="false">-->
+                <a class="dropdown-toggle user-link" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <mat-icon align="center">account_circle</mat-icon>
+                    <span class="d-lg-inline d-none">  <label for="name">{{name}}</label></span>
+
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class="user-info">
+                        <p>
+                            <label for="compName">{{compName}}</label>                       
+                                                  </p>
+                    </li>
+                    <mat-divider></mat-divider>
+
+                    <button mat-icon-button color="warn" (click)="logout()">
+                        <mat-icon>power_settings_new</mat-icon> Logout
+                        <!--<mat-icon>exit_to_app</mat-icon>-->
+                    </button>
+                </ul>
+            </div>
+        </li>
 
     </ul>
 </nav>
