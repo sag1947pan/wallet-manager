@@ -94,7 +94,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>User Id</th>
+                                <th>Email ID</th>
                                 <th>Role</th>
                                 <th>Delete</th>
                             </tr>
@@ -104,7 +104,7 @@
                             <tr *ngFor="let userInfo of usersInfo">
                                 <!-- <ng-template pTemplate="body" let-usersInfo> -->
                                 <td>{{ userInfo.full_name}}</td>
-                                <td>{{ userInfo.user_id }}</td>
+                                <td>{{ userInfo.user_name }}</td>
                                 <td>{{ userInfo.role }}</td>
                                 <button mat-icon-button color="warn" id="remove" (click)="deleteRow(userInfo.user_id)">
                                     <mat-icon>delete</mat-icon>

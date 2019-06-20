@@ -6,6 +6,13 @@ import { RegCompInfo } from './companyInfo'; //
 import { AdminUserData } from '../AdminData.model';
 import { from } from 'rxjs';
 
+import { CustUserDetails } from 'src/app/services/cust-user-details';
+import { first } from 'rxjs/operators';
+import { MatSnackBar, MatDialog  } from '@angular/material'
+//import {UsersDetails} from './UserInfo'
+
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+
 
 @Component({
   selector: 'app-admin',
@@ -15,6 +22,11 @@ import { from } from 'rxjs';
 })
 export class AdminComponent implements OnInit {
   //CompInfoGroup: FormGroup;
+  submitted = false;
+  Status: string;
+  SuccessMessage: string;
+  error: any;
+
   CompInfoGroup = new FormGroup({
     compnameCtrl: new FormControl(),
     compregnCtrl: new FormControl(),
@@ -39,7 +51,9 @@ export class AdminComponent implements OnInit {
   get f() { return this.CompInfoGroup.controls; }
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router, ) { }
+    private router: Router,
+    private services : CustUserDetails,
+    private snackBar: MatSnackBar ) { }
 
   ngOnInit() {
 
@@ -63,12 +77,12 @@ export class AdminComponent implements OnInit {
 
       //Registered Address
       regRoadNo: ['', Validators.required],
-      regaddressLine1: ['', Validators.required],
-      regaddressLine2: [''],
+      regAddressLine1: ['', Validators.required],
+      regAddressLine2: [''],
       regCity: ['', Validators.required],
       regState: ['', Validators.required],
       regCountry: ['', Validators.required],
-      regpostCode: ['', Validators.required],
+      regPostCode: ['', Validators.required],
 
     });
 
@@ -88,5 +102,36 @@ export class AdminComponent implements OnInit {
     this.myRegCompInfo.yourAccountID = item.cust_id;
 
   }
+
+  onSubmit() {
+
+    debugger;
+    this.submitted = true;
+    if (this.CompInfoGroup.invalid) {
+        return;
+    }
+    else {
+      console.log("add address data.."+JSON.stringify(this.CompInfoGroup.value));
+        this.services.updateAddressDetails(JSON.stringify(this.CompInfoGroup.value))
+            .pipe(first())
+            .subscribe(data => {
+                this.Status = data.status;
+                console.log("add user data.."+JSON.stringify(data.body));
+                console.log("add user data.status."+this.Status);
+                if(data != null && data.status == 201){
+                    data = JSON.stringify(data.body);                        
+                    data = JSON.parse(data);
+                    this.SuccessMessage = data.Message;
+                }else{
+                    data = JSON.stringify(data.body);
+                    data = JSON.parse(data);
+                    this.SuccessMessage = data.Message;
+                }
+                this.snackBar.open(this.SuccessMessage , 'Done', {
+                        duration: 3000,
+                    });
+            }, error => (this.error = error));
+    }
+}
 
 }

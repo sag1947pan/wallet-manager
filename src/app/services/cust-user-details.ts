@@ -19,6 +19,7 @@ import { resolve } from 'url';
 export class CustUserDetails {
     private  item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;
     private  custId = this.item.cust_id;
+    private  userID = this.item.user_id;
     private logUserEmail = sessionStorage.getItem("userName");
     constructor(private http: HttpClient
        ) { }
@@ -32,7 +33,8 @@ export class CustUserDetails {
         return this.http.get<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customerUserDetails', {
             params: new HttpParams()
                 .set('Access-Control-Allow-Origin', '*')
-                .set('userName', this.logUserEmail)
+                //.set('userName', this.logUserEmail)
+                .set('userId', this.userID)
                 .set('customerId', this.custId.toString()),
             observe: 'response'
         }).pipe(
@@ -67,7 +69,7 @@ export class CustUserDetails {
         let reqJSON = {};
         if(userInfo && userInfo != null && userInfo != ''){
             userInfo = JSON.parse(userInfo);
-            reqJSON = {"userId":userInfo.userId,"firstName":userInfo.firstName,"middleName":userInfo.middleName,"lastName":userInfo.lastName,"role":userInfo.role,"mobileNum":userInfo.mobileNum};
+            reqJSON = {"userName":userInfo.userId,"firstName":userInfo.firstName,"middleName":userInfo.middleName,"lastName":userInfo.lastName,"role":userInfo.role,"mobileNum":userInfo.mobileNum};
         }else{
            // return "inValid Request";
            return;
@@ -76,7 +78,8 @@ export class CustUserDetails {
         return this.http.post<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users', JSON.stringify(reqJSON), {
             params: new HttpParams()
                 .set('Access-Control-Allow-Origin', '*')
-                .set('userName', this.logUserEmail)
+                //.set('userName', this.logUserEmail)
+                .set('userId', this.userID)
                 .set('customerId', this.custId.toString()),
             observe: 'response'
         }).pipe(
@@ -98,7 +101,8 @@ export class CustUserDetails {
     return this.http.get<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customerUsersSummary', {
         params: new HttpParams()
             .set('Access-Control-Allow-Origin', '*')
-            .set('userName', this.logUserEmail)
+           // .set('userName', this.logUserEmail)
+            .set('userId', this.userID)
             .set('customerId', this.custId.toString()),
         observe: 'response'
         }).pipe(
@@ -145,7 +149,7 @@ export class CustUserDetails {
         return this.http.get<any>('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customerUsersDetails', {
             params: new HttpParams()
                 .set('Access-Control-Allow-Origin', '*')            
-                .set('userName', this.logUserEmail)
+                .set('userId', this.userID)
                 .set('customerId', this.custId.toString()),
             observe: 'response'
         }).pipe(
@@ -192,14 +196,16 @@ export class CustUserDetails {
         // return "inValid Request";
         return;
         }
-        console.log("reqJson is..."+JSON.stringify(reqJSON));
+        console.log("reqJson is..."+userID);
         let httpParams = new HttpParams();
         httpParams.set('Access-Control-Allow-Origin', '*');
+   // httpParams.set('Access-Control-Allow-Methods', 'DELETE');
+       // httpParams.set('userName', this.logUserEmail);
         httpParams.set('userName', this.logUserEmail);
         httpParams.set('customerId', this.custId.toString());
         
         let options = { params: httpParams };
-        let headers = new HttpHeaders({ 'Content-Type': 'application/JSON' });
+        let headers = new HttpHeaders({ 'Content-Type': 'application/JSON','Access-Control-Allow-Origin':'*' });
 
         /*return this.http.delete('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users', options)
             .map((res: any) => {
@@ -207,14 +213,48 @@ export class CustUserDetails {
                 res['playload'] = res;
                 return res['playload'];
             })*/
-        return this.http.delete('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users', { headers: headers, params: httpParams })
+        return this.http.delete('https://ofq4d24gv7.execute-api.eu-west-2.amazonaws.com/dev/customer-users',options)
         .subscribe((res) =>{
             console.log("delete response.."+res);
             
         },err =>{
             console.log("delete response failure.."+err);
+            console.log("delete response failure.JSON."+JSON.stringify(err));
             //resolve(res);
         });
     }
+
+
+    /* 
+    This is to add a new user for respective ORG
+    Only Admin able to add user details 
+    Input: FirstName, LastName, MiddleName, Email and Phone number
+    Output: Request status as Success or Failure
+    */
+   updateAddressDetails(addressInfo) {
+    let reqJSON = {};
+    if(addressInfo && addressInfo != null && addressInfo != ''){
+        addressInfo = JSON.parse(addressInfo);
+        reqJSON = {"tradAddLine1":addressInfo.addressLine1,"tradAddLine2":addressInfo.addressLine2,"tradAddCity":addressInfo.cityName,"tradAddState":addressInfo.state,"tradAddCountry":addressInfo.country,"tradAddPostalCode":addressInfo.postCode,"regAddLine1":addressInfo.regAddressLine1,"regAddLine2":addressInfo.regAddressLine2,"regAddCity":addressInfo.regCity,"regAddState":addressInfo.regState,"regAddCountry":addressInfo.regCountry,"regAddPostalCode":addressInfo.regPostCode};
+    }else{
+       // return "inValid Request";
+       return;
+    }
+    console.log("reqJson is..."+JSON.stringify(reqJSON));
+    return this.http.post<any>('https://jwetj5otq1.execute-api.eu-west-2.amazonaws.com/dev/custAddressDetails', JSON.stringify(reqJSON), {
+        params: new HttpParams()
+            .set('Access-Control-Allow-Origin', '*')
+            //.set('userName', this.logUserEmail)
+            .set('userId', this.userID)
+            .set('customerId', this.custId.toString()),
+        observe: 'response'
+    }).pipe(
+        map((res: any) => {
+            console.log("response.." + JSON.stringify(res));
+            res['playload'] = res;
+            return res['playload'];
+        })
+    );
+}
 
 }
