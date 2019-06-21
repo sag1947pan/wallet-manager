@@ -226,22 +226,43 @@ export class CustUserDetails {
 
 
     /* 
-    This is to add a new user for respective ORG
-    Only Admin able to add user details 
-    Input: FirstName, LastName, MiddleName, Email and Phone number
+    This is to add or update customer address for respective ORG
+    Input: Address line details for both Register and Trading address line items
     Output: Request status as Success or Failure
     */
    updateAddressDetails(addressInfo) {
-    let reqJSON = {};
-    if(addressInfo && addressInfo != null && addressInfo != ''){
-        addressInfo = JSON.parse(addressInfo);
-        reqJSON = {"tradAddLine1":addressInfo.addressLine1,"tradAddLine2":addressInfo.addressLine2,"tradAddCity":addressInfo.cityName,"tradAddState":addressInfo.state,"tradAddCountry":addressInfo.country,"tradAddPostalCode":addressInfo.postCode,"regAddLine1":addressInfo.regAddressLine1,"regAddLine2":addressInfo.regAddressLine2,"regAddCity":addressInfo.regCity,"regAddState":addressInfo.regState,"regAddCountry":addressInfo.regCountry,"regAddPostalCode":addressInfo.regPostCode};
-    }else{
-       // return "inValid Request";
-       return;
+        let reqJSON = {};
+        if(addressInfo && addressInfo != null && addressInfo != ''){
+            addressInfo = JSON.parse(addressInfo);
+            reqJSON = {"tradAddLine1":addressInfo.addressLine1,"tradAddLine2":addressInfo.addressLine2,"tradAddCity":addressInfo.cityName,"tradAddState":addressInfo.state,"tradAddCountry":addressInfo.country,"tradAddPostalCode":addressInfo.postCode,"regAddLine1":addressInfo.regAddressLine1,"regAddLine2":addressInfo.regAddressLine2,"regAddCity":addressInfo.regCity,"regAddState":addressInfo.regState,"regAddCountry":addressInfo.regCountry,"regAddPostalCode":addressInfo.regPostCode};
+        }else{
+        // return "inValid Request";
+        return;
+        }
+        console.log("reqJson is..."+JSON.stringify(reqJSON));
+        return this.http.post<any>('https://jwetj5otq1.execute-api.eu-west-2.amazonaws.com/dev/custAddressDetails', JSON.stringify(reqJSON), {
+            params: new HttpParams()
+                .set('Access-Control-Allow-Origin', '*')
+                //.set('userName', this.logUserEmail)
+                .set('userId', this.userID)
+                .set('customerId', this.custId.toString()),
+            observe: 'response'
+        }).pipe(
+            map((res: any) => {
+                console.log("response.." + JSON.stringify(res));
+                res['playload'] = res;
+                return res['playload'];
+            })
+        );
     }
-    console.log("reqJson is..."+JSON.stringify(reqJSON));
-    return this.http.post<any>('https://jwetj5otq1.execute-api.eu-west-2.amazonaws.com/dev/custAddressDetails', JSON.stringify(reqJSON), {
+
+    /*
+        This is to retrieve customer address details
+        This provides details of a specfic user
+    */
+
+   GetCompanyAddressDetails() {
+    return this.http.get<any>('https://jwetj5otq1.execute-api.eu-west-2.amazonaws.com/dev/custAddressDetails', {
         params: new HttpParams()
             .set('Access-Control-Allow-Origin', '*')
             //.set('userName', this.logUserEmail)
@@ -250,9 +271,23 @@ export class CustUserDetails {
         observe: 'response'
     }).pipe(
         map((res: any) => {
-            console.log("response.." + JSON.stringify(res));
-            res['playload'] = res;
-            return res['playload'];
+        if (res != null && res != ""){
+               let regResp = JSON.stringify(res);
+               let regRespParse = JSON.parse(regResp);
+               console.log("regResp..address"+regResp);
+               console.log("regRespParse..address"+regRespParse);
+                if (regRespParse.status == 200 || regRespParse.status == 201) {
+                    let respBody = JSON.stringify(res.body);
+                    let respParse = JSON.parse(respBody);
+
+                    return respBody;
+                }else { // If no proper response
+                    return regRespParse.status;
+                }
+            } else {
+                console.log("regResp res" + res);
+                return "Something went wrong, please try again!!";
+            }
         })
     );
 }

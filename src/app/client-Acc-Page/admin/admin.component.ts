@@ -9,7 +9,7 @@ import { from } from 'rxjs';
 import { CustUserDetails } from 'src/app/services/cust-user-details';
 import { first } from 'rxjs/operators';
 import { MatSnackBar, MatDialog  } from '@angular/material'
-//import {UsersDetails} from './UserInfo'
+import { customerAddress } from './customerAddress'
 
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
@@ -44,7 +44,7 @@ export class AdminComponent implements OnInit {
  
   Countries: string[] = ['India', 'USA', 'UK', 'Singapore', 'Australia'];
   Currencies: string[] = ['INR', 'USD', 'GBP', 'SGD', 'AUD'];
- 
+  private customerAddress : customerAddress[] = []; //Users Info to bind to UI  
 
 
 
@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
 
     console.log("you entered Company Info Screen");
 
-    this.GetStorageInfo();
+    this.GetAddressDetails();
 
     this.CompInfoGroup = this.formBuilder.group({
       compName: [''],
@@ -67,7 +67,6 @@ export class AdminComponent implements OnInit {
       compRegnNo: [''],
       industry: [''],
       yourAccountID: [''],
-      roadNo: ['', Validators.required],
       addressLine1: ['', Validators.required],
       addressLine2: [''],
       cityName: ['', Validators.required],
@@ -76,7 +75,6 @@ export class AdminComponent implements OnInit {
       postCode: ['', Validators.required],
 
       //Registered Address
-      regRoadNo: ['', Validators.required],
       regAddressLine1: ['', Validators.required],
       regAddressLine2: [''],
       regCity: ['', Validators.required],
@@ -88,7 +86,7 @@ export class AdminComponent implements OnInit {
 
   } //End of OnInit
 
-  GetStorageInfo() {
+  GetAddressDetails() {
 
     //Get the values from Local storage and bind to UI where ever required
 
@@ -100,6 +98,17 @@ export class AdminComponent implements OnInit {
     this.myRegCompInfo.compnameCtrl = item.company_name;
     this.myRegCompInfo.compregnCtrl = item.reg_num;
     this.myRegCompInfo.yourAccountID = item.cust_id;
+
+    this.services.GetCompanyAddressDetails()
+           .subscribe((data )=> {
+            console.log("data address.."+data);
+            if(data != null && (data.status == 200 || data.status == 201)){
+                data = JSON.stringify(data.body);
+                this.customerAddress = JSON.parse(data).users;
+            }else{
+                // status meggae with no user records.. but this should not be the case
+            }
+           }, error => (this.error = error));
 
   }
 
