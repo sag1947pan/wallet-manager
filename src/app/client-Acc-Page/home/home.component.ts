@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/AuthenticationService';
 import { Router } from '@angular/router';
 import { AdminUserData } from '../AdminData.model';
+import { Subscription } from 'rxjs';
+//import { ObservableMedia, MediaChange } from '@angular/flex-layout';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +16,17 @@ export class HomeComponent implements OnInit {
 
     name: string;
     compName: string;
-    constructor(private router: Router,) { }
+    //NEW TEST CODE
+    opened = true;
+    over = 'side';
+    expandHeight = '42px';
+    collapseHeight = '42px';
+    displayMode = 'flat';
+  
+
+    watcher: Subscription;
+    //END NEW TEST CODE
+    constructor(private router: Router) { }
 
     ngOnInit() {
         let userName = sessionStorage.getItem("userName");

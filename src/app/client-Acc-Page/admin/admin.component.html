@@ -6,13 +6,9 @@
             <ng-template matTabContent>
                 <!-- ADD COMPANY INFO HERE-->
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-1">
-                        </div>
-                        <div class="col-md-10">
+                    <div class="row">                       
+                        <div class="col-md-12">
                             <div class="panel panel-default">
-
-
                                 <mat-card>
                                     <mat-card-header>
 
@@ -57,17 +53,13 @@
 
 
                                     </div>
-</mat-card-content>
-
-
-                                </div>
+                                </mat-card-content>
+                                
                             </div>
-
-                        <div class="col-md-1">
                         </div>
                     </div>
-                        </div>
-</ng-template>
+                </div>
+            </ng-template>
         </mat-tab>
 
 
@@ -75,9 +67,7 @@
             <ng-template matTabContent>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-1">
-                        </div>
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <div class="panel panel-default">
 
                                 <!-- TRADING ADDRESS-->
@@ -88,14 +78,12 @@
                                 </mat-card>
                                 <mat-card-content class="mat-card-content">
 
-                                    <!--div>
+                                    <div>
                                         <mat-form-field appearance="outline">
-                                            <mat-label>Bldg#/Street Number</mat-label>
+                                            <mat-label>Bldg # / Street Number</mat-label>
                                             <input matInput placeholder="Bldg#/Street" formControlName="roadNo" maxlength="15" required>
                                         </mat-form-field>
-                                    </div-->
 
-                                    <div>
                                         <mat-form-field appearance="outline">
                                             <mat-label>Address Line 1</mat-label>
                                             <input matInput placeholder="Address" formControlName="addressLine1" maxlength="35" required>
@@ -109,19 +97,18 @@
 
                                     <div>
                                         <mat-form-field appearance="outline">
-                                            <mat-label>Town/City</mat-label>
-                                            <input matInput placeholder="Town/City" formControlName="cityName" maxlength="35" required>
+                                            <mat-label>Country</mat-label>
+                                            <input matInput placeholder="Country" formControlName="country" maxlength="35" required>
                                         </mat-form-field>
 
                                         <mat-form-field appearance="outline">
                                             <mat-label>State</mat-label>
                                             <input matInput placeholder="State" formControlName="state" maxlength="35">
                                         </mat-form-field>
-                                    </div>
-                                    <div>
+
                                         <mat-form-field appearance="outline">
-                                            <mat-label>Country</mat-label>
-                                            <input matInput placeholder="Country" formControlName="country" maxlength="35" required>
+                                            <mat-label>Town/City</mat-label>
+                                            <input matInput placeholder="Town/City" formControlName="cityName" maxlength="35" required>
                                         </mat-form-field>
 
                                         <mat-form-field appearance="outline">
@@ -132,8 +119,7 @@
                                 </mat-card-content>
                             </div>
                         </div>
-                        <div class="col-md-1">
-                        </div>
+
                     </div>
                 </div>
 
@@ -141,96 +127,76 @@
 
                 <!--<div class="container">-->
                 <div class="row">
-                    <div class="col-md-1">
-                        </div>
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <mat-card-content>
                             <mat-checkbox color="primary"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
                         </mat-card-content>
                     </div>
-                    <div class="col-md-1">  
-                        </div>
                 </div>
-                   
+
                 <!--</div>-->
-                    
-                
+                <!-- Registered Address-->
+                <div class="container">
+                    <div class="row">
 
-                            <!-- Registered Address-->
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-1">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <mat-card>
+                                    <mat-card-header class="mat-card-title-color">
+                                        <mat-card-title>Registered Address</mat-card-title>
+                                    </mat-card-header>
+                                </mat-card>
+
+                                <mat-card-content class="mat-card-content">
+                                    <div>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Bldg#/Street Number</mat-label>
+                                            <input matInput placeholder="Bldg # / Street(Or)Road Name/Number" formControlName="regRoadNo" maxlength="15" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>AddressLine 1</mat-label>
+                                            <input matInput placeholder="Address" formControlName="regAddressLine1" maxlength="35" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>AddressLine 2</mat-label>
+                                            <input matInput placeholder="AddressLine 2" formControlName="regAddressLine2" maxlength="35">
+                                        </mat-form-field>
                                     </div>
-                                    <div class="col-md-10">
-                                        <div class="panel panel-default">
-                                            <mat-card>
-                                                <mat-card-header class="mat-card-title-color">
 
-                                                    <mat-card-title>Registered Address</mat-card-title>
-                                                </mat-card-header>
-                                            </mat-card>
+                                    <div>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Country</mat-label>
+                                            <input matInput placeholder="Country" formControlName="regCountry" maxlength="35" required>
+                                        </mat-form-field>
 
-                                            <mat-card-content class="mat-card-content">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>State</mat-label>
+                                            <input matInput placeholder="State" formControlName="regState" maxlength="35">
+                                        </mat-form-field>
 
-                                                <!--div>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Town/City</mat-label>
+                                            <input matInput placeholder="Town/City" formControlName="regCity" maxlength="35" required>
+                                        </mat-form-field>
 
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Bldg#/Street Number</mat-label>
-                                                        <input matInput placeholder="Bldg#/Street(Or)Road Name/Number" formControlName="regRoadNo" maxlength="15" required>
-                                                    </mat-form-field>
-                                                </div-->
-
-                                                <div>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>AddressLine 1</mat-label>
-                                                        <input matInput placeholder="Address" formControlName="regAddressLine1" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>AddressLine 2</mat-label>
-                                                        <input matInput placeholder="AddressLine 2" formControlName="regAddressLine2" maxlength="35">
-                                                    </mat-form-field>
-                                                </div>
-
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Town/City</mat-label>
-                                                        <input matInput placeholder="Town/City" formControlName="regCity" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>State</mat-label>
-                                                        <input matInput placeholder="State" formControlName="regState" maxlength="35">
-                                                    </mat-form-field>
-                                                </div>
-                                                <div>
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Country</mat-label>
-                                                        <input matInput placeholder="Country" formControlName="regCountry" maxlength="35" required>
-                                                    </mat-form-field>
-
-                                                    <mat-form-field appearance="outline">
-                                                        <mat-label>Post Code</mat-label>
-                                                        <input matInput placeholder="Post Code" formControlName="regPostCode" maxlength="8">
-                                                    </mat-form-field>
-                                                </div>
-                                            </mat-card-content>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <button type="submit" color="primary" align="Right" mat-raised-button> Save</button>
-                                        </div>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Post Code</mat-label>
+                                            <input matInput placeholder="Post Code" formControlName="regPostCode" maxlength="8">
+                                        </mat-form-field>
                                     </div>
-                                    <div class="col-md-1">
-                                    </div>
-                                </div>
+                                </mat-card-content>
                             </div>
-</ng-template>
-            </mat-tab>
+                            <div class="col-md-6">
+                        <button type="submit" color="primary" align="Right" mat-raised-button> Save</button>
+                    </div>
+                        </div>
 
-                
-               
-        </mat-tab-group>
-        </form>
-   
+                    </div>
+                </div>
+            </ng-template>           
+        </mat-tab>
+    </mat-tab-group>
+</form>
+

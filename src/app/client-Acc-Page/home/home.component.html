@@ -1,10 +1,10 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
 
-    <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>    
+    <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
     <ul class="navbar-menu-right">
         <!--<button type="submit" color="primary" mat-raised-button (click)="logout()"> Logout</button>
-    <label for="name">{{name}}</label>-->
+        <label for="name">{{name}}</label>-->
 
         <li class="nav-item">
             <div class="dropdown float-right user-menu">
@@ -12,14 +12,13 @@
                 <a class="dropdown-toggle user-link" data-toggle="dropdown" role="button" aria-expanded="false">
                     <mat-icon align="center">account_circle</mat-icon>
                     <span class="d-lg-inline d-none">  <label for="name">{{name}}</label></span>
-
                 </a>
 
                 <ul class="dropdown-menu">
                     <li class="user-info">
                         <p>
-                            <label for="compName">{{compName}}</label>                       
-                                                  </p>
+                            <label for="compName">{{compName}}</label>
+                        </p>
                     </li>
                     <mat-divider></mat-divider>
 
@@ -34,153 +33,153 @@
     </ul>
 </nav>
 
-        <!--<div class="jumbotron">
+<!--<div class="jumbotron">
 
-            <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
-            <ul class="nav right-section">
-                <li class="list-inline navbar-menu-right">
-                    <button type="submit" color="primary" align="Right" mat-raised-button (click)="logout()"> Logout</button>
-                </li>
+    <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
+    <ul class="nav right-section">
+        <li class="list-inline navbar-menu-right">
+            <button type="submit" color="primary" align="Right" mat-raised-button (click)="logout()"> Logout</button>
+        </li>
+    </ul>
+</div>-->
+<!-- New code starts from HERE-->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!--<div class="col-md-3" padding="0px" style="border: 1px solid green;">-->
+        <div class="col-md-2" style="height: 100vh; background-color: rgb(103, 58, 183);">
+
+            <ul class="ulstyle">
+
+                <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">dashboard</mat-icon>
+                        </mat-panel-title>
+
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            Dashboard                            
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+
+                </mat-expansion-panel>
+
+
+                <mat-divider></mat-divider>
+
+                <mat-expansion-panel class="wm-expansion-panel-class">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">business_center</mat-icon>
+                        </mat-panel-title>
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            Company Profile
+                        </mat-panel-description>
+
+
+                    </mat-expansion-panel-header>
+                    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+                        <ul fxLayout fxLayoutGap="15px" class="listyle">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/Admin' routerLinkActive='active'>Company Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/AddUser' routerLinkActive='active'>User Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/PaymentProfile' routerLinkActive='active'>Payment Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/BankDetails' routerLinkActive='active'>Bank/Card Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </mat-expansion-panel>
+                <mat-divider></mat-divider>
+                <mat-expansion-panel class="wm-expansion-panel-class">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+
+                            <mat-icon class="white-icon">person</mat-icon>
+                        </mat-panel-title>
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            My Profile
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+
+                    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+                        <ul fxLayout fxLayoutGap="15px" class="listyle">
+
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/MyDetails' routerLinkActive='active'>My Details</a>
+                            </li>
+                            <!--<li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/Role' routerLinkActive='active'>Role</a>
+                            </li>-->
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/UpdatePassword' routerLinkActive='active'>Update Password</a>
+                            </li>
+                        </ul>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-divider></mat-divider>
+                <mat-expansion-panel class="wm-expansion-panel-class">
+                    <mat-expansion-panel-header class="specific-class" fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">account_balance_wallet</mat-icon>
+                        </mat-panel-title>
+
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            Payment Transfers
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+                    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+
+                        <ul fxLayout fxLayoutGap="15px" class="listyle">
+
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Initiate Payments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Authorise</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Status</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--<mat-list>
+                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive="active">Initiate Payments</a>
+                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Authorise</a>
+                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Status</a>
+                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>
+                    </mat-list>-->
+                </mat-expansion-panel>
+
+                <!--</nav>-->
             </ul>
-        </div>-->
 
-
-
-
-        <div class="container-fluid">
-
-            <div class="row">
-
-                <div class="col-md-3" style="border: 1px solid green;">
-
-                    <ul>
-
-                        <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                <mat-icon class="white-icon">dashboard</mat-icon>
-            </mat-panel-title>
-
-            <mat-panel-description class="wm-mat-expansion-panel-header-description">
-                Dashboard
-                <!--<a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Dashboard</a>-->
-            </mat-panel-description>
-
-        </mat-expansion-panel-header>
-
-    </mat-expansion-panel>
-                       
-
-                        <mat-divider></mat-divider>
-
-                        <mat-expansion-panel class="wm-expansion-panel-class">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    <mat-icon class="white-icon">business_center</mat-icon>
-                                </mat-panel-title>
-                                <mat-panel-description class="wm-mat-expansion-panel-header-description">
-                                    Company Profile
-                                </mat-panel-description>
-
-
-                            </mat-expansion-panel-header>
-                            <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-                                <ul fxLayout fxLayoutGap="15px" class="listyle">
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/Admin' routerLinkActive='active'>Company Details</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/AddUser' routerLinkActive='active'>User Details</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/PaymentProfile' routerLinkActive='active'>Payment Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/BankDetails' routerLinkActive='active'>Bank/Card Details</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </mat-expansion-panel>
-                        <mat-divider></mat-divider>
-                        <mat-expansion-panel class="wm-expansion-panel-class">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-
-                                    <mat-icon class="white-icon">person</mat-icon>
-                                </mat-panel-title>
-                                <mat-panel-description class="wm-mat-expansion-panel-header-description">
-                                    My Profile
-                                </mat-panel-description>
-
-                            </mat-expansion-panel-header>
-
-                            <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-                                <ul fxLayout fxLayoutGap="15px" class="listyle">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/MyDetails' routerLinkActive='active'>My Details</a>
-                                    </li>
-                                    <!--<li class="nav-item">
-                    <a class="nav-link" routerLink='/CliAccPage/Home/Role' routerLinkActive='active'>Role</a>
-                </li>-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/UpdatePassword' routerLinkActive='active'>Update Password</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </mat-expansion-panel>
-
-                        <mat-divider></mat-divider>
-                        <mat-expansion-panel class="wm-expansion-panel-class">
-                            <mat-expansion-panel-header class="specific-class">
-
-                                <mat-panel-title>
-                                    <mat-icon class="white-icon">account_balance_wallet</mat-icon>
-                                </mat-panel-title>
-
-                                <mat-panel-description class="wm-mat-expansion-panel-header-description">
-                                    Payment Transfers
-                                </mat-panel-description>
-
-                            </mat-expansion-panel-header>
-                            <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-
-                                <ul fxLayout fxLayoutGap="15px" class="listyle">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Initiate Payments</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Authorise</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Status</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                            <!--<a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive="active">Initiate Payments</a>
-        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Authorise</a>
-        <a  mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Status</a>
-        <a  mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>-->
-
-                        </mat-expansion-panel>
-
-                        <!--</nav>-->
-                    </ul>
-
-                </div>
-                <!--<div class="col-md-8" style="border: 1px solid green; height: 800px">-->
-                <div class="col-md-9" style="border: 1px solid green;">
-                    <router-outlet></router-outlet>
-                </div>
-            </div>
         </div>
+        <!--<div class="col-md-8" style="border: 1px solid green; height: 800px">-->
+        <!--<div class="col-md-9" style="border: 1px solid green;">-->
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
 
-        <!--<app-wallet-footer></app-wallet-footer>-->
+
+
 
 

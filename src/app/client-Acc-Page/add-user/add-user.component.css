@@ -16,3 +16,7 @@ mat-form-field {
 .container{
     margin-top:20px;
 }
+
+.mat-card-content {
+    margin: 20px;
+}

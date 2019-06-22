@@ -6,6 +6,7 @@
 
 .wm-expansion-panel-class {
     background: rgb(103, 58, 183) !important;
+   
 }
 .wm-mat-expansion-panel-header-description {
     color: #fff !important;
@@ -20,4 +21,7 @@
     color: white;
     text-align: center;  
    
+}
+.mat-tab-body-content {
+    overflow-x: hidden !important;
 }
