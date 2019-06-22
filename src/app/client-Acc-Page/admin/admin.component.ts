@@ -102,9 +102,42 @@ export class AdminComponent implements OnInit {
     this.services.GetCompanyAddressDetails()
            .subscribe((data )=> {
             console.log("data address.."+data);
-            if(data != null && (data.status == 200 || data.status == 201)){
-                data = JSON.stringify(data.body);
-                this.customerAddress = JSON.parse(data).users;
+            if(data != null){//} && (data.status == 200 || data.status == 201)){
+                //data = JSON.stringify(data.body);
+                data = JSON.parse(data);
+                console.log("data add mapping.."+data);
+                //this.customerAddress.= data.trading_add_line1;
+              // this.CompInfoGroup.controls.regAddressLine1 =  data.register_add_line1;
+              //this.CompInfoGroup.controls.regAddressLine2 = data.register_add_line2;
+               //this.CompInfoGroup.controls.regCity = data.register_add_city;
+               //this.CompInfoGroup.controls.regState = data.register_add_state;
+               //this.CompInfoGroup.controls.regCountry = data.register_add_country;
+               //this.CompInfoGroup.controls.regPostCode = data.register_add_post_code;
+
+              // this.CompInfoGroup.controls.addressLine1 =  data.trading_add_line1;
+               //this.CompInfoGroup.controls.regAddressLine2 = data.trading_add_line2;
+               //this.CompInfoGroup.controls.cityName = data.trading_add_city;
+               //this.CompInfoGroup.controls.state = data.trading_add_state;
+               //this.CompInfoGroup.controls.country = data.trading_add_country;
+               //this.CompInfoGroup.controls.postCode = data.trading_add_post_code;
+
+               //Also need implement validation..check whether null or empty and fill the values..
+               this.CompInfoGroup.patchValue({
+                regAddressLine1: data.register_add_line1,
+                regAddressLine2: data.register_add_line2,
+                regCity : data.register_add_city,
+                regState : data.register_add_state,
+                regCountry : data.register_add_country,
+                regPostCode : data.register_add_post_code,
+                addressLine1 :  data.trading_add_line1,
+                addressLine2 : data.trading_add_line2,
+                cityName : data.trading_add_city,
+                state : data.trading_add_state,
+                country : data.trading_add_country,
+                postCode : data.trading_add_post_code
+               });
+
+               //this.customerAddress = JSON.parse(data).users;
             }else{
                 // status meggae with no user records.. but this should not be the case
             }
