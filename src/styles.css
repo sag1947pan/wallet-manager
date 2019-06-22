@@ -25,3 +25,7 @@
 .mat-tab-body-content {
     overflow-x: hidden !important;
 }
+
+.mat-card-title-color {
+    color: blue;
+}
