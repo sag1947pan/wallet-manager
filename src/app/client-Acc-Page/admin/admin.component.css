@@ -8,18 +8,13 @@
     
 }
 
-/*.example-card {
-    max-width: 800px;
-    margin: 10px auto;
-    background:padding-box;
-   
-  
-}*/
+
 .mat-card-title-color {
     color: blue;
 }
 .container {
     margin-top: 20px;
+    
 }
 
 .mat-card-content{
