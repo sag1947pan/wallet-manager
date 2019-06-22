@@ -20,7 +20,8 @@ const clientPageroutes: Routes = [
     {
         path: 'Home', component: HomeComponent, canActivate: [AuthGuard],
         children: [
-            { path: 'Admin', component: AdminComponent },
+            //{ path: 'Admin', component: AdminComponent },
+            { path: 'CustomerAddress', component: AdminComponent },
             { path: 'MyProfile', component: MyProfileComponent },
             { path: 'AddUser', component: AddUserComponent },
             { path: 'PaymentProfile', component: PaymentProfileComponent },

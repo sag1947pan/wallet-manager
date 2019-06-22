@@ -2,10 +2,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 
     <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
-    <ul class="navbar-menu-right">
-        <!--<button type="submit" color="primary" mat-raised-button (click)="logout()"> Logout</button>
-        <label for="name">{{name}}</label>-->
-
+    <ul class="navbar-menu-right" style="padding:0px!important">       
         <li class="nav-item">
             <div class="dropdown float-right user-menu">
                 <!--<a class="dropdown-toggle user-link" data-toggle="dropdown" href="#" role="button" aria-expanded="false">-->
@@ -84,7 +81,8 @@
                     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
                         <ul fxLayout fxLayoutGap="15px" class="listyle">
                             <li class="nav-item">
-                                <a class="nav-link" routerLink='/CliAccPage/Home/Admin' routerLinkActive='active'>Company Details</a>
+                                <!--<a class="nav-link" routerLink='/CliAccPage/Home/Admin' routerLinkActive='active'>Company Details</a>-->
+                                <a class="nav-link" routerLink='/CliAccPage/Home/CustomerAddress' routerLinkActive='active'>Company Details</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" routerLink='/CliAccPage/Home/AddUser' routerLinkActive='active'>User Details</a>
