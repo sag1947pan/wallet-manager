@@ -2,15 +2,7 @@
     margin-right: 40px;
 }
 
-.example-container {
-    display: flex;
-    flex-direction: column;
-    
-}
-
-
-
-.container {
+.container-fluid {
     margin-top: 20px;
     
 }
