@@ -21,6 +21,12 @@
     margin:20px;
 }
 
+.my-custom-scrollbar {
+    position: relative;
+    height: 600px;
+    overflow: auto;
+}
+
 
 
 
