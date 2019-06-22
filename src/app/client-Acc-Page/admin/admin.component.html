@@ -65,9 +65,10 @@
 
         <mat-tab label="Company Address">
             <ng-template matTabContent>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="container">
+                        <div class="row">
+
                             <div class="panel panel-default">
 
                                 <!-- TRADING ADDRESS-->
@@ -79,10 +80,10 @@
                                 <mat-card-content class="mat-card-content">
 
                                     <div>
-                                       <!-- <mat-form-field appearance="outline">
-                                            <mat-label>Bldg # / Street Number</mat-label>
-                                            <input matInput placeholder="Bldg#/Street" formControlName="roadNo" maxlength="15" required>
-                                        </mat-form-field-->
+                                        <!-- <mat-form-field appearance="outline">
+                            <mat-label>Bldg # / Street Number</mat-label>
+                            <input matInput placeholder="Bldg#/Street" formControlName="roadNo" maxlength="15" required>
+                        </mat-form-field-->
 
                                         <mat-form-field appearance="outline">
                                             <mat-label>Address Line 1</mat-label>
@@ -118,28 +119,28 @@
                                     </div>
                                 </mat-card-content>
                             </div>
+
+
                         </div>
-
                     </div>
-                </div>
 
 
 
-                <!--<div class="container">-->
-                <div class="row">
-                    <div class="col-md-12">
+                    <!--<div class="container">-->
+                    <div class="row">
+
                         <mat-card-content>
                             <mat-checkbox color="primary"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
                         </mat-card-content>
+
                     </div>
-                </div>
 
-                <!--</div>-->
-                <!-- Registered Address-->
-                <div class="container">
-                    <div class="row">
+                    <!--</div>-->
+                    <!-- Registered Address-->
+                    <div class="container">
+                        <div class="row">
 
-                        <div class="col-md-12">
+
                             <div class="panel panel-default">
                                 <mat-card>
                                     <mat-card-header class="mat-card-title-color">
@@ -150,9 +151,9 @@
                                 <mat-card-content class="mat-card-content">
                                     <div>
                                         <!--mat-form-field appearance="outline">
-                                            <mat-label>Bldg#/Street Number</mat-label>
-                                            <input matInput placeholder="Bldg # / Street(Or)Road Name/Number" formControlName="regRoadNo" maxlength="15" required>
-                                        </mat-form-field-->
+                            <mat-label>Bldg#/Street Number</mat-label>
+                            <input matInput placeholder="Bldg # / Street(Or)Road Name/Number" formControlName="regRoadNo" maxlength="15" required>
+                        </mat-form-field-->
 
                                         <mat-form-field appearance="outline">
                                             <mat-label>AddressLine 1</mat-label>
@@ -188,12 +189,14 @@
                                     </div>
                                 </mat-card-content>
                             </div>
-                            <div class="col-md-6">
-                        <button type="submit" color="primary" align="Right" mat-raised-button> Save</button>
-                    </div>
-                        </div>
 
+
+
+                        </div>
                     </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" color="primary" mat-raised-button> Save</button>
                 </div>
             </ng-template>           
         </mat-tab>
