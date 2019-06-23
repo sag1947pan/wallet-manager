@@ -29,3 +29,15 @@
 .mat-card-title-color {
     color: blue;
 }
+
+.panel-custom-color {
+    border-color: #673ab7;
+}
+
+   .panel-custom-color > .panel-heading {
+        /*background: rgb(103, 58, 183);*/
+        background: #673ab7;
+        color: #fff;
+        border-color: #673ab7;
+        /*background: rgb(0, 106, 81);*/ /* Our Logo Color*/
+    }

@@ -32,7 +32,7 @@
     }
 
 /* Set a style for the submit button */
-.btn {
+/*.btn {
     background-color: dodgerblue;
     color: white;
     padding: 15px 20px;
@@ -42,18 +42,19 @@
     opacity: 0.9;
     margin-bottom: 15px;
     margin-right:15px;
-}
+}*/
 
     .btn:hover {
         opacity: 1;
     }
 
 .mat-raised-button {
-    background-color: dodgerblue;
-  
+    background-color: #673ab7;
     width: 100%;
     color: white;
 }
+
+
     
 
     
