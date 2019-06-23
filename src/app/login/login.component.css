@@ -28,7 +28,8 @@
 }
 
     .input-field:focus {
-        border: 2px solid dodgerblue;
+        /*border: 2px solid dodgerblue;*/
+        border: 2px solid #673ab7;
     }
 
 /* Set a style for the submit button */
