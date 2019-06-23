@@ -1,5 +1,5 @@
 
-<form [formGroup]="CompInfoGroup" (ngSubmit)="onSubmit()">
+<form [formGroup]="CompInfoGroup" (ngSubmit)="onSubmit()" class="my-custom-scrollbar">
 
     <mat-tab-group [backgroundColor]="'primary'">
         <mat-tab label="Company Info">
@@ -66,7 +66,8 @@
 
         <mat-tab label="Company Address">
             <ng-template matTabContent>
-                <div class="col-md-12  my-custom-scrollbar">
+                <!--<div class="col-md-12  my-custom-scrollbar">-->
+                <div class="col-md-12">
                     <div class="container-fluid">
                         <div class="row">
 
@@ -74,17 +75,17 @@
                                 <div class="panel-heading">Trading Address</div>
                                 <!-- TRADING ADDRESS-->
                                 <!--<mat-card>
-                                    <mat-card-header class="mat-card-title-color">
-                                        <mat-card-title> Trading Address</mat-card-title>
-                                    </mat-card-header>
-                                </mat-card>-->
+                        <mat-card-header class="mat-card-title-color">
+                            <mat-card-title> Trading Address</mat-card-title>
+                        </mat-card-header>
+                    </mat-card>-->
                                 <mat-card-content class="mat-card-content">
 
                                     <div>
                                         <!-- <mat-form-field appearance="outline">
-                <mat-label>Bldg # / Street Number</mat-label>
-                <input matInput placeholder="Bldg#/Street" formControlName="roadNo" maxlength="15" required>
-            </mat-form-field-->
+                                <mat-label>Bldg # / Street Number</mat-label>
+                                <input matInput placeholder="Bldg#/Street" formControlName="roadNo" maxlength="15" required>
+                            </mat-form-field-->
 
                                         <mat-form-field appearance="outline">
                                             <mat-label>Address Line 1</mat-label>
@@ -128,14 +129,10 @@
 
 
                     <div class="container-fluid">
-                    <div class="row">
-
-                        <mat-card-content>
+                        <div class="row">
                             <mat-checkbox color="primary"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
-                        </mat-card-content>
-
-                    </div>
                         </div>
+                    </div>
 
                     <!--</div>-->
                     <!-- Registered Address-->
@@ -146,17 +143,17 @@
                             <div class="panel panel-custom-color">
                                 <div class="panel-heading">Registered Address</div>
                                 <!--<mat-card>
-        <mat-card-header class="mat-card-title-color">
-            <mat-card-title>Registered Address</mat-card-title>
-        </mat-card-header>
-    </mat-card>-->
+                        <mat-card-header class="mat-card-title-color">
+                            <mat-card-title>Registered Address</mat-card-title>
+                        </mat-card-header>
+                    </mat-card>-->
 
                                 <mat-card-content class="mat-card-content">
                                     <div>
                                         <!--mat-form-field appearance="outline">
-                <mat-label>Bldg#/Street Number</mat-label>
-                <input matInput placeholder="Bldg # / Street(Or)Road Name/Number" formControlName="regRoadNo" maxlength="15" required>
-            </mat-form-field-->
+                                <mat-label>Bldg#/Street Number</mat-label>
+                                <input matInput placeholder="Bldg # / Street(Or)Road Name/Number" formControlName="regRoadNo" maxlength="15" required>
+                            </mat-form-field-->
 
                                         <mat-form-field appearance="outline">
                                             <mat-label>AddressLine 1</mat-label>
@@ -198,7 +195,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="text-center" style="margin-top:15px!important">
                     <button type="submit" color="primary" mat-raised-button> Save</button>
                 </div>
             </ng-template>           

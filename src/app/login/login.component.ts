@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
                     data = JSON.parse(data);
 
                     console.log("data from resBody" + data.role);
-                    this.resourcesLoaded = false;
+                    //this.resourcesLoaded = false;
                     //Ranjith : Check whether we an store data in local storage/ session storage.
 
                     sessionStorage.setItem("userName", this.f.userName.value);
@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
 
                    
                     this.router.navigate(['/CliAccPage', data]);
+                    this.resourcesLoaded = false;
                 },
                 error => {
                     console.log("failure class" + error);

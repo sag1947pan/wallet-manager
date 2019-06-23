@@ -13,8 +13,12 @@
 
 .my-custom-scrollbar {
     position: relative;
-    height: 600px;
+    /*height: 600px;*/ 
     overflow: auto;
+}
+
+.panel{
+    margin-bottom:5px;
 }
 
 
