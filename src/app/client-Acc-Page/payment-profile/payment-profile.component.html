@@ -1,65 +1,82 @@
 <form [formGroup]="PaymentInfoGroup">
 
-    <mat-card>
-        <mat-card-header>
+    <div class="container-fluid">
+        <div class="row">
 
-            <mat-card-title>Payment Info</mat-card-title>
-        </mat-card-header>
+            <div class="col-md-12">
+                <div class="panel panel-custom-color">
+                    <div class="panel-heading">Payment Info</div>
 
-        <mat-card-content>
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label>Average Monthly Volume</mat-label>
-                    <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
-                </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Average International Payments</mat-label>
-                    <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
-                </mat-form-field>
+                    <!--<mat-card>
+                        <mat-card-header>
+
+                            <mat-card-title>Payment Info</mat-card-title>
+                        </mat-card-header>
+                    </mat-card>-->
+
+                    <mat-card-content class="mat-card-content">
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Average Monthly Volume</mat-label>
+                                <input matInput placeholder="Average Monthly Volume" formControlName="avgmonthlyValue" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Average International Payments</mat-label>
+                                <input matInput placeholder="Average International Payments" formControlName="avgIntPayments" required>
+                            </mat-form-field>
+                        </div>
+                        <div>
+
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Average Value</mat-label>
+                                <input matInput placeholder="Average Value" formControlName="avgValue" required>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Type of Payments</mat-label>
+                                <mat-select placeholder="Role" formControlName="paymentTypes" required>
+                                    <mat-option *ngFor="let option of PaymentTypes" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+
+
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Countries</mat-label>
+                                <mat-select placeholder="Role" formControlName="countriesList" required>
+                                    <mat-option *ngFor="let option of Countries" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Currencies</mat-label>
+                                <mat-select placeholder="Role" formControlName="currenciesList" required>
+                                    <mat-option *ngFor="let option of Currencies" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+                    </mat-card-content>
+
+                </div>
             </div>
-            <div>
+        </div>
+    </div>
 
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Average Value</mat-label>
-                    <input matInput placeholder="Average Value" formControlName="avgValue" required>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Type of Payments</mat-label>
-                    <mat-select placeholder="Role" formControlName="paymentTypes" required>
-                        <mat-option *ngFor="let option of PaymentTypes" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-            <div>
-
-
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Countries</mat-label>
-                    <mat-select placeholder="Role" formControlName="countriesList" required>
-                        <mat-option *ngFor="let option of Countries" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline">
-                    <mat-label>Currencies</mat-label>
-                    <mat-select placeholder="Role" formControlName="currenciesList" required>
-                        <mat-option *ngFor="let option of Currencies" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-select>
-
-                </mat-form-field>
-            </div>
-        </mat-card-content>
-    </mat-card>
-
+    <div class="text-center">
+        <!--<button type="button" style="margin:0 auto" color="primary" mat-raised-button> Edit</button>-->
+        <button type="button" color="primary" mat-raised-button> Save</button>
+    </div>
 </form>
