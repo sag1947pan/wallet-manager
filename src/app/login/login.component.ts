@@ -6,6 +6,8 @@ import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
 import { ErrorMessages } from 'src/app/resources/error.messages';
+import { AdminUserData } from 'src/app/AdminData.model';
+import { from } from 'rxjs';
 
 @Component({
     selector: 'app-login',
@@ -18,6 +20,7 @@ export class LoginComponent implements OnInit {
     Status: string;
     errorMessage: string;
     resourcesLoaded: boolean;
+    userRole:string;
 
 
     constructor(
@@ -70,10 +73,16 @@ export class LoginComponent implements OnInit {
                     sessionStorage.setItem("userData", JSON.stringify(data));
 
                     // Read item:
-                   // let item = JSON.parse(sessionStorage.getItem("userData"));
-
-                   
-                    this.router.navigate(['/CliAccPage', data]);
+                    let item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;
+                    this.userRole = item.role;
+                    if(this.userRole == "admin")  
+                    {
+                        this.router.navigate(['/wmAdminPage', data]);
+                    }
+                    else               
+                   { this.router.navigate(['/CliAccPage', data]);}
+                
+                  
                     this.resourcesLoaded = false;
                 },
                 error => {

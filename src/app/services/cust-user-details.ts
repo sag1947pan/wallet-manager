@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse,HttpParams } from '@angular/
 import { Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
-import { AdminUserData } from 'src/app/client-Acc-Page/AdminData.model';
+import { AdminUserData } from 'src/app/AdminData.model';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
 import { resolve } from 'url';
 

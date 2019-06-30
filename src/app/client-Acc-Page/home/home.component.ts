@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/AuthenticationService';
 import { Router } from '@angular/router';
-import { AdminUserData } from '../AdminData.model';
+import { AdminUserData } from '../../AdminData.model';
 import { Subscription } from 'rxjs';
 
 

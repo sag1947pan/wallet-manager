@@ -3,7 +3,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegCompInfo } from './companyInfo'; //
-import { AdminUserData } from '../AdminData.model';
+import { AdminUserData } from '../../AdminData.model';
 import { from } from 'rxjs';
 
 import { CustUserDetails } from 'src/app/services/cust-user-details';
