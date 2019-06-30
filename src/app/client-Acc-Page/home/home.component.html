@@ -39,17 +39,6 @@
     </ul>
 </nav>
 
-<!--<div class="jumbotron">
-
-    <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
-    <ul class="nav right-section">
-        <li class="list-inline navbar-menu-right">
-            <button type="submit" color="primary" align="Right" mat-raised-button (click)="logout()"> Logout</button>
-        </li>
-    </ul>
-</div>-->
-<!-- New code starts from HERE-->
-
 <div class="container-fluid">
 
     <div class="row">
@@ -60,16 +49,19 @@
             <ul class="ulstyle">
 
                 <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>
+                <!--<mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class">-->
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <mat-icon class="white-icon">dashboard</mat-icon>
                         </mat-panel-title>
 
                         <mat-panel-description class="wm-mat-expansion-panel-header-description">
-                            Dashboard                            
+                            Dashboard
+                            <!--<a class="nav-link" routerLink='/CliAccPage/Home/CustomerAddress' routerLinkActive='active'>Dashboard</a>-->
                         </mat-panel-description>
 
                     </mat-expansion-panel-header>
+                   
 
                 </mat-expansion-panel>
 
@@ -102,6 +94,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" routerLink='/CliAccPage/Home/BankDetails' routerLinkActive='active'>Bank/Card Details</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/CliAccPage/Home/dashboard' routerLinkActive='active'>Dashboard</a>
+                            </li>
                         </ul>
                     </div>
                 </mat-expansion-panel>
@@ -125,8 +120,8 @@
                                 <a class="nav-link" routerLink='/CliAccPage/Home/MyDetails' routerLinkActive='active'>My Details</a>
                             </li>
                             <!--<li class="nav-item">
-                                <a class="nav-link" routerLink='/CliAccPage/Home/Role' routerLinkActive='active'>Role</a>
-                            </li>-->
+                    <a class="nav-link" routerLink='/CliAccPage/Home/Role' routerLinkActive='active'>Role</a>
+                </li>-->
                             <li class="nav-item">
                                 <a class="nav-link" routerLink='/CliAccPage/Home/UpdatePassword' routerLinkActive='active'>Update Password</a>
                             </li>
@@ -167,11 +162,11 @@
                     </div>
 
                     <!--<mat-list>
-                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive="active">Initiate Payments</a>
-                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Authorise</a>
-                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Status</a>
-                        <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>
-                    </mat-list>-->
+            <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive="active">Initiate Payments</a>
+            <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Authorise</a>
+            <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Status</a>
+            <a mat-list-item routerLink='/CliAccPage/Home/InitiatePayments' routerLinkActive='active'>Search</a>
+        </mat-list>-->
                 </mat-expansion-panel>
 
                 <!--</nav>-->
