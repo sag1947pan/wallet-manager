@@ -38,7 +38,7 @@ const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'ForgotPwd', component: PasswordForgotComponent },
     { path: 'CustRegSuccess', component: SuccessRegComponent},
    { path: 'CliAccPage', loadChildren: './client-Acc-Page/client-Acc-Page.module#clientAccPagemodule' },
-   { path: 'wmAdminPage', loadChildren: './wm-Admin/wm-admin-module#wmadminPagemodule' }
+   { path: 'wmAdminPage', loadChildren: './wm-Admin/wm-admin-module#wmadminPagemodule' },
 ]
 
 @NgModule({

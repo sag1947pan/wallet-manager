@@ -1,39 +1,144 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 
-  <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
-  <ul class="navbar-menu-right" style="padding:5px!important">     
-  <!--<ul class="navbar-menu-right">-->
-      <li class="nav-item" style="display: inline-block">
-          <div style="text-align:center">
-              <!--<a class="dropdown-toggle user-link" data-toggle="dropdown" role="button" aria-expanded="false">
+    <a class="navbar-logo"><img src="assets/images/logo.png" class="logo-big" /></a>
+    <ul class="navbar-menu-right" style="padding:5px!important">
+        <!--<ul class="navbar-menu-right">-->
+        <li class="nav-item" style="display: inline-block">
+            <div style="text-align:center">
+                <!--<a class="dropdown-toggle user-link" data-toggle="dropdown" role="button" aria-expanded="false">
       <mat-icon style="padding:10px,5px,5px!important">account_circle</mat-icon>
       <span class="d-lg-inline d-none">  <label for="name">{{name}}</label></span>
   </a>-->
-            
-                  <a class="dropdown-toggle user-link" data-toggle="dropdown" role="button" aria-expanded="false">
-                      <mat-icon>account_circle</mat-icon>
-                      <span class="d-lg-inline d-none"> <label for="name">{{name}}</label> </span>
-                  </a>
-                 
-               
 
-                  <ul class="dropdown-menu">
-                      <li style="text-align:start">
-                          <p>
-                              <label for="compName">{{compName}}</label>
-                          </p>
-                      </li>
-                      <mat-divider></mat-divider>
-                      <li style="text-align:start">
+                <a class="dropdown-toggle user-link" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <mat-icon>account_circle</mat-icon>
+                    <span class="d-lg-inline d-none"> <label for="name">{{name}}</label> </span>
+                </a>
 
-                          <button mat-icon-button color="warn" (click)="logout()">
-                              <mat-icon>power_settings_new</mat-icon> Logout
-                              <!--<mat-icon>exit_to_app</mat-icon>-->
-                          </button>
-                          </li>
-                  </ul>
-              </div>
-      </li>
 
-  </ul>
+
+                <ul class="dropdown-menu">
+                    <li style="text-align:start">
+                        <p>
+                            <label for="compName">{{compName}}</label>
+                        </p>
+                    </li>
+                    <mat-divider></mat-divider>
+                    <li style="text-align:start">
+
+                        <button mat-icon-button color="warn" (click)="logout()">
+                            <mat-icon>power_settings_new</mat-icon> Logout
+                            <!--<mat-icon>exit_to_app</mat-icon>-->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+    </ul>
 </nav>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!--<div class="col-md-3" padding="0px" style="border: 1px solid green;">-->
+        <div class="col-md-2" style="height: 100vh; background-color: rgb(103, 58, 183);">
+
+            <ul class="ulstyle">
+
+                <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">dashboard</mat-icon>
+                        </mat-panel-title>
+
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            Dashboard
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+
+
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">search</mat-icon>
+                        </mat-panel-title>
+
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            Search Transactions
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+
+
+                </mat-expansion-panel>
+
+
+                <mat-divider></mat-divider>
+
+                <mat-expansion-panel class="wm-expansion-panel-class">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">account_balance</mat-icon>
+                        </mat-panel-title>
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            Banks
+                        </mat-panel-description>
+
+
+                    </mat-expansion-panel-header>
+                    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+                        <ul fxLayout fxLayoutGap="15px" class="listyle">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/Home/CustomerAddress' routerLinkActive='active'>New Bank Setup</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink='/Home/AddUser' routerLinkActive='active'>All Banks
+                                    </a>
+                            </li>                            
+                        </ul>
+                    </div>
+                </mat-expansion-panel>
+                <mat-divider></mat-divider>
+                <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">people</mat-icon>
+                        </mat-panel-title>
+
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            Clients
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+
+
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon class="white-icon">assignment_ind</mat-icon>
+                        </mat-panel-title>
+
+                        <mat-panel-description class="wm-mat-expansion-panel-header-description">
+                            User Management
+                          
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>               
+
+
+                </mat-expansion-panel>
+
+            </ul>
+
+        </div>
+
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
