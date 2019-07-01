@@ -9,11 +9,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 import { WmHomeComponent } from './wm-home/wm-home.component';
+
+import {WmBankSetupComponent} from './wm-bank-setup/wm-bank-setup.component';
+
 import { wmadminPageRoutingModule } from './wm-admin-routing.module';
 
 
 @NgModule({
-    declarations: [WmHomeComponent,],
+    declarations: [WmHomeComponent, WmBankSetupComponent,],
   imports: [
       CommonModule,
       ReactiveFormsModule,
