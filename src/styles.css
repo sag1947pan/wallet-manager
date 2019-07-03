@@ -41,3 +41,17 @@
         border-color: #673ab7;
         /*background: rgb(0, 106, 81);*/ /* Our Logo Color*/
     }
+
+/* Ranjith : For new UI */
+    mat-form-field {
+        margin-right: 40px;
+    }
+    
+    .container-fluid {
+        margin-top: 20px;
+        
+    }
+    
+    .mat-card-content{
+        margin:20px;
+    }
