@@ -1,4 +1,11 @@
 <form [formGroup]="CompInfoGroup" (ngSubmit)="onSubmit()" class="my-custom-scrollbar">
+    <!-- Step Control-->
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <!-- User Information-->
+            <mat-step [stepControl]="compInfoGroup" errorMessage="Name is required.">
+
+                
+                    <ng-template matStepLabel>Bank Details</ng-template>
 
     <mat-tab-group [backgroundColor]="'primary'">
         <mat-tab label="Bank Info">
@@ -68,10 +75,10 @@
 
 
 
-        <mat-tab label="Company Address">
+        <mat-tab label="Address">
             <ng-template matTabContent>
                 <!--<div class="col-md-12  my-custom-scrollbar">-->
-                <div class="col-md-12">
+                <div class="col-md-12" class="my-custom-scrollbar">
                     <div class="container-fluid">
                         <div class="row">
 
@@ -210,4 +217,50 @@
             </ng-template>
         </mat-tab>
     </mat-tab-group>
+    
+</mat-step>
+<mat-step [stepControl]="pricingInfoGroup">
+        <ng-template matStepLabel>Pricing</ng-template>
+
+        <div>
+                <label id="example-radio-group-label">Pricing Type</label>
+        </div>
+        <div>
+                <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">Volume Based</mat-radio-button>
+                        <mat-radio-button value="2">Subscription/License Based</mat-radio-button>
+                      </mat-radio-group>
+        </div>
+
+</mat-step> 
+
+<mat-step [stepControl]="invocingInfoGroup">
+        <ng-template matStepLabel>Invoice</ng-template>
+
+</mat-step> 
+
+
+<mat-step [stepControl]="countriesListGroup">
+        <ng-template matStepLabel>Select Countries</ng-template>
+
+        <mat-form-field>
+                <mat-label>Select Countries</mat-label>
+                <mat-select [formControl]="toppings" multiple>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+                
+
+</mat-step> 
+
+<mat-step [stepControl]="countriesListGroup">
+        <ng-template matStepLabel>Forex Currencies Supported</ng-template>
+
+</mat-step>
+
+<mat-step [stepControl]="countriesListGroup">
+        <ng-template matStepLabel>Bank Super Admin</ng-template>
+
+</mat-step>
+    </mat-horizontal-stepper>
 </form>

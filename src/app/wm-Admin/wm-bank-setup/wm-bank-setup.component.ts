@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 })
 export class WmBankSetupComponent implements OnInit {
 
+  toppings = new FormControl();
+  toppingList: string[] = ['USA', 'Singapore', 'Malaysia', 'United kingdom', 'India', 'Japan'];
+
   submitted = false;
   Status: string;
   SuccessMessage: string;
@@ -60,4 +63,7 @@ export class WmBankSetupComponent implements OnInit {
     });
   }
 
-}
+  
+};
+
+
