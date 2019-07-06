@@ -233,12 +233,13 @@
 
 
                                 <div>
-                                    <label id="example-radio-group-label">Pricing Type</label>
+                                    <!-- <label id="example-radio-group-label">Pricing Type</label>
                                 </div>
-                                <div>
-                                    <mat-radio-group aria-label="Select an option">
-                                        <mat-radio-button value="1">Volume Based</mat-radio-button>
-                                        <mat-radio-button value="2">Subscription/License Based</mat-radio-button>
+                                <div> -->
+                                   <label id="example-radio-group-label">Pricing Type : </label>
+                                    <mat-radio-group name="pricingRadioGroup" (change)="onChange($event)">
+                                        <mat-radio-button value="1" color="primary">Volume Based</mat-radio-button>
+                                        <mat-radio-button value="2" color="primary" checked>Subscription/License Based</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
 
@@ -371,7 +372,7 @@
 
 
         <mat-step [stepControl]="countriesListGroup">
-            <form [formGroup]="countriesListGroup">
+            <!-- <form [formGroup]="countriesListGroup"> -->
                 <ng-template matStepLabel>Select Countries</ng-template>
 
                 <div class="col-md-12">
@@ -395,13 +396,13 @@
                     </div>
                 </div>
 
-            </form>
+            <!-- </form> -->
 
 
         </mat-step>
         <!-- FOREX CURRENCIES SUPPORTED-->
         <mat-step [stepControl]="forexCurrenciesGroup">
-            <form [formGroup]="forexCurrenciesGroup">
+            <!-- <form [formGroup]="forexCurrenciesGroup"> -->
                 <ng-template matStepLabel>Forex Currencies Supported</ng-template>
                 <div class="col-md-12">
                     <div class="container-fluid">
@@ -440,7 +441,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            <!-- </form> -->
 
         </mat-step>
 

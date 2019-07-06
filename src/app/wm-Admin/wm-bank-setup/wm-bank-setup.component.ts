@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {SubscriptionDetails} from './pricingSubscriptionModel'  ;
+import { MatRadioChange, MatRadioButton } from '@angular/material';
 
 @Component({
   selector: 'app-wm-bank-setup',
@@ -12,6 +13,7 @@ export class WmBankSetupComponent implements OnInit {
 
   invocingInfoGroup:FormGroup;
   bankSuperAdminGroup:FormGroup;
+ // countriesListGroup:FormGroup;
 
   toppings = new FormControl();
   toppingList: string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
@@ -21,7 +23,7 @@ export class WmBankSetupComponent implements OnInit {
   'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
   'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
   'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
-  
+
   Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
 
   submitted = false;
@@ -42,11 +44,13 @@ export class WmBankSetupComponent implements OnInit {
     compregnCtrl: new FormControl(),
     yourAccountID: new FormControl(),
   });
-
+  
  
 
   
   @Input() editable: boolean = false;
+  @Output() change: EventEmitter<MatRadioChange>
+
   constructor(private formBuilder: FormBuilder,
     private router: Router,) { }
 
@@ -102,6 +106,14 @@ export class WmBankSetupComponent implements OnInit {
       role:[''],
     })
   }
+
+  onChange(mrChange: MatRadioChange) {
+    console.log(mrChange.value);
+    let mrButton: MatRadioButton = mrChange.source;
+    console.log(mrButton.name);
+    console.log(mrButton.checked);
+    console.log(mrButton.inputId);
+ } 
 
   
 
