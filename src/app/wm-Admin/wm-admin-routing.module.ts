@@ -14,6 +14,9 @@ const wmAdminPageroutes: Routes = [
             
             { path: 'BankSetup', component: WmBankSetupComponent },          
              
+            {
+                path: '', component: WmBankSetupComponent, pathMatch: 'full'
+            }
             
         ]
     }
