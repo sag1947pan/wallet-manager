@@ -71,22 +71,28 @@ export class WmBankSetupComponent implements OnInit {
       compRegnNo: [''],
       industry: [''],
       yourAccountID: [''],
-      addressLine1: ['', Validators.required],
-      addressLine2: [''],
-      cityName: ['', Validators.required],
-      state: ['', Validators.required],
+     
+     
+     
+      
       country: ['', Validators.required],
       postCode: ['', Validators.required],
+      buildingName: ['', Validators.required],
+      streetAddress: [''],
+      state: ['', Validators.required],
+      cityName: ['', Validators.required],
 
       //Registered Address
      
-      regAddressLine2: [''],
+     
      
       regCountry: ['', Validators.required],
       regPostCode: ['', Validators.required],
-      regBuildingNo:['', Validators.required],
-      regCityName: ['', Validators.required],
+      regbuildingName:['', Validators.required],
+      regstreetAddress: [''],
+     
       regState: ['', Validators.required],
+      regCityName: ['', Validators.required],
 
     });
 
