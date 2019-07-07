@@ -30,6 +30,7 @@ export class WmBankSetupComponent implements OnInit {
   Status: string;
   SuccessMessage: string;
   error: any;
+  step = 0;
   //Pricing Info data
   private pricingSubscriptionInfo : SubscriptionDetails[] = [
 
@@ -113,6 +114,19 @@ export class WmBankSetupComponent implements OnInit {
       lastName:[''],
       role:[''],
     })
+  }
+
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 
   onChange(mrChange: MatRadioChange) {
