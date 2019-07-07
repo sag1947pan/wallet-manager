@@ -1,7 +1,7 @@
 .my-custom-scrollbar {
     position: relative;
-    height: 600px; 
-   /* overflow: auto; */
+    /*height: 600px;*/ 
+    overflow: auto !important; 
 }
 
 .panel{
@@ -16,28 +16,7 @@
     padding: 4px 20px 3px 20px;
   }
 
-  .mat-select-panel{
+   .mat-select-panel{
     height: 500px;
-  }
+  } 
  
-/* File Browser Select CSS */
-  /* #customFile .custom-file-control:lang(en)::after {
-    content: "Select file...";
-  }
-
-  #customFile .custom-file-control:lang(en)::before {
-    content: "Click me";
-  }
-  
-  /*when a value is selected, this class removes the content */
-  /*
-  .custom-file-control.selected:lang(en)::after {
-    content: "" !important;
-  }
-  
-  .custom-file {
-    overflow: hidden;
-  }
-  .custom-file-control {
-    white-space: nowrap;
-  } */

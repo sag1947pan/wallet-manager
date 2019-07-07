@@ -58,7 +58,7 @@ export class WmBankSetupComponent implements OnInit {
 
     this.CompInfoGroup = this.formBuilder.group({
 
-      customerId: [''], 
+      bankId: [''], 
       bankCustomerId: [''],
       bankName: [''],
       primaryContactName: [''],
@@ -79,12 +79,14 @@ export class WmBankSetupComponent implements OnInit {
       postCode: ['', Validators.required],
 
       //Registered Address
-      regAddressLine1: ['', Validators.required],
+     
       regAddressLine2: [''],
-      regCity: ['', Validators.required],
-      regState: ['', Validators.required],
+     
       regCountry: ['', Validators.required],
       regPostCode: ['', Validators.required],
+      regBuildingNo:['', Validators.required],
+      regCityName: ['', Validators.required],
+      regState: ['', Validators.required],
 
     });
 
