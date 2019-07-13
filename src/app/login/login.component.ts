@@ -76,20 +76,19 @@ export class LoginComponent implements OnInit {
                     let item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;
                     this.userRole = item.role;
                     var userTpe = data.user_type;
-                    if(userTpe == "wmuser"){
+                    if(userTpe == "wmuser"){//WM Employee
                         this.router.navigate(['/wmAdminPage', data]);
-                    }else if(userTpe == "custuser"){
+                    }else if(userTpe == "custuser"){ //Customer 
                         this.router.navigate(['/CliAccPage', data]);
-                    }else if(userTpe == "bankuser"){
+                    }else if(userTpe == "bankuser"){//Bank user
                         this.router.navigate(['/CliAccPage', data]);
-                    }/*else if(userTpe == "bankuser"){
+                    }else if(userTpe == "bene"){//BENE
                         this.router.navigate(['/CliAccPage', data]);
-                    }else if(userTpe == "bankuser"){
+                    }else if(userTpe == "bankCustUser"){//bank customer
                         this.router.navigate(['/CliAccPage', data]);
-                    }else {
-                        
+                    }else { //move to default page
+
                     }
-                */
                     this.resourcesLoaded = false;
                 },
                 error => {
