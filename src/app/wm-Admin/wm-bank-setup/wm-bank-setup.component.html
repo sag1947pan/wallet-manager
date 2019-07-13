@@ -1,9 +1,10 @@
-<form [formGroup]="CompInfoGroup" (ngSubmit)="onSubmit()" class="my-custom-scrollbar">
-    <!-- Step Control-->
-    <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <!-- User Information-->
-        <mat-step [stepControl]="compInfoGroup" errorMessage="Name is required.">
-            <ng-template matStepLabel>Bank Details</ng-template>
+<!-- <form [formGroup]="CompInfoGroup" (ngSubmit)="onSubmit()" class="my-custom-scrollbar"> -->
+<!-- Step Control-->
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <!-- User Information-->
+    <mat-step [stepControl]="compInfoGroup" errorMessage="Name is required.">
+        <ng-template matStepLabel>Bank Details</ng-template>
+        <form [formGroup]="compInfoGroup">
             <!-- START ACCORDIAN-->
 
             <mat-accordion class="example-headers-align">
@@ -62,272 +63,337 @@
                     </mat-action-row>
                 </mat-expansion-panel>
 
-                    <!--SERVICES AND PREFERENCES-->
-                    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
+                <!--SERVICES AND PREFERENCES-->
+                <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
                             Services and Prferences
-                          </mat-panel-title>
-                          <mat-panel-description>
+                        </mat-panel-title>
+                        <mat-panel-description>
                             Enter your Preferences
                             <mat-icon>settings_applications</mat-icon>
-                          </mat-panel-description>
-                        </mat-expansion-panel-header>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
 
+                    <mat-card-content class="mat-card-content">
+
+                        <div>
+
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Service Subscribed by Bank</mat-label>
+                                <input matInput placeholder="Service Subscription">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="picker" placeholder="Service Activation Start date">
+                                <mat-datepicker-toggle matSuffix [for]="picker">
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <input matInput [matDatepicker]="picker1" placeholder="Service Activation End date">
+                                <mat-datepicker-toggle matSuffix [for]="picker1">
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Support Required for Bank User Management</mat-label>
+                                <mat-select placeholder="Support Required for Bank User Management">
+                                    <mat-option>
+                                        Yes
+                                    </mat-option>
+                                    <mat-option>
+                                        No
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+
+
+                        </div>
+
+
+                        <div>
+
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Support Required for Bank Client Management</mat-label>
+                                <mat-select placeholder="Support Required for Client User Management">
+                                    <mat-option>
+                                        Yes
+                                    </mat-option>
+                                    <mat-option>
+                                        No
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Authorization -Manual Payment Activity</mat-label>
+                                <mat-select placeholder="Authorization -Manual Payment Activity">
+                                    <mat-option>
+                                        Yes
+                                    </mat-option>
+                                    <mat-option>
+                                        No
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Authorization -Non Payment Activity</mat-label>
+                                <mat-select placeholder="Authorization -Non Payment Activity">
+                                    <mat-option>
+                                        Yes
+                                    </mat-option>
+                                    <mat-option>
+                                        No
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+
+                        </div>
+
+                    </mat-card-content>
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Trading Address
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Enter Trading Address details
+                            <mat-icon>my_location</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-card-content class="mat-card-content">
+
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Country</mat-label>
+                                <mat-select formControlName="country">
+                                    <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                                        {{topping}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Post Code</mat-label>
+                                <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Building No / Name </mat-label>
+                                <input matInput placeholder="Building No / Name" formControlName="buildingName"
+                                    maxlength="35">
+                            </mat-form-field>
+
+
+                        </div>
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Street Address</mat-label>
+                                <input matInput placeholder="Street Address" formControlName="streetAddress"
+                                    maxlength="35">
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>State</mat-label>
+                                <input matInput placeholder="State" formControlName="state" maxlength="35">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Town/City</mat-label>
+                                <input matInput placeholder="Town/City" formControlName="cityName" maxlength="35">
+                            </mat-form-field>
+
+
+                        </div>
+                    </mat-card-content>
+
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Registered Address
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Enter Registered Address details
+                            <mat-icon>my_location</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+
+                    <mat-card-content class="mat-card-content">
+
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Country</mat-label>
+                                <mat-select formControlName="regCountry">
+                                    <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                                        {{topping}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Post Code</mat-label>
+                                <input matInput placeholder="Post Code" formControlName="regPostCode" maxlength="8">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Building No / Name </mat-label>
+                                <input matInput placeholder="Building No / Name" formControlName="regbuildingName"
+                                    maxlength="35">
+                            </mat-form-field>
+
+                        </div>
+
+                        <div>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Street Address</mat-label>
+                                <input matInput placeholder="Street Address" formControlName="regstreetAddress"
+                                    maxlength="35">
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>State</mat-label>
+                                <input matInput placeholder="State" formControlName="regState" maxlength="35">
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Town/City</mat-label>
+                                <input matInput placeholder="Town/City" formControlName="regCityName" maxlength="35">
+                            </mat-form-field>
+
+
+                        </div>
+
+
+                    </mat-card-content>
+
+                    <mat-action-row>
+                        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                        <button mat-button color="primary" (click)="nextStep()">End</button>
+                    </mat-action-row>
+
+
+                </mat-expansion-panel>
+
+
+
+            </mat-accordion>
+        </form>
+
+        <div>
+
+
+            <!-- <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button> -->
+            <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+        </div>
+
+
+        <!-- END ACCORDIAN-->
+
+
+
+    </mat-step>
+    <mat-step [stepControl]="pricingInfoGroup">
+        <ng-template matStepLabel>Pricing</ng-template>
+
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="panel panel-custom-color">
+                        <!-- <div class="panel-heading"> Pricing Information</div> -->
                         <mat-card-content class="mat-card-content">
 
-                            <div>
-
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Service Subscribed by Bank</mat-label>
-                                    <input matInput placeholder="Service Subscription">
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline">
-                                    <input matInput [matDatepicker]="picker"
-                                        placeholder="Service Activation Start date">
-                                    <mat-datepicker-toggle matSuffix [for]="picker">
-                                    </mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline">
-                                    <input matInput [matDatepicker]="picker1"
-                                        placeholder="Service Activation End date">
-                                    <mat-datepicker-toggle matSuffix [for]="picker1">
-                                    </mat-datepicker-toggle>
-                                    <mat-datepicker #picker1></mat-datepicker>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Support Required for Bank User Management</mat-label>
-                                    <mat-select placeholder="Support Required for Bank User Management">
-                                        <mat-option>
-                                            Yes
-                                        </mat-option>
-                                        <mat-option>
-                                            No
-                                        </mat-option>
-                                    </mat-select>
-
-                                </mat-form-field>
-
-
-                            </div>
-
 
                             <div>
-
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Support Required for Bank Client Management</mat-label>
-                                    <mat-select
-                                        placeholder="Support Required for Client User Management">
-                                        <mat-option>
-                                            Yes
-                                        </mat-option>
-                                        <mat-option>
-                                            No
-                                        </mat-option>
-                                    </mat-select>
-
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Authorization -Manual Payment Activity</mat-label>
-                                    <mat-select placeholder="Authorization -Manual Payment Activity">
-                                        <mat-option>
-                                            Yes
-                                        </mat-option>
-                                        <mat-option>
-                                            No
-                                        </mat-option>
-                                    </mat-select>
-
-                                </mat-form-field>
-
-
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Authorization -Non Payment Activity</mat-label>
-                                    <mat-select placeholder="Authorization -Non Payment Activity">
-                                        <mat-option>
-                                            Yes
-                                        </mat-option>
-                                        <mat-option>
-                                            No
-                                        </mat-option>
-                                    </mat-select>
-
-                                </mat-form-field>
-
+                                <!-- <label id="example-radio-group-label">Pricing Type</label>
+                                </div>
+                                <div> -->
+                                <label id="example-radio-group-label">Pricing Type : </label>
+                                <mat-radio-group name="pricingRadioGroup" (change)="onChange($event)">
+                                    <mat-radio-button value="1" color="primary">Volume Based</mat-radio-button>
+                                    <mat-radio-button value="2" color="primary" checked>Subscription/License Based
+                                    </mat-radio-button>
+                                </mat-radio-group>
                             </div>
 
+                            <div class="container-fluid">
+                                <table class="table table-striped">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Subscription Info</th>
+                                            <th>Currency</th>
+                                            <th>Amount</th>
+                                            <th>Time Period</th>
+                                            <th>Discount</th>
+                                            <th>Edit</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+                                        <tr *ngFor="let pricingSubscription of pricingSubscriptionInfo">
+                                            <td>{{ pricingSubscription.subscriptionInfo}}</td>
+                                            <td>{{ pricingSubscription.currency }}</td>
+                                            <td>{{ pricingSubscription.amount }}</td>
+                                            <td>{{ pricingSubscription.validTime }}</td>
+                                            <td>{{ pricingSubscription.discount }}</td>
+                                            <button mat-icon-button color="warn" id="remove"
+                                                (click)="deleteRow(userInfo.user_id)">
+                                                <mat-icon>edit</mat-icon>
+                                            </button>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div>
+
+                            </div>
                         </mat-card-content>
-                        <mat-action-row>
-                            <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                            <button mat-button color="primary" (click)="nextStep()">Next</button>
-                          </mat-action-row>
-                        </mat-expansion-panel>
 
-                        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
-                            <mat-expansion-panel-header>
-                              <mat-panel-title>
-                               Trading Address
-                              </mat-panel-title>
-                              <mat-panel-description>
-                                Enter Trading Address details
-                                <mat-icon>my_location</mat-icon>
-                              </mat-panel-description>
-                            </mat-expansion-panel-header>
+                    </div>
 
-                            <mat-card-content class="mat-card-content">                                         
-
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Country</mat-label>
-                                        <mat-select formControlName="country">
-                                            <mat-option *ngFor="let topping of toppingList"
-                                                [value]="topping">
-                                                {{topping}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Post Code</mat-label>
-                                        <input matInput placeholder="Post Code" formControlName="postCode"
-                                            maxlength="8">
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Building No / Name </mat-label>
-                                        <input matInput placeholder="Building No / Name" formControlName="buildingName"
-                                            maxlength="35">
-                                    </mat-form-field>
+                </div>
+                <div>
 
 
-                                </div>
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Street Address</mat-label>
-                                        <input matInput placeholder="Street Address"
-                                            formControlName="streetAddress" maxlength="35">
-                                    </mat-form-field>
-
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>State</mat-label>
-                                        <input matInput placeholder="State" formControlName="state"
-                                            maxlength="35">
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Town/City</mat-label>
-                                        <input matInput placeholder="Town/City" formControlName="cityName"
-                                            maxlength="35">
-                                    </mat-form-field>
-
-
-                                </div>
-                            </mat-card-content>
-
-                            <mat-action-row>
-                                <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                                <button mat-button color="primary" (click)="nextStep()">Next</button>
-                              </mat-action-row>
-                            </mat-expansion-panel>
-
-                            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
-                                <mat-expansion-panel-header>
-                                  <mat-panel-title>
-                                   Registered Address
-                                  </mat-panel-title>
-                                  <mat-panel-description>
-                                    Enter Registered Address details
-                                    <mat-icon>my_location</mat-icon>
-                                  </mat-panel-description>
-                                </mat-expansion-panel-header>
-
-
-                                <mat-card-content class="mat-card-content">
-                                    
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Country</mat-label>
-                                        <mat-select formControlName="regCountry">
-                                            <mat-option *ngFor="let topping of toppingList"
-                                                [value]="topping">
-                                                {{topping}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Post Code</mat-label>
-                                        <input matInput placeholder="Post Code" formControlName="regPostCode"
-                                            maxlength="8">
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Building No / Name </mat-label>
-                                        <input matInput placeholder="Building No / Name" formControlName="regbuildingName"
-                                            maxlength="35">
-                                    </mat-form-field>
-
-                                </div>
-
-                                <div>
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Street Address</mat-label>
-                                        <input matInput placeholder="Street Address"
-                                            formControlName="regstreetAddress" maxlength="35">
-                                    </mat-form-field>
-
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>State</mat-label>
-                                        <input matInput placeholder="State" formControlName="regState"
-                                            maxlength="35">
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                        <mat-label>Town/City</mat-label>
-                                        <input matInput placeholder="Town/City" formControlName="regCityName"
-                                            maxlength="35">
-                                    </mat-form-field>
-
-
-                                </div>
-
-                                   
-                                </mat-card-content>
-
-                                <mat-action-row>
-                                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                                    <button mat-button color="primary" (click)="nextStep()">End</button>
-                                  </mat-action-row>
-
-
-                                </mat-expansion-panel>
-                    
-
-               
-            </mat-accordion>
-
-            <div>
-
-
-                <!-- <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button> -->
-                <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+                    <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button>
+                    <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+                </div>
             </div>
+        </div>
 
-
-            <!-- END ACCORDIAN-->
-
-
-
-        </mat-step>
-        <mat-step [stepControl]="pricingInfoGroup">
-            <ng-template matStepLabel>Pricing</ng-template>
+    </mat-step>
+    <!-- Invoice Details-->
+    <mat-step [stepControl]="invocingInfoGroup">
+        <form [formGroup]="invocingInfoGroup">
+            <ng-template matStepLabel>Invoice</ng-template>
 
             <div class="col-md-12">
                 <div class="container-fluid">
@@ -335,353 +401,235 @@
                         <div class="panel panel-custom-color">
                             <!-- <div class="panel-heading"> Pricing Information</div> -->
                             <mat-card-content class="mat-card-content">
-
-
-                                <div>
-                                    <!-- <label id="example-radio-group-label">Pricing Type</label>
-                                </div>
-                                <div> -->
-                                    <label id="example-radio-group-label">Pricing Type : </label>
-                                    <mat-radio-group name="pricingRadioGroup" (change)="onChange($event)">
-                                        <mat-radio-button value="1" color="primary">Volume Based</mat-radio-button>
-                                        <mat-radio-button value="2" color="primary" checked>Subscription/License Based
-                                        </mat-radio-button>
-                                    </mat-radio-group>
-                                </div>
-
-                                <div class="container-fluid">
-                                    <table class="table table-striped">
-
-                                        <thead>
-                                            <tr>
-                                                <th>Subscription Info</th>
-                                                <th>Currency</th>
-                                                <th>Amount</th>
-                                                <th>Time Period</th>
-                                                <th>Discount</th>
-                                                <th>Edit</th>
-                                            </tr>
-
-                                        </thead>
-
-                                        <tbody>
-                                            <tr *ngFor="let pricingSubscription of pricingSubscriptionInfo">
-                                                <td>{{ pricingSubscription.subscriptionInfo}}</td>
-                                                <td>{{ pricingSubscription.currency }}</td>
-                                                <td>{{ pricingSubscription.amount }}</td>
-                                                <td>{{ pricingSubscription.validTime }}</td>
-                                                <td>{{ pricingSubscription.discount }}</td>
-                                                <button mat-icon-button color="warn" id="remove"
-                                                    (click)="deleteRow(userInfo.user_id)">
-                                                    <mat-icon>edit</mat-icon>
-                                                </button>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
                                 <div>
 
-                                </div>
-                            </mat-card-content>
 
-                        </div>
-
-                    </div>
-                    <div>
-
-
-                        <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button>
-                        <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
-                    </div>
-                </div>
-            </div>
-
-        </mat-step>
-        <!-- Invoice Details-->
-        <mat-step [stepControl]="invocingInfoGroup">
-            <form [formGroup]="invocingInfoGroup">
-                <ng-template matStepLabel>Invoice</ng-template>
-
-                <div class="col-md-12">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="panel panel-custom-color">
-                                <!-- <div class="panel-heading"> Pricing Information</div> -->
-                                <mat-card-content class="mat-card-content">
-                                    <div>
-
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Invoicing Frequency</mat-label>
-                                            <mat-select placeholder="Invoicing Frequency"
-                                                formControlName="invoicingFrequency">
-                                                <mat-option>
-                                                    Monthly
-                                                </mat-option>
-                                                <mat-option>
-                                                    Annual
-                                                </mat-option>
-                                            </mat-select>
-
-                                        </mat-form-field>
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Invoice Generation Day </mat-label>
-                                            <input matInput placeholder="Invoice Generation Day"
-                                                formControlName="invoiceGenerationDay">
-                                        </mat-form-field>
-                                    </div>
-                                    <div>
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Payment Due in Days </mat-label>
-                                            <input matInput placeholder="Payment Due in Days"
-                                                formControlName="paymentDues">
-                                        </mat-form-field>
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Invoice favouring </mat-label>
-                                            <input matInput placeholder="Invoice favouring"
-                                                formControlName="invoicefavouring">
-                                        </mat-form-field>
-
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Email Id for Invoice </mat-label>
-                                            <input matInput placeholder="Email Id for Invoice"
-                                                formControlName="mailInvoice">
-                                        </mat-form-field>
-                                    </div>
-                                    <div>
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Postal Address for Invoice </mat-label>
-                                            <textarea matInput placeholder="Postal Address for Invoice"
-                                                formControlName="invoiceAddress"></textarea>
-                                        </mat-form-field>
-                                    </div>
-                                </mat-card-content>
-                            </div>
-                        </div>
-                        <div>
-
-
-                            <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back
-                            </button>
-                            <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-        </mat-step>
-
-
-        <mat-step [stepControl]="countriesListGroup">
-            <!-- <form [formGroup]="countriesListGroup"> -->
-            <ng-template matStepLabel>Select Countries</ng-template>
-
-            <div class="col-md-12">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="panel panel-custom-color">
-                            <div class="panel-heading"> Countries where Bank Supports to Send Payments</div>
-                            <mat-card-content>
-                                <div>
-                                    <mat-form-field>
-                                        <mat-label> Select Countries</mat-label>
-                                        <mat-select [formControl]="toppings" multiple
-                                            [panelClass]="applyPanelOverride2 ? 'panel-override-2' : 'panel-override'">
-                                            <mat-option *ngFor="let topping of toppingList" [value]="topping">
-                                                {{topping}}</mat-option>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Invoicing Frequency</mat-label>
+                                        <mat-select placeholder="Invoicing Frequency"
+                                            formControlName="invoicingFrequency">
+                                            <mat-option>
+                                                Monthly
+                                            </mat-option>
+                                            <mat-option>
+                                                Annual
+                                            </mat-option>
                                         </mat-select>
+
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Invoice Generation Day </mat-label>
+                                        <input matInput placeholder="Invoice Generation Day"
+                                            formControlName="invoiceGenerationDay">
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Payment Due in Days </mat-label>
+                                        <input matInput placeholder="Payment Due in Days" formControlName="paymentDues">
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Invoice favouring </mat-label>
+                                        <input matInput placeholder="Invoice favouring"
+                                            formControlName="invoicefavouring">
+                                    </mat-form-field>
+
+
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Email Id for Invoice </mat-label>
+                                        <input matInput placeholder="Email Id for Invoice"
+                                            formControlName="mailInvoice">
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Postal Address for Invoice </mat-label>
+                                        <textarea matInput placeholder="Postal Address for Invoice"
+                                            formControlName="invoiceAddress"></textarea>
                                     </mat-form-field>
                                 </div>
                             </mat-card-content>
                         </div>
                     </div>
+                    <div>
+
+
+                        <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back
+                        </button>
+                        <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+                    </div>
                 </div>
             </div>
+        </form>
 
-            <!-- </form> -->
+    </mat-step>
 
 
-        </mat-step>
-        <!-- FOREX CURRENCIES SUPPORTED-->
-        <mat-step [stepControl]="forexCurrenciesGroup">
-            <!-- <form [formGroup]="forexCurrenciesGroup"> -->
-            <ng-template matStepLabel>Forex Currencies Supported</ng-template>
-            <div class="col-md-12">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="panel panel-custom-color">
-                            <!-- <div class="panel-heading"> Pricing Information</div> -->
-                            <mat-card-content>
+    <mat-step [stepControl]="countriesListGroup">
+        <!-- <form [formGroup]="countriesListGroup"> -->
+        <ng-template matStepLabel>Select Countries</ng-template>
 
-                                <div>
-                                    <label id="example-radio-group-label">Forex Currencies Supported</label>
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="panel panel-custom-color">
+                        <div class="panel-heading"> Countries where Bank Supports to Send Payments</div>
+                        <mat-card-content>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label> Select Countries</mat-label>
+                                    <mat-select [formControl]="toppings" multiple
+                                        [panelClass]="applyPanelOverride2 ? 'panel-override-2' : 'panel-override'">
+                                        <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                                            {{topping}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </mat-card-content>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- </form> -->
+
+
+    </mat-step>
+    <!-- FOREX CURRENCIES SUPPORTED-->
+    <mat-step [stepControl]="forexCurrenciesGroup">
+        <!-- <form [formGroup]="forexCurrenciesGroup"> -->
+        <ng-template matStepLabel>Forex Currencies Supported</ng-template>
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="panel panel-custom-color">
+                        <!-- <div class="panel-heading"> Pricing Information</div> -->
+                        <mat-card-content>
+
+                            <div>
+                                <label id="example-radio-group-label">Forex Currencies Supported</label>
+                            </div>
+                            <div>
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1">Upload Currencies using Sheet rate File
+                                    </mat-radio-button>
+                                    <mat-radio-button value="2">Choose Currencies Manually</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div class="container-fluid">
+
+                                <div class="custom-file">
+                                    <label class="custom-file-label" for="customFile">Upload file</label>
+                                    <input type="file" class="custom-file-input" id="customFile">
+
                                 </div>
-                                <div>
-                                    <mat-radio-group aria-label="Select an option">
-                                        <mat-radio-button value="1">Upload Currencies using Sheet rate File
-                                        </mat-radio-button>
-                                        <mat-radio-button value="2">Choose Currencies Manually</mat-radio-button>
-                                    </mat-radio-group>
-                                </div>
-                                <div class="container-fluid">
 
-                                    <div class="custom-file">
-                                        <label class="custom-file-label" for="customFile">Upload file</label>
-                                        <input type="file" class="custom-file-input" id="customFile">
-
-                                    </div>
-
-                                    <!-- USING ANGULAR MATERIAL-->
-                                    <!-- <button mat-raised-button color="primary" (click)="fileInput.click()">Upload</button>
+                                <!-- USING ANGULAR MATERIAL-->
+                                <!-- <button mat-raised-button color="primary" (click)="fileInput.click()">Upload</button>
                                   <input hidden type="file" #fileInput> -->
 
-                                </div>
+                            </div>
 
-                            </mat-card-content>
+                        </mat-card-content>
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- </form> -->
+        </div>
+        <!-- </form> -->
 
-        </mat-step>
-
-        <!-- BANK SUPER ADMIN-->
-
-        <mat-step [stepControl]="bankSuperAdminGroup">
-            <form [formGroup]="bankSuperAdminGroup">
-                <ng-template matStepLabel>Bank Super Admin</ng-template>
-
-                <div class="col-md-12">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="panel panel-custom-color">
-                                <div class="panel-heading"> Super Admin Profile 1</div>
-                                <mat-card-content>
-                                    <div>
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>E-mail</mat-label>
-                                            <input type="email" matInput placeholder="E-mail" formControlName="email"
-                                                maxlength="50">
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('email').touched && bankSuperAdminGroup.get('email').hasError('required')">
-                                                Email is required</mat-error>
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('email').touched && bankSuperAdminGroup.get('email').hasError('invalidEmail')">
-                                                Invalid email address</mat-error>
-                                        </mat-form-field>
+    </mat-step>
 
 
 
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>First Name</mat-label>
-                                            <input matInput placeholder="First Name" formControlName="firstName"
-                                                maxlength="30">
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('firstName').touched && bankSuperAdminGroup.get('firstName').hasError('required')">
-                                                First Name is required</mat-error>
-                                        </mat-form-field>
+    <!-- BANK SUPER ADMIN-->
+
+    <mat-step [stepControl]="bankSuperAdminGroup">
+         <!-- <form [formGroup]="bankSuperAdminGroup">  -->
+
+        <ng-template matStepLabel>Bank Super Admin</ng-template>
+
+        <div class="col-md-12">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="panel panel-custom-color">
+                      
+                        <mat-card-content class="mat-card-content">
 
 
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Last Name</mat-label>
-                                            <input matInput placeholder="SurName" formControlName="lastName"
-                                                maxlength="30">
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('lastName').touched && bankSuperAdminGroup.get('lastName').hasError('required')">
-                                                Last Name is required</mat-error>
-                                        </mat-form-field>
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Email</th>
+                                        <th>First Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Last Name</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let dynamic of dynamicArray; let i = index;">
+
+                                        <td (click)="deleteRow(i)">
+                                            <i class="fa fa-trash fa-2x"></i>
+                                        </td>
+                                        <td>
+                                            <input [(ngModel)]="dynamicArray[i].email" class="form-control"
+                                                type="text" />
+                                        </td>
+                                        <td>
+                                            <input [(ngModel)]="dynamicArray[i].firstName" class="form-control"
+                                                type="text" />
+                                        </td>
+                                        <td>
+                                            <input [(ngModel)]="dynamicArray[i].middleName" class="form-control"
+                                                type="text" />
+                                        </td>
+                                        <td>
+                                            <input [(ngModel)]="dynamicArray[i].lastName" class="form-control"
+                                                type="text" />
+                                        </td>
+                                        <td>
+                                            <select [(ngModel)]="dynamicArray[i].role" class="form-control"
+                                                type="select">
+                                                <option>Admin</option>
+                                                <option>Operator</option>
+                                                <option>Authoriser</option>
+                                            </select>
+                                        </td>
+                                        <!-- <td>                          
+
+                                <mat-select [formControl]="Roles">
+                              
+                                <mat-option *ngFor="let role of Roles" [value]="role">
+                                    {{role}}</mat-option>
+                            </mat-select>
+                        </td> -->
+                                    </tr>
+                                    <tr>
+                                        <td (click)="addRow(i)">
+                                            <i class="fa fa-plus fa-2x"></i>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
 
 
-
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Role</mat-label>
-                                            <mat-select placeholder="Role" formControlName="role">
-                                                <mat-option *ngFor="let option of Roles" [value]="option">
-                                                    {{option}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-
-                                </mat-card-content>
-                            </div>
-                        </div>
+                        </mat-card-content>
                     </div>
+
                 </div>
-                <!-- Second Profile-->
-                <div class="col-md-12">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="panel panel-custom-color">
-                                <div class="panel-heading"> Super Admin Profile 2</div>
-                                <mat-card-content>
-                                    <div>
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>E-mail</mat-label>
-                                            <input type="email" matInput placeholder="E-mail" formControlName="email"
-                                                maxlength="50">
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('email').touched && bankSuperAdminGroup.get('email').hasError('required')">
-                                                Email is required</mat-error>
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('email').touched && bankSuperAdminGroup.get('email').hasError('invalidEmail')">
-                                                Invalid email address</mat-error>
-                                        </mat-form-field>
-
-
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>First Name</mat-label>
-                                            <input matInput placeholder="First Name" formControlName="firstName"
-                                                maxlength="30">
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('firstName').touched && bankSuperAdminGroup.get('firstName').hasError('required')">
-                                                First Name is required</mat-error>
-                                        </mat-form-field>
-
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Last Name</mat-label>
-                                            <input matInput placeholder="SurName" formControlName="lastName"
-                                                maxlength="30">
-                                            <mat-error
-                                                *ngIf="bankSuperAdminGroup.get('lastName').touched && bankSuperAdminGroup.get('lastName').hasError('required')">
-                                                Last Name is required</mat-error>
-                                        </mat-form-field>
-
-
-
-
-                                        <mat-form-field appearance="outline">
-                                            <mat-label>Role</mat-label>
-                                            <mat-select placeholder="Role" formControlName="role">
-                                                <mat-option *ngFor="let option of Roles" [value]="option">
-                                                    {{option}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-
-                                </mat-card-content>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back
-                    </button>
-                    <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Submit</button>
-                </div>
-            </form>
-        </mat-step>
-    </mat-horizontal-stepper>
-</form>
+            </div>
+        </div>
+        <div>
+            <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Prev
+            </button>
+            <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+        </div>
+         <!-- </form>  -->
+    </mat-step>
+</mat-horizontal-stepper>
