@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { SubscriptionDetails } from './pricingSubscriptionModel';
 import { MatRadioChange, MatRadioButton } from '@angular/material';
 import { DynamicGrid } from './superAdmin.model';
+import { SubscriptionPackageDetails } from './subscriptionPackageModel';
+import { PayAsYouGo } from './payaYouGoModel';
 
 @Component({
   selector: 'app-wm-bank-setup',
@@ -39,15 +41,42 @@ export class WmBankSetupComponent implements OnInit {
   SuccessMessage: string;
   error: any;
   step = 0;
-  //Pricing Info data
+  //Fixed Pricing  data
   private pricingSubscriptionInfo: SubscriptionDetails[] = [
 
 
-    { subscriptionInfo: 'License/Subscription Fees', currency: 'GBP', amount: 200000, validTime: 'Every 2 Years', discount: '' },
-    { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Every 1 Year', discount: '' },
+    { subscriptionInfo: 'License Fees', currency: 'GBP', amount: 200000, validTime: 'One Time', discount: '' },
+    { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Yearly', discount: '' },
     { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time', discount: '' },
-  ]; //Users Info to bind to UI 
+  ]; 
+  
+  //Subsription Package Details
+  private subscriptionPkgInfo: SubscriptionPackageDetails[] = [
 
+    
+
+    { package: 'Package 1', noOfTransactions: '0 - 10000', chargesperMonth: 'GBP 4000' },
+    { package: 'Package 2', noOfTransactions: '10001 - 50000', chargesperMonth: 'GBP 15000' },
+    { package: 'Package 3', noOfTransactions: '50001 - 100001', chargesperMonth: 'GBP 50000' },
+    { package: 'Package 4', noOfTransactions: '200001+', chargesperMonth: 'GBP 100000' },
+    { package: 'Custom', noOfTransactions: 'min - max', chargesperMonth: 'GBP ____' },
+  ]; 
+
+  //Pay As You Go Details
+
+  private payasYouPkg: PayAsYouGo[] = [
+   
+
+
+    { noOfTransactions: '0 - 10000', chargesperTransaction: 'GBP 0.5', },
+    { noOfTransactions: '10001 - 50000', chargesperTransaction: 'GBP 0.4', },
+    { noOfTransactions: '50001 - 100001', chargesperTransaction: 'GBP 0.35', },
+    { noOfTransactions: '200001 - 500000', chargesperTransaction: 'GBP 0.3', },
+    { noOfTransactions: '500000 - 1000000', chargesperTransaction: 'GBP 0.25', },
+    { noOfTransactions: '1000001+', chargesperTransaction: 'GBP 0.2', },
+    
+  ]; 
+  
 
 
 

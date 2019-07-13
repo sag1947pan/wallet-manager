@@ -314,80 +314,160 @@
 
         <!-- END ACCORDIAN-->
 
-
-
     </mat-step>
+
+    <!-- Pricing Group-->
     <mat-step [stepControl]="pricingInfoGroup">
         <ng-template matStepLabel>Pricing</ng-template>
 
-        <div class="col-md-12">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="panel panel-custom-color">
-                        <!-- <div class="panel-heading"> Pricing Information</div> -->
-                        <mat-card-content class="mat-card-content">
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Pricing Details
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Fixed Charges
+                        <mat-icon>account_balance_wallet</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-card-content class="mat-card-content">
 
 
-                            <div>
-                                <!-- <label id="example-radio-group-label">Pricing Type</label>
-                                </div>
-                                <div> -->
-                                <label id="example-radio-group-label">Pricing Type : </label>
-                                <mat-radio-group name="pricingRadioGroup" (change)="onChange($event)">
-                                    <mat-radio-button value="1" color="primary">Volume Based</mat-radio-button>
-                                    <mat-radio-button value="2" color="primary" checked>Subscription/License Based
-                                    </mat-radio-button>
-                                </mat-radio-group>
-                            </div>
 
-                            <div class="container-fluid">
-                                <table class="table table-striped">
 
-                                    <thead>
-                                        <tr>
-                                            <th>Subscription Info</th>
-                                            <th>Currency</th>
-                                            <th>Amount</th>
-                                            <th>Time Period</th>
-                                            <th>Discount</th>
-                                            <th>Edit</th>
-                                        </tr>
 
-                                    </thead>
+                    <div class="container-fluid">
+                        <table class="table table-striped">
 
-                                    <tbody>
-                                        <tr *ngFor="let pricingSubscription of pricingSubscriptionInfo">
-                                            <td>{{ pricingSubscription.subscriptionInfo}}</td>
-                                            <td>{{ pricingSubscription.currency }}</td>
-                                            <td>{{ pricingSubscription.amount }}</td>
-                                            <td>{{ pricingSubscription.validTime }}</td>
-                                            <td>{{ pricingSubscription.discount }}</td>
-                                            <button mat-icon-button color="warn" id="remove"
-                                                (click)="deleteRow(userInfo.user_id)">
-                                                <mat-icon>edit</mat-icon>
-                                            </button>
-                                        </tr>
+                            <thead>
+                                <tr>
+                                    <th>Subscription Info</th>
+                                    <th>Currency</th>
+                                    <th>Amount</th>
+                                    <th>Time Period</th>
+                                    <th>Discount</th>
+                                    <th>Edit</th>
+                                </tr>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                            </thead>
 
-                            <div>
+                            <tbody>
+                                <tr *ngFor="let pricingSubscription of pricingSubscriptionInfo">
+                                    <td>{{ pricingSubscription.subscriptionInfo}}</td>
+                                    <td>{{ pricingSubscription.currency }}</td>
+                                    <td>{{ pricingSubscription.amount }}</td>
+                                    <td>{{ pricingSubscription.validTime }}</td>
+                                    <td>{{ pricingSubscription.discount }}</td>
+                                    <button mat-icon-button color="warn" id="remove"
+                                        (click)="deleteRow(userInfo.user_id)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </tr>
 
-                            </div>
-                        </mat-card-content>
-
+                            </tbody>
+                        </table>
                     </div>
 
-                </div>
-                <div>
+                </mat-card-content>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Pricing Type
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Select Pricing Type
+                        <mat-icon>account_balance_wallet</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-card-content class="mat-card-content">
+
+                     <div>
+                        <label id="example-radio-group-label">Pricing Type : </label>
+                        <input name="options" [(ngModel)]="options" type="radio" [value]="true" [checked]="options" />
+                        Subscripton Package
+
+                        <input name="options" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options" />
+                        Pay as You Go.
+                    </div>                
+
+                    <!-- SUBSCRIPTION PACKAGE-->
+
+                    <div class="container-fluid" *ngIf="options">
+                        <table class="table table-striped">
+
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Subscription Package</th>
+                                    <th>No Of Transactions</th>
+                                    <th>Charges Per Month</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let pkgSubscription of subscriptionPkgInfo">
+                                    <td>
+                                        <label><input type="radio" id='regular' name="optradio"></label>
+                                    </td>
+
+                                    <td>{{ pkgSubscription.package}}</td>
+                                    <td>{{ pkgSubscription.noOfTransactions }}</td>
+                                    <td>{{ pkgSubscription.chargesperMonth }}</td>
 
 
-                    <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button>
-                    <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
-                </div>
-            </div>
-        </div>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- PAY AS YOU GO PACKAGE-->
+                    <div class="container-fluid" *ngIf="!options">
+                        <table class="table table-striped">
+
+                            <thead>
+                                <tr>
+
+                                    <th>No Of Transactions</th>
+                                    <th>Charges Per Transaction</th>
+                                    <th>Edit</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let payperpkg of payasYouPkg">
+
+
+
+                                    <td>{{ payperpkg.noOfTransactions }}</td>
+                                    <td>{{ payperpkg.chargesperTransaction }}</td>
+                                    <button mat-icon-button color="warn" id="remove"
+                                        (click)="deleteRow(userInfo.user_id)">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </mat-card-content>
+            </mat-expansion-panel>      
+
+
+        </mat-accordion>
+
+
+
 
     </mat-step>
     <!-- Invoice Details-->
@@ -547,7 +627,7 @@
     <!-- BANK SUPER ADMIN-->
 
     <mat-step [stepControl]="bankSuperAdminGroup">
-         <!-- <form [formGroup]="bankSuperAdminGroup">  -->
+        <!-- <form [formGroup]="bankSuperAdminGroup">  -->
 
         <ng-template matStepLabel>Bank Super Admin</ng-template>
 
@@ -555,7 +635,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="panel panel-custom-color">
-                      
+
                         <mat-card-content class="mat-card-content">
 
 
@@ -630,6 +710,6 @@
             </button>
             <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
         </div>
-         <!-- </form>  -->
+        <!-- </form>  -->
     </mat-step>
 </mat-horizontal-stepper>
