@@ -1,0 +1,82 @@
+   <form [formGroup]="bankSuperAdminGroup">  
+        <div class="col-md-12">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="panel panel-custom-color">
+
+                      <mat-card-content class="mat-card-content">
+
+
+                          <table class="table table-striped table-bordered">
+                              <thead>
+                                  <tr>
+                                      <th>Action</th>
+                                      <th>Email</th>
+                                      <th>First Name</th>
+                                      <th>Middle Name</th>
+                                      <th>Last Name</th>
+                                      <th>Role</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let dynamic of dynamicArray; let i = index;">
+
+                                      <td (click)="deleteRow(i)">
+                                          <i class="fa fa-trash fa-2x"></i>
+                                      </td>
+
+                                      <td>
+                                          <input [(ngModel)]="dynamicArray[i].email" class="form-control"
+                                              type="text" formControlName = "email" />
+                                      </td>
+                                      <td>
+                                          <input [(ngModel)]="dynamicArray[i].firstName" class="form-control"
+                                              type="text" formControlName = "firstName" />
+                                      </td>
+                                      <td>
+                                          <input [(ngModel)]="dynamicArray[i].middleName" class="form-control"
+                                              type="text"  formControlName = "middleName"/>
+                                      </td>
+                                      <td>
+                                          <input [(ngModel)]="dynamicArray[i].lastName" class="form-control"
+                                              type="text" formControlName = "lastName" />
+                                      </td>
+                                      <td>
+                                          <select [(ngModel)]="dynamicArray[i].role" class="form-control" formControlName = "role"
+                                              type="select">
+                                              <option>Admin</option>
+                                              <option>Operator</option>
+                                              <option>Authoriser</option>
+                                          </select>
+                                      </td>
+                                      <!-- <td>                          
+
+                              <mat-select [formControl]="Roles">
+                            
+                              <mat-option *ngFor="let role of Roles" [value]="role">
+                                  {{role}}</mat-option>
+                          </mat-select>
+                      </td> -->
+                                  </tr>
+                                  <tr>
+                                      <td (click)="addRow(i)">
+                                          <i class="fa fa-plus fa-2x"></i>
+                                      </td>
+
+                                  </tr>
+                              </tbody>
+                          </table>
+
+
+                      </mat-card-content>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      <div>
+          <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Prev
+          </button>
+          <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+      </div>
+      </form>

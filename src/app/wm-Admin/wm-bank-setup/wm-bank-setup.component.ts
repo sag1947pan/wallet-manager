@@ -22,7 +22,7 @@ export class WmBankSetupComponent implements OnInit {
   dynamicArray: Array<DynamicGrid> = [];
   newDynamic: any = {};
 
-
+  
   //End
 
   toppings = new FormControl();
@@ -77,7 +77,12 @@ export class WmBankSetupComponent implements OnInit {
     
   ]; 
   
-
+//TEST HERE
+public bankSetupGroup: FormGroup = new FormGroup({
+  bankSuperAdmin: new FormControl(""),
+  forexCurrencies: new FormControl(""),
+  //address: new FormControl("")
+});
 
 
 

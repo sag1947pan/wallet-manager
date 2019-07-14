@@ -13,10 +13,11 @@ import { WmHomeComponent } from './wm-home/wm-home.component';
 import {WmBankSetupComponent} from './wm-bank-setup/wm-bank-setup.component';
 
 import { wmadminPageRoutingModule } from './wm-admin-routing.module';
-
+import {BankSuperAdminComponent} from '../wm-Admin/bank-super-admin/bank-super-admin.component';
+import { ForexCurrenciesComponent } from '../wm-Admin/forex-currencies/forex-currencies.component';
 
 @NgModule({
-    declarations: [WmHomeComponent, WmBankSetupComponent,],
+    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent],
   imports: [
       CommonModule,
       ReactiveFormsModule,

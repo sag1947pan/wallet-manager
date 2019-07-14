@@ -1,4 +1,4 @@
-<!-- <form [formGroup]="CompInfoGroup" (ngSubmit)="onSubmit()" class="my-custom-scrollbar"> -->
+<form [formGroup]="bankSetupGroup" (ngSubmit)="onSubmit()" class="my-custom-scrollbar">
 <!-- Step Control-->
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <!-- User Information-->
@@ -384,14 +384,14 @@
                 </mat-expansion-panel-header>
                 <mat-card-content class="mat-card-content">
 
-                     <div>
+                     <!-- <div>
                         <label id="example-radio-group-label">Pricing Type : </label>
                         <input name="options" [(ngModel)]="options" type="radio" [value]="true" [checked]="options" />
                         Subscripton Package
 
                         <input name="options" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options" />
                         Pay as You Go.
-                    </div>                
+                    </div>                 -->
 
                     <!-- SUBSCRIPTION PACKAGE-->
 
@@ -579,46 +579,10 @@
     </mat-step>
     <!-- FOREX CURRENCIES SUPPORTED-->
     <mat-step [stepControl]="forexCurrenciesGroup">
-        <!-- <form [formGroup]="forexCurrenciesGroup"> -->
+       
         <ng-template matStepLabel>Forex Currencies Supported</ng-template>
-        <div class="col-md-12">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="panel panel-custom-color">
-                        <!-- <div class="panel-heading"> Pricing Information</div> -->
-                        <mat-card-content>
-
-                            <div>
-                                <label id="example-radio-group-label">Forex Currencies Supported</label>
-                            </div>
-                            <div>
-                                <mat-radio-group aria-label="Select an option">
-                                    <mat-radio-button value="1">Upload Currencies using Sheet rate File
-                                    </mat-radio-button>
-                                    <mat-radio-button value="2">Choose Currencies Manually</mat-radio-button>
-                                </mat-radio-group>
-                            </div>
-                            <div class="container-fluid">
-
-                                <div class="custom-file">
-                                    <label class="custom-file-label" for="customFile">Upload file</label>
-                                    <input type="file" class="custom-file-input" id="customFile">
-
-                                </div>
-
-                                <!-- USING ANGULAR MATERIAL-->
-                                <!-- <button mat-raised-button color="primary" (click)="fileInput.click()">Upload</button>
-                                  <input hidden type="file" #fileInput> -->
-
-                            </div>
-
-                        </mat-card-content>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- </form> -->
+       <app-forex-currencies formControlName="forexCurrencies"></app-forex-currencies>
+      
 
     </mat-step>
 
@@ -627,89 +591,11 @@
     <!-- BANK SUPER ADMIN-->
 
     <mat-step [stepControl]="bankSuperAdminGroup">
-        <!-- <form [formGroup]="bankSuperAdminGroup">  -->
-
+       
         <ng-template matStepLabel>Bank Super Admin</ng-template>
 
-        <div class="col-md-12">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="panel panel-custom-color">
-
-                        <mat-card-content class="mat-card-content">
-
-
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Action</th>
-                                        <th>Email</th>
-                                        <th>First Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Last Name</th>
-                                        <th>Role</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let dynamic of dynamicArray; let i = index;">
-
-                                        <td (click)="deleteRow(i)">
-                                            <i class="fa fa-trash fa-2x"></i>
-                                        </td>
-                                        <td>
-                                            <input [(ngModel)]="dynamicArray[i].email" class="form-control"
-                                                type="text" />
-                                        </td>
-                                        <td>
-                                            <input [(ngModel)]="dynamicArray[i].firstName" class="form-control"
-                                                type="text" />
-                                        </td>
-                                        <td>
-                                            <input [(ngModel)]="dynamicArray[i].middleName" class="form-control"
-                                                type="text" />
-                                        </td>
-                                        <td>
-                                            <input [(ngModel)]="dynamicArray[i].lastName" class="form-control"
-                                                type="text" />
-                                        </td>
-                                        <td>
-                                            <select [(ngModel)]="dynamicArray[i].role" class="form-control"
-                                                type="select">
-                                                <option>Admin</option>
-                                                <option>Operator</option>
-                                                <option>Authoriser</option>
-                                            </select>
-                                        </td>
-                                        <!-- <td>                          
-
-                                <mat-select [formControl]="Roles">
-                              
-                                <mat-option *ngFor="let role of Roles" [value]="role">
-                                    {{role}}</mat-option>
-                            </mat-select>
-                        </td> -->
-                                    </tr>
-                                    <tr>
-                                        <td (click)="addRow(i)">
-                                            <i class="fa fa-plus fa-2x"></i>
-                                        </td>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-
-
-                        </mat-card-content>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div>
-            <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Prev
-            </button>
-            <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
-        </div>
-        <!-- </form>  -->
+        <app-bank-super-admin formControlName="bankSuperAdmin"> </app-bank-super-admin>
+       
     </mat-step>
 </mat-horizontal-stepper>
+</form>
