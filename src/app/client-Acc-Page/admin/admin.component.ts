@@ -8,9 +8,9 @@ import { from } from 'rxjs';
 
 import { CustUserDetails } from 'src/app/services/cust-user-details';
 import { first } from 'rxjs/operators';
-import { MatSnackBar, MatDialog  } from '@angular/material'
-import { customerAddress } from './customerAddress'
-
+import { MatSnackBar, MatDialog  } from '@angular/material';
+import { customerAddress } from './customerAddress';
+import { SessionUserData } from 'src/app/model/sessionData.model';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 
@@ -95,10 +95,11 @@ export class AdminComponent implements OnInit {
 
     // Read item:
     let item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;
-    this.myRegCompInfo.compnameCtrl = item.company_name;
-    this.myRegCompInfo.compregnCtrl = item.reg_num;
+    let userData = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;
+    //this.myRegCompInfo.compnameCtrl = item.company_name;
+    //this.myRegCompInfo.compregnCtrl = item.reg_num;
     this.myRegCompInfo.yourAccountID = item.cust_id;
-
+    console.log("cust id address.."+userData.cust_id);
     this.services.GetCompanyAddressDetails()
            .subscribe((data )=> {
             console.log("data address.."+data);
@@ -106,6 +107,8 @@ export class AdminComponent implements OnInit {
                 //data = JSON.stringify(data.body);
                 data = JSON.parse(data);
                 console.log("data add mapping.."+data);
+                this.myRegCompInfo.compnameCtrl = data.company_name;
+                this.myRegCompInfo.compregnCtrl = data.reg_num;
                 //this.customerAddress.= data.trading_add_line1;
               // this.CompInfoGroup.controls.regAddressLine1 =  data.register_add_line1;
               //this.CompInfoGroup.controls.regAddressLine2 = data.register_add_line2;

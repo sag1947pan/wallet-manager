@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
 import { AdminUserData } from 'src/app/AdminData.model';
+import { SessionUserData } from 'src/app/model/sessionData.model';
 import { PARAMETERS } from '@angular/core/src/util/decorators';
 import { resolve } from 'url';
 
@@ -18,6 +19,7 @@ import { resolve } from 'url';
 
 export class CustUserDetails {
     private  item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;
+    private userSessionData = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;
     private  custId = this.item.cust_id;
     private  userID = this.item.user_id;
     private logUserEmail = sessionStorage.getItem("userName");

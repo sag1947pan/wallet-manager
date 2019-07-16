@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
 import { ErrorMessages } from 'src/app/resources/error.messages';
 import { AdminUserData } from 'src/app/AdminData.model';
+import { SessionUserData } from 'src/app/model/sessionData.model';
 import { from } from 'rxjs';
 
 @Component({
@@ -74,6 +75,7 @@ export class LoginComponent implements OnInit {
 
                     // Read item:
                     let item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;
+                    let userData = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;
                     this.userRole = item.role;
                     var userTpe = data.user_type;
                     if(userTpe == "wmuser"){//WM Employee
@@ -108,9 +110,7 @@ export class LoginComponent implements OnInit {
                     //window.alert(errorMessage);
 
                     //this.message = "Please enter valid username/password"
-                    this.WalletService.isUserLoggedIn = false;
-                    // this.router.navigate(['/CliAccPage']);
-                    //this.message = "Please enter valid username/password";
+                    this.WalletService.isUserLoggedIn = false;                    
                 });
     }
 
@@ -122,10 +122,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/ForgotPwd']);
 
     }
-
-
-
-
 }
 
 export function emailValidator(control: FormControl): { [key: string]: any } {
