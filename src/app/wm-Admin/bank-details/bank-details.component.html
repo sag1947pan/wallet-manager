@@ -1,0 +1,305 @@
+<form [formGroup]="bankInfoGroup">
+    <!-- START ACCORDIAN-->
+
+    <mat-accordion class="example-headers-align" multi=true>
+        <!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle> -->
+                <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Bank Details
+                </mat-panel-title>
+                <mat-panel-description>
+                    Enter Bank Details
+                    <!-- <mat-icon>account_balance_wallet</mat-icon> -->
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <!-- <mat-card-content class="mat-card-content"> -->
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Bank Id</mat-label>
+                        <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="35" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Bank Name</mat-label>
+                        <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="35"
+                            required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Primary Contact Name</mat-label>
+                        <input matInput placeholder="Primary Contact Name" formControlName="primaryContactName"
+                            maxlength="35">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" style="width:230px !important;">
+                            <mat-label>Primary Contact Work Email Id</mat-label>
+                            <input matInput placeholder="Primary Contact Work Email Id" formControlName="primaryContactEmailId"
+                                maxlength="35" required>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width:230px !important;"> 
+                                <mat-label>Primary Contact Phone Number</mat-label>
+                                <input matInput placeholder="Primary Contact Phone Number" formControlName="primaryContactPhoneNo"
+                                    maxlength="35">
+                            </mat-form-field>
+                </div>
+              
+            <!-- </mat-card-content> -->
+
+            <!-- <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row> -->
+        </mat-expansion-panel>
+
+        <!--SERVICES AND PREFERENCES-->
+        <!-- <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle> -->
+                <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Services and Prferences
+                </mat-panel-title>
+                <mat-panel-description>
+                    Enter your Preferences
+                    <!-- <mat-icon>settings_applications</mat-icon> -->
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card-content class="mat-card-content">
+
+                <div>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Service Subscribed by Bank</mat-label>
+                        <input matInput placeholder="Service Subscription">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <input matInput [matDatepicker]="picker" placeholder="Service Activation Start date">
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <input matInput [matDatepicker]="picker1" placeholder="Service Activation End date">
+                        <mat-datepicker-toggle matSuffix [for]="picker1">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Support Required for Bank User Management</mat-label>
+                        <mat-select placeholder="Support Required for Bank User Management">
+                            <mat-option>
+                                Yes
+                            </mat-option>
+                            <mat-option>
+                                No
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+
+                </div>
+
+
+                <div>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Support Required for Bank Client Management</mat-label>
+                        <mat-select placeholder="Support Required for Client User Management">
+                            <mat-option>
+                                Yes
+                            </mat-option>
+                            <mat-option>
+                                No
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Authorization -Manual Payment Activity</mat-label>
+                        <mat-select placeholder="Authorization -Manual Payment Activity">
+                            <mat-option>
+                                Yes
+                            </mat-option>
+                            <mat-option>
+                                No
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Authorization -Non Payment Activity</mat-label>
+                        <mat-select placeholder="Authorization -Non Payment Activity">
+                            <mat-option>
+                                Yes
+                            </mat-option>
+                            <mat-option>
+                                No
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+                </div>
+
+            </mat-card-content>
+            <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Trading Address
+                </mat-panel-title>
+                <mat-panel-description>
+                    Enter Trading Address details
+                    <mat-icon>my_location</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card-content class="mat-card-content">
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="country">
+                            <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                                {{topping}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Post Code</mat-label>
+                        <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Building No / Name </mat-label>
+                        <input matInput placeholder="Building No / Name" formControlName="buildingName"
+                            maxlength="35">
+                    </mat-form-field>
+
+
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Street Address</mat-label>
+                        <input matInput placeholder="Street Address" formControlName="streetAddress"
+                            maxlength="35">
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>State</mat-label>
+                        <input matInput placeholder="State" formControlName="state" maxlength="35">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Town/City</mat-label>
+                        <input matInput placeholder="Town/City" formControlName="cityName" maxlength="35">
+                    </mat-form-field>
+
+
+                </div>
+            </mat-card-content>
+
+            <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Registered Address
+                </mat-panel-title>
+                <mat-panel-description>
+                    Enter Registered Address details
+                    <mat-icon>my_location</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+
+            <mat-card-content class="mat-card-content">
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="regCountry">
+                            <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                                {{topping}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Post Code</mat-label>
+                        <input matInput placeholder="Post Code" formControlName="regPostCode" maxlength="8">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Building No / Name </mat-label>
+                        <input matInput placeholder="Building No / Name" formControlName="regbuildingName"
+                            maxlength="35">
+                    </mat-form-field>
+
+                </div>
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Street Address</mat-label>
+                        <input matInput placeholder="Street Address" formControlName="regstreetAddress"
+                            maxlength="35">
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>State</mat-label>
+                        <input matInput placeholder="State" formControlName="regState" maxlength="35">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Town/City</mat-label>
+                        <input matInput placeholder="Town/City" formControlName="regCityName" maxlength="35">
+                    </mat-form-field>
+
+
+                </div>
+
+
+            </mat-card-content>
+
+            <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">End</button>
+            </mat-action-row>
+
+
+        </mat-expansion-panel>
+
+
+
+    </mat-accordion>
+
+    <div>
+
+
+        <!-- <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button> -->
+        <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+    </div>
+
+</form>

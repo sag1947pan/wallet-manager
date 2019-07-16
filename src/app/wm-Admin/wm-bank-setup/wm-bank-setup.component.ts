@@ -67,6 +67,7 @@ public bankSetupGroup: FormGroup = new FormGroup({
   forexCurrencies: new FormControl(""),
   countriesList: new FormControl(""),
   invoiceData:new FormControl(""),
+  bankDetails:new FormControl(""),
   //address: new FormControl("")
 });
 

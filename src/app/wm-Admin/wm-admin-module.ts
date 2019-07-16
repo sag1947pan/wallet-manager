@@ -17,10 +17,10 @@ import {BankSuperAdminComponent} from '../wm-Admin/bank-super-admin/bank-super-a
 import { ForexCurrenciesComponent } from '../wm-Admin/forex-currencies/forex-currencies.component';
 import { CountriesListComponent } from '../wm-Admin/countries-list/countries-list.component';
 import { InvoiceDataComponent } from '../wm-Admin/invoice-data/invoice-data.component';
-
+import { BankDetailsComponent } from '../wm-Admin/bank-details/bank-details.component';
 
 @NgModule({
-    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent, InvoiceDataComponent],
+    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent, InvoiceDataComponent, BankDetailsComponent],
   imports: [
       CommonModule,
       ReactiveFormsModule,
