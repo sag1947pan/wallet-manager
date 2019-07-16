@@ -15,9 +15,11 @@ import {WmBankSetupComponent} from './wm-bank-setup/wm-bank-setup.component';
 import { wmadminPageRoutingModule } from './wm-admin-routing.module';
 import {BankSuperAdminComponent} from '../wm-Admin/bank-super-admin/bank-super-admin.component';
 import { ForexCurrenciesComponent } from '../wm-Admin/forex-currencies/forex-currencies.component';
+import { CountriesListComponent } from '../wm-Admin/countries-list/countries-list.component';
+
 
 @NgModule({
-    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent],
+    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent],
   imports: [
       CommonModule,
       ReactiveFormsModule,

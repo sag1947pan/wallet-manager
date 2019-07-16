@@ -25,14 +25,7 @@ export class WmBankSetupComponent implements OnInit {
   
   //End
 
-  toppings = new FormControl();
-  toppingList: string[] = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-    'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
-    'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
-    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-    'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+  
 
   Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
 
@@ -81,10 +74,9 @@ export class WmBankSetupComponent implements OnInit {
 public bankSetupGroup: FormGroup = new FormGroup({
   bankSuperAdmin: new FormControl(""),
   forexCurrencies: new FormControl(""),
+  countriesList: new FormControl(""),
   //address: new FormControl("")
 });
-
-
 
   @Input() editable: boolean = false;
   @Output() change: EventEmitter<MatRadioChange>
@@ -102,6 +94,8 @@ public bankSetupGroup: FormGroup = new FormGroup({
 
       this.newDynamic = { email: "", firstName: "", middleName: "", lastName: "", role: "" };
       this.dynamicArray.push(this.newDynamic);
+
+      
 
 
     this.compInfoGroup = this.formBuilder.group({
@@ -166,7 +160,9 @@ public bankSetupGroup: FormGroup = new FormGroup({
     })
   }
 
-
+  onSubmit() {
+    console.log(this.bankSetupGroup.value);
+  }
   setStep(index: number) {
     this.step = index;
   }
