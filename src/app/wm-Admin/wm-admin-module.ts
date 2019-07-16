@@ -16,10 +16,11 @@ import { wmadminPageRoutingModule } from './wm-admin-routing.module';
 import {BankSuperAdminComponent} from '../wm-Admin/bank-super-admin/bank-super-admin.component';
 import { ForexCurrenciesComponent } from '../wm-Admin/forex-currencies/forex-currencies.component';
 import { CountriesListComponent } from '../wm-Admin/countries-list/countries-list.component';
+import { InvoiceDataComponent } from '../wm-Admin/invoice-data/invoice-data.component';
 
 
 @NgModule({
-    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent],
+    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent, InvoiceDataComponent],
   imports: [
       CommonModule,
       ReactiveFormsModule,

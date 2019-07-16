@@ -16,15 +16,6 @@ export class WmBankSetupComponent implements OnInit {
   compInfoGroup: FormGroup;
   invocingInfoGroup: FormGroup;
   bankSuperAdminGroup: FormGroup;
-  // countriesListGroup:FormGroup;
-
-  
-  dynamicArray: Array<DynamicGrid> = [];
-  newDynamic: any = {};
-
-  
-  //End
-
   
 
   Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
@@ -70,11 +61,12 @@ export class WmBankSetupComponent implements OnInit {
     
   ]; 
   
-//TEST HERE
+//Adding different forms under one main form
 public bankSetupGroup: FormGroup = new FormGroup({
   bankSuperAdmin: new FormControl(""),
   forexCurrencies: new FormControl(""),
   countriesList: new FormControl(""),
+  invoiceData:new FormControl(""),
   //address: new FormControl("")
 });
 
@@ -84,19 +76,9 @@ public bankSetupGroup: FormGroup = new FormGroup({
   constructor(private formBuilder: FormBuilder,
     private router: Router, ) {
 
-
   };
 
-
-
-
-  ngOnInit() {
-
-      this.newDynamic = { email: "", firstName: "", middleName: "", lastName: "", role: "" };
-      this.dynamicArray.push(this.newDynamic);
-
-      
-
+  ngOnInit() {     
 
     this.compInfoGroup = this.formBuilder.group({
 
@@ -136,28 +118,8 @@ public bankSetupGroup: FormGroup = new FormGroup({
       regState: ['', Validators.required],
       regCityName: ['', Validators.required],
 
-    });
-
-    //Invoice Data
-    this.invocingInfoGroup = this.formBuilder.group({
-      invoicingFrequency: [''],
-      invoiceGenerationDay: [''],
-      paymentDues: [''],
-      invoicefavouring: [''],
-      mailInvoice: [''],
-      invoiceAddress: [''],
-    });
-
-    //Bank Super Admin
-    this.bankSuperAdminGroup = this.formBuilder.group({
-      email: [''],
-      firstName: [''],
-      middleName: [''],
-      lastName: [''],
-      role: [''],
-
-
-    })
+    });  
+       
   }
 
   onSubmit() {
@@ -173,35 +135,7 @@ public bankSetupGroup: FormGroup = new FormGroup({
 
   prevStep() {
     this.step--;
-  }
-
-  onChange(mrChange: MatRadioChange) {
-    console.log(mrChange.value);
-    let mrButton: MatRadioButton = mrChange.source;
-    console.log(mrButton.name);
-    console.log(mrButton.checked);
-    console.log(mrButton.inputId);
-  }
-
-
-
-  addRow(index) {
-
-    this.newDynamic = { email: "", firstName: "", middleName: "", lastName: "", role: "" };
-    this.dynamicArray.push(this.newDynamic);
-    return true;
-  }
-
-  deleteRow(index) {
-    if (this.dynamicArray.length == 1) {
-
-      return false;
-    } else {
-      this.dynamicArray.splice(index, 1);
-      return true;
-    }
-  }
-
+  } 
 
 };
 
