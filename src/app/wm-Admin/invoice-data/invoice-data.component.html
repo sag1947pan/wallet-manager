@@ -1,15 +1,18 @@
 <form [formGroup]="invocingInfoGroup">
           
 
-    <div class="col-md-12">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="panel panel-custom-color">
-                  
-                    <mat-card-content class="mat-card-content">
+  
+                            <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Invoice Details
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            <!-- Enter Bank Details -->
+                                            <!-- <mat-icon>account_balance_wallet</mat-icon> -->
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
                         <div>
-
-
                             <mat-form-field appearance="outline">
                                 <mat-label>Invoicing Frequency</mat-label>
                                 <mat-select placeholder="Invoicing Frequency"
@@ -29,8 +32,8 @@
                                 <input matInput placeholder="Invoice Generation Day"
                                     formControlName="invoiceGenerationDay">
                             </mat-form-field>
-                        </div>
-                        <div>
+                       
+                       
                             <mat-form-field appearance="outline">
                                 <mat-label>Payment Due in Days </mat-label>
                                 <input matInput placeholder="Payment Due in Days" formControlName="paymentDues">
@@ -56,9 +59,9 @@
                                     formControlName="invoiceAddress"></textarea>
                             </mat-form-field>
                         </div>
-                    </mat-card-content>
-                </div>
-            </div>
+              
+
+               </mat-expansion-panel>
             <div>
 
 
@@ -66,6 +69,5 @@
                 </button>
                 <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
             </div>
-        </div>
-    </div>
+      
 </form>

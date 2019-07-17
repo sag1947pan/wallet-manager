@@ -3,50 +3,49 @@
 
     <mat-accordion class="example-headers-align" multi=true>
         <!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle> -->
-                <mat-expansion-panel>
+        <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Bank Details
                 </mat-panel-title>
                 <mat-panel-description>
-                    Enter Bank Details
+                    <!-- Enter Bank Details -->
                     <!-- <mat-icon>account_balance_wallet</mat-icon> -->
                 </mat-panel-description>
             </mat-expansion-panel-header>
 
             <!-- <mat-card-content class="mat-card-content"> -->
 
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Bank Id</mat-label>
-                        <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="35" required>
-                    </mat-form-field>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Bank Id</mat-label>
+                    <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="35" required>
+                </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Bank Name</mat-label>
-                        <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="35"
-                            required>
-                    </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Bank Name</mat-label>
+                    <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="35" required>
+                </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <mat-label>Primary Contact Name</mat-label>
-                        <input matInput placeholder="Primary Contact Name" formControlName="primaryContactName"
-                            maxlength="35">
-                    </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Primary Contact Name</mat-label>
+                    <input matInput placeholder="Primary Contact Name" formControlName="primaryContactName"
+                        maxlength="35">
+                </mat-form-field>
 
-                    <mat-form-field appearance="outline" style="width:230px !important;">
-                            <mat-label>Primary Contact Work Email Id</mat-label>
-                            <input matInput placeholder="Primary Contact Work Email Id" formControlName="primaryContactEmailId"
-                                maxlength="35" required>
-                        </mat-form-field>
+                <mat-form-field appearance="outline" style="width:230px !important;">
+                    <mat-label>Primary Contact Work Email Id</mat-label>
+                    <input matInput placeholder="Primary Contact Work Email Id" formControlName="primaryContactEmailId"
+                        maxlength="35" required>
+                </mat-form-field>
 
-                        <mat-form-field appearance="outline" style="width:230px !important;"> 
-                                <mat-label>Primary Contact Phone Number</mat-label>
-                                <input matInput placeholder="Primary Contact Phone Number" formControlName="primaryContactPhoneNo"
-                                    maxlength="35">
-                            </mat-form-field>
-                </div>
-              
+                <mat-form-field appearance="outline" style="width:230px !important;">
+                    <mat-label>Primary Contact Phone Number</mat-label>
+                    <input matInput placeholder="Primary Contact Phone Number" formControlName="primaryContactPhoneNo"
+                        maxlength="35">
+                </mat-form-field>
+            </div>
+
             <!-- </mat-card-content> -->
 
             <!-- <mat-action-row>
@@ -56,28 +55,27 @@
 
         <!--SERVICES AND PREFERENCES-->
         <!-- <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle> -->
-                <mat-expansion-panel>
+        <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Services and Prferences
                 </mat-panel-title>
                 <mat-panel-description>
-                    Enter your Preferences
+                    <!-- Enter your Preferences -->
                     <!-- <mat-icon>settings_applications</mat-icon> -->
                 </mat-panel-description>
             </mat-expansion-panel-header>
 
-            <mat-card-content class="mat-card-content">
+            <!-- <mat-card-content class="mat-card-content"> -->
 
                 <div>
-
-
                     <mat-form-field appearance="outline">
                         <mat-label>Service Subscribed by Bank</mat-label>
                         <input matInput placeholder="Service Subscription">
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
+                            <mat-label>Service Activation Start date</mat-label>
                         <input matInput [matDatepicker]="picker" placeholder="Service Activation Start date">
                         <mat-datepicker-toggle matSuffix [for]="picker">
                         </mat-datepicker-toggle>
@@ -85,13 +83,14 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="outline">
+                            <mat-label>Service Activation End date</mat-label>
                         <input matInput [matDatepicker]="picker1" placeholder="Service Activation End date">
                         <mat-datepicker-toggle matSuffix [for]="picker1">
                         </mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" style="width:340px !important;">
                         <mat-label>Support Required for Bank User Management</mat-label>
                         <mat-select placeholder="Support Required for Bank User Management">
                             <mat-option>
@@ -101,17 +100,13 @@
                                 No
                             </mat-option>
                         </mat-select>
-
                     </mat-form-field>
-
-
                 </div>
 
 
                 <div>
 
-
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" style="width:340px !important;">
                         <mat-label>Support Required for Bank Client Management</mat-label>
                         <mat-select placeholder="Support Required for Client User Management">
                             <mat-option>
@@ -124,7 +119,7 @@
 
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" style="width:320px !important;">
                         <mat-label>Authorization -Manual Payment Activity</mat-label>
                         <mat-select placeholder="Authorization -Manual Payment Activity">
                             <mat-option>
@@ -138,7 +133,7 @@
                     </mat-form-field>
 
 
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" style="width:320px !important;">
                         <mat-label>Authorization -Non Payment Activity</mat-label>
                         <mat-select placeholder="Authorization -Non Payment Activity">
                             <mat-option>
@@ -153,7 +148,7 @@
 
                 </div>
 
-            </mat-card-content>
+            <!-- </mat-card-content> -->
             <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
@@ -166,12 +161,12 @@
                     Trading Address
                 </mat-panel-title>
                 <mat-panel-description>
-                    Enter Trading Address details
-                    <mat-icon>my_location</mat-icon>
+                    <!-- Enter Trading Address details
+                    <mat-icon>my_location</mat-icon> -->
                 </mat-panel-description>
             </mat-expansion-panel-header>
 
-            <mat-card-content class="mat-card-content">
+            <!-- <mat-card-content class="mat-card-content"> -->
 
                 <div>
                     <mat-form-field appearance="outline">
@@ -189,8 +184,7 @@
 
                     <mat-form-field appearance="outline">
                         <mat-label>Building No / Name </mat-label>
-                        <input matInput placeholder="Building No / Name" formControlName="buildingName"
-                            maxlength="35">
+                        <input matInput placeholder="Building No / Name" formControlName="buildingName" maxlength="35">
                     </mat-form-field>
 
 
@@ -198,8 +192,7 @@
                 <div>
                     <mat-form-field appearance="outline">
                         <mat-label>Street Address</mat-label>
-                        <input matInput placeholder="Street Address" formControlName="streetAddress"
-                            maxlength="35">
+                        <input matInput placeholder="Street Address" formControlName="streetAddress" maxlength="35">
                     </mat-form-field>
 
 
@@ -215,7 +208,7 @@
 
 
                 </div>
-            </mat-card-content>
+            <!-- </mat-card-content> -->
 
             <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
@@ -229,13 +222,13 @@
                     Registered Address
                 </mat-panel-title>
                 <mat-panel-description>
-                    Enter Registered Address details
-                    <mat-icon>my_location</mat-icon>
+                    <!-- Enter Registered Address details
+                    <mat-icon>my_location</mat-icon> -->
                 </mat-panel-description>
             </mat-expansion-panel-header>
 
 
-            <mat-card-content class="mat-card-content">
+            <!-- <mat-card-content class="mat-card-content"> -->
 
                 <div>
                     <mat-form-field appearance="outline">
@@ -262,8 +255,7 @@
                 <div>
                     <mat-form-field appearance="outline">
                         <mat-label>Street Address</mat-label>
-                        <input matInput placeholder="Street Address" formControlName="regstreetAddress"
-                            maxlength="35">
+                        <input matInput placeholder="Street Address" formControlName="regstreetAddress" maxlength="35">
                     </mat-form-field>
 
 
@@ -281,7 +273,7 @@
                 </div>
 
 
-            </mat-card-content>
+            <!-- </mat-card-content> -->
 
             <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
