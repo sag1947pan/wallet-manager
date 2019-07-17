@@ -13,9 +13,7 @@ import { PayAsYouGo } from './payaYouGoModel';
   styleUrls: ['./wm-bank-setup.component.css']
 })
 export class WmBankSetupComponent implements OnInit {
-  compInfoGroup: FormGroup;
-  invocingInfoGroup: FormGroup;
-  bankSuperAdminGroup: FormGroup;
+  
   
 
   Roles: string[] = ['Admin', 'Operator', 'Authoriser'];
@@ -25,41 +23,7 @@ export class WmBankSetupComponent implements OnInit {
   SuccessMessage: string;
   error: any;
   step = 0;
-  //Fixed Pricing  data
-  private pricingSubscriptionInfo: SubscriptionDetails[] = [
-
-
-    { subscriptionInfo: 'License Fees', currency: 'GBP', amount: 200000, validTime: 'One Time', discount: '' },
-    { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Yearly', discount: '' },
-    { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time', discount: '' },
-  ]; 
-  
-  //Subsription Package Details
-  private subscriptionPkgInfo: SubscriptionPackageDetails[] = [
-
     
-
-    { package: 'Package 1', noOfTransactions: '0 - 10000', chargesperMonth: 'GBP 4000' },
-    { package: 'Package 2', noOfTransactions: '10001 - 50000', chargesperMonth: 'GBP 15000' },
-    { package: 'Package 3', noOfTransactions: '50001 - 100001', chargesperMonth: 'GBP 50000' },
-    { package: 'Package 4', noOfTransactions: '200001+', chargesperMonth: 'GBP 100000' },
-    { package: 'Custom', noOfTransactions: 'min - max', chargesperMonth: 'GBP ____' },
-  ]; 
-
-  //Pay As You Go Details
-
-  private payasYouPkg: PayAsYouGo[] = [
-   
-
-
-    { noOfTransactions: '0 - 10000', chargesperTransaction: 'GBP 0.5', },
-    { noOfTransactions: '10001 - 50000', chargesperTransaction: 'GBP 0.4', },
-    { noOfTransactions: '50001 - 100001', chargesperTransaction: 'GBP 0.35', },
-    { noOfTransactions: '200001 - 500000', chargesperTransaction: 'GBP 0.3', },
-    { noOfTransactions: '500000 - 1000000', chargesperTransaction: 'GBP 0.25', },
-    { noOfTransactions: '1000001+', chargesperTransaction: 'GBP 0.2', },
-    
-  ]; 
   
 //Adding different forms under one main form
 public bankSetupGroup: FormGroup = new FormGroup({
@@ -68,59 +32,19 @@ public bankSetupGroup: FormGroup = new FormGroup({
   countriesList: new FormControl(""),
   invoiceData:new FormControl(""),
   bankDetails:new FormControl(""),
-  //address: new FormControl("")
+  pricingInfo:new FormControl(""),
+  
 });
 
-  @Input() editable: boolean = false;
-  @Output() change: EventEmitter<MatRadioChange>
+  
 
   constructor(private formBuilder: FormBuilder,
     private router: Router, ) {
 
   };
 
-  ngOnInit() {     
-
-    this.compInfoGroup = this.formBuilder.group({
-
-      bankId: [''],
-      bankCustomerId: [''],
-      bankName: [''],
-      primaryContactName: [''],
-      primaryContactEmailId: [''],
-      primaryContactPhoneNo: [''],
-
-      //Address
-      compName: [''],
-      tradingName: [''],
-      compRegnNo: [''],
-      industry: [''],
-      yourAccountID: [''],
-
-
-
-
-      country: ['', Validators.required],
-      postCode: ['', Validators.required],
-      buildingName: ['', Validators.required],
-      streetAddress: [''],
-      state: ['', Validators.required],
-      cityName: ['', Validators.required],
-
-      //Registered Address
-
-
-
-      regCountry: ['', Validators.required],
-      regPostCode: ['', Validators.required],
-      regbuildingName: ['', Validators.required],
-      regstreetAddress: [''],
-
-      regState: ['', Validators.required],
-      regCityName: ['', Validators.required],
-
-    });  
-       
+  ngOnInit() {
+    
   }
 
   onSubmit() {

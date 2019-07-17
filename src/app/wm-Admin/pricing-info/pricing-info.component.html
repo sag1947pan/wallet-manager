@@ -1,0 +1,135 @@
+<form [formGroup]="pricingInfoGroup">
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Pricing Details
+        </mat-panel-title>
+        <mat-panel-description>
+          Fixed Charges
+          <mat-icon>account_balance_wallet</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-card-content class="mat-card-content">
+        <div class="container-fluid">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Subscription Info</th>
+                <th>Currency</th>
+                <th>Amount</th>
+                <th>Time Period</th>
+                <th>Discount</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pricingSubscription of pricingSubscriptionInfo">
+                <td>{{ pricingSubscription.subscriptionInfo}}</td>
+                <td>{{ pricingSubscription.currency }}</td>
+                <td>{{ pricingSubscription.amount }}</td>
+                <td>{{ pricingSubscription.validTime }}</td>
+                <td>{{ pricingSubscription.discount }}</td>
+                <button mat-icon-button color="warn" id="remove" (click)="deleteRow(userInfo.user_id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </mat-card-content>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Pricing Type
+        </mat-panel-title>
+        <mat-panel-description>
+          Select Pricing Type
+          <mat-icon>account_balance_wallet</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-card-content class="mat-card-content">
+
+        <div>
+          <label id="example-radio-group-label">Pricing Type : </label>
+          <input name="options" [(ngModel)]="options" type="radio" [value]="true" [checked]="options" />
+          Subscripton Package
+
+          <input name="options" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options" />
+          Pay as You Go.
+        </div>
+
+        <!-- SUBSCRIPTION PACKAGE-->
+
+        <div class="container-fluid" *ngIf="options">
+          <table class="table table-striped">
+
+            <thead>
+              <tr>
+                <th>Select</th>
+                <th>Subscription Package</th>
+                <th>No Of Transactions</th>
+                <th>Charges Per Month</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let pkgSubscription of subscriptionPkgInfo">
+                <td>
+                  <label><input type="radio" id='regular' name="optradio"></label>
+                </td>
+
+                <td>{{ pkgSubscription.package}}</td>
+                <td>{{ pkgSubscription.noOfTransactions }}</td>
+                <td>{{ pkgSubscription.chargesperMonth }}</td>
+
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PAY AS YOU GO PACKAGE-->
+        <div class="container-fluid" *ngIf="!options">
+          <table class="table table-striped">
+
+            <thead>
+              <tr>
+
+                <th>No Of Transactions</th>
+                <th>Charges Per Transaction</th>
+                <th>Edit</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let payperpkg of payasYouPkg">
+
+
+
+                <td>{{ payperpkg.noOfTransactions }}</td>
+                <td>{{ payperpkg.chargesperTransaction }}</td>
+                <button mat-icon-button color="warn" id="remove" (click)="deleteRow(userInfo.user_id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </mat-card-content>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>

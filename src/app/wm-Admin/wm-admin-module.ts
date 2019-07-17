@@ -18,9 +18,9 @@ import { ForexCurrenciesComponent } from '../wm-Admin/forex-currencies/forex-cur
 import { CountriesListComponent } from '../wm-Admin/countries-list/countries-list.component';
 import { InvoiceDataComponent } from '../wm-Admin/invoice-data/invoice-data.component';
 import { BankDetailsComponent } from '../wm-Admin/bank-details/bank-details.component';
-
+import { PricingInfoComponent } from '../wm-Admin/pricing-info/pricing-info.component';
 @NgModule({
-    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent, InvoiceDataComponent, BankDetailsComponent],
+    declarations: [WmHomeComponent, WmBankSetupComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent, InvoiceDataComponent, BankDetailsComponent, PricingInfoComponent],
   imports: [
       CommonModule,
       ReactiveFormsModule,
