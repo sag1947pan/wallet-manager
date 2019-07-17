@@ -1,7 +1,8 @@
+<div class="formContent" style="background: #f9f9f9;">
 <form [formGroup]="bankInfoGroup">
     <!-- START ACCORDIAN-->
 
-    <mat-accordion class="example-headers-align" multi=true>
+    <mat-accordion class="example-headers-align" multi=true  style="background: #f9f9f9!important;">
         <!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle> -->
         <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -149,10 +150,10 @@
                 </div>
 
             <!-- </mat-card-content> -->
-            <mat-action-row>
+            <!-- <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
-            </mat-action-row>
+            </mat-action-row> -->
         </mat-expansion-panel>
 
         <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
@@ -210,10 +211,10 @@
                 </div>
             <!-- </mat-card-content> -->
 
-            <mat-action-row>
+            <!-- <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
-            </mat-action-row>
+            </mat-action-row> -->
         </mat-expansion-panel>
 
         <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
@@ -275,10 +276,10 @@
 
             <!-- </mat-card-content> -->
 
-            <mat-action-row>
+            <!-- <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">End</button>
-            </mat-action-row>
+            </mat-action-row> -->
 
 
         </mat-expansion-panel>
@@ -295,3 +296,5 @@
     </div>
 
 </form>
+
+</div>
