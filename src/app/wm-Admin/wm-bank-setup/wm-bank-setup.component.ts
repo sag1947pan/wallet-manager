@@ -48,7 +48,8 @@ public bankSetupGroup: FormGroup = new FormGroup({
   }
 
   onSubmit() {
-    console.log(this.bankSetupGroup.value);
+   // console.log(this.bankSetupGroup.value);
+    console.log("stringfy.." + JSON.stringify(this.bankSetupGroup.value));
   }
   setStep(index: number) {
     this.step = index;
