@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
 import { ErrorMessages } from 'src/app/resources/error.messages';
-import { AdminUserData } from 'src/app/AdminData.model';
+//import { AdminUserData } from 'src/app/AdminData.model';
 import { SessionUserData } from 'src/app/model/sessionData.model';
 import { from } from 'rxjs';
 
@@ -52,41 +52,32 @@ export class LoginComponent implements OnInit {
         console.log("username.." + this.f.userName.value);
         console.log("password.." + this.f.Password.value);
         console.log("stringfy.." + JSON.stringify(this.loginForm.value));
-        //this.WalletService.customerLogin(this.f.userName.value,this.f.Password.value)
+       
         this.RegistrationServices.customerLogin(this.f.userName.value, this.f.Password.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.WalletService.isUserLoggedIn = true;
-                    /*this.router.navigate(['/ClientReg2']);*/ //
-                    //this.router.navigate(['/PostReg']);
-                    console.log("data from dara" + data);
-                    let resBody = {};
-                    data = JSON.parse(data);
-
-                    console.log("data from resBody" + data.role);
-                    //this.resourcesLoaded = false;
-                    //Ranjith : Check whether we an store data in local storage/ session storage.
-
-                    sessionStorage.setItem("userName", this.f.userName.value);
-                   // sessionStorage.setItem("password", this.f.Password.value);
-                   
-                    sessionStorage.setItem("userData", JSON.stringify(data));
+                    this.WalletService.isUserLoggedIn = true;                 
+                 
+                   //Store the required data in Session Storage.
+                    sessionStorage.setItem("userName", this.f.userName.value);               
+                    sessionStorage.setItem("userData", JSON.stringify(data.body));
 
                     // Read item:
-                    let item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;
-                    let userData = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;
-                    this.userRole = item.role;
-                    var userTpe = data.user_type;
-                    if(userTpe == "wmuser"){//WM Employee
+                   // let item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;  
+                    let item = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;               
+                    this.userRole = item.role;                   
+                 
+                 
+                    if(item.user_type == "wmuser"){//WM Employee
                         this.router.navigate(['/wmAdminPage', data]);
-                    }else if(userTpe == "custuser"){ //Customer 
+                    }else if(item.user_type == "custuser"){ //Customer 
                         this.router.navigate(['/CliAccPage', data]);
-                    }else if(userTpe == "bankuser"){//Bank user
+                    }else if(item.user_type == "bankuser"){//Bank user
                         this.router.navigate(['/CliAccPage', data]);
-                    }else if(userTpe == "bene"){//BENE
+                    }else if(item.user_type == "bene"){//BENE
                         this.router.navigate(['/CliAccPage', data]);
-                    }else if(userTpe == "bankCustUser"){//bank customer
+                    }else if(item.user_type == "bankCustUser"){//bank customer
                         this.router.navigate(['/CliAccPage', data]);
                     }else { //move to default page
 

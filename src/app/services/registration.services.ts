@@ -73,26 +73,6 @@ export class RegistrationServices {
             .set('password', password),
             observe: 'response'
         }).pipe( 
-            map((res: any) => {
-                if(res !=null && res != ""){
-                    let regResp = JSON.stringify(res);
-                    let regRespParse = JSON.parse(regResp);
-                    console.log("regResp regRespParse"+regRespParse);
-                    if(regRespParse.status == 200 || regRespParse.status == 201){
-                        let respBody = JSON.stringify(res.body);
-                        let respParse = JSON.parse(respBody);
-                        return respBody;
-                    }else{
-                        console.log("In failure");
-                        return regRespParse.status;
-                    }
-                }else{
-                    console.log("regResp res"+res);
-                    return "Something went wrong, please try again!!";
-                }
-                res['playload'] = res;
-                return res['playload'];
-            }),
             catchError((err, caught) => {
                 console.log("login failed.."+err.status);
                 return throwError(err);
