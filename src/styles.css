@@ -4,7 +4,14 @@
 @import "~assets/css/custom.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-.wm-expansion-panel-class {
+/* AG Grid Styles */
+ @import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css"; 
+
+/* @import "@ag-grid-community/src/styles/ag-grid.scss";
+@import "@ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss"; */
+
+ .wm-expansion-panel-class {
     background: rgb(103, 58, 183) !important;
    
 }
@@ -14,7 +21,7 @@
 
 .specific-class > .mat-expansion-indicator, .mat-expansion-indicator:after {
     color: white !important;
-}
+} 
 
 .listyle a{
     display: inline-block;
@@ -42,9 +49,9 @@
         /*background: rgb(0, 106, 81);*/ /* Our Logo Color*/
     }
 
-/* Ranjith : For new UI */
+/* Ranjith : For Bank Setup new UI */
     mat-form-field {
-        margin-right: 40px;
+     margin-right: 10px; 
     }
     
     .container-fluid {
@@ -66,4 +73,4 @@
       .panel-override-2 {
         max-height: 100px !important;
         min-width: 100px !important;
-      }
+      } 
