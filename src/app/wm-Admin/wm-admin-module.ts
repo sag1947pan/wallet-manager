@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppMaterialModule } from '../app-material/app-material.module';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 import { WmHomeComponent } from './wm-home/wm-home.component';
@@ -28,6 +29,7 @@ import { PricingInfoComponent } from '../wm-Admin/pricing-info/pricing-info.comp
       AppMaterialModule,
       HttpClientModule,
       SharedModule,
+      AgGridModule.withComponents([]),
       wmadminPageRoutingModule
   ]
 })

@@ -1,6 +1,6 @@
 <form [formGroup]="pricingInfoGroup">
   <mat-accordion class="example-headers-align">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Pricing Details
@@ -40,7 +40,15 @@
         </div>
 
       </mat-card-content>
-    </mat-expansion-panel>
+    </mat-expansion-panel> -->
+
+    <!-- <button (click)="getSelectedRows()">Get Selected Rows</button> -->
+
+    <mat-card-content>        <ag-grid-angular style="width: auto; height: 150px;" class="ag-theme-balham" [rowData]="rowData"
+          [columnDefs]="columnDefs" rowSelection="multiple">
+        </ag-grid-angular> 
+        </mat-card-content>
+      
 
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
       <mat-expansion-panel-header>

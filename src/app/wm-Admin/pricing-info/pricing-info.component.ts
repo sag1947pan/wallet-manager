@@ -1,8 +1,9 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, ViewChild } from '@angular/core';
 import { SubscriptionDetails } from '../wm-bank-setup/pricingSubscriptionModel';
 import { SubscriptionPackageDetails } from '../wm-bank-setup/subscriptionPackageModel';
 import { PayAsYouGo } from '../wm-bank-setup/payaYouGoModel';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { AgGridAngular } from 'ag-grid-angular';
 
 @Component({
   selector: 'app-pricing-info',
@@ -18,6 +19,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, Form
   ]
 })
 export class PricingInfoComponent implements OnInit, ControlValueAccessor {
+
+  @ViewChild('agGrid') agGrid: AgGridAngular;
+
   pricingInfoGroup:FormGroup
 
   private pricingSubscriptionInfo: SubscriptionDetails[] = [
@@ -50,10 +54,38 @@ export class PricingInfoComponent implements OnInit, ControlValueAccessor {
     
   ]; 
 
+//   columnDefs = [
+//     {headerName: 'Make', field: 'make', sortable: true, filter: true,  checkboxSelection: true },
+//     {headerName: 'Model', field: 'model', sortable: true, filter: true },
+//     {headerName: 'Price', field: 'price', sortable: true, filter: true}
+// ];
+
+columnDefs = [
+  {headerName: 'Subscription Info', field: 'subscriptionInfo', sortable: true, filter: true,  checkboxSelection: true },
+  {headerName: 'Currency', field: 'currency', sortable: true, filter: true },
+  {headerName: 'Amount', field: 'amount', sortable: true, filter: true},
+  {headerName: 'Time Period', field: 'validTime', sortable: true, filter: true},
+  {headerName: 'Discount', field: 'discount', sortable: true, filter: true}
+];
+
+rowData = [
+  { subscriptionInfo: 'License Fees', currency: 'GBP', amount: 200000, validTime: 'One Time', discount: '' },
+  { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Yearly', discount: '' },
+  { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time', discount: '' },
+];
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  getSelectedRows() { // Need to check on how to get the selected rows.
+    const selectedNodes = this.agGrid.rowData.getSelectedNodes();
+    const selectedData = selectedNodes.map( node => node.data );
+    const selectedDataStringPresentation = selectedData.map( node => node.make + ' ' + node.model).join(', ');
+    alert(`Selected nodes: ${selectedDataStringPresentation}`);
+    console.log(selectedDataStringPresentation);
+}
 
   //ControlValueAccessor Implementation
   public onTouched: () => void = () => {};
