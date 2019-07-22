@@ -61,24 +61,29 @@
 
 
                 </mat-expansion-panel>
-                <mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>
+                <!--<mat-expansion-panel hideToggle="true" class="wm-expansion-panel-class" [disabled]='true'>-->
+                <mat-expansion-panel class="wm-expansion-panel-class">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             <mat-icon class="white-icon">search</mat-icon>
                         </mat-panel-title>
-
                         <mat-panel-description class="wm-mat-expansion-panel-header-description">
                             Search Transactions
                         </mat-panel-description>
-
                     </mat-expansion-panel-header>
-
-
+                        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+                            <ul fxLayout fxLayoutGap="15px" class="listyle">
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink='/wmAdminPage/wmHome/BankSearch' routerLinkActive='active'>Search Bank</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink='/Home/AddUser' routerLinkActive='active'>Customer Search
+                                    </a>
+                                </li>                            
+                            </ul>
+                        </div>                   
                 </mat-expansion-panel>
-
-
                 <mat-divider></mat-divider>
-
                 <mat-expansion-panel class="wm-expansion-panel-class">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
@@ -87,8 +92,6 @@
                         <mat-panel-description class="wm-mat-expansion-panel-header-description">
                             Banks
                         </mat-panel-description>
-
-
                     </mat-expansion-panel-header>
                     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
                         <ul fxLayout fxLayoutGap="15px" class="listyle">

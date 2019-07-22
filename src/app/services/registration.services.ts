@@ -65,7 +65,6 @@ export class RegistrationServices {
     Output: Success or failure response along with customer ID and details
     */
     customerLogin(customerId: string, password: string) {
-       // return this.http.get<any>('https://8fpjsh9zha.execute-api.eu-west-2.amazonaws.com/DEV/validatecustuser', { 
         return this.http.get<any>('https://q16xwpzug9.execute-api.eu-west-2.amazonaws.com/dev/validateUser',{
             params: new HttpParams()
             .set('Access-Control-Allow-Origin','*')

@@ -1,0 +1,61 @@
+<form [formGroup]="SearchGroup" (ngSubmit)="onSubmit()">
+    <mat-tab-group [backgroundColor]="'primary'">
+        <mat-tab label="Customer Search">
+            <ng-template matTabContent>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-custom-color">
+                                <div class="panel-heading">Search Customer Details</div>
+                                <mat-card-content class="mat-card-content">
+                                    <div>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Customer Name</mat-label>
+                                            <input matInput placeholder="Customer Name" formControlName="custName" maxlength="30">
+                                            <mat-error *ngIf="SearchGroup.get('custName').touched && SearchGroup.get('custName').hasError('required')">First Name is required</mat-error>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>Customer ID</mat-label>
+                                            <input matInput placeholder="Customer ID" formControlName="custID" maxlength="30">
+                                        </mat-form-field>
+                                    </div>
+                                </mat-card-content>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" color="primary" mat-raised-button> Search</button>
+                </div>
+            </ng-template>
+            <ng-template matTabContent>
+
+                <div class="container-fluid">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Bank Name</th>
+                                <th>Country</th>
+                                <th>Primary Contact</th>
+                                <th>No.of Users</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let custInfo of customerInfo">
+                                <!-- <ng-template pTemplate="body" let-usersInfo> -->
+                                <td>{{ custInfo.full_name}}</td>
+                                <td>{{ custInfo.user_name }}</td>
+                                <td>{{ custInfo.role }}</td>
+                                <td>{{ custInfo.role }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    </div>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</form>
