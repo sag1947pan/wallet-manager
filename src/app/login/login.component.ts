@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            userName: ['', Validators.compose([Validators.required, emailValidator])],
-            Password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+            userName: ['kartheek_wmuser1@test.com', Validators.compose([Validators.required, emailValidator])],
+            Password: ['temp123456', Validators.compose([Validators.required, Validators.minLength(8)])],
             showSuccessAlert: [''],
         });
     }
@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit {
                  
                     if(item.user_type == "wmuser"){//WM Employee
                         this.router.navigate(['/wmAdminPage', data]);
+                        console.log("redirectd to wmuser page");
                     }else if(item.user_type == "custuser"){ //Customer 
                         this.router.navigate(['/CliAccPage', data]);
                     }else if(item.user_type == "bankuser"){//Bank user
