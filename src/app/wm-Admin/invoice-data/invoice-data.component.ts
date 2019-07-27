@@ -22,13 +22,13 @@ export class InvoiceDataComponent implements OnInit, ControlValueAccessor {
     {
     
 
-      invoicingFrequency: new FormControl("", [Validators.required]),
-      invoiceGenerationDay: new FormControl("",[Validators.required]),
-      paymentDues: new FormControl("",[Validators.required]),
-      invoicefavouring:new FormControl("", [Validators.required] ),
-      lastinvoicefavouringName: new FormControl("",[Validators.required]),
-      mailInvoice: new FormControl("",[Validators.required]),
-      invoiceAddress: new FormControl("",[Validators.required])
+      invoicingFrequency: new FormControl("", []),
+      invoiceGenerationDay: new FormControl("",[]),
+      paymentDues: new FormControl("",[]),
+      invoicefavouring:new FormControl("", [] ),
+      lastinvoicefavouringName: new FormControl("",[]),
+      mailInvoice: new FormControl("",[]),
+      invoiceAddress: new FormControl("",[])
   });
 
   constructor() { }
