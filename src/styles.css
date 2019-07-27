@@ -50,19 +50,19 @@
     }
 
 /* Ranjith : For Bank Setup new UI */
-    mat-form-field {
-     margin-right: 10px;
+     mat-form-field {
+    
      margin-left:5px;
-    }
+    } 
     
      .container-fluid {
         margin-top: 5px;
         
     } 
     
-     .mat-card-content{
-        margin-top: 10px;
-    } 
+     /* .mat-card-content{
+        margin-top: 15px;
+    }  */
 
     /* For Mat Select */
 

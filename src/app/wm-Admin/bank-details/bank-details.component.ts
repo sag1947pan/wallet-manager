@@ -52,38 +52,38 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
 
 
-      // country: ['', Validators.required],
-      // postCode: ['', Validators.required],
-      // buildingName: ['', Validators.required],
+      // country: ['', ],
+      // postCode: ['', ],
+      // buildingName: ['', ],
       // streetAddress: [''],
-      // state: ['', Validators.required],
-      // cityName: ['', Validators.required],
+      // state: ['', ],
+      // cityName: ['', ],
 
       //Registered Address
 
 
 
-      // regCountry: ['', Validators.required],
-      // regPostCode: ['', Validators.required],
-      // regbuildingName: ['', Validators.required],
+      // regCountry: ['', ],
+      // regPostCode: ['', ],
+      // regbuildingName: ['', ],
       // regstreetAddress: [''],
-      // regState: ['', Validators.required],
-      // regCityName: ['', Validators.required],
+      // regState: ['', ],
+      // regCityName: ['', ],
 
-      addressLine1: ['', Validators.required],
+      addressLine1: [''],
       addressLine2: [''],
-      cityName: ['', Validators.required],
-      state: ['', Validators.required],
-      country: ['', Validators.required],
-      postCode: ['', Validators.required],
+      cityName: ['', ],
+      state: ['', ],
+      country: ['', ],
+      postCode: ['', ],
 
       //Registered Address
-      regAddressLine1: ['', Validators.required],
+      regAddressLine1: ['', ],
       regAddressLine2: [''],
-      regCity: ['', Validators.required],
-      regState: ['', Validators.required],
-      regCountry: ['', Validators.required],
-      regPostCode: ['', Validators.required],
+      regCity: ['', ],
+      regState: ['', ],
+      regCountry: ['', ],
+      regPostCode: ['', ],
 
     });  
        
