@@ -1,16 +1,17 @@
 <!-- <div class="formContent" style="background: #f9f9f9;" class="panel-body"> -->
-<div class="panel-body">
-  <form [formGroup]="pricingInfoGroup">
 
-    <div>
-        <label>Fixed Charges</label>
-      <mat-card-content>
-        <ag-grid-angular style="width: auto; height: 150px;" class="ag-theme-balham" [rowData]="rowData"
-          [columnDefs]="columnDefs" rowSelection="multiple">
-        </ag-grid-angular>
-      </mat-card-content>
-    </div>
+<form [formGroup]="pricingInfoGroup">
 
+  <div>
+    <label>Fixed Charges</label>
+    <mat-card-content>
+      <ag-grid-angular style="width: auto; height: 150px;" class="ag-theme-balham" [rowData]="rowData"
+        [columnDefs]="columnDefs" rowSelection="multiple">
+      </ag-grid-angular>
+    </mat-card-content>
+  </div>
+
+  <div>
     <div>
       <label id="example-radio-group-label">Pricing Type : </label>
       <input formControlName="options" [(ngModel)]="options" type="radio" [value]="true" [checked]="options" />
@@ -35,9 +36,16 @@
         </ag-grid-angular>
       </mat-card-content>
     </div>
+  </div>
 
-  </form>
-</div>
+  <div>
+    <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back
+    </button>
+    <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+  </div>
+
+</form>
+
 
 <!-- OLD CODE-->
 <!-- <mat-accordion class="example-headers-align"> -->
