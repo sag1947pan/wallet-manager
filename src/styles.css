@@ -68,6 +68,9 @@
         
     } 
     
+    mat-raised-button{
+        color: dodgerblue;
+    }
      /* .mat-card-content{
         margin-top: 15px;
     }  */
@@ -81,5 +84,5 @@
       
       .panel-override-2 {
         max-height: 100px !important;
-        min-width: 100px !important;
+        min-width: 200px !important;
       } 
