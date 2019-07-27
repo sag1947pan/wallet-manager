@@ -12,7 +12,9 @@
 @import "@ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss"; */
 
  .wm-expansion-panel-class {
-    background: rgb(103, 58, 183) !important;
+    /* background: rgb(103, 58, 183) !important; */
+
+    background: dodgerblue !important;
    
 }
 .wm-mat-expansion-panel-header-description {
@@ -36,17 +38,23 @@
 .mat-card-title-color {
     color: blue;
 }
-
+ 
 .panel-custom-color {
-    border-color: #673ab7;
+    /* border-color: #673ab7; */
+    border-color:dodgerblue;
 }
 
    .panel-custom-color > .panel-heading {
         /*background: rgb(103, 58, 183);*/
-        background: #673ab7;
+        /* background: #673ab7;
         color: #fff;
-        border-color: #673ab7;
+        border-color: #673ab7; */
         /*background: rgb(0, 106, 81);*/ /* Our Logo Color*/
+
+        /* Applying Blue Color */
+        background: dodgerblue;
+        color: #fff;
+        border-color: dodgerblue;
     }
 
 /* Ranjith : For Bank Setup new UI */

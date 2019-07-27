@@ -28,8 +28,8 @@
 }
 
     .input-field:focus {
-        /*border: 2px solid dodgerblue;*/
-        border: 2px solid #673ab7;
+        border: 2px solid dodgerblue;
+        /* border: 2px solid #673ab7; */
     }
 
 /* Set a style for the submit button */
@@ -50,7 +50,8 @@
     }
 
 .mat-raised-button {
-    background-color: #673ab7;
+    /* background-color: #673ab7; */
+    background-color:dodgerblue;
     width: 100%;
     color: white;
 }
