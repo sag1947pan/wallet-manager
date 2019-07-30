@@ -8,5 +8,16 @@
    justify-content: space-between;
    align-items: center;
  }
+
+ .my-custom-scrollbar {
+  
+   
+  overflow-y: visible !important; 
+}
  
+.panel-body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 600px;
+}
  

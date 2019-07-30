@@ -2,7 +2,7 @@ import { Component, OnInit, forwardRef, ViewChild } from '@angular/core';
 import { SubscriptionDetails } from '../wm-bank-setup/pricingSubscriptionModel';
 import { SubscriptionPackageDetails } from '../wm-bank-setup/subscriptionPackageModel';
 import { PayAsYouGo } from '../wm-bank-setup/payaYouGoModel';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
 
 @Component({
@@ -22,7 +22,7 @@ export class PricingInfoComponent implements OnInit, ControlValueAccessor {
 
   @ViewChild('agGrid') agGrid: AgGridAngular;
 
-  pricingInfoGroup:FormGroup
+  //pricingInfoGroup:FormGroup
 
   private pricingSubscriptionInfo: SubscriptionDetails[] = [
 
@@ -39,12 +39,13 @@ export class PricingInfoComponent implements OnInit, ControlValueAccessor {
     { package: 'Package 2', noOfTransactions: '10001 - 50000', chargesperMonth: 'GBP 15000' },
     { package: 'Package 3', noOfTransactions: '50001 - 100001', chargesperMonth: 'GBP 50000' },
     { package: 'Package 4', noOfTransactions: '200001+', chargesperMonth: 'GBP 100000' },
-    { package: 'Custom', noOfTransactions: 'min - max', chargesperMonth: '_________' },
+    { package: 'Custom', noOfTransactions: '_________', chargesperMonth: '________' },
   ]; 
 
   //Pay As You Go Details
 
   private payasYouPkg: PayAsYouGo[] = [
+    //private payasYouPkgRows [
     { noOfTransactions: '0 - 10000', chargesperTransaction: 'GBP 0.5', },
     { noOfTransactions: '10001 - 50000', chargesperTransaction: 'GBP 0.4', },
     { noOfTransactions: '50001 - 100001', chargesperTransaction: 'GBP 0.35', },
@@ -54,12 +55,23 @@ export class PricingInfoComponent implements OnInit, ControlValueAccessor {
     
   ]; 
 
-//   columnDefs = [
-//     {headerName: 'Make', field: 'make', sortable: true, filter: true,  checkboxSelection: true },
-//     {headerName: 'Model', field: 'model', sortable: true, filter: true },
-//     {headerName: 'Price', field: 'price', sortable: true, filter: true}
-// ];
+  //Pay As You Go Column definition
+  PayasyougoColDefs = [
+    {headerName: 'No Of Transactions', field: 'noOfTransactions', sortable: true, filter: true},
+    {headerName: 'Charges Per Transaction', field: 'chargesperTransaction', sortable: true, filter: true },
+    
+];
 
+//Subscription Package Columns
+subsPackageColDefs = [
+
+  {headerName: 'Subscription Package', field: 'package', sortable: true, filter: true},
+  {headerName: 'No Of Transactions', field: 'noOfTransactions', sortable: true, filter: true },
+  {headerName: 'Charges Per Month', field: 'chargesperMonth', sortable: true, filter: true },
+  
+];
+
+//Fixed Pricing Column definition
 columnDefs = [
   {headerName: 'Subscription Info', field: 'subscriptionInfo', sortable: true, filter: true,  checkboxSelection: true },
   {headerName: 'Currency', field: 'currency', sortable: true, filter: true },
@@ -74,9 +86,19 @@ rowData = [
   { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time', discount: '' },
 ];
 
+
+public pricingInfoGroup: FormGroup = new FormGroup(
+  {
+  
+
+    options: new FormControl(""),
+   
+});
   constructor() { }
 
   ngOnInit() {
+
+  
   }
 
   getSelectedRows() { // Need to check on how to get the selected rows.

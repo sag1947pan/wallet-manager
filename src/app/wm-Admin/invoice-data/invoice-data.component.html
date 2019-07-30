@@ -1,22 +1,19 @@
 <form [formGroup]="invocingInfoGroup">
-          
 
-  
-                            <mat-expansion-panel>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Invoice Details
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            <!-- Enter Bank Details -->
-                                            <!-- <mat-icon>account_balance_wallet</mat-icon> -->
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                        <div>
-                            <mat-form-field appearance="outline">
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="panel panel-custom-color">
+                <div class="panel-heading"> Invoice Details</div>
+                <mat-card-content>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Invoicing Frequency</mat-label>
-                                <mat-select placeholder="Invoicing Frequency"
-                                    formControlName="invoicingFrequency">
+                                <mat-select placeholder="Invoicing Frequency" formControlName="invoicingFrequency">
                                     <mat-option>
                                         Monthly
                                     </mat-option>
@@ -27,47 +24,69 @@
 
                             </mat-form-field>
 
-                            <mat-form-field appearance="outline">
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Invoice Generation Day </mat-label>
                                 <input matInput placeholder="Invoice Generation Day"
                                     formControlName="invoiceGenerationDay">
                             </mat-form-field>
-                       
-                       
-                            <mat-form-field appearance="outline">
+                        </div>
+
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Payment Due in Days </mat-label>
                                 <input matInput placeholder="Payment Due in Days" formControlName="paymentDues">
                             </mat-form-field>
+                        </div>
 
-                            <mat-form-field appearance="outline">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+
+                            <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Invoice favouring </mat-label>
-                                <input matInput placeholder="Invoice favouring"
-                                    formControlName="invoicefavouring">
-                            </mat-form-field>
-
-
-                            <mat-form-field appearance="outline">
-                                <mat-label>Email Id for Invoice </mat-label>
-                                <input matInput placeholder="Email Id for Invoice"
-                                    formControlName="mailInvoice">
+                                <input matInput placeholder="Invoice favouring" formControlName="invoicefavouring">
                             </mat-form-field>
                         </div>
-                        <div>
-                            <mat-form-field appearance="outline">
+
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:250px !important;">
+                                <mat-label>Email Id for Invoice </mat-label>
+                                <input matInput placeholder="Email Id for Invoice" formControlName="mailInvoice">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Postal Address for Invoice </mat-label>
                                 <textarea matInput placeholder="Postal Address for Invoice"
                                     formControlName="invoiceAddress"></textarea>
                             </mat-form-field>
                         </div>
-              
-
-               </mat-expansion-panel>
-            <div>
 
 
-                <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back
-                </button>
-                <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+
             </div>
-      
+
+            </mat-card-content>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- </mat-expansion-panel> -->
+    <div>
+
+
+        <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back
+        </button>
+        <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+    </div>
+
 </form>

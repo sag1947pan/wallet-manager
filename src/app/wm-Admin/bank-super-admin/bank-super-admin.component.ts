@@ -40,7 +40,7 @@ export class BankSuperAdminComponent implements OnInit, ControlValueAccessor  {
 
 
   addRow(index) {
-
+    this.dynamicArray.push(this.newDynamic);
     this.newDynamic = { email: "", firstName: "", middleName: "", lastName: "", role: "" };
     this.dynamicArray.push(this.newDynamic);
     return true;
