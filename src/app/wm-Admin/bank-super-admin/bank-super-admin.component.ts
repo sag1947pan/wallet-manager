@@ -19,10 +19,7 @@ export class BankSuperAdminComponent implements OnInit, ControlValueAccessor  {
   dynamicArray: Array<DynamicGrid> = [];
   newDynamic: any = {};
 
-  public bankSuperAdminGroup: FormGroup = new FormGroup(
-    {
-    
-
+  public bankSuperAdminGroup: FormGroup = new FormGroup({
       email: new FormControl("", [Validators.required]),
       firstName: new FormControl("",[Validators.required]),
       middleName: new FormControl("",[Validators.required]),
@@ -40,9 +37,10 @@ export class BankSuperAdminComponent implements OnInit, ControlValueAccessor  {
 
 
   addRow(index) {
+    console.log("new data.."+this.newDynamic);
     this.dynamicArray.push(this.newDynamic);
     this.newDynamic = { email: "", firstName: "", middleName: "", lastName: "", role: "" };
-    this.dynamicArray.push(this.newDynamic);
+    //this.dynamicArray.push(this.newDynamic);
     return true;
   }
 

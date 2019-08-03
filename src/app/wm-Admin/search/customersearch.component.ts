@@ -10,10 +10,10 @@ import { from } from 'rxjs';
 
 @Component({
     selector: 'app-login',
-    templateUrl: './search.component.html',
+    templateUrl: './customersearch.component.html',
     //styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class CustomerSearchComponent implements OnInit {
     SearchGroup: FormGroup;
     submitted = false;
     Status: string;

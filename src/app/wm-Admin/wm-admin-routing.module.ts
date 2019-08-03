@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WmHomeComponent } from './wm-home/wm-home.component';
 import {WmBankSetupComponent} from './wm-bank-setup/wm-bank-setup.component';
 import {SearchComponent} from './search/search.component';
+import { CustomerSearchComponent } from './search/customersearch.component';
 
 import { AuthGuard } from '../Guards/auth.guard';
 
@@ -18,10 +19,15 @@ const wmAdminPageroutes: Routes = [
             {
                 path: '', component: WmBankSetupComponent, pathMatch: 'full'
             },
+            { path: 'BankSearch', component: SearchComponent },          
+             
             {
-                path: 'BankSearch', component: SearchComponent, pathMatch: 'full'
-            }
-            
+                path: 'SearchSearch', component: SearchComponent, pathMatch: 'full'
+            },
+            {
+                path: 'SearchCustomer', component: CustomerSearchComponent, pathMatch: 'full'
+            },
+
         ]
     }
 ];
