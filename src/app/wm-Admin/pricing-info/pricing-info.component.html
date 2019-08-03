@@ -6,7 +6,7 @@
     <label>Fixed Charges</label>
     <mat-card-content>
       <ag-grid-angular style="width: auto; height: 150px;" class="ag-theme-balham" [rowData]="rowData"
-        [columnDefs]="columnDefs" rowSelection="single">
+        [columnDefs]="columnDefs" rowSelection="single" (rowClicked)='onRowClicked($event)'>
       </ag-grid-angular>
     </mat-card-content>
   </div>
@@ -18,13 +18,13 @@
       Subscripton Package
 
       <input formControlName="options" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options" />
-      Pay as You Go.
+      Pay as You Go
     </div>
 
     <div *ngIf="options">
       <mat-card-content>
         <ag-grid-angular style="width: auto; height: 200px;" class="ag-theme-balham" [rowData]="subscriptionPkgInfo"
-          [columnDefs]="subsPackageColDefs" [editType]="editType">
+          [columnDefs]="subsPackageColDefs" [editType]="editType" rowSelection="single" (rowClicked)='GetSubscriptionPackageSelected($event)'>
         </ag-grid-angular>
       </mat-card-content>
     </div>
@@ -32,7 +32,7 @@
     <div *ngIf="!options">
       <mat-card-content>
         <ag-grid-angular style=" height: 220px;" class="ag-theme-balham" [rowData]="payasYouPkg"
-          [columnDefs]="PayasyougoColDefs">
+          [columnDefs]="PayasyougoColDefs" rowSelection="single" (rowClicked)='GetPayasYoyGoPackageSelected($event)'>
         </ag-grid-angular>
       </mat-card-content>
     </div>

@@ -24,6 +24,7 @@ export class PricingInfoComponent implements OnInit, ControlValueAccessor {
 
   //private components;
   //private rowData;
+  private gridApi;
   private editType;
 
   private pricingSubscriptionInfo: SubscriptionDetails[] = [
@@ -105,69 +106,24 @@ public pricingInfoGroup: FormGroup = new FormGroup(
   ngOnInit() {  
   }
 
-  getSelectedRows() { // Need to check on how to get the selected rows.
-    const selectedNodes = this.agGrid.rowData.getSelectedNodes();
-    const selectedData = selectedNodes.map( node => node.data );
-    const selectedDataStringPresentation = selectedData.map( node => node.make + ' ' + node.model).join(', ');
-    alert(`Selected nodes: ${selectedDataStringPresentation}`);
-    console.log(selectedDataStringPresentation);
+  onRowClicked(event) { // Need to check on how to get the selected rows.
+    console.log(event.data);
+   
 }
 
-//  getNumericCellEditor() {
-//   function isCharNumeric(charStr) {
-//     return !!/\d/.test(charStr);
-//   }
-//   function isKeyPressedNumeric(event) {
-//     var charCode = getCharCodeFromEvent(event);
-//     var charStr = String.fromCharCode(charCode);
-//     return isCharNumeric(charStr);
-//   }
-//   function getCharCodeFromEvent(event) {
-//     event = event || window.event;
-//     return typeof event.which === "undefined" ? event.keyCode : event.which;
-//   }
-//   function NumericCellEditor() {}
-//   NumericCellEditor.prototype.init = function(params) {
-//     this.focusAfterAttached = params.cellStartedEdit;
-//     this.eInput = document.createElement("input");
-//     this.eInput.style.width = "100%";
-//     this.eInput.style.height = "100%";
-//     this.eInput.value = isCharNumeric(params.charPress) ? params.charPress : params.value;
-//     var that = this;
-//     this.eInput.addEventListener("keypress", function(event) {
-//       if (!isKeyPressedNumeric(event)) {
-//         that.eInput.focus();
-//         if (event.preventDefault) event.preventDefault();
-//       }
-//     });
-//   };
-//   NumericCellEditor.prototype.getGui = function() {
-//     return this.eInput;
-//   };
-//   NumericCellEditor.prototype.afterGuiAttached = function() {
-//     if (this.focusAfterAttached) {
-//       this.eInput.focus();
-//       this.eInput.select();
-//     }
-//   };
-//   NumericCellEditor.prototype.isCancelBeforeStart = function() {
-//     return this.cancelBeforeStart;
-//   };
-//   NumericCellEditor.prototype.isCancelAfterEnd = function() {};
-//   NumericCellEditor.prototype.getValue = function() {
-//     return this.eInput.value;
-//   };
-//   NumericCellEditor.prototype.focusIn = function() {
-//     var eInput = this.getGui();
-//     eInput.focus();
-//     eInput.select();
-//     console.log("NumericCellEditor.focusIn()");
-//   };
-//   NumericCellEditor.prototype.focusOut = function() {
-//     console.log("NumericCellEditor.focusOut()");
-//   };
-//   return NumericCellEditor;
-// }
+GetSubscriptionPackageSelected(event) { 
+  console.log(event.data);
+  
+}
+
+GetPayasYoyGoPackageSelected(event) { 
+  console.log(event.data);
+  
+}
+
+
+
+
 
   //ControlValueAccessor Implementation
   public onTouched: () => void = () => {};
