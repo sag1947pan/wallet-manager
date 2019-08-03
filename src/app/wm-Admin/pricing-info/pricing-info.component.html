@@ -6,7 +6,7 @@
     <label>Fixed Charges</label>
     <mat-card-content>
       <ag-grid-angular style="width: auto; height: 150px;" class="ag-theme-balham" [rowData]="rowData"
-        [columnDefs]="columnDefs" rowSelection="multiple">
+        [columnDefs]="columnDefs" rowSelection="single">
       </ag-grid-angular>
     </mat-card-content>
   </div>
@@ -24,7 +24,7 @@
     <div *ngIf="options">
       <mat-card-content>
         <ag-grid-angular style="width: auto; height: 200px;" class="ag-theme-balham" [rowData]="subscriptionPkgInfo"
-          [columnDefs]="subsPackageColDefs">
+          [columnDefs]="subsPackageColDefs" [editType]="editType">
         </ag-grid-angular>
       </mat-card-content>
     </div>
