@@ -356,6 +356,12 @@
 
         </div>
 
+        <div class="container">
+            <div class="row">
+                <mat-checkbox formControlName = "chkboxAddress" color="primary" [checked]="IsChecked" (change)="showOptions($event)"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
+            </div>
+        </div>
+
         <!-- REGISTERED ADDRESS-->
 
         <div class="container">
