@@ -24,7 +24,7 @@
                         <div class="col-md-4">
                             <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Bank Id</mat-label>
-                                <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="35" required>
+                                <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="35">
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
@@ -313,8 +313,8 @@
                             <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Country</mat-label>
                                 <mat-select formControlName="country">
-                                    <mat-option *ngFor="let topping of toppingList" [value]="topping">
-                                        {{topping}}</mat-option>
+                                    <mat-option *ngFor="let country of countriesList" [value]="country">
+                                        {{country}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
@@ -391,8 +391,8 @@
                             <mat-form-field appearance="outline" style="width:250px !important;">
                                 <mat-label>Country</mat-label>
                                 <mat-select formControlName="regCountry">
-                                    <mat-option *ngFor="let topping of toppingList" [value]="topping">
-                                        {{topping}}</mat-option>
+                                    <mat-option *ngFor="let country of countriesList" [value]="country">
+                                        {{country}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>

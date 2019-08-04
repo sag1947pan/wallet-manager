@@ -1,5 +1,5 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { stringify } from '@angular/core/src/render3/util';
 
 @Component({
@@ -19,14 +19,17 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
   bankInfoGroup: FormGroup;
   // formBuilder: FormBuilder;
 
-   
+
   IsChecked: boolean;
 
   Options: string[] = ['Yes', 'No'];
   option = 'Yes';
+
+  //countri = new FormControl();
+  countriesList: string[] = ['Australia', 'India', 'UK', 'USA', 'Singapore'];
+
   constructor(private formBuilder: FormBuilder) {
 
-    //this.IsChecked = false;
   }
 
   ngOnInit() {
@@ -98,7 +101,8 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
 
   showOptions(event) {
-     console.log(event);
+    console.log(event);
+
     if (event.checked) {
 
       this.bankInfoGroup.patchValue(
@@ -109,25 +113,23 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
           regState: this.bankInfoGroup.value.state,
           regpostCode: this.bankInfoGroup.value.postCode,
           regcountry: this.bankInfoGroup.value.country,
-         
 
 
         })
 
 
-    }  
-    else
-    {
+    }
+    else {
       this.bankInfoGroup.reset({
-        regAddressLine1:'',
-        regAddressLine2:'',
-        regCity : '',
-        regState : '',
-        regCountry : '',
-        regpostCode : '',
+        regAddressLine1: '',
+        regAddressLine2: '',
+        regCity: '',
+        regState: '',
+        regCountry: '',
+        regpostCode: '',
 
       })
-      
+
     }
 
 
