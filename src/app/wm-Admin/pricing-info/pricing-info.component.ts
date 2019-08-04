@@ -106,7 +106,7 @@ public pricingInfoGroup: FormGroup = new FormGroup(
   ngOnInit() {  
   }
 
-  onRowClicked(event) { // Need to check on how to get the selected rows.
+  onRowClicked(event) { 
     console.log(event.data);
    
 }

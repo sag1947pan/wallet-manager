@@ -1,37 +1,59 @@
-<form [formGroup]="forexCurrenciesGroup"> 
+<form [formGroup]="forexCurrenciesGroup">
 
-  
- <div class="col-md-12">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="panel panel-custom-color">
-              
-              <mat-card-content>
 
-                  <div>
-                      <label id="example-radio-group-label">Forex Currencies Supported</label>
-                  </div>
-                  <div>
-                      <mat-radio-group aria-label="Select an option">
-                          <mat-radio-button value="1">Upload Currencies using Sheet rate File
-                          </mat-radio-button>
-                          <mat-radio-button value="2">Choose Currencies Manually</mat-radio-button>
-                      </mat-radio-group>
-                  </div>
-                  <div class="container-fluid">
+    <div class="col-md-12">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="panel panel-custom-color">
 
-                      <div class="custom-file">
-                          <label class="custom-file-label" for="customFile">Upload file</label>
-                          <input type="file" class="custom-file-input" id="customFile">
+                    <mat-card-content>
 
-                      </div>                     
 
-                  </div>
 
-              </mat-card-content>
+                        <div>
+                            <div>
+                                <label id="example-radio-group-label">Forex Currencies Supported : </label>
+                                <input formControlName="options" [(ngModel)]="options" type="radio" [value]="true"
+                                    [checked]="options" />
+                                Upload Currencies using Sheet rate File
 
-          </div>
-      </div>
-  </div>
-</div>
+                                <input formControlName="options" [(ngModel)]="options" type="radio" [value]="false"
+                                    [checked]="!options" />
+                                Choose Currencies Manually
+                            </div>
+                        </div>
+
+                        <div></div>
+
+                        <div *ngIf="options">
+                            <div class="custom-file">
+                                <label class="custom-file-label" for="customFile">Upload file</label>
+                                <input type="file" class="custom-file-input" id="customFile">
+
+                            </div>
+                        </div>
+
+                        <div *ngIf="!options">
+
+                            
+                                <mat-form-field style="width:800px !important;">
+                                    <mat-label> Select Currencies</mat-label>
+                                    <mat-select [formControl]="currencies" multiple
+                                        [panelClass]="applyPanelOverride2 ? 'panel-override-2' : 'panel-override'">
+                                        <mat-option *ngFor="let currency of currenciesList" [value]="currency">
+                                            {{currency}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            
+
+
+                        </div>
+
+
+                    </mat-card-content>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </form>

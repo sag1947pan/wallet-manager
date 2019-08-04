@@ -1,11 +1,11 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-forex-currencies',
   templateUrl: './forex-currencies.component.html',
   styleUrls: ['./forex-currencies.component.css'],
-  providers:[
+  providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ForexCurrenciesComponent),
@@ -18,17 +18,23 @@ export class ForexCurrenciesComponent implements OnInit, ControlValueAccessor {
 
   public forexCurrenciesGroup: FormGroup = new FormGroup(
     {
+
+      options: new FormControl(""),
+
+
+    });
+
+    currencies = new FormControl();
+    currenciesList: string[] = ['AUD', 'USD', 'GBP', 'SGD', 'INR'];
     
 
-     
-  });
   constructor() { }
 
   ngOnInit() {
   }
 
   //ControlValueAccessor Implementation
-  public onTouched: () => void = () => {};
+  public onTouched: () => void = () => { };
 
   writeValue(val: any): void {
     val && this.forexCurrenciesGroup.setValue(val, { emitEvent: false });
