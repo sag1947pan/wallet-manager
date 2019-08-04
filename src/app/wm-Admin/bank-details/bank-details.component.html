@@ -202,7 +202,7 @@
 
                             <mat-form-field appearance="outline" style="width:340px !important;">
                                 <mat-label>Support Required for Bank User Management</mat-label>
-                                <mat-select placeholder="Support Required for Bank User Management"
+                                <mat-select placeholder="Support Required for Bank User Management" [(ngModel)]="option"
                                     formControlName="supportReqforBankUserMgmt">
                                     <mat-option *ngFor="let option of Options" [value]="option">
                                         {{option}}
@@ -214,7 +214,7 @@
                         <div class="col-md-4">
                             <mat-form-field appearance="outline" style="width:340px !important;">
                                 <mat-label>Support Required for Bank Client Management</mat-label>
-                                <mat-select placeholder="Support Required for Client User Management"
+                                <mat-select placeholder="Support Required for Client User Management" [(ngModel)]="option"
                                     formControlName="supportReqforClientUserMgmt">
                                     <mat-option *ngFor="let option of Options" [value]="option">
                                         {{option}}
@@ -229,7 +229,7 @@
 
                             <mat-form-field appearance="outline" style="width:320px !important;">
                                 <mat-label>Authorization -Manual Payment Activity</mat-label>
-                                <mat-select placeholder="Authorization -Manual Payment Activity"
+                                <mat-select placeholder="Authorization -Manual Payment Activity" [(ngModel)]="option"
                                     formControlName="authManualPymtActivity">
                                     <mat-option *ngFor="let option of Options" [value]="option">
                                         {{option}}
@@ -251,7 +251,7 @@
                         <div class="col-md-4">
                             <mat-form-field appearance="outline" style="width:320px !important;">
                                 <mat-label>Authorization -Non Payment Activity</mat-label>
-                                <mat-select placeholder="Authorization -Non Payment Activity"
+                                <mat-select placeholder="Authorization -Non Payment Activity" [(ngModel)]="option"
                                     formControlName="authNonPymtActivity">
                                     <mat-option *ngFor="let option of Options" [value]="option">
                                         {{option}}
@@ -358,7 +358,9 @@
 
         <div class="container">
             <div class="row">
+                    <div class="col-md-4">
                 <mat-checkbox  color="primary" [checked]="IsChecked" (change)="showOptions($event)"> Please tick the Checkbox if Registerd Address is same as Trading Address.</mat-checkbox>
+                </div>
             </div>
         </div>
 

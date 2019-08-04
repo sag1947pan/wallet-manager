@@ -19,10 +19,11 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
   bankInfoGroup: FormGroup;
   // formBuilder: FormBuilder;
 
+   
   IsChecked: boolean;
 
   Options: string[] = ['Yes', 'No'];
-
+  option = 'Yes';
   constructor(private formBuilder: FormBuilder) {
 
     //this.IsChecked = false;
