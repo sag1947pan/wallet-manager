@@ -3,18 +3,7 @@
         <!-- START ACCORDIAN-->
 
         <!-- <mat-accordion class="example-headers-align" multi=true  style="background: #f9f9f9!important;"> -->
-        <!-- <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle> -->
-        <!-- <mat-expansion-panel> -->
-        <!-- <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Bank Details
-                </mat-panel-title>
-                <mat-panel-description>
-                     Enter Bank Details 
-                     <mat-icon>account_balance_wallet</mat-icon> 
-                </mat-panel-description>
-            </mat-expansion-panel-header>    -->
-
+       
 
         <div class="container">
             <div class="panel panel-custom-color">
@@ -22,23 +11,28 @@
                 <mat-card-content>
                     <div class="row">
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;" hintLabel="This is your bank's BIC code">
                                 <mat-label>Bank Id</mat-label>
-                                <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="35">
+                                <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="8" >
+                                <mat-error *ngIf="bankInfoGroup.get('bankId').touched && bankInfoGroup.get('bankId').hasError('required')">Please Enter Bank Id.</mat-error>
+                               
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Bank Name</mat-label>
-                                <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="35"
-                                    required>
+                                <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="50"
+                                    >
+                                    <mat-error *ngIf="bankInfoGroup.get('bankName').touched && bankInfoGroup.get('bankName').hasError('required')">Please Enter Bank Name.</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Primary Contact Name</mat-label>
                                 <input matInput placeholder="Primary Contact Name" formControlName="primaryContactName"
-                                    maxlength="35">
+                                    maxlength="30">
+                                    <mat-error *ngIf="bankInfoGroup.get('primaryContactName').touched && bankInfoGroup.get('primaryContactName').hasError('required')">Please Enter Primary Contact Name.</mat-error>
+                                    
                             </mat-form-field>
 
                         </div>
@@ -50,19 +44,21 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Primary Contact Work Email Id</mat-label>
                                 <input matInput placeholder="Primary Contact Work Email Id"
-                                    formControlName="primaryContactEmailId" maxlength="35" required>
+                                    formControlName="primaryContactEmailId">
+                                    <mat-error *ngIf="bankInfoGroup.get('primaryContactEmailId').touched && bankInfoGroup.get('primaryContactEmailId').hasError('required')">Please Enter Primary Contact Work Email Id.</mat-error>
                             </mat-form-field>
                         </div>
 
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field   style="width:250px !important;">
                                 <mat-label>Primary Contact Phone Number</mat-label>
                                 <input matInput placeholder="Primary Contact Phone Number"
-                                    formControlName="primaryContactPhoneNo" maxlength="35">
+                                    formControlName="primaryContactPhoneNo" maxlength="13">
                             </mat-form-field>
+                            <mat-error *ngIf="bankInfoGroup.get('primaryContactPhoneNo').touched && bankInfoGroup.get('primaryContactPhoneNo').hasError('required')">Please Enter Primary Contact Phone Number</mat-error>
 
                         </div>
 
@@ -87,30 +83,30 @@
 
                     <mat-card-content>
                         <div>
-                            <mat-form-field appearance="outline">
+                            <mat-form-field >
                                 <mat-label>Bank Id</mat-label>
                                 <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="35" required>
                             </mat-form-field>
 
-                            <mat-form-field appearance="outline">
+                            <mat-form-field >
                                 <mat-label>Bank Name</mat-label>
                                 <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="35"
                                     required>
                             </mat-form-field>
 
-                            <mat-form-field appearance="outline">
+                            <mat-form-field >
                                 <mat-label>Primary Contact Name</mat-label>
                                 <input matInput placeholder="Primary Contact Name" formControlName="primaryContactName"
                                     maxlength="35">
                             </mat-form-field>
 
-                            <mat-form-field appearance="outline" style="width:230px !important;">
+                            <mat-form-field  style="width:230px !important;">
                                 <mat-label>Primary Contact Work Email Id</mat-label>
                                 <input matInput placeholder="Primary Contact Work Email Id"
                                     formControlName="primaryContactEmailId" maxlength="35" required>
                             </mat-form-field>
 
-                            <mat-form-field appearance="outline" style="width:230px !important;">
+                            <mat-form-field  style="width:230px !important;">
                                 <mat-label>Primary Contact Phone Number</mat-label>
                                 <input matInput placeholder="Primary Contact Phone Number"
                                     formControlName="primaryContactPhoneNo" maxlength="35">
@@ -163,14 +159,14 @@
 
 
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:200px !important;">
                                 <mat-label>Service Subscribed by Bank </mat-label>
                                 <input matInput placeholder="Service Subscription"
-                                    formControlName="bankServiceSubscription">
+                                    formControlName="bankServiceSubscription" value="Beneficiary Enrichment Only">
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:200px !important;">
                                 <mat-label>Service Activation Start date</mat-label>
                                 <input matInput [matDatepicker]="picker" placeholder="Service Activation Start date"
                                     formControlName="servciceActivationStartDate">
@@ -182,7 +178,7 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:200px !important;">
                                 <mat-label>Service Activation End date</mat-label>
                                 <input matInput [matDatepicker]="picker1" placeholder="Service Activation End date"
                                     formControlName="serviceActivationEndDate">
@@ -200,8 +196,9 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:340px !important;">
-                                <mat-label>Support Required for Bank User Management</mat-label>
+                            <mat-form-field  style="width:300px !important;">
+                                <mat-label>Support Required for Bank
+                                     User Management</mat-label>
                                 <mat-select placeholder="Support Required for Bank User Management" [(ngModel)]="option"
                                     formControlName="supportReqforBankUserMgmt">
                                     <mat-option *ngFor="let option of Options" [value]="option">
@@ -212,7 +209,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:340px !important;">
+                            <mat-form-field  style="width:300px !important;">
                                 <mat-label>Support Required for Bank Client Management</mat-label>
                                 <mat-select placeholder="Support Required for Client User Management" [(ngModel)]="option"
                                     formControlName="supportReqforClientUserMgmt">
@@ -227,7 +224,7 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:320px !important;">
+                            <mat-form-field  style="width:300px !important;">
                                 <mat-label>Authorization -Manual Payment Activity</mat-label>
                                 <mat-select placeholder="Authorization -Manual Payment Activity" [(ngModel)]="option"
                                     formControlName="authManualPymtActivity">
@@ -249,7 +246,7 @@
                     <div class="row">
 
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:320px !important;">
+                            <mat-form-field  style="width:300px !important;">
                                 <mat-label>Authorization -Non Payment Activity</mat-label>
                                 <mat-select placeholder="Authorization -Non Payment Activity" [(ngModel)]="option"
                                     formControlName="authNonPymtActivity">
@@ -296,21 +293,21 @@
                 <mat-card-content>
                     <div class="row">
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Address Line 1</mat-label>
                                 <input matInput placeholder="Address" formControlName="addressLine1" maxlength="35">
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Address Line 2</mat-label>
                                 <input matInput placeholder="AddressLine 2" formControlName="addressLine2"
                                     maxlength="35">
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Country</mat-label>
                                 <mat-select formControlName="country">
                                     <mat-option *ngFor="let country of countriesList" [value]="country">
@@ -325,7 +322,7 @@
                     <div class="row">
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>State</mat-label>
                                 <input matInput placeholder="State" formControlName="state" maxlength="35">
                             </mat-form-field>
@@ -333,7 +330,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Town/City</mat-label>
                                 <input matInput placeholder="Town/City" formControlName="cityName" maxlength="35">
                             </mat-form-field>
@@ -342,7 +339,7 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Post Code</mat-label>
                                 <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
                             </mat-form-field>
@@ -372,7 +369,7 @@
                 <mat-card-content>
                     <div class="row">
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>AddressLine 1</mat-label>
                                 <input matInput placeholder="AddressLine 1" formControlName="regAddressLine1"
                                     maxlength="35">
@@ -380,7 +377,7 @@
                         </div>
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>AddressLine 2</mat-label>
                                 <input matInput placeholder="AddressLine 2" formControlName="regAddressLine2"
                                     maxlength="35">
@@ -388,7 +385,7 @@
 
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Country</mat-label>
                                 <mat-select formControlName="regCountry">
                                     <mat-option *ngFor="let country of countriesList" [value]="country">
@@ -404,7 +401,7 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>State</mat-label>
                                 <input matInput placeholder="State" formControlName="regState" maxlength="35">
                             </mat-form-field>
@@ -412,7 +409,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Town/City</mat-label>
                                 <input matInput placeholder="Town/City" formControlName="regCity" maxlength="35">
                             </mat-form-field>
@@ -421,7 +418,7 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field appearance="outline" style="width:250px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Post Code</mat-label>
                                 <input matInput placeholder="Post Code" formControlName="regPostCode" maxlength="8">
                             </mat-form-field>
@@ -449,18 +446,18 @@
                         <div class="panel-heading">Trading Address</div>
                         <mat-card-content>
                             <div>
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>Address Line 1</mat-label>
                                     <input matInput placeholder="Address" formControlName="addressLine1" maxlength="35">
                                 </mat-form-field>
 
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>Address Line 2</mat-label>
                                     <input matInput placeholder="AddressLine 2" formControlName="addressLine2"
                                         maxlength="35">
                                 </mat-form-field>
 
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>Country</mat-label>
                                     <mat-select formControlName="country">
                                         <mat-option *ngFor="let topping of toppingList" [value]="topping">
@@ -471,17 +468,17 @@
 
                         </mat-card-content>
                         <div>
-                            <mat-form-field appearance="outline">
+                            <mat-form-field >
                                 <mat-label>State</mat-label>
                                 <input matInput placeholder="State" formControlName="state" maxlength="35">
                             </mat-form-field>
 
-                            <mat-form-field appearance="outline">
+                            <mat-form-field >
                                 <mat-label>Town/City</mat-label>
                                 <input matInput placeholder="Town/City" formControlName="cityName" maxlength="35">
                             </mat-form-field>
 
-                            <mat-form-field appearance="outline">
+                            <mat-form-field >
                                 <mat-label>Post Code</mat-label>
                                 <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
                             </mat-form-field>
@@ -522,18 +519,18 @@
                         <mat-card-content>
 
                             <div>
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>AddressLine 1</mat-label>
                                     <input matInput placeholder="AddressLine 1" formControlName="regAddressLine1"
                                         maxlength="35">
                                 </mat-form-field>
 
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>AddressLine 2</mat-label>
                                     <input matInput placeholder="AddressLine 2" formControlName="regAddressLine2"
                                         maxlength="35">
                                 </mat-form-field>
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>Country</mat-label>
                                     <mat-select formControlName="regCountry">
                                         <mat-option *ngFor="let topping of toppingList" [value]="topping">
@@ -544,17 +541,17 @@
                             </div>
 
                             <div>
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>State</mat-label>
                                     <input matInput placeholder="State" formControlName="regState" maxlength="35">
                                 </mat-form-field>
 
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>Town/City</mat-label>
                                     <input matInput placeholder="Town/City" formControlName="regCity" maxlength="35">
                                 </mat-form-field>
 
-                                <mat-form-field appearance="outline">
+                                <mat-form-field >
                                     <mat-label>Post Code</mat-label>
                                     <input matInput placeholder="Post Code" formControlName="regPostCode" maxlength="8">
                                 </mat-form-field>

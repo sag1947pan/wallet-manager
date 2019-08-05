@@ -1,6 +1,7 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { stringify } from '@angular/core/src/render3/util';
+//import { stringify } from '@angular/core/src/render3/util';
+//import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-bank-details',
@@ -9,10 +10,10 @@ import { stringify } from '@angular/core/src/render3/util';
 
   providers: [
     {
-      provide: NG_VALUE_ACCESSOR,
+      provide: NG_VALUE_ACCESSOR, 
       useExisting: forwardRef(() => BankDetailsComponent),
-      multi: true
-    }
+      multi: true,     
+    }   
   ]
 })
 export class BankDetailsComponent implements OnInit, ControlValueAccessor {
@@ -37,12 +38,12 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
     this.bankInfoGroup = this.formBuilder.group({
 
       //Bank Details
-      bankId: [''],
-      bankCustomerId: [''],
-      bankName: [''],
-      primaryContactName: [''],
-      primaryContactEmailId: [''],
-      primaryContactPhoneNo: [''],
+      bankId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+     // bankCustomerId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      bankName: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
+      primaryContactName: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
+      primaryContactEmailId: ['', Validators.compose([Validators.required, Validators.email])],
+      primaryContactPhoneNo: ['', Validators.compose([Validators.required, Validators.minLength(11)])],
 
       //Services and Preferences
       bankServiceSubscription: [''],
@@ -62,24 +63,7 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
 
 
-      // country: ['', ],
-      // postCode: ['', ],
-      // buildingName: ['', ],
-      // streetAddress: [''],
-      // state: ['', ],
-      // cityName: ['', ],
-
-      //Registered Address
-
-
-
-      // regCountry: ['', ],
-      // regPostCode: ['', ],
-      // regbuildingName: ['', ],
-      // regstreetAddress: [''],
-      // regState: ['', ],
-      // regCityName: ['', ],
-
+      
       addressLine1: [''],
       addressLine2: [''],
       cityName: ['',],
