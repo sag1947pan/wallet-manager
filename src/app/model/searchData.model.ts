@@ -4,7 +4,7 @@ EX: user_type: describes bankuser/customer/bene/sysAdmin (employee)
     And bankID or customerID used to retrieve respective details
 */
 
-export class searchBankMaster {
+export class bankmasterdetails {
     bank_cust_id: number;
     bank_name: string;
     primary_contact_name: string;

@@ -29,32 +29,29 @@
                     <button type="submit" color="primary" mat-raised-button> Search</button>
                 </div>
             </ng-template>
-            <ng-template matTabContent>
-                <div class="container-fluid">
-                <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Bank Name</th>
-                                <th>Country</th>
-                                <th>Primary Contact</th>
-                                <th>No.of Users</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            <tr ng-show='query' *ngFor="let bankInfo of banksInfo">
-                                <!-- <ng-template pTemplate="body" let-usersInfo> -->
-                                <td>{{ bankInfo.bank_cust_id}}</td>
-                                <td>{{ bankInfo.bank_name }}</td>
-                                <td>{{ bankInfo.primary_contact_name }}</td>
-                                <td>{{ bankInfo.primary_contact_name }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                    </div>
-            </ng-template>
         </mat-tab>
     </mat-tab-group>
 </form>
+    <div class="container-fluid">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Bank Name</th>
+                        <th>Country</th>
+                        <th>Primary Contact</th>
+                        <th>No.of Users</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bankInfo of banksInfo">
+                        <td>{{ bankInfo.bank_cust_id}}</td>
+                        <td>{{ bankInfo.bank_name }}</td>
+                        <td>{{ bankInfo.primary_contact_name }}</td>
+                        <td>{{ bankInfo.primary_contact_name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            </div>            

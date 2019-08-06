@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
 import { ErrorMessages } from 'src/app/resources/error.messages';
 import { SessionUserData } from 'src/app/model/sessionData.model';
-import { searchBankMaster } from 'src/app/model/searchData.model';
+import { bankmasterdetails } from 'src/app/model/searchData.model';
 import { from } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
     errorMessage: string;
     resourcesLoaded: boolean;
     userRole:string;
-    private banksInfo : searchBankMaster[] = []; //Users Info to bind to UI 
+    private banksInfo : bankmasterdetails[] = []; //Users Info to bind to UI 
     constructor(
         private formBuilder: FormBuilder,
         private wmUserServices: WmUserServices,
@@ -48,9 +48,7 @@ export class SearchComponent implements OnInit {
         this.submitted = true;
         
         this.wmUserServices.getBankMasterDetails(JSON.stringify(this.SearchGroup.value))
-            .pipe(first())
-            .subscribe(
-                data => {
+        .subscribe((data )=> {
                     /*let item = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;               
                     this.userRole = item.role;
                     console.log("bank search results.." + data);
@@ -62,8 +60,8 @@ export class SearchComponent implements OnInit {
                     if(data != null && (data.status == 200 || data.status == 201)){
                         
                         data = JSON.stringify(data.body);
-                        console.log("bank search results.string." + data);
-                        this.banksInfo = JSON.parse(data).bankmasterdetails;                        
+                        this.banksInfo = JSON.parse(data).bankmasterdetails;
+                        console.log("bank search results.string." + this.banksInfo.length);
                     }else{
                         // status meggae with no user records.. but this should not be the case
                     }
