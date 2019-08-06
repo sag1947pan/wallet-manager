@@ -10,13 +10,14 @@
                                 <mat-card-content class="mat-card-content">
                                     <div>
                                         <mat-form-field appearance="outline">
-                                            <mat-label>Customer Name</mat-label>
-                                            <input matInput placeholder="Customer Name" formControlName="custName" maxlength="30">                                            
+                                            <mat-label>Bank Name</mat-label>
+                                            <input matInput placeholder="Bank Name" formControlName="bankName" minlength="3" maxlength="30">
+
                                         </mat-form-field>
 
                                         <mat-form-field appearance="outline">
-                                            <mat-label>Customer ID</mat-label>
-                                            <input matInput placeholder="Customer ID" formControlName="custID" maxlength="30">
+                                            <mat-label>Bank ID</mat-label>
+                                            <input matInput placeholder="Bank ID" formControlName="bankID" maxlength="30">
                                         </mat-form-field>
                                     </div>
                                 </mat-card-content>
@@ -29,7 +30,6 @@
                 </div>
             </ng-template>
             <ng-template matTabContent>
-
                 <div class="container-fluid">
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
                     <table class="table table-striped">
@@ -43,12 +43,12 @@
 
                         </thead>
                         <tbody>
-                            <tr *ngFor="let custInfo of customerInfo">
+                            <tr ng-show='query' *ngFor="let bankInfo of banksInfo">
                                 <!-- <ng-template pTemplate="body" let-usersInfo> -->
-                                <td>{{ custInfo.full_name}}</td>
-                                <td>{{ custInfo.user_name }}</td>
-                                <td>{{ custInfo.role }}</td>
-                                <td>{{ custInfo.role }}</td>
+                                <td>{{ bankInfo.bank_cust_id}}</td>
+                                <td>{{ bankInfo.bank_name }}</td>
+                                <td>{{ bankInfo.primary_contact_name }}</td>
+                                <td>{{ bankInfo.primary_contact_name }}</td>
                             </tr>
                         </tbody>
                     </table>

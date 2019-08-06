@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { getLocaleDayNames } from '@angular/common';
 import { ErrorMessages } from 'src/app/resources/error.messages';
 import { SessionUserData } from 'src/app/model/sessionData.model';
+import { searchBankMaster } from 'src/app/model/searchData.model';
 import { from } from 'rxjs';
 
 @Component({
@@ -20,8 +21,7 @@ export class SearchComponent implements OnInit {
     errorMessage: string;
     resourcesLoaded: boolean;
     userRole:string;
-
-
+    private banksInfo : searchBankMaster[] = []; //Users Info to bind to UI 
     constructor(
         private formBuilder: FormBuilder,
         private wmUserServices: WmUserServices,
@@ -29,8 +29,8 @@ export class SearchComponent implements OnInit {
 
     ngOnInit() {
         this.SearchGroup = this.formBuilder.group({
-            custName: [''],
-            custID: [''],
+            bankName: [''],
+            bankID: [''],
             //showSuccessAlert: [''],
         });
     }
@@ -46,18 +46,27 @@ export class SearchComponent implements OnInit {
         }
         this.resourcesLoaded = true;
         this.submitted = true;
-        console.log("username.." + this.f.custName.value);
-        console.log("custID.." + this.f.custID.value);
-        console.log("stringfy.." + JSON.stringify(this.SearchGroup.value));
-       
-        this.wmUserServices.searchCustomer(this.f.userName.value)
+        
+        this.wmUserServices.getBankMasterDetails(JSON.stringify(this.SearchGroup.value))
             .pipe(first())
             .subscribe(
                 data => {
-                    let item = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;               
-                    this.userRole = item.role;                   
-                 
+                    /*let item = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;               
+                    this.userRole = item.role;
+                    console.log("bank search results.." + data);
+                    data = JSON.stringify(data.body);
+                    console.log("bank search results.string." + data);
+                    this.banksInfo = JSON.parse(data).bankmasterdetails;//data;
                     this.resourcesLoaded = false;
+                    console.log("bank search results model.." + this.banksInfo);*/
+                    if(data != null && (data.status == 200 || data.status == 201)){
+                        
+                        data = JSON.stringify(data.body);
+                        console.log("bank search results.string." + data);
+                        this.banksInfo = JSON.parse(data).bankmasterdetails;                        
+                    }else{
+                        // status meggae with no user records.. but this should not be the case
+                    }
                 },
                 error => {
                     console.log("failure class" + error);

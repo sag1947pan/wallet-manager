@@ -57,4 +57,45 @@ searchCustomer(customerDetails) {
         })
     );
 }
+
+/*
+Get bank master details upon WM Admin search for bank
+Input: Bank Name or Bank ID
+Output: Bank ID, Bank Name, Primary Contact
+*/
+getBankMasterDetails(RegDetails) {
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    RegDetails = JSON.parse(RegDetails);    
+    return this.http.get<any>('https://3fgr6t3lk6.execute-api.eu-west-2.amazonaws.com/dev/bankMasterDetails', {
+        params: new HttpParams()
+            .set('Access-Control-Allow-Origin', '*')
+            //.set('userName', this.logUserEmail)
+            .set('userId', "5")
+            .set('bankName', RegDetails.bankName)
+            .set('bankID', RegDetails.bankID),
+        observe: 'response'
+    }).pipe(
+        map((res: any) => {
+            if (res != null && res != ""){
+                let regResp = JSON.stringify(res);
+                let regRespParse = JSON.parse(regResp);
+                console.log("regResp status" + regRespParse.status);
+
+                if (regRespParse.status == 200 || regRespParse.status == 201) {
+                    let respBody = JSON.stringify(res.body);
+                    let respParse = JSON.parse(respBody);
+                    
+                    return res;
+                }
+                else { // If no proper response
+                    console.log("In failure");
+                    return regRespParse.status;
+                }
+            } else {
+                console.log("search bank response.." + res);
+                return "Something went wrong, please try again!!";
+            }
+        })
+    );
+    }
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse,HttpParams } from '@angular/
 import { Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { catchError, retry } from 'rxjs/operators';
+import { SessionUserData } from 'src/app/model/sessionData.model';
 
 //import HttpErrorResponse
 @Injectable({
@@ -15,6 +16,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class BankSetupServices {
 
     public isUserLoggedIn: boolean;
+    private userSessionData = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;
     constructor(private http: HttpClient) { }
 
     /*
@@ -63,4 +65,5 @@ bankMasterService(RegDetails) {
         })
     );
 }
+
 }
