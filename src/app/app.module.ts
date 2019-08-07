@@ -39,7 +39,7 @@ import { PasswordForgotComponent } from './password-forgot/password-forgot.compo
 import { SuccessRegComponent } from './registration/cust-reg.success.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { from } from 'rxjs';
-
+import { BeneRegNewAccComponent } from './Beneficiary-Reg/bene-reg-new-acc/bene-reg-new-acc.component';
 
 
 @NgModule({
@@ -63,6 +63,7 @@ import { from } from 'rxjs';
         SuccessRegComponent,
       PasswordForgotComponent,
       ConfirmDialogComponent,
+      BeneRegNewAccComponent,
 
   ],
   imports: [

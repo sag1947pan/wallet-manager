@@ -1,0 +1,16 @@
+<!-- <form [formGroup]="bankSetupGroup" (ngSubmit)="onSubmit()" class="my-custom-scrollbar"> -->
+<form [formGroup]="beneProfileGroup" (ngSubmit)="onSubmit()">
+    <!-- Step Control-->
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <!-- User Information-->
+        <mat-step [stepControl]="beneAddressGroup">
+            <ng-template matStepLabel>Address</ng-template>
+            <app-bene-profile-address formControlName="beneAddress"></app-bene-profile-address>
+        </mat-step>
+        <!-- Account Details-->
+        <!--<mat-step [stepControl]="beneAddressGroup">
+            <ng-template matStepLabel>Address</ng-template>
+            <app-bene-profile-address formControlName="beneAddress"></app-bene-profile-address>
+        </mat-step>-->
+    </mat-horizontal-stepper>
+</form>

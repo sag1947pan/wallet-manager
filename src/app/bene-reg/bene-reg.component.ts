@@ -67,8 +67,6 @@ export class BeneRegComponent implements OnInit {
             stateCtrl: ['', Validators.required],
             countryCtrl: ['', Validators.required],
             postcodeCtrl: ['', Validators.required],
-
-
         });
 
         this.secondFormGroup = this.formBuilder.group({

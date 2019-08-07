@@ -21,6 +21,8 @@ import { BeneRegComponent } from './bene-reg/bene-reg.component';
 import { PostRegComponent } from './post-reg/post-reg.component';
 import { SuccessRegComponent } from './registration/cust-reg.success.component'
 import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
+import { BeneRegNewAccComponent } from './Beneficiary-Reg/bene-reg-new-acc/bene-reg-new-acc.component';
+
 
 const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'Dash', component: AppComponent },
@@ -38,7 +40,9 @@ const appRoutes: Routes = [{ path: '', redirectTo: '/Main', pathMatch: 'full' },
     { path: 'ForgotPwd', component: PasswordForgotComponent },
     { path: 'CustRegSuccess', component: SuccessRegComponent},
    { path: 'CliAccPage', loadChildren: './client-Acc-Page/client-Acc-Page.module#clientAccPagemodule' },
-   { path: 'wmAdminPage', loadChildren: './wm-Admin/wm-admin-module#wmadminPagemodule' },
+    { path: 'wmAdminPage', loadChildren: './wm-Admin/wm-admin-module#wmadminPagemodule' },
+    { path: 'BeneRegAcc', component: BeneRegNewAccComponent },
+    { path: 'benePage', loadChildren:'./Beneficiary-Reg/wm-bene-module#wmBenePagemodule' }
 ]
 
 @NgModule({

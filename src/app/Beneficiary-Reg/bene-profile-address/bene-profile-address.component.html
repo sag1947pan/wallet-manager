@@ -1,0 +1,60 @@
+<div class="panel-body">
+    <form [formGroup]="beneAddressGroup">
+        <div class="container">
+            <div class="panel panel-custom-color">
+                <div class="panel-heading">Please enter your Registered Address</div>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:400px !important;">
+                                <mat-label>Country Of Residence</mat-label>
+                                <input matInput placeholder="Country Of Residence" formControlName="residence" maxlength="35" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:400px !important;">
+                                <mat-label>Building Number/Name</mat-label>
+                                <input matInput placeholder="Building Number/Name" formControlName="buildingNo" maxlength="35">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:400px !important;">
+                                <mat-label>Street Address</mat-label>
+                                <input matInput placeholder="Street Address" formControlName="streetAddress" maxlength="35" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:400px !important;">
+                                <mat-label>City/Town</mat-label>
+                                <input matInput placeholder="City/Town" formControlName="cityName" maxlength="35" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:400px !important;">
+                                <mat-label>Country/State</mat-label>
+                                <input matInput placeholder="Country/State" formControlName="countryName" maxlength="35">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field appearance="outline" style="width:400px !important;">
+                                <mat-label>Postal/Zip Code</mat-label>
+                                <input matInput placeholder="Postal/Zip Code" formControlName="zipCode" maxlength="10" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </div>
+        </div>
+        <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
+    </form>
+</div>
