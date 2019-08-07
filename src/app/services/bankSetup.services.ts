@@ -66,4 +66,49 @@ bankMasterService(RegDetails) {
     );
 }
 
+/*
+set bank master details alone..
+this should retrieve the bankID primary or reference key will used to store other recods
+*/
+setBankMasterInfo(RegDetails) {
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    console.log("RegDetails of bank setup is..."+JSON.stringify(RegDetails));
+    return this.http.post<any>('https://3fgr6t3lk6.execute-api.eu-west-2.amazonaws.com/dev/bankMasterDetails', JSON.stringify(RegDetails), {
+    // headers
+    params: new HttpParams()
+        .set('Access-Control-Allow-Origin', '*')
+                //.set('userName', this.logUserEmail) userId=5
+        .set('userId', "5"),
+        observe: 'response'
+    }).pipe( 
+        map((res: any) => {
+            console.log("Initial registration..."+JSON.stringify(res));
+            let regResp = JSON.stringify(res);
+            if(res !=null && res != ""){
+                let regResp = JSON.stringify(res);
+                let regRespParse = JSON.parse(regResp)
+                if(regRespParse.status == 201){
+                    console.log("In success");
+                    //return regRespParse.Message; 
+                    return regResp;
+                }else{
+                    console.log("In failure");
+                    //return regRespParse.Message;
+                    return regResp;
+                }
+            }else{
+                return "Something went wrong, please try again!!";
+            }
+            res['playload'] = res;
+            return res['playload'];
+        }),
+        catchError((err, caught) => {
+            //return empty();
+            console.log("registration failed.."+err);
+            //return err;
+            return throwError(err);
+        })
+    );
+}
+
 }

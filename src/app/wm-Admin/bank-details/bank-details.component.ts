@@ -1,5 +1,7 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { BankSetupServices } from 'src/app/services/bankSetup.services';
+import { first } from 'rxjs/operators';
 //import { stringify } from '@angular/core/src/render3/util';
 //import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
@@ -29,9 +31,9 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
   //countri = new FormControl();
   countriesList: string[] = ['Australia', 'India', 'UK', 'USA', 'Singapore'];
 
-  constructor(private formBuilder: FormBuilder) {
-
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private BankSetupServices:BankSetupServices,) { }
 
   ngOnInit() {
 
@@ -123,8 +125,17 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
   onSubmit() {
 
-    console.log(this.bankInfoGroup.value);
-
+    console.log("payload.."+this.bankInfoGroup.value);
+    //verify the fields existance and submit the request...
+    this.BankSetupServices.setBankMasterInfo(this.bankInfoGroup.value)
+    .pipe(first())
+    .subscribe(
+        data => {
+          console.log("redirectd to success page"+data);
+        },
+        error => {
+          console.log("redirectd to wmuser failure page"+error);
+        });
   }
 
   //ControlValueAccessor Implementation
