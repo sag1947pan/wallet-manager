@@ -1,5 +1,5 @@
 <div class="panel-body">
-    <form [formGroup]="bankInfoGroup">
+    <form [formGroup]="bankInfoGroup" (ngSubmit)="onSubmit(f)">
         <!-- START ACCORDIAN-->
 
         <!-- <mat-accordion class="example-headers-align" multi=true  style="background: #f9f9f9!important;"> -->

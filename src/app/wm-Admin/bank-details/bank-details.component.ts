@@ -95,8 +95,8 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
           regAddressLine2: this.bankInfoGroup.value.addressLine2,
           regCity: this.bankInfoGroup.value.cityName,
           regState: this.bankInfoGroup.value.state,
-          regpostCode: this.bankInfoGroup.value.postCode,
-          regcountry: this.bankInfoGroup.value.country,
+          regPostCode: this.bankInfoGroup.value.postCode,
+          regCountry: this.bankInfoGroup.value.country.trim(),
 
 
         })
@@ -104,18 +104,24 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
     }
     else {
-      this.bankInfoGroup.reset({
+      this.bankInfoGroup.patchValue({
         regAddressLine1: '',
         regAddressLine2: '',
         regCity: '',
         regState: '',
         regCountry: '',
-        regpostCode: '',
+        regPostCode: '',
 
       })
 
     }
 
+
+    console.log(this.bankInfoGroup.value);
+
+  }
+
+  onSubmit() {
 
     console.log(this.bankInfoGroup.value);
 
