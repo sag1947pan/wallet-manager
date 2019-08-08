@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
                    //Store the required data in Session Storage.
                     sessionStorage.setItem("userName", this.f.userName.value);               
                     sessionStorage.setItem("userData", JSON.stringify(data.body));
-
+                    console.log("data..."+data);
                     // Read item:
                    // let item = JSON.parse(sessionStorage.getItem("userData")) as AdminUserData;  
                     let item = JSON.parse(sessionStorage.getItem("userData")) as SessionUserData;               
@@ -76,8 +76,8 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(['/CliAccPage', data]);
                     }else if(item.user_type == "bankuser"){//Bank user
                         this.router.navigate(['/CliAccPage', data]);
-                    }else if(item.user_type == "bene"){//BENE
-                        this.router.navigate(['/CliAccPage', data]);
+                    }else if(item.user_type == "benuser"){//BENE
+                        this.router.navigate(['/benePage', data]);
                     }else if(item.user_type == "bankCustUser"){//bank customer
                         this.router.navigate(['/CliAccPage', data]);
                     }else { //move to default page
