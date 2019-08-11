@@ -1,9 +1,22 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { BankSetupServices } from 'src/app/services/bankSetup.services';
-import { first } from 'rxjs/operators';
-//import { stringify } from '@angular/core/src/render3/util';
-//import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { first, map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+//New code for countries List
+export interface StateGroup {
+  letter: string;
+  names: string[];
+}
+
+export const _filter = (opt: string[], value: string): string[] => {
+  const filterValue = value.toLowerCase();
+
+  return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
+};
+
+
 
 @Component({
   selector: 'app-bank-details',
@@ -19,18 +32,15 @@ import { first } from 'rxjs/operators';
   ]
 })
 export class BankDetailsComponent implements OnInit, ControlValueAccessor {
-  bankInfoGroup: FormGroup;
-  // formBuilder: FormBuilder;
-  // bankMasterGroup:FormGroup;
-  // preferencesGroup:FormGroup;
-  // addressGroup:FormGroup;
+  bankInfoGroup: FormGroup; 
 
 
   IsChecked: boolean;
   Options: string[] = ['Yes', 'No'];
   option = 'Yes';
 
-  //countri = new FormControl();
+  myControl = new FormControl();
+  filteredOptions: Observable<string[]>;
   countriesList: string[] = [
     
 'Afghanistan',
@@ -282,71 +292,332 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
   ];
 
+
+  //State Groups.
+  stateGroups: StateGroup[] = [{
+    letter: 'A',
+    names: ['Afghanistan',
+    'Aland Islands',
+    'Albania',
+    'Algeria',
+    'American Samoa',
+    'Andorra',
+    'Angola',
+    'Anguilla',
+    'Antarctica',
+    'Antigua and Barbuda',
+    'Argentina',
+    'Armenia',
+    'Aruba',
+    'Australia',
+    'Austria',
+    'Azerbaijan',]
+  }, 
+  {
+    letter: 'B',
+    names: ['Bahamas',
+    'Bahrain',
+    'Bangladesh',
+    'Barbados',
+    'Belarus',
+    'Belgium',
+    'Belize',
+    'Benin',
+    'Bermuda',
+    'Bhutan',
+    'Bolivia, Plurinational State of',
+    'Bonaire, Sint Eustatius and Saba',
+    'Bosnia and Herzegovina',
+    'Botswana',
+    'Bouvet Island',
+    'Brazil',
+    'British Indian Ocean Territory',
+    'Brunei Darussalam',
+    'Bulgaria',
+    'Burkina Faso',
+    'Burundi',]
+  },
+  {
+    letter: 'C',
+    names: ['Cabo Verde',
+    'Cambodia',
+    'Cameroon',
+    'Cayman Islands',
+    'Central African Republic',
+    'Chad',
+    'Chile',
+    'China',
+    'Christmas Island',
+    'Cocos (Keeling) Islands',
+    'Colombia',
+    'Comoros',
+    'Congo',
+    'Democratic Republic of the Congo',
+    'Costa Rica',
+    //'Côte d'Ivoire',
+    'Croatia',
+    'Cuba',
+    'Curaçao',
+    'Cyprus',
+    'Czech Republic',]
+  }, {
+    letter: 'D',
+    names: ['Denmark',
+    'Djibouti',
+    'Dominica',
+    'Dominican Republic',]
+  },
+  {
+    letter: 'E',
+    names: ['Ecuador',
+    'Egypt',
+    'El Salvador',
+    'Equatorial Guinea',
+    'Eritrea',
+    'Estonia',
+    'Ethiopia',]
+  },
+  {
+    letter: 'F',
+    names: ['Falkland Islands (Malvinas)',
+    'Faroe Islands',
+    'Fiji',
+    'Finland',
+    'France',
+    'French Guiana',
+    'French Polynesia',
+    'French Southern Territories',
+    ]
+  }, {
+    letter: 'G',
+    names: ['Gabon',
+    'Gambia',
+    'Georgia',
+    'Ghana',
+    'Gibraltar',
+    'Greece',
+    'Greenland',
+    'Grenada',
+    'Guadeloupe',
+    'Guam',
+    'Guatemala',
+    'Guernsey',
+    'Guinea',
+    'Guinea-Bissau',
+    'Guyana',]
+  }, {
+    letter: 'H',
+    names: ['Haiti',
+    'Heard Island and McDonald Islands',
+    'Honduras',
+    'Hong Kong',
+    'Hungary',]
+  }, {
+    letter: 'I',
+    names: ['Iceland',
+    'India',
+    'Indonesia',
+    'Iran',
+    'Iraq',
+    'Ireland',
+    'Isle of Man',
+    'Israel',
+    'Italy',]
+  },
+  {
+    letter : 'J',
+    names: ['Jamaica',
+    'Japan',
+    'Jersey',
+    'Jordan',]
+
+  },
+   {
+    letter: 'K',
+    names: ['Kazakhstan',
+    'Kenya',
+    'Kiribati',
+    'North Korea',
+    'Sourth Korea',
+    'Kuwait',
+    'Kyrgyzstan',]
+  }, {
+    letter: 'L',
+    names: ['Latvia',
+    'Lebanon',
+    'Lesotho',
+    'Liberia',
+    'Libya',
+    'Liechtenstein',
+    'Lithuania',
+    'Luxembourg',]
+  }, {
+    letter: 'M',
+    names: ['Macao',
+    'Republic of Northern Macedonia,',
+    'Madagascar',
+    'Malawi',
+    'Malaysia',
+    'Maldives',
+    'Mali',
+    'Malta',
+    'Marshall Islands',
+    'Martinique',
+    'Mauritania',
+    'Mauritius',
+    'Mayotte',
+    'Mexico',
+    'Monaco',
+    'Mongolia',
+    'Montenegro',
+    'Montserrat',
+    'Morocco',
+    'Mozambique',
+    'Myanmar',]
+  }, {
+    letter: 'N',
+    names: ['Namibia',
+    'Nauru',
+    'Nepal',
+    'Netherlands',
+    'New Caledonia',
+    'New Zealand',
+    'Nicaragua',
+    'Niger',
+    'Nigeria',
+    'Niue',
+    'Norfolk Island',
+    'Northern Mariana Islands',
+    'Norway',]
+  }, {
+    letter: 'O',
+    names: ['Oman',]
+  }, {
+    letter: 'P',
+    names: ['Pakistan',
+    'Palau',
+    'State of Palestine',
+    'Panama',
+    'Papua New Guinea',
+    'Paraguay',
+    'Peru',
+    'Philippines',
+    'Pitcairn',
+    'Poland',
+    'Portugal',
+    'Puerto Rico',]
+  }, 
+  {
+    letter : 'Q',
+    names: ['Qatar',]
+  },
+    {
+    letter: 'R',
+    names: ['Réunion',
+    'Romania',
+    'Russian Federation',
+    'Rwanda',]
+  }, {
+    letter: 'S',
+    names: ['Saint Barthélemy',
+    'Ascension and Tristan da Cunha Saint Helena',
+    'Saint Kitts and Nevis',
+    'Saint Lucia',
+    'Saint Martin (French part)',
+    'Saint Pierre and Miquelon',
+    'Saint Vincent and the Grenadines',
+    'Samoa',
+    'San Marino',
+    'Sao Tome and Principe',
+    'Saudi Arabia',
+    'Senegal',
+    'Serbia',
+    'Seychelles',
+    'Sierra Leone',
+    'Singapore',
+    'Sint Maarten (Dutch part)',
+    'Slovakia',
+    'Slovenia',
+    'Solomon Islands',
+    'Somalia',
+    'South Africa',
+    'South Georgia and the South Sandwich Islands',
+    'South Sudan',
+    'Spain',
+    'Sri Lanka',
+    'Sudan',
+    'Suriname',
+    'Svalbard and Jan Mayen',
+    'Swaziland',
+    'Sweden',
+    'Switzerland',
+    'Syrian Arab Republic',]
+  }, {
+    letter: 'T',
+    names: ['Taiwan, Province of China',
+    'Tajikistan',
+    'United Republic of Tanzania',
+    'Thailand',
+    'Timor-Leste',
+    'Togo',
+    'Tokelau',
+    'Tonga',
+    'Trinidad and Tobago',
+    'Tunisia',
+    'Turkey',
+    'Turkmenistan',
+    'Turks and Caicos Islands',
+    'Tuvalu',]
+  }, {
+    letter: 'U',
+    names: ['Uganda',
+    'UKraine',
+    'United Arab Emirates',
+    'United Kingdom of Great Britain and Northern Ireland',
+    'United States Minor Outlying Islands',
+    'United States of America',
+    'Uruguay',
+    'Uzbekistan',]
+  }, {
+    letter: 'V',
+    names: ['Vanuatu',
+    'Vatican City State (Holy See)',
+    'Bolivarian Republic of Venezuela',
+    'Viet Nam',
+    'Virgin Islands, British',
+    'Virgin Islands, U.S.',]
+  }, {
+    letter: 'W',
+    names: ['Wallis and Futuna',
+    'Western Sahara',]
+  },
+{
+  letter: 'Y',
+  names:['Yemen',]
+},
+{
+  letter: 'Z',
+  names:['Zambia',
+  'Zimbabwe']
+}];
+
+  stateGroupOptions: Observable<StateGroup[]>;
+  stateGroup = new FormControl();
+
   constructor(
     private formBuilder: FormBuilder,
     private BankSetupServices:BankSetupServices,) { }
 
   ngOnInit() {
 
+    this.stateGroupOptions = this.stateGroup!.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => this._filterGroup(value))
+    );
+
     this.bankInfoGroup = this.formBuilder.group({
-
-      // bankMasterGroup : new FormGroup(
-      //   {
-    
-         
-      // bankId:new FormControl( ['', Validators.compose([Validators.required, Validators.minLength(8)])]),    
-      // bankName:new FormControl( ['', Validators.compose([Validators.required, Validators.minLength(0)])]),
-      // primaryContactName:new FormControl (['', Validators.compose([Validators.required, Validators.minLength(0)])]),
-      // primaryContactEmailId:new FormControl( ['', Validators.compose([Validators.required, Validators.email])]),
-      // primaryContactPhoneNo:new FormControl (['', Validators.compose([Validators.required, Validators.minLength(11)])])
-
-    
-    
-      //   }),
-
-     
-
-      // preferencesGroup :new FormGroup({
-       
-      //   bankServiceSubscription: new FormControl(""),
-
-      //   servciceActivationStartDate: new FormControl(""),
-  
-      //   serviceActivationEndDate: new FormControl(""),
-  
-      //   supportReqforBankUserMgmt: new FormControl(""),
-  
-      //   supportReqforClientUserMgmt: new FormControl(""),
-  
-      //   authManualPymtActivity: new FormControl(""),
-  
-      //   authNonPymtActivity: new FormControl(""),
-
-      // }),
-
       
-
-
-      // addressGroup:new FormGroup({
-
-      //   addressLine1:new FormControl(""),
-      // addressLine2: new FormControl(""),
-      // cityName: new FormControl(""),
-      // state: new FormControl(""),
-      // country: new FormControl(""),
-      // postCode: new FormControl(""),
-
-      // //Registered Address
-      // regAddressLine1: new FormControl(""),
-      // regAddressLine2: new FormControl(""),
-      // regCity: new FormControl(""),
-      // regState: new FormControl(""),
-      // regCountry: new FormControl(""),
-      // regPostCode: new FormControl(""),
-
-
-      // })
-
        //Bank Details
       bankId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],     
       bankName: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
@@ -374,7 +645,8 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
       addressLine2: [''],
       cityName: ['',],
       state: ['',],
-      country: ['',],
+      //country: ['',],
+      
       postCode: ['',],
 
       //Registered Address
@@ -387,7 +659,21 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
      
     });
 
+    
+
   }
+
+  private _filterGroup(value: string): StateGroup[] {
+    if (value) {
+      return this.stateGroups
+        .map(group => ({letter: group.letter, names: _filter(group.names, value)}))
+        .filter(group => group.names.length > 0);
+    }
+
+    return this.stateGroups;
+  }
+
+  
 
 
   showOptions(event) {

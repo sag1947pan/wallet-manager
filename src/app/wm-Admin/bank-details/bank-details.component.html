@@ -307,20 +307,26 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field  style="width:250px !important;">
+                            <!-- <mat-form-field  style="width:250px !important;">
                                  <mat-label>Country</mat-label>
                                 <mat-select formControlName="country">
                                     <mat-option *ngFor="let country of countriesList" [value]="country">
                                         {{country}}</mat-option>
-                                </mat-select> 
+                                </mat-select>
 
-                                <!-- <input type="text" placeholder="Select Country" aria-label="Select Country" matInput [formControl]="country" [matAutocomplete]="auto">
-                                <mat-autocomplete #auto="matAutocomplete">
-                                  <mat-option *ngFor="let country of countriesList | async" [value]="country">
-                                    {{country}}
-                                  </mat-option>
-                                </mat-autocomplete> -->
-                            </mat-form-field>
+                            
+                            </mat-form-field> -->
+
+                            <mat-form-field style="width:250px !important;">
+                                <input type="text" matInput placeholder="Country" formControlName="stateGroup"  [matAutocomplete]="autoGroup">
+                                  <mat-autocomplete #autoGroup="matAutocomplete">
+                                    <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                                      <mat-option *ngFor="let name of group.names" [value]="name">
+                                        {{name}}
+                                      </mat-option>
+                                  </mat-optgroup>
+                                </mat-autocomplete>
+                              </mat-form-field>
                         </div>
 
 
