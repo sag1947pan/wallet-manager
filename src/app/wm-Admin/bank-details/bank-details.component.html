@@ -11,9 +11,9 @@
                 <mat-card-content>
                     <div class="row">
                         <div class="col-md-4">
-                            <mat-form-field  style="width:250px !important;" hintLabel="This is your bank's BIC code">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Bank Id</mat-label>
-                                <input matInput placeholder="Bank Id" formControlName="bankId" maxlength="8" >
+                                <input matInput placeholder="Bank Id" matTooltip="This is your bank's BIC code" matTooltipPosition="below" formControlName="bankId" maxlength="8" >
                                 <mat-error *ngIf="bankInfoGroup.get('bankId').touched && bankInfoGroup.get('bankId').hasError('required')">Please Enter Bank Id.</mat-error>
                                
                             </mat-form-field>
@@ -21,8 +21,8 @@
                         <div class="col-md-4">
                             <mat-form-field  style="width:250px !important;">
                                 <mat-label>Bank Name</mat-label>
-                                <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="50"
-                                    >
+                                <input matInput placeholder="Bank Name" formControlName="bankName" maxlength="50" title="Bank Name">
+                                    
                                     <mat-error *ngIf="bankInfoGroup.get('bankName').touched && bankInfoGroup.get('bankName').hasError('required')">Please Enter Bank Name.</mat-error>
                             </mat-form-field>
                         </div>
@@ -166,7 +166,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field  style="width:200px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Service Activation Start date</mat-label>
                                 <input matInput [matDatepicker]="picker" placeholder="Service Activation Start date"
                                     formControlName="servciceActivationStartDate">
@@ -178,7 +178,7 @@
 
                         <div class="col-md-4">
 
-                            <mat-form-field  style="width:200px !important;">
+                            <mat-form-field  style="width:250px !important;">
                                 <mat-label>Service Activation End date</mat-label>
                                 <input matInput [matDatepicker]="picker1" placeholder="Service Activation End date"
                                     formControlName="serviceActivationEndDate">
@@ -308,11 +308,18 @@
                         </div>
                         <div class="col-md-4">
                             <mat-form-field  style="width:250px !important;">
-                                <mat-label>Country</mat-label>
+                                 <mat-label>Country</mat-label>
                                 <mat-select formControlName="country">
                                     <mat-option *ngFor="let country of countriesList" [value]="country">
                                         {{country}}</mat-option>
-                                </mat-select>
+                                </mat-select> 
+
+                                <!-- <input type="text" placeholder="Select Country" aria-label="Select Country" matInput [formControl]="country" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete">
+                                  <mat-option *ngFor="let country of countriesList | async" [value]="country">
+                                    {{country}}
+                                  </mat-option>
+                                </mat-autocomplete> -->
                             </mat-form-field>
                         </div>
 
