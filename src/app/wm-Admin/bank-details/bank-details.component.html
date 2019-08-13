@@ -15,6 +15,7 @@
                                 <mat-label>Bank Id</mat-label>
                                 <input matInput placeholder="Bank Id" matTooltip="This is your bank's BIC code" matTooltipPosition="below" formControlName="bankId" maxlength="8" >
                                 <mat-error *ngIf="bankInfoGroup.get('bankId').touched && bankInfoGroup.get('bankId').hasError('required')">Please Enter Bank Id.</mat-error>
+                                <mat-error *ngIf="bankInfoGroup.get('bankId').touched && bankInfoGroup.get('bankId').hasError('invalidbiccode')">Invalid BIC code</mat-error>
                                
                             </mat-form-field>
                         </div>
@@ -48,11 +49,13 @@
                                 <mat-label>Primary Contact Work Email Id</mat-label>
                                 <input matInput placeholder="Primary Contact Work Email Id"
                                     formControlName="primaryContactEmailId">
-                                    <mat-error *ngIf="bankInfoGroup.get('primaryContactEmailId').touched && bankInfoGroup.get('primaryContactEmailId').hasError('required')">Please Enter Primary Contact Work Email Id.</mat-error>
+                                     <mat-error *ngIf="bankInfoGroup.get('primaryContactEmailId').touched && bankInfoGroup.get('primaryContactEmailId').hasError('required')">Please Enter Primary Contact Work Email Id.</mat-error>
+                                     <mat-error *ngIf="bankInfoGroup.get('primaryContactEmailId').touched && bankInfoGroup.get('primaryContactEmailId').hasError('invalidEmail')">Invalid email address</mat-error>
+                                    <!-- <control-messages [control]="bankInfoGroup.get('primaryContactEmailId')"></control-messages> -->
                             </mat-form-field>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <mat-form-field   style="width:250px !important;">
                                 <mat-label>Primary Contact Phone Number</mat-label>
                                 <input matInput placeholder="Primary Contact Phone Number"
@@ -60,12 +63,7 @@
                             </mat-form-field>
                             <mat-error *ngIf="bankInfoGroup.get('primaryContactPhoneNo').touched && bankInfoGroup.get('primaryContactPhoneNo').hasError('required')">Please Enter Primary Contact Phone Number</mat-error>
 
-                        </div>
-
-                        <div class="col-md-4">
-
-
-                        </div>
+                        </div>                       
 
                     </div>
                 </mat-card-content>
@@ -398,13 +396,24 @@
 
                         </div>
                         <div class="col-md-4">
-                            <mat-form-field  style="width:250px !important;">
+                            <!-- <mat-form-field  style="width:250px !important;">
                                 <mat-label>Country</mat-label>
                                 <mat-select formControlName="regCountry">
                                     <mat-option *ngFor="let country of countriesList" [value]="country">
                                         {{country}}</mat-option>
                                 </mat-select>
-                            </mat-form-field>
+                            </mat-form-field> -->
+
+                            <mat-form-field style="width:250px !important;">
+                                <input type="text" matInput placeholder="Country" formControlName="regstateGroup"  [matAutocomplete]="autoGroup">
+                                  <mat-autocomplete #autoGroup="matAutocomplete">
+                                    <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                                      <mat-option *ngFor="let name of group.names" [value]="name">
+                                        {{name}}
+                                      </mat-option>
+                                  </mat-optgroup>
+                                </mat-autocomplete>
+                              </mat-form-field>
                         </div>
 
 

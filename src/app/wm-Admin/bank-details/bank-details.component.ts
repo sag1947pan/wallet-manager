@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, For
 import { BankSetupServices } from 'src/app/services/bankSetup.services';
 import { first, map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ValidationService } from 'src/app/validations/validation.service';
 
 //New code for countries List
 export interface StateGroup {
@@ -610,19 +611,17 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
 
-    this.stateGroupOptions = this.stateGroup!.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filterGroup(value))
-    );
+    
 
     this.bankInfoGroup = this.formBuilder.group({
       
        //Bank Details
-      bankId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],     
+     // bankId: ['', Validators.compose([Validators.required, Validators.minLength(8)])],     
+     bankId: ['', Validators.compose([Validators.required, ValidationService.bicCodeValidator])],
       bankName: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
       primaryContactName: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
-      primaryContactEmailId: ['', Validators.compose([Validators.required, Validators.email])],
+      primaryContactEmailId: ['', Validators.compose([Validators.required, ValidationService.emailValidator])],
+    // primaryContactEmailId: ['', Validators.compose([Validators.required, emailValidator])],
       primaryContactPhoneNo: ['', Validators.compose([Validators.required, Validators.minLength(11)])],
 
       //Services and Preferences
@@ -646,6 +645,7 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
       cityName: ['',],
       state: ['',],
       //country: ['',],
+      stateGroup: ['',],
       
       postCode: ['',],
 
@@ -654,12 +654,17 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
       regAddressLine2: [''],
       regCity: ['',],
       regState: ['',],
-      regCountry: ['',],
+      //regCountry: ['',],
+      regstateGroup : ['',],
       regPostCode: ['',],
      
     });
 
-    
+    this.stateGroupOptions = this.bankInfoGroup.get('stateGroup')!.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => this._filterGroup(value))
+    );
 
   }
 
@@ -688,7 +693,8 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
           regCity: this.bankInfoGroup.value.cityName,
           regState: this.bankInfoGroup.value.state,
           regPostCode: this.bankInfoGroup.value.postCode,
-          regCountry: this.bankInfoGroup.value.country.trim(),
+         // regCountry: this.bankInfoGroup.value.stateGroup.trim(),
+         regstateGroup : this.bankInfoGroup.value.stateGroup.trim(),
 
 
         })
@@ -701,7 +707,8 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
         regAddressLine2: '',
         regCity: '',
         regState: '',
-        regCountry: '',
+       // regCountry: '',
+       regstateGroup: '',
         regPostCode: '',
 
       })
@@ -749,4 +756,11 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
     isDisabled ? this.bankInfoGroup.disable() : this.bankInfoGroup.enable();
   }
 
+}
+
+export function emailValidator(control: FormControl): { [key: string]: any } {
+  var emailRegexp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+  if (control.value && !emailRegexp.test(control.value)) {
+      return { invalidEmail: true };
+  }
 }
