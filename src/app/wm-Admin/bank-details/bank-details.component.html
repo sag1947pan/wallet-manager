@@ -90,7 +90,6 @@
 
 
         <div class="container">
-
             <div class="panel panel-custom-color">
                 <div class="panel-heading">Services and Preferences</div>
                 <mat-card-content>
@@ -102,14 +101,25 @@
                                     formControlName="bankServiceSubscription" value="Beneficiary Enrichment Only">
                             </mat-form-field>
                         </div>
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <mat-form-field style="width:250px !important;">
                                 <mat-label>Service Activation Start date</mat-label>
                                 <input matInput [matDatepicker]="picker" placeholder="Service Activation Start date"
-                                    formControlName="servciceActivationStartDate">
-                                <mat-datepicker-toggle matSuffix [for]="picker">
-                                </mat-datepicker-toggle>
+                                    formControlName="servciceActivationStartDate" [min]="minDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="date.invalid">{{getErrorMessage(pickerInput.value)}}</mat-error>
+                            </mat-form-field>
+                        </div> -->
+
+                        <div class="col-md-4">
+                            <mat-form-field style="width:250px !important;">
+                                <mat-label>Service Activation Start date</mat-label>
+                                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Service Activation Start date"
+                                #pickerInput [formControl]="servciceActivationStartDate" >
+                                <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="servciceActivationStartDate.invalid">{{getErrorMessage(pickerInput.value)}}</mat-error>
                             </mat-form-field>
                         </div>
 
@@ -117,11 +127,11 @@
 
                             <mat-form-field style="width:250px !important;">
                                 <mat-label>Service Activation End date</mat-label>
-                                <input matInput [matDatepicker]="picker1" placeholder="Service Activation End date"
-                                    formControlName="serviceActivationEndDate">
-                                <mat-datepicker-toggle matSuffix [for]="picker1">
-                                </mat-datepicker-toggle>
+                                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1" placeholder="Service Activation End date"
+                                #pickerInput [formControl]="serviceActivationEndDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                 <mat-datepicker #picker1></mat-datepicker>
+                                <mat-error *ngIf="serviceActivationEndDate.invalid">{{getErrorMessage(pickerInput.value)}}</mat-error>
                             </mat-form-field>
                         </div>
 
@@ -131,7 +141,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
 
                             <mat-form-field style="width:300px !important;">
                                 <mat-label>Support Required for Bank
@@ -143,9 +153,9 @@
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
-                        </div>
+                        </div> -->
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <mat-form-field style="width:300px !important;">
                                 <mat-label>Support Required for Bank Client Management</mat-label>
                                 <mat-select placeholder="Support Required for Client User Management"
@@ -157,7 +167,7 @@
 
                             </mat-form-field>
 
-                        </div>
+                        </div> -->
 
                         <div class="col-md-4">
 
@@ -174,9 +184,23 @@
 
                         </div>
 
+                        <div class="col-md-4">
+                            <mat-form-field style="width:300px !important;">
+                                <mat-label>Authorization -Non Payment Activity</mat-label>
+                                <mat-select placeholder="Authorization -Non Payment Activity" [(ngModel)]="option"
+                                    formControlName="authNonPymtActivity">
+                                    <mat-option *ngFor="let option of Options" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+
+
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
 
                         <div class="col-md-4">
                             <mat-form-field style="width:300px !important;">
@@ -190,7 +214,7 @@
 
                             </mat-form-field>
                         </div>
-                    </div>
+                    </div> -->
 
 
                 </mat-card-content>
@@ -198,7 +222,7 @@
             </div>
 
         </div>
-       
+
 
         <div class="container">
             <div class="panel panel-custom-color">
