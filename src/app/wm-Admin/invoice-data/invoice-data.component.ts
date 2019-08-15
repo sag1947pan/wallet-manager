@@ -1,5 +1,6 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ValidationService } from 'src/app/validations/validation.service';
 
 @Component({
   selector: 'app-invoice-data',
@@ -17,6 +18,8 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup, FormC
 export class InvoiceDataComponent implements OnInit, ControlValueAccessor {
   formBuilder: any;
   
+  Invoices: string[] = ['Monthly', 'Quarterly', 'Half-Yearly', 'Yearly'];
+  invoice = 'Monthly';
 
   public invocingInfoGroup: FormGroup = new FormGroup(
     {
@@ -27,7 +30,7 @@ export class InvoiceDataComponent implements OnInit, ControlValueAccessor {
       paymentDues: new FormControl("",[]),
       invoicefavouring:new FormControl("", [] ),
       lastinvoicefavouringName: new FormControl("",[]),
-      mailInvoice: new FormControl("",[]),
+      mailInvoice: new FormControl("",[Validators.compose([Validators.required, ValidationService.emailValidator])]),
       invoiceAddress: new FormControl("",[])
   });
 

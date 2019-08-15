@@ -1,10 +1,7 @@
 <form [formGroup]="invocingInfoGroup">
 
-
-
     <div class="container">
         <div class="row">
-
             <div class="panel panel-custom-color">
                 <div class="panel-heading"> Invoice Details</div>
                 <mat-card-content>
@@ -13,12 +10,9 @@
                         <div class="col-md-4">
                             <mat-form-field  style="width:250px !important;">
                                 <mat-label>Invoicing Frequency</mat-label>
-                                <mat-select placeholder="Invoicing Frequency" formControlName="invoicingFrequency">
-                                    <mat-option>
-                                        Monthly
-                                    </mat-option>
-                                    <mat-option>
-                                        Annual
+                                <mat-select placeholder="Invoicing Frequency" formControlName="invoicingFrequency" [(ngModel)]="invoice">
+                                    <mat-option *ngFor="let invoice of Invoices" [value]="invoice">
+                                        {{invoice}}
                                     </mat-option>
                                 </mat-select>
 
@@ -58,6 +52,12 @@
                             <mat-form-field  style="width:250px !important;">
                                 <mat-label>Email Id for Invoice </mat-label>
                                 <input matInput placeholder="Email Id for Invoice" formControlName="mailInvoice">
+                                <mat-error
+                                *ngIf="invocingInfoGroup.get('mailInvoice').touched && invocingInfoGroup.get('mailInvoice').hasError('required')">
+                                Please Enter Email Id for Invoice</mat-error>
+                            <mat-error
+                                *ngIf="invocingInfoGroup.get('mailInvoice').touched && invocingInfoGroup.get('mailInvoice').hasError('invalidEmail')">
+                                Invalid email address</mat-error>
                             </mat-form-field>
                         </div>
 
