@@ -30,9 +30,13 @@ export class PricingInfoComponent implements OnInit, ControlValueAccessor {
   private pricingSubscriptionInfo: SubscriptionDetails[] = [
 
 
-    { subscriptionInfo: 'License Fees', currency: 'GBP', amount: 200000, validTime: 'One Time', discount: '' },
-    { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Yearly', discount: '' },
-    { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time', discount: '' },
+    // { subscriptionInfo: 'License Fees', currency: 'GBP', amount: 200000, validTime: 'One Time', discount: '' },
+    // { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Yearly', discount: '' },
+    // { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time', discount: '' },
+
+    { subscriptionInfo: 'License Fees', currency: 'GBP', amount: 200000, validTime: 'One Time' },
+    { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Yearly'},
+    { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time'},
   ]; 
   
   //Subsription Package Details
@@ -61,7 +65,7 @@ export class PricingInfoComponent implements OnInit, ControlValueAccessor {
   //Pay As You Go Column definition
   PayasyougoColDefs = [
     {headerName: 'No Of Transactions', field: 'noOfTransactions', sortable: true, filter: true, checkboxSelection: true,},
-    {headerName: 'Charges Per Transaction', field: 'chargesperTransaction', sortable: true, filter: true },
+    {headerName: 'Charges Per Transaction', field: 'chargesperTransaction', sortable: true, filter: true, editable:true },
     
 ];
 
@@ -80,7 +84,7 @@ columnDefs = [
   {headerName: 'Currency', field: 'currency', sortable: true, filter: true },
   {headerName: 'Amount', field: 'amount', sortable: true, filter: true, editable:true},
   {headerName: 'Time Period', field: 'validTime', sortable: true, filter: true},
-  {headerName: 'Discount', field: 'discount', sortable: true, filter: true}
+ // {headerName: 'Discount', field: 'discount', sortable: true, filter: true}
 ];
 
 rowData = [

@@ -3,7 +3,7 @@ export class SubscriptionDetails {
     currency: string;
     amount:number;
     validTime:string;
-    discount:string;
+    //discount:string;
 
     constructor() { 
     }
