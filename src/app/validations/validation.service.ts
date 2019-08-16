@@ -1,4 +1,5 @@
 import { FormControl } from '@angular/forms';
+import * as moment from 'moment';
 
 export class ValidationService {
     static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
@@ -54,5 +55,31 @@ export class ValidationService {
           return { 'invalidbiccode': true };
         } 
     }
+
+
+    /**
+   * An example of custom validator on a date string.
+   * Valid date is a string, which is:
+   * 1, in the form of DD/MM/YYYY
+   * 2, later than today
+   * 3, not an invalid value like 2018-20-81
+   * @param date a date string
+   */
+ static isMyDateFormat(date: string): string {
+    if (date.length !== 10) {
+      return 'Invalid input: Please input a string in the form of DD/MM/YYYY';
+    } else {
+      const da = date.split('-');
+      if (da.length !== 3 || da[0].length !== 4 || da[1].length !== 2 || da[2].length !== 2) {
+        return 'Invalid input: Please input a string in the form of DD/MM/YYYY';
+      } else if (moment(date).isValid()) {
+        return 'Invalid date: Please input a date no later than today';
+      } else if (!moment(date).isValid()) {
+        return 'Invalid date: Please input a date with a valid month and date.';
+      }
+    }
+    return 'Unknown error.';
+  }
+
   }
   

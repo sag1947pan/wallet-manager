@@ -65,7 +65,10 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
   //State Groups.
   stateGroups: StateGroup[] = STATEGROUPS;
+
   stateGroupOptions: Observable<StateGroup[]>;
+
+  regstateGroupOptions: Observable<StateGroup[]>;
   
 
   //Date Min and Max Validation.
@@ -135,11 +138,11 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
         map(value => this._filterGroup(value))
       );
     
-    // this.stateGroupOptions = this.bankInfoGroup.get('regstateGroup')!.valueChanges
-    //   .pipe(
-    //     startWith(''),
-    //     map(value => this._filterGroup(value))
-    //   );
+    this.regstateGroupOptions = this.bankInfoGroup.get('regstateGroup')!.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filterGroup(value))
+      );
   }
 
   //Date Error Messages.
@@ -147,33 +150,10 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
     if (!pickerInput || pickerInput === '' ) {
       return 'Please choose a date.';
     }
-    return this.isMyDateFormat(pickerInput);
+   // return this.isMyDateFormat(pickerInput);
+   return ValidationService.isMyDateFormat(pickerInput);
   }
-
-
-  /**
-   * An example of custom validator on a date string.
-   * Valid date is a string, which is:
-   * 1, in the form of YYYY-MM-DD
-   * 2, later than today
-   * 3, not an invalid value like 2018-20-81
-   * @param date a date string
-   */
-  isMyDateFormat(date: string): string {
-    if (date.length !== 10) {
-      return 'Invalid input: Please input a string in the form of DD/MM/YYYY';
-    } else {
-      const da = date.split('-');
-      if (da.length !== 3 || da[0].length !== 4 || da[1].length !== 2 || da[2].length !== 2) {
-        return 'Invalid input: Please input a string in the form of DD/MM/YYYY';
-      } else if (moment(date).isValid()) {
-        return 'Invalid date: Please input a date no later than today';
-      } else if (!moment(date).isValid()) {
-        return 'Invalid date: Please input a date with a valid month and date.';
-      }
-    }
-    return 'Unknown error.';
-  }
+  
 
   private _filterGroup(value: string): StateGroup[] {
     if (value) {
@@ -265,9 +245,4 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
 
 }
 
-// export function emailValidator(control: FormControl): { [key: string]: any } {
-//   var emailRegexp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-//   if (control.value && !emailRegexp.test(control.value)) {
-//     return { invalidEmail: true };
-//   }
-// }
+
