@@ -5,7 +5,7 @@ import { PayAsYouGo } from '../wm-bank-setup/payaYouGoModel';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
 import {NumericEditorComponent} from 'src/app/wm-Admin/numeric-editor.component';
-import "ag-grid-enterprise";
+//import "ag-grid-enterprise";
 
 @Component({
   selector: 'app-pricing-info',
