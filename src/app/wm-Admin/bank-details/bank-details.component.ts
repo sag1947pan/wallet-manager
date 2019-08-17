@@ -32,6 +32,13 @@ export const _filter = (opt: string[], value: string): string[] => {
   return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
 };
 
+//For Regfilter
+
+export const _regfilter = (opt: string[], value: string): string[] => {
+  const filterValue = value.toLowerCase();
+
+  return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
+};
 
 
 @Component({
@@ -60,14 +67,12 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
   Options: string[] = ['Yes', 'No'];
   option = 'Yes';
 
-  myControl = new FormControl();
-  filteredOptions: Observable<string[]>;
-
+  
   //State Groups.
   stateGroups: StateGroup[] = STATEGROUPS;
-
   stateGroupOptions: Observable<StateGroup[]>;
 
+  regstateGroups: StateGroup[] = STATEGROUPS;
   regstateGroupOptions: Observable<StateGroup[]>;
   
 
@@ -141,20 +146,12 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
     this.regstateGroupOptions = this.bankInfoGroup.get('regstateGroup')!.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._filterGroup(value))
+        map(value => this._regfilterGroup(value))
       );
   }
 
-  //Date Error Messages.
-  getErrorMessage(pickerInput: string): string {
-    if (!pickerInput || pickerInput === '' ) {
-      return 'Please choose a date.';
-    }
-   // return this.isMyDateFormat(pickerInput);
-   return ValidationService.isMyDateFormat(pickerInput);
-  }
-  
 
+  // Filter for Countries List.
   private _filterGroup(value: string): StateGroup[] {
     if (value) {
       return this.stateGroups
@@ -166,8 +163,27 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
   }
 
 
+  //For Reg Filter Group
+  private _regfilterGroup(value: string): StateGroup[] {
+    if (value) {
+      return this.regstateGroups
+        .map(group => ({ letter: group.letter, names: _regfilter(group.names, value) }))
+        .filter(group => group.names.length > 0);
+    }
+
+    return this.regstateGroups;
+  }
 
 
+  //Date Error Messages.
+  getErrorMessage(pickerInput: string): string {
+    if (!pickerInput || pickerInput === '' ) {
+      return 'Please choose a date.';
+    }
+   // return this.isMyDateFormat(pickerInput);
+   return ValidationService.isMyDateFormat(pickerInput);
+  }
+  
   showOptions(event) {
     console.log(event);
 

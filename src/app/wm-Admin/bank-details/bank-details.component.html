@@ -344,13 +344,14 @@
                                     <mat-option *ngFor="let country of countriesList" [value]="country">
                                         {{country}}</mat-option>
                                 </mat-select>
-                            </mat-form-field> -->
+                            </mat-form-field> -->                           
+
 
                             <mat-form-field style="width:250px !important;">
                                 <input type="text" matInput placeholder="Country" formControlName="regstateGroup"
                                     [matAutocomplete]="autoGroup">
                                 <mat-autocomplete #autoGroup="matAutocomplete">
-                                    <mat-optgroup *ngFor="let group of stateGroupOptions | async"
+                                    <mat-optgroup *ngFor="let group of regstateGroupOptions | async"
                                         [label]="group.letter">
                                         <mat-option *ngFor="let name of group.names" [value]="name">
                                             {{name}}
@@ -546,6 +547,7 @@
 
 
             <!-- <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back </button> -->
+            <button type="submit" color="primary" mat-raised-button> Save</button>
             <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>
         </div>
 

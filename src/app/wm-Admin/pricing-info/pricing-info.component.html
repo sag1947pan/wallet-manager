@@ -6,7 +6,7 @@
     <label>Fixed Charges</label>
     <mat-card-content>
       <ag-grid-angular style="width: auto; height: 150px;" class="ag-theme-balham" [rowData]="rowData"
-        [columnDefs]="columnDefs" rowSelection="single" (rowClicked)='onRowClicked($event)'>
+        [columnDefs]="columnDefs" rowSelection="multiple" (rowClicked)='onRowClicked($event)'>
       </ag-grid-angular>
     </mat-card-content>
   </div>
@@ -39,6 +39,8 @@
   </div>
 
   <div>
+
+      <button type="submit" color="primary" mat-raised-button> Save</button>
     <button style='margin:16px' mat-raised-button color="primary" matStepperPrevious>Back
     </button>
     <button style='margin:16px' mat-raised-button color="primary" matStepperNext> Next</button>

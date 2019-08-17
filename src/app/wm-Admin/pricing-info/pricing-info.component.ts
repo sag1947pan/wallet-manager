@@ -4,6 +4,8 @@ import { SubscriptionPackageDetails } from '../wm-bank-setup/subscriptionPackage
 import { PayAsYouGo } from '../wm-bank-setup/payaYouGoModel';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
+import {NumericEditorComponent} from 'src/app/wm-Admin/numeric-editor.component';
+import "ag-grid-enterprise";
 
 @Component({
   selector: 'app-pricing-info',
@@ -89,7 +91,7 @@ columnDefs = [
 
 rowData = [
   { subscriptionInfo: 'License Fees', currency: 'GBP', amount: 200000, validTime: 'One Time', discount: '' },
-  { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000, validTime: 'Yearly', discount: '' },
+  { subscriptionInfo: 'AMC/Support Fees', currency: 'GBP', amount: 200000,  cellEditorFramework: NumericEditorComponent, validTime: 'Yearly', discount: '' },
   { subscriptionInfo: 'One Time Client Setup Charges', currency: 'GBP', amount: 10000, validTime: 'One Time', discount: '' },
 ];
 
