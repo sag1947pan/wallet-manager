@@ -22,9 +22,11 @@ import { BankDetailsComponent } from '../wm-Admin/bank-details/bank-details.comp
 import { PricingInfoComponent } from '../wm-Admin/pricing-info/pricing-info.component';
 import { SearchComponent } from '../wm-Admin/search/search.component';
 import { CustomerSearchComponent } from '../wm-Admin/search/customersearch.component';
+//import { ControlMessagesComponent } from '../validations/control-messages.component';
+import { WmServicesPreferencesComponent } from '../wm-Admin/wm-services-preferences/wm-services-preferences.component';
 
 @NgModule({
-    declarations: [WmHomeComponent, WmBankSetupComponent, SearchComponent, CustomerSearchComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent, InvoiceDataComponent, BankDetailsComponent, PricingInfoComponent],
+    declarations: [WmHomeComponent, WmBankSetupComponent, SearchComponent, CustomerSearchComponent, BankSuperAdminComponent, ForexCurrenciesComponent, CountriesListComponent, InvoiceDataComponent, BankDetailsComponent, PricingInfoComponent, WmServicesPreferencesComponent],
   imports: [
       CommonModule,
       ReactiveFormsModule,

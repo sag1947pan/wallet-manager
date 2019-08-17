@@ -1,0 +1,138 @@
+<form [formGroup]="servicespreferencesGroup">
+
+
+    <div class="container">
+        <div class="panel panel-custom-color">
+            <div class="panel-heading">Services and Preferences</div>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field style="width:250px !important;">
+                            <mat-label>Service Subscribed by Bank </mat-label>
+                            <input matInput placeholder="Service Subscription"
+                                formControlName="bankServiceSubscription" value="Beneficiary Enrichment Only">
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <mat-form-field style="width:250px !important;">
+                            <mat-label>Service Activation Start date</mat-label>
+                            <input matInput [matDatepicker]="picker" placeholder="Service Activation Start date"
+                                formControlName="servciceActivationStartDate" [min]="minDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="date.invalid">{{getErrorMessage(pickerInput.value)}}</mat-error>
+                        </mat-form-field>
+                    </div> -->
+
+                    <div class="col-md-4">
+                        <mat-form-field style="width:250px !important;">
+                            <mat-label>Service Activation Start date</mat-label>
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Service Activation Start date"
+                            #pickerInput [formControl]="servciceActivationStartDate" >
+                            <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="servciceActivationStartDate.invalid">{{getErrorMessage(pickerInput.value)}}</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <mat-form-field style="width:250px !important;">
+                            <mat-label>Service Activation End date</mat-label>
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1" placeholder="Service Activation End date"
+                            #pickerInput [formControl]="serviceActivationEndDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                            <mat-error *ngIf="serviceActivationEndDate.invalid">{{getErrorMessage(pickerInput.value)}}</mat-error>
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row">
+
+                    <!-- <div class="col-md-4">
+
+                        <mat-form-field style="width:300px !important;">
+                            <mat-label>Support Required for Bank
+                                User Management</mat-label>
+                            <mat-select placeholder="Support Required for Bank User Management" [(ngModel)]="option"
+                                formControlName="supportReqforBankUserMgmt">
+                                <mat-option *ngFor="let option of Options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div> -->
+
+                    <!-- <div class="col-md-4">
+                        <mat-form-field style="width:300px !important;">
+                            <mat-label>Support Required for Bank Client Management</mat-label>
+                            <mat-select placeholder="Support Required for Client User Management"
+                                [(ngModel)]="option" formControlName="supportReqforClientUserMgmt">
+                                <mat-option *ngFor="let option of Options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div> -->
+
+                    <div class="col-md-4">
+
+                        <mat-form-field style="width:250px !important;">
+                            <mat-label>Authorization-Manual Payment Activity</mat-label>
+                            <mat-select placeholder="Authorization -Manual Payment Activity" [(ngModel)]="option"
+                                formControlName="authManualPymtActivity">
+                                <mat-option *ngFor="let option of Options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <mat-form-field style="width:250px !important;">
+                            <mat-label>Authorization-Non Payment Activity</mat-label>
+                            <mat-select placeholder="Authorization -Non Payment Activity" [(ngModel)]="option"
+                                formControlName="authNonPymtActivity">
+                                <mat-option *ngFor="let option of Options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+
+
+                </div>
+
+                <!-- <div class="row">
+
+                    <div class="col-md-4">
+                        <mat-form-field style="width:300px !important;">
+                            <mat-label>Authorization -Non Payment Activity</mat-label>
+                            <mat-select placeholder="Authorization -Non Payment Activity" [(ngModel)]="option"
+                                formControlName="authNonPymtActivity">
+                                <mat-option *ngFor="let option of Options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                    </div>
+                </div> -->
+
+
+            </mat-card-content>
+
+        </div>
+
+    </div>
+
+  </form>
