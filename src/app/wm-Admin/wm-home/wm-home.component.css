@@ -1,49 +1,42 @@
-mat-panel-title {
-    flex-basis: 0;
-}
-
-mat-panel-description {
-    flex-basis: 100%;
-    font-size: 12px;
-    padding-top: 5px;
-}
-
-.ulstyle {
-    /*list-style-type: none;*/
-    margin: 0;
-    padding: 0;
-    /*overflow: hidden;
-   background-color: #fff;*/
-}
-
-.listyle {
-    display: inline-block;
-    color: white;
-    text-decoration-color: white;
-    font-size: 12px;
-    padding-left: 55px;
-}
-
-.jumbotron {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 5px;
-}
-
-.white-icon {
-    color: white;
-}
-
-.nav-caption {
-    display: inline-block;
-    padding-left: 6px;
-}
-
-
-
-
 .example-container {
-    height: 500px;
-    margin: 10px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+h1.example-user-name {
+  margin-right: 8px;
+}
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
 }
