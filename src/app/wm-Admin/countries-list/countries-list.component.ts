@@ -22,17 +22,32 @@ import { Observable } from 'rxjs'
 export class CountriesListComponent implements OnInit, ControlValueAccessor{
     form: FormGroup;
     countriesByContinent: any[] = [
-        { id: 1, name: 'India' },
-        { id: 2, name: 'SriLanka' },
-        { id: 3, name: 'Bangladesh' },
-        { id: 4, name: 'Pakistan' },
-        {id : 5, name :'Nepal'}
+        { id: 1, name: 'India',cont:'Asia' },
+        { id: 2, name: 'SriLanka',cont:'Asia' },
+        { id: 3, name: 'Bangladesh',cont:'Asia' },
+        { id: 4, name: 'Pakistan',cont:'Asia' },
+        { id: 5, name: 'Nepal', cont: 'Asia' },
+        { id: 6, name: 'Marshall Islands', cont: 'Australia' },
+        { id: 7, name: 'Micronesia', cont: 'Australia' },
+        { id: 8, name: 'Nauru', cont: 'Australia' },
+        { id: 9, name: 'New Zealand	', cont: 'Australia' },
+        { id: 10, name: 'SouthAfrica', cont: 'Africa' },
+        { id: 11, name: 'Nigeria', cont: 'Africa' },
+        { id: 12, name: 'Kenya	', cont: 'Africa' },
+        { id: 13, name: 'Morocoo', cont: 'Africa' },
+        { id: 14, name: 'Mexico', cont: 'NAmerica' },
+        { id: 15, name: 'Canada', cont: 'NAmerica' },
+        { id: 16, name: 'Unitied States', cont: 'NAmerica' },
+        { id: 17, name: 'Cuba', cont: 'NAmerica' },
+        { id: 18, name: 'Honduras', cont: 'NAmerica' }
     ];
     selectedAll: any;
 
 
     stateGroups: StateGroup[] = STATEGROUPS;
     stateGroupOptions: Observable<StateGroup[]>;
+
+    //countries: any[] = this.stateGroupOptions.forEach()
 
   //public countriesListGroup: FormGroup = new FormGroup(
  //  {
