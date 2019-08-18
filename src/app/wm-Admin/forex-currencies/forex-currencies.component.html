@@ -7,9 +7,6 @@
                 <div class="panel panel-custom-color">
 
                     <mat-card-content>
-
-
-
                         <div>
                             <div>
                                 <label id="example-radio-group-label">Forex Currencies Supported : </label>
@@ -36,20 +33,29 @@
                         <div *ngIf="!options">
 
                             
-                                <mat-form-field style="width:800px !important;">
+                                <!-- <mat-form-field style="width:800px !important;">
                                     <mat-label> Select Currencies</mat-label>
                                     <mat-select [formControl]="currencies" multiple
                                         [panelClass]="applyPanelOverride2 ? 'panel-override-2' : 'panel-override'">
                                         <mat-option *ngFor="let currency of currenciesList" [value]="currency">
                                             {{currency}}</mat-option>
                                     </mat-select>
-                                </mat-form-field>
-                            
+                                </mat-form-field> -->
 
+                                <ul class="columns">
+                                    <li>
+                                        <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                                            <label>Select All </label>
+                                        </mat-checkbox>
+                                    </li>
+                                    <li  *ngFor="let currency of currenciesList;let i = index">
+                                        <mat-checkbox [(ngModel)]="currency">
+                                            <label>{{currency}} </label>
+                                        </mat-checkbox>
+                                    </li>
+                                </ul>                         
 
                         </div>
-
-
                     </mat-card-content>
 
                 </div>

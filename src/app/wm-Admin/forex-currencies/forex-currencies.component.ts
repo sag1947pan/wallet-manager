@@ -25,7 +25,16 @@ export class ForexCurrenciesComponent implements OnInit, ControlValueAccessor {
     });
 
     currencies = new FormControl();
-    currenciesList: string[] = ['AUD', 'USD', 'GBP', 'SGD', 'INR'];
+    currenciesList: string[] = ['AUD', 'USD', 'GBP', 'SGD', 'INR', 'EUR', 'AFN',
+    'AMD',
+    'AZN',
+    'BHD',
+    'BDT',
+    'BTN',
+    'BND',
+    'KHR',
+    'CNY',
+    ];
     
 
   constructor() { }
@@ -33,6 +42,14 @@ export class ForexCurrenciesComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
+
+  checkAll(ev) {
+  //  this.currenciesList.forEach(x => x.state = ev.checked)
+}
+
+isAllChecked() {
+   // return this.currenciesList.every(_ => _.state);
+}
   //ControlValueAccessor Implementation
   public onTouched: () => void = () => { };
 
