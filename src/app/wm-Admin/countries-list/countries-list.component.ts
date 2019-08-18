@@ -41,6 +41,7 @@ export class CountriesListComponent implements OnInit, ControlValueAccessor{
         { id: 17, name: 'Cuba', cont: 'NAmerica' },
         { id: 18, name: 'Honduras', cont: 'NAmerica' }
     ];
+    countryByContFilter: any[];
     selectedAll: any;
 
 
@@ -77,7 +78,7 @@ export class CountriesListComponent implements OnInit, ControlValueAccessor{
     
     submit() {
         debugger
-        const selectedOrderIds = this.countriesByContinent
+        const selectedOrderIds = this.countryByContFilter
             .filter(opt => opt.state)
             .map(opt => opt.name);
         
@@ -85,11 +86,16 @@ export class CountriesListComponent implements OnInit, ControlValueAccessor{
     }
     
     checkAll(ev) {
-        this.countriesByContinent.forEach(x => x.state = ev.checked)
+        this.countryByContFilter.forEach(x => x.state = ev.checked)
     }
 
     isAllChecked() {
-        return this.countriesByContinent.every(_ => _.state);
+        return this.countryByContFilter.every(_ => _.state);
+    }
+
+    getCountryList(conName) {
+        debugger
+        this.countryByContFilter = this.countriesByContinent.filter(x => x.cont == conName);
     }
 
   ngOnInit() {

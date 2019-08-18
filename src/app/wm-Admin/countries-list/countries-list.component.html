@@ -167,7 +167,7 @@
 
 <legend>Countries where Bank Supports Sending Payments to</legend>
     <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel (opened)="getCountryList('Asia')">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Asia
@@ -179,19 +179,16 @@
                     
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="columns">
-                <div *ngFor="let country of countriesByContinent;let i = index">
-                    <li *ngIf="country.cont=='Asia'">
-                        <mat-checkbox [(ngModel)]="country.state" >
-                            <label>{{country.name}} </label>
-                        </mat-checkbox>
-                    </li>
-                </div>
-                
-            </div>
+            <ul class="columns">
+                <li  *ngFor="let country of countryByContFilter;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state" >
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
             <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
         </mat-expansion-panel>
-        <mat-expansion-panel>
+        <mat-expansion-panel (opened)="getCountryList('Australia')">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Australia
@@ -202,18 +199,16 @@
                     </mat-checkbox>
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="columns">
-                <div *ngFor="let country of countriesByContinent;let i = index">
-                    <li *ngIf="country.cont=='Australia'">
-                        <mat-checkbox [(ngModel)]="country.state">
-                            <label>{{country.name}} </label>
-                        </mat-checkbox>
-                    </li>
-                </div>
-            </div>
+            <ul class="columns">
+                <li *ngFor="let country of countryByContFilter;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state">
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
             <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
         </mat-expansion-panel>
-        <mat-expansion-panel>
+        <mat-expansion-panel (opened)="getCountryList('Africa')">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Africa
@@ -224,18 +219,16 @@
                     </mat-checkbox>
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="columns">
-                <div *ngFor="let country of countriesByContinent;let i = index">
-                    <li *ngIf="country.cont=='Africa'">
-                        <mat-checkbox [(ngModel)]="country.state">
-                            <label>{{country.name}} </label>
-                        </mat-checkbox>
-                    </li>
-                </div>
-            </div>
+            <ul class="columns">
+                <li *ngFor="let country of countryByContFilter;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state">
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
             <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
         </mat-expansion-panel>
-        <mat-expansion-panel>
+        <mat-expansion-panel (opened)="getCountryList('NAmerica')">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     North America
@@ -246,15 +239,13 @@
                     </mat-checkbox>
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <div class="columns">
-                <div *ngFor="let country of countriesByContinent;let i = index">
-                    <li *ngIf="country.cont=='Africa'">
-                        <mat-checkbox [(ngModel)]="country.state">
-                            <label>{{country.name}} </label>
-                        </mat-checkbox>
-                    </li>
-                </div>
-            </div>
+            <ul class="columns">
+                <li *ngFor="let country of countryByContFilter;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state">
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
             <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
         </mat-expansion-panel>
 
