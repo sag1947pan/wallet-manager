@@ -117,14 +117,14 @@ export class BankDetailsComponent implements OnInit, ControlValueAccessor {
       authNonPymtActivity: [''],
 
 
-      addressLine1: [''],
-      addressLine2: [''],
-      cityName: ['',],
-      state: ['',],
+      addressLine1: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
+      addressLine2: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
+      cityName: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
+      state: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
       //country: ['',],
-      stateGroup: ['',],
+      stateGroup: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
 
-      postCode: ['',],
+      postCode: ['', Validators.compose([Validators.required, Validators.minLength(0)])],
 
       //Registered Address
       regAddressLine1: ['',],

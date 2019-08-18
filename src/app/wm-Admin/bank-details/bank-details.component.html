@@ -233,6 +233,10 @@
                             <mat-form-field style="width:250px !important;">
                                 <mat-label>Address Line 1</mat-label>
                                 <input matInput placeholder="Address" formControlName="addressLine1" maxlength="35">
+                            
+                            <mat-error
+                                    *ngIf="bankInfoGroup.get('addressLine1').touched && bankInfoGroup.get('addressLine1').hasError('required')">
+                                    Please Enter Address Line1</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
@@ -241,6 +245,8 @@
                                 <mat-label>Address Line 2</mat-label>
                                 <input matInput placeholder="AddressLine 2" formControlName="addressLine2"
                                     maxlength="35">
+                                    <mat-error *ngIf="bankInfoGroup.get('addressLine2').touched && bankInfoGroup.get('addressLine2').hasError('required')">
+                                      Please Enter Address Line2</mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-4">
@@ -265,6 +271,8 @@
                                         </mat-option>
                                     </mat-optgroup>
                                 </mat-autocomplete>
+                                <mat-error *ngIf="bankInfoGroup.get('stateGroup').touched && bankInfoGroup.get('stateGroup').hasError('required')">
+                                    Please select Country</mat-error>
                             </mat-form-field>
                         </div>
 
@@ -277,6 +285,8 @@
                             <mat-form-field style="width:250px !important;">
                                 <mat-label>State</mat-label>
                                 <input matInput placeholder="State" formControlName="state" maxlength="35">
+                                <mat-error *ngIf="bankInfoGroup.get('state').touched && bankInfoGroup.get('state').hasError('required')">
+                                    Please Enter State</mat-error>
                             </mat-form-field>
 
                         </div>
@@ -285,6 +295,9 @@
                             <mat-form-field style="width:250px !important;">
                                 <mat-label>Town/City</mat-label>
                                 <input matInput placeholder="Town/City" formControlName="cityName" maxlength="35">
+                                <mat-error *ngIf="bankInfoGroup.get('cityName').touched && bankInfoGroup.get('cityName').hasError('required')">
+                                    Please Enter City/Town</mat-error>
+                                
                             </mat-form-field>
 
                         </div>
@@ -294,6 +307,8 @@
                             <mat-form-field style="width:250px !important;">
                                 <mat-label>Post Code</mat-label>
                                 <input matInput placeholder="Post Code" formControlName="postCode" maxlength="8">
+                                <mat-error *ngIf="bankInfoGroup.get('postCode').touched && bankInfoGroup.get('postCode').hasError('required')">
+                                    Please Enter Pincode</mat-error>
                             </mat-form-field>
 
 
