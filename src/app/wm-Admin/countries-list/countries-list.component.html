@@ -164,21 +164,54 @@
   </ul>
 
   </div>-->
-<!--<form>
-    <div *ngFor="let country of countriesByContinent">
-        <input type="checkbox"> {{country.name}}
-    </div>
-</form>-->
-<form [formGroup]="form" (ngSubmit)="submit()">
-    <ul>
-        <li>
-            <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();" />
-        </li>
 
-        <li formArrayName="countriesByContinent" *ngFor="let country of countriesByContinent;let i = index">
-            <input type="checkbox" [formControlName]="i" (change)="checkIfAllSelected();">
-            {{country.name}}
-        </li>
-        <button>submit</button>
-    </ul>
-</form>
+<legend>Countries where Bank Supports Sending Payments to</legend>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Asia
+                </mat-panel-title>
+                <mat-panel-description>
+                    Select Countries under Asia
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ul class="columns">
+                <li>
+                    <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                        <label>Select All </label>
+                    </mat-checkbox>
+                </li>
+                <li  *ngFor="let country of countriesByContinent;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state">
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
+            <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Australia
+                </mat-panel-title>
+                <mat-panel-description>
+                    Select Countries under Australia
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ul class="columns">
+                <li>
+                    <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                        <label>Select All </label>
+                    </mat-checkbox>
+                </li>
+                <li *ngFor="let country of countriesByContinent;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state">
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
+            <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
+        </mat-expansion-panel>
+
+    </mat-accordion>

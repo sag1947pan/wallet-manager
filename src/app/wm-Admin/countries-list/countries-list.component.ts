@@ -1,5 +1,8 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormGroup, Validators, FormBuilder, FormArray, ValidatorFn } from '@angular/forms';
+import { STATEGROUPS } from 'src/app/countries-List/country-data';
+import { StateGroup } from 'src/app/countries-List/country';
+import { Observable } from 'rxjs'
 
 
 @Component({
@@ -16,17 +19,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Fo
   
 
 })
-export class CountriesListComponent implements OnInit {
+export class CountriesListComponent implements OnInit, ControlValueAccessor{
     form: FormGroup;
-    countriesByContinent = [
+    countriesByContinent: any[] = [
         { id: 1, name: 'India' },
         { id: 2, name: 'SriLanka' },
         { id: 3, name: 'Bangladesh' },
-        { id: 4, name: 'Pakistan' }
+        { id: 4, name: 'Pakistan' },
+        {id : 5, name :'Nepal'}
     ];
     selectedAll: any;
+
+
+    stateGroups: StateGroup[] = STATEGROUPS;
+    stateGroupOptions: Observable<StateGroup[]>;
+
   //public countriesListGroup: FormGroup = new FormGroup(
-  //  {
+ //  {
     
 
   //    email: new FormControl("", [Validators.required]),
@@ -48,35 +57,24 @@ export class CountriesListComponent implements OnInit {
     
 
     constructor(private formBuilder: FormBuilder) {
-        this.form = this.formBuilder.group({
-            countriesByContinent: new FormArray([])
-        });
-
-        this.addCheckboxes();
+       
     }
-    private addCheckboxes() {
-        this.countriesByContinent.map((o, i) => {
-            const control = new FormControl(i === 0); // if first item set to true, else false
-            (this.form.controls.countriesByContinent as FormArray).push(control);
-        });
-    }
-
+    
     submit() {
         debugger
-        const selectedOrderIds = this.form.value.countriesByContinent
-            .map((v, i) => v ? this.countriesByContinent[i].id : null)
-            .filter(v => v !== null);
+        const selectedOrderIds = this.countriesByContinent
+            .filter(opt => opt.state)
+            .map(opt => opt.name);
+        
         console.log(selectedOrderIds);
     }
-    selectAll() {
-        for (var i = 0; i < this.form.value.countriesByContinent.length; i++) {
-            this.form.value.countriesByContinent[i] = this.selectedAll;
-        }
+    
+    checkAll(ev) {
+        this.countriesByContinent.forEach(x => x.state = ev.checked)
     }
-    checkIfAllSelected() {
-        this.selectedAll = this.form.value.countriesByContinent.every(function (item: any) {
-            return item.selected == true;
-        })
+
+    isAllChecked() {
+        return this.countriesByContinent.every(_ => _.state);
     }
 
   ngOnInit() {
@@ -85,25 +83,25 @@ export class CountriesListComponent implements OnInit {
 
 
   //ControlValueAccessor Implementation
-  //public onTouched: () => void = () => {};
+  public onTouched: () => void = () => {};
 
-  //writeValue(val: any): void {
-  //  val && this.countriesListGroup.setValue(val, { emitEvent: false });
-  //}
+  writeValue(val: any): void {
+      //val && this.countriesByContinent.setValue(val, { emitEvent: false });
+  }
 
-  //registerOnChange(fn: any): void {
-  //  console.log("on change");
-  //  this.countriesListGroup.valueChanges.subscribe(fn);
-  //}
+  registerOnChange(fn: any): void {
+    console.log("on change");
+      //this.countriesByContinent.valueChanges.subscribe(fn);
+  }
 
-  //registerOnTouched(fn: any): void {
-  //  console.log("on blur");
-  //  this.onTouched = fn;
-  //}
+  registerOnTouched(fn: any): void {
+    console.log("on blur");
+    this.onTouched = fn;
+  }
 
-  //setDisabledState?(isDisabled: boolean): void {
-  //  isDisabled ? this.countriesListGroup.disable() : this.countriesListGroup.enable();
-  //}
+  setDisabledState?(isDisabled: boolean): void {
+    //isDisabled ? this.countriesListGroup.disable() : this.countriesListGroup.enable();
+    }
 
 
 }
