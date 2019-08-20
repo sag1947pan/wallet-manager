@@ -77,12 +77,12 @@ fieldset.group  {
 }
 
 .columns{  
-  -webkit-column-count: 3;
-  -webkit-column-gap: 26px; 
-  -moz-column-count: 3;
-  -moz-column-gap: 26px;  
-  column-count: 3;
-  column-gap: 26px;
+  -webkit-column-count: 5;
+  -webkit-column-gap: 20px; 
+  -moz-column-count: 5;
+  -moz-column-gap: 20px;  
+  column-count:5;
+  column-gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;

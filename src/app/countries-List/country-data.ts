@@ -558,3 +558,104 @@ export const STATEGROUPS = [{
 // 'Zimbabwe'
 
 //   ];
+
+//Countries List by Continent.
+
+export const CountryLisyByContinent = [   
+  
+    {  name: 'India',cont:'Asia' },
+    {  name: 'SriLanka',cont:'Asia' },
+    {  name: 'Bangladesh',cont:'Asia' },
+    {  name: 'Pakistan',cont:'Asia' },
+    {  name: 'Nepal', cont: 'Asia' },
+    {  name: 'Marshall Islands', cont: 'Asia' },
+    {  name: 'Micronesia', cont: 'Asia' },
+    {  name: 'Nauru', cont: 'Asia' },
+    {  name: 'New Zealand	', cont: 'Asia' },
+    {  name: 'SouthAfrica', cont: 'Asia' },
+    {  name: 'Nigeria', cont: 'Asia' },
+    {  name: 'Kenya	', cont: 'Asia' },
+    {  name: 'India',cont:'Asia' },
+    {  name: 'SriLanka',cont:'Asia' },
+    {  name: 'Bangladesh',cont:'Asia' },
+    {  name: 'Pakistan',cont:'Asia' },
+    {  name: 'Nepal', cont: 'Asia' },
+    {  name: 'Marshall Islands', cont: 'Asia' },
+    {  name: 'Micronesia', cont: 'Asia' },
+    {  name: 'Nauru', cont: 'Asia' },
+    {  name: 'New Zealand	', cont: 'Asia' },
+    {  name: 'SouthAfrica', cont: 'Asia' },
+    {  name: 'Nigeria', cont: 'Asia' },
+    {  name: 'Kenya	', cont: 'Asia' },
+    {  name: 'Morocoo', cont: 'Africa' },
+    {  name: 'Mexico', cont: 'NAmerica' },
+    {  name: 'Canada', cont: 'NAmerica' },
+    {  name: 'Unitied States', cont: 'NAmerica' },
+    {  name: 'Cuba', cont: 'NAmerica' },
+    {  name: 'Honduras', cont: 'NAmerica' }
+
+
+
+];
+
+// List of African Countries
+
+// 'Algeria'
+// 'Angola'
+// 'Benin'
+// 'Botswana'
+// 'Burkina Faso'
+// 'Burundi'
+// 'Cabo Verde'
+// 'Cameroon'
+// 'Central African Republic'
+// 'Chad'
+// 'Comoros'
+// 'Congo'
+// 'Cote d'Ivoire'
+// 'Democratic Republic of the Congo'
+// 'Djibouti'
+// 'Egypt'
+// 'Equatorial Guinea'
+// 'Eritrea'
+// 'Ethiopia'
+// 'Gabon'
+// 'Gambia'
+// 'Ghana'
+// 'Guinea'
+// 'Guinea-Bissau'
+// 'Kenya'
+// 'Lesotho'
+// 'Liberia'
+// 'Libya'
+// 'Madagascar'
+// 'Malawi'
+// 'Mali'
+// 'Mauritania'
+// 'Mauritius'
+// 'Mayotte'
+// 'Morocco'
+// 'Mozambique'
+// 'Namibia'
+// 'Niger'
+// 'Nigeria'
+// 'Rwanda'
+// 'Réunion'
+// 'Saint Helena'
+// 'Sao Tome and Principe'
+// 'Senegal'
+// 'Seychelles'
+// 'Sierra Leone'
+// 'Somalia'
+// 'South Africa'
+// 'South Sudan'
+// 'Sudan'
+// 'Swaziland'
+// 'Togo'
+// 'Tunisia'
+// 'Uganda'
+// 'United Republic of Tanzania'
+// 'Western Sahara'
+// 'Zambia'
+// 'Zimbabwe'
+
