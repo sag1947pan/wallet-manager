@@ -103,7 +103,7 @@ fieldset.group  {
 
 li{
   position: relative;
-  border-bottom: 1px solid #cdcac8;
+  /*border-bottom: 1px solid #cdcac8;*/
   padding: 7px 7px 6px 0px;
   
   .no-csscolumns &{

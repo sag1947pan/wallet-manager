@@ -1,5 +1,5 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup, FormControl } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormGroup, FormControl, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-forex-currencies',
@@ -18,38 +18,49 @@ export class ForexCurrenciesComponent implements OnInit, ControlValueAccessor {
 
   public forexCurrenciesGroup: FormGroup = new FormGroup(
     {
-
       options: new FormControl(""),
-
-
     });
-
+    currShow = true;
     currencies = new FormControl();
-    currenciesList: string[] = ['AUD', 'USD', 'GBP', 'SGD', 'INR', 'EUR', 'AFN',
-    'AMD',
-    'AZN',
-    'BHD',
-    'BDT',
-    'BTN',
-    'BND',
-    'KHR',
-    'CNY',
+    selectedAll: any;
+    //currenciesList: string[] = ['AUD', 'USD', 'GBP', 'SGD', 'INR', 'EUR', 'AFN',
+    //'AMD',
+    //'AZN',
+    //'BHD',
+    //'BDT',
+    //'BTN',
+    //'BND',
+    //'KHR',
+    //'CNY',
+    //];
+    currenciesList: any[] = [
+        { currency: 'AUD' }, { currency: 'USD' }, { currency: 'GBP' }, { currency: 'SGD' }, { currency: 'INR' }, { currency: 'EUR' }, { currency: 'AFN' }, { currency: 'AMD' }, { currency: 'AZN' }, { currency: 'BHD' }, { currency: 'BDT' },
+        { currency: 'BTN' }, { currency: 'BND' }, { currency: 'KHR' }, { currency: 'CNY' }
     ];
-    
 
   constructor() { }
 
-  ngOnInit() {
+    ngOnInit() {
   }
 
+    onRadioChange(event) {
+        debugger
+        if (event.value == true) {
+            this.currShow = true;
+        }
+        else {
+            this.currShow = false;
+            this.currenciesList.forEach(x => x.state = false);
+        }
+    }
 
-  checkAll(ev) {
-  //  this.currenciesList.forEach(x => x.state = ev.checked)
-}
-
-isAllChecked() {
-   // return this.currenciesList.every(_ => _.state);
-}
+    isAllChecked() {
+        return this.currenciesList.every(_ => _.state);
+    }
+    checkAll(ev) {
+        this.currenciesList.forEach(x => x.state = ev.checked);
+    }
+    
   //ControlValueAccessor Implementation
   public onTouched: () => void = () => { };
 
