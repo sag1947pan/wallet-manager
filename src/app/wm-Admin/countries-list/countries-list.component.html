@@ -172,13 +172,12 @@
                 <mat-panel-title>
                     Asia
                 </mat-panel-title>
-                <mat-panel-description>
-                    <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
-                        <label>Select All Countries under Asia </label>
-                    </mat-checkbox>
-                    
-                </mat-panel-description>
             </mat-expansion-panel-header>
+            <mat-panel-description>
+                <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                    <label>Select All Countries under Asia </label>
+                </mat-checkbox>
+            </mat-panel-description>
             <ul class="columns">
                 <li  *ngFor="let country of countryByContFilter;let i = index">
                     <mat-checkbox [(ngModel)]="country.state" >
@@ -193,12 +192,12 @@
                 <mat-panel-title>
                     Australia
                 </mat-panel-title>
-                <mat-panel-description>
-                    <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
-                        <label>Select All Countries under Australia </label>
-                    </mat-checkbox>
-                </mat-panel-description>
             </mat-expansion-panel-header>
+            <mat-panel-description>
+                <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                    <label>Select All Countries under Australia </label>
+                </mat-checkbox>
+            </mat-panel-description>
             <ul class="columns">
                 <li *ngFor="let country of countryByContFilter;let i = index">
                     <mat-checkbox [(ngModel)]="country.state">
@@ -213,12 +212,12 @@
                 <mat-panel-title>
                     Africa
                 </mat-panel-title>
-                <mat-panel-description>
-                    <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
-                        <label>Select All Countries under Africa </label>
-                    </mat-checkbox>
-                </mat-panel-description>
             </mat-expansion-panel-header>
+            <mat-panel-description>
+                <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                    <label>Select All Countries under Africa </label>
+                </mat-checkbox>
+            </mat-panel-description>
             <ul class="columns">
                 <li *ngFor="let country of countryByContFilter;let i = index">
                     <mat-checkbox [(ngModel)]="country.state">
@@ -233,12 +232,12 @@
                 <mat-panel-title>
                     North America
                 </mat-panel-title>
-                <mat-panel-description>
-                    <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
-                        <label>Select All Countries under North America </label>
-                    </mat-checkbox>
-                </mat-panel-description>
             </mat-expansion-panel-header>
+            <mat-panel-description>
+                <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                    <label>Select All Countries under North America </label>
+                </mat-checkbox>
+            </mat-panel-description>
             <ul class="columns">
                 <li *ngFor="let country of countryByContFilter;let i = index">
                     <mat-checkbox [(ngModel)]="country.state">
