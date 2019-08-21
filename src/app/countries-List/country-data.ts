@@ -563,126 +563,264 @@ export const STATEGROUPS = [{
 
 export const CountryLisyByContinent = [
     
+// Countries under Africa
+    { name:	'Algeria', cont :'Africa'},
+    { name:	'Angola', cont :'Africa'},
+    { name:	'Benin', cont :'Africa'	},
+    { name:	'Botswana', cont :'Africa'	},
+    { name:	'Burkina Faso', cont :'Africa'	},
+    { name:	'Burundi', cont :'Africa'	},
+    { name:	'Cabo Verde', cont :'Africa'	},
+    { name:	'Cameroon', cont :'Africa'	},
+    { name:	'Central African Republic', cont :'Africa'	},
+    { name:	'Chad', cont :'Africa'	},
+    { name:	'Comoros', cont :'Africa'	},
+    { name:	'Congo', cont :'Africa'	},
+    { name:	'Cote dIvoire', cont :'Africa'	},
+    { name:	'Democratic Republic of the Congo', cont :'Africa'	},
+    { name:	'Djibouti', cont :'Africa'	},
+    { name:	'Egypt', cont :'Africa'	},
+    { name:	'Equatorial Guinea', cont :'Africa'	},
+    { name:	'Eritrea', cont :'Africa'	},
+    { name:	'Ethiopia', cont :'Africa'	},
+    { name:	'Gabon', cont :'Africa'	},
+    { name:	'Gambia', cont :'Africa'	},
+    { name:	'Ghana', cont :'Africa'	},
+    { name:	'Guinea', cont :'Africa'	},
+    { name:	'Guinea-Bissau', cont :'Africa'	},
+    { name:	'Kenya', cont :'Africa'	},
+    { name:	'Lesotho', cont :'Africa'	},
+    { name:	'Liberia', cont :'Africa'	},
+    { name:	'Libya', cont :'Africa'	},
+    { name:	'Madagascar', cont :'Africa'	},
+    { name:	'Malawi', cont :'Africa'	},
+    { name:	'Mali', cont :'Africa'	},
+    { name:	'Mauritania', cont :'Africa'	},
+    { name:	'Mauritius', cont :'Africa'	},
+    { name:	'Mayotte', cont :'Africa'	},
+    { name:	'Morocco', cont :'Africa'	},
+    { name:	'Mozambique', cont :'Africa'	},
+    { name:	'Namibia', cont :'Africa'	},
+    { name:	'Niger', cont :'Africa'	},
+    { name:	'Nigeria', cont :'Africa'	},
+    { name:	'Rwanda', cont :'Africa'	},
+    { name:	'Réunion', cont :'Africa'	},
+    { name:	'Saint Helena', cont :'Africa'	},
+    { name:	'Sao Tome and Principe', cont :'Africa'	},
+    { name:	'Senegal', cont :'Africa'	},
+    { name:	'Seychelles', cont :'Africa'	},
+    { name:	'Sierra Leone', cont :'Africa'	},
+    { name:	'Somalia', cont :'Africa'	},
+    { name:	'South Africa', cont :'Africa'	},
+    { name:	'South Sudan', cont :'Africa'	},
+    { name:	'Sudan', cont :'Africa'	},
+    { name:	'Swaziland', cont :'Africa'	},
+    { name:	'Togo', cont :'Africa'	},
+    { name:	'Tunisia', cont :'Africa'	},
+    { name:	'Uganda', cont :'Africa'	},
+    { name:	'United Republic of Tanzania', cont :'Africa'	},
+    { name:	'Western Sahara', cont :'Africa'	},
+    { name:	'Zambia', cont :'Africa'	},
+    { name:	'Zimbabwe', cont :'Africa'	}, 
 
-    { name:	'Algeria', cont :'Asia'},
-    { name:	'Angola', cont :'Asia'},
-    { name:	'Benin', cont :'Asia'	},
-    { name:	'Botswana', cont :'Asia'	},
-    { name:	'Burkina Faso', cont :'Asia'	},
-    { name:	'Burundi', cont :'Asia'	},
-    { name:	'Cabo Verde', cont :'Asia'	},
-    { name:	'Cameroon', cont :'Asia'	},
-    { name:	'Central African Republic', cont :'Asia'	},
-    { name:	'Chad', cont :'Asia'	},
-    { name:	'Comoros', cont :'Asia'	},
-    { name:	'Congo', cont :'Asia'	},
-    { name:	'Cote dIvoire', cont :'Asia'	},
-    { name:	'Democratic Republic of the Congo', cont :'Asia'	},
-    { name:	'Djibouti', cont :'Asia'	},
-    { name:	'Egypt', cont :'Asia'	},
-    { name:	'Equatorial Guinea', cont :'Asia'	},
-    { name:	'Eritrea', cont :'Asia'	},
-    { name:	'Ethiopia', cont :'Asia'	},
-    { name:	'Gabon', cont :'Asia'	},
-    { name:	'Gambia', cont :'Asia'	},
-    { name:	'Ghana', cont :'Asia'	},
-    { name:	'Guinea', cont :'Asia'	},
-    { name:	'Guinea-Bissau', cont :'Asia'	},
-    { name:	'Kenya', cont :'Asia'	},
-    { name:	'Lesotho', cont :'Asia'	},
-    { name:	'Liberia', cont :'Asia'	},
-    { name:	'Libya', cont :'Asia'	},
-    { name:	'Madagascar', cont :'Asia'	},
-    { name:	'Malawi', cont :'Asia'	},
-    { name:	'Mali', cont :'Asia'	},
-    { name:	'Mauritania', cont :'Asia'	},
-    { name:	'Mauritius', cont :'Asia'	},
-    { name:	'Mayotte', cont :'Asia'	},
-    { name:	'Morocco', cont :'Asia'	},
-    { name:	'Mozambique', cont :'Asia'	},
-    { name:	'Namibia', cont :'Asia'	},
-    { name:	'Niger', cont :'Asia'	},
-    { name:	'Nigeria', cont :'Asia'	},
-    { name:	'Rwanda', cont :'Asia'	},
-    { name:	'Réunion', cont :'Asia'	},
-    { name:	'Saint Helena', cont :'Asia'	},
-    { name:	'Sao Tome and Principe', cont :'Asia'	},
-    { name:	'Senegal', cont :'Asia'	},
-    { name:	'Seychelles', cont :'Asia'	},
-    { name:	'Sierra Leone', cont :'Asia'	},
-    { name:	'Somalia', cont :'Asia'	},
-    { name:	'South Africa', cont :'Asia'	},
-    { name:	'South Sudan', cont :'Asia'	},
-    { name:	'Sudan', cont :'Asia'	},
-    { name:	'Swaziland', cont :'Asia'	},
-    { name:	'Togo', cont :'Asia'	},
-    { name:	'Tunisia', cont :'Asia'	},
-    { name:	'Uganda', cont :'Asia'	},
-    { name:	'United Republic of Tanzania', cont :'Asia'	},
-    { name:	'Western Sahara', cont :'Asia'	},
-    { name:	'Zambia', cont :'Asia'	},
-    { name:	'Zimbabwe', cont :'Asia'	},    
+    //Countries under Asia
+
+  { name:	'Afghanistan'	, cont :'Asia'	},
+{ name:	'Armenia'	, cont :'Asia'	},
+{ name:	'Azerbaijan'	, cont :'Asia'	},
+{ name:	'Bahrain'	, cont :'Asia'	},
+{ name:	'Bangladesh'	, cont :'Asia'	},
+{ name:	'Bhutan'	, cont :'Asia'	},
+{ name:	'Brunei Darussalam'	, cont :'Asia'	},
+{ name:	'Cambodia'	, cont :'Asia'	},
+{ name:	'China'	, cont :'Asia'	},
+{ name:	'China, Hong Kong SAR'	, cont :'Asia'	},
+{ name:	'China, Macao SAR'	, cont :'Asia'	},
+{ name:	'Cyprus'	, cont :'Asia'	},
+{ name:	'Dem. Peoples Republic of Korea'	, cont :'Asia'	},
+{ name:	'Georgia'	, cont :'Asia'	},
+{ name:	'India'	, cont :'Asia'	},
+{ name:	'Indonesia'	, cont :'Asia'	},
+{ name:	'Iran (Islamic Republic of)'	, cont :'Asia'	},
+{ name:	'Iraq'	, cont :'Asia'	},
+{ name:	'Israel'	, cont :'Asia'	},
+{ name:	'Japan'	, cont :'Asia'	},
+{ name:	'Jordan'	, cont :'Asia'	},
+{ name:	'Kazakhstan'	, cont :'Asia'	},
+{ name:	'Kuwait'	, cont :'Asia'	},
+{ name:	'Kyrgyzstan'	, cont :'Asia'	},
+{ name:	'Lao Peoples Democratic Republic'	, cont :'Asia'	},
+{ name:	'Lebanon'	, cont :'Asia'	},
+{ name:	'Malaysia'	, cont :'Asia'	},
+{ name:	'Maldives'	, cont :'Asia'	},
+{ name:	'Mongolia'	, cont :'Asia'	},
+{ name:	'Myanmar'	, cont :'Asia'	},
+{ name:	'Nepal'	, cont :'Asia'	},
+{ name:	'Oman'	, cont :'Asia'	},
+{ name:	'Pakistan'	, cont :'Asia'	},
+{ name:	'Philippines'	, cont :'Asia'	},
+{ name:	'Qatar'	, cont :'Asia'	},
+{ name:	'Republic of Korea'	, cont :'Asia'	},
+{ name:	'Saudi Arabia'	, cont :'Asia'	},
+{ name:	'Singapore'	, cont :'Asia'	},
+{ name:	'Sri Lanka'	, cont :'Asia'	},
+{ name:	'State of Palestine'	, cont :'Asia'	},
+{ name:	'Syrian Arab Republic'	, cont :'Asia'	},
+{ name:	'Tajikistan'	, cont :'Asia'	},
+{ name:	'Thailand'	, cont :'Asia'	},
+{ name:	'Timor-Leste'	, cont :'Asia'	},
+{ name:	'Turkey'	, cont :'Asia'	},
+{ name:	'Turkmenistan'	, cont :'Asia'	},
+{ name:	'United Arab Emirates'	, cont :'Asia'	},
+{ name:	'Uzbekistan'	, cont :'Asia'	},
+{ name:	'Viet Nam'	, cont :'Asia'	},
+{ name:	'Yemen'	, cont :'Asia'	},
+
+//Countries under Europe
+{ name:	'Albania'	, cont :'Europe'	},
+{ name:	'Andorra'	, cont :'Europe'	},
+{ name:	'Austria'	, cont :'Europe'	},
+{ name:	'Belarus'	, cont :'Europe'	},
+{ name:	'Belgium'	, cont :'Europe'	},
+{ name:	'Bosnia and Herzegovina'	, cont :'Europe'	},
+{ name:	'Bulgaria'	, cont :'Europe'	},
+{ name:	'Channel Islands'	, cont :'Europe'	},
+{ name:	'Croatia'	, cont :'Europe'	},
+{ name:	'Czech Republic'	, cont :'Europe'	},
+{ name:	'Denmark'	, cont :'Europe'	},
+{ name:	'Estonia'	, cont :'Europe'	},
+{ name:	'Faeroe Islands'	, cont :'Europe'	},
+{ name:	'Finland'	, cont :'Europe'	},
+{ name:	'France'	, cont :'Europe'	},
+{ name:	'Germany'	, cont :'Europe'	},
+{ name:	'Gibraltar'	, cont :'Europe'	},
+{ name:	'Greece'	, cont :'Europe'	},
+{ name:	'Guernsey'	, cont :'Europe'	},
+{ name:	'Holy See'	, cont :'Europe'	},
+{ name:	'Hungary'	, cont :'Europe'	},
+{ name:	'Iceland'	, cont :'Europe'	},
+{ name:	'Ireland'	, cont :'Europe'	},
+{ name:	'Isle of Man'	, cont :'Europe'	},
+{ name:	'Italy'	, cont :'Europe'	},
+{ name:	'Jersey'	, cont :'Europe'	},
+{ name:	'Latvia'	, cont :'Europe'	},
+{ name:	'Liechtenstein'	, cont :'Europe'	},
+{ name:	'Lithuania'	, cont :'Europe'	},
+{ name:	'Luxembourg'	, cont :'Europe'	},
+{ name:	'Malta'	, cont :'Europe'	},
+{ name:	'Monaco'	, cont :'Europe'	},
+{ name:	'Montenegro'	, cont :'Europe'	},
+{ name:	'Netherlands'	, cont :'Europe'	},
+{ name:	'Norway'	, cont :'Europe'	},
+{ name:	'Poland'	, cont :'Europe'	},
+{ name:	'Portugal'	, cont :'Europe'	},
+{ name:	'Republic of Moldova'	, cont :'Europe'	},
+{ name:	'Romania'	, cont :'Europe'	},
+{ name:	'Russian Federation'	, cont :'Europe'	},
+{ name:	'San Marino'	, cont :'Europe'	},
+{ name:	'Sark'	, cont :'Europe'	},
+{ name:	'Serbia'	, cont :'Europe'	},
+{ name:	'Slovakia'	, cont :'Europe'	},
+{ name:	'Slovenia'	, cont :'Europe'	},
+{ name:	'Spain'	, cont :'Europe'	},
+{ name:	'Svalbard and Jan Mayen Islands'	, cont :'Europe'	},
+{ name:	'Sweden'	, cont :'Europe'	},
+{ name:	'Switzerland'	, cont :'Europe'	},
+{ name:	'The former Yugoslav Republic of Macedonia'	, cont :'Europe'	},
+{ name:	'Ukraine'	, cont :'Europe'	},
+{ name:	'United Kingdom of Great Britain'	, cont :'Europe'	},
+{ name:	'Åland Islands'	, cont :'Europe'	},
+
+
+//Countries List under North America.
+{ name:	'Anguilla'	, cont :'NAmerica'	},
+{ name:	'Antigua and Barbuda'	, cont :'NAmerica'	},
+{ name:	'Aruba'	, cont :'NAmerica'	},
+{ name:	'Bahamas'	, cont :'NAmerica'	},
+{ name:	'Barbados'	, cont :'NAmerica'	},
+{ name:	'Belize'	, cont :'NAmerica'	},
+{ name:	'Bermuda'	, cont :'NAmerica'	},
+{ name:	'Bonaire, Saint Eustatius and Saba'	, cont :'NAmerica'	},
+{ name:	'British Virgin Islands'	, cont :'NAmerica'	},
+{ name:	'Canada'	, cont :'NAmerica'	},
+{ name:	'Cayman Islands'	, cont :'NAmerica'	},
+{ name:	'Costa Rica'	, cont :'NAmerica'	},
+{ name:	'Cuba'	, cont :'NAmerica'	},
+{ name:	'Curaçao'	, cont :'NAmerica'	},
+{ name:	'Dominica'	, cont :'NAmerica'	},
+{ name:	'Dominican Republic'	, cont :'NAmerica'	},
+{ name:	'El Salvador'	, cont :'NAmerica'	},
+{ name:	'Greenland'	, cont :'NAmerica'	},
+{ name:	'Grenada'	, cont :'NAmerica'	},
+{ name:	'Guadeloupe'	, cont :'NAmerica'	},
+{ name:	'Guatemala'	, cont :'NAmerica'	},
+{ name:	'Haiti'	, cont :'NAmerica'	},
+{ name:	'Honduras'	, cont :'NAmerica'	},
+{ name:	'Jamaica'	, cont :'NAmerica'	},
+{ name:	'Martinique'	, cont :'NAmerica'	},
+{ name:	'Mexico'	, cont :'NAmerica'	},
+{ name:	'Montserrat'	, cont :'NAmerica'	},
+{ name:	'Nicaragua'	, cont :'NAmerica'	},
+{ name:	'Panama'	, cont :'NAmerica'	},
+{ name:	'Puerto Rico'	, cont :'NAmerica'	},
+{ name:	'Saint Kitts and Nevis'	, cont :'NAmerica'	},
+{ name:	'Saint Lucia'	, cont :'NAmerica'	},
+{ name:	'Saint Martin (French part)'	, cont :'NAmerica'	},
+{ name:	'Saint Pierre and Miquelon'	, cont :'NAmerica'	},
+{ name:	'Saint Vincent and the Grenadines'	, cont :'NAmerica'	},
+{ name:	'Saint-Barthélemy'	, cont :'NAmerica'	},
+{ name:	'Sint Maarten (Dutch part)'	, cont :'NAmerica'	},
+{ name:	'Trinidad and Tobago'	, cont :'NAmerica'	},
+{ name:	'Turks and Caicos Islands'	, cont :'NAmerica'	},
+{ name:	'United States of America'	, cont :'NAmerica'	},
+{ name:	'United States Virgin Islands'	, cont :'NAmerica'	},
+
+//Countries under South America
+{ name:	'Argentina'	, cont :'SAmerica'	},
+{ name:	'Bolivia (Plurinational State of)'	, cont :'SAmerica'	},
+{ name:	'Brazil'	, cont :'SAmerica'	},
+{ name:	'Chile'	, cont :'SAmerica'	},
+{ name:	'Colombia'	, cont :'SAmerica'	},
+{ name:	'Ecuador'	, cont :'SAmerica'	},
+{ name:	'Falkland Islands (Malvinas)'	, cont :'SAmerica'	},
+{ name:	'French Guiana'	, cont :'SAmerica'	},
+{ name:	'Guyana'	, cont :'SAmerica'	},
+{ name:	'Paraguay'	, cont :'SAmerica'	},
+{ name:	'Peru'	, cont :'SAmerica'	},
+{ name:	'Suriname'	, cont :'SAmerica'	},
+{ name:	'Uruguay'	, cont :'SAmerica'	},
+{ name:	'Venezuela (Bolivarian Republic of)'	, cont :'SAmerica'	},
+
+//Countries under Oceania
+
+{ name:	'American Samoa'	, cont :'Oceania'	},
+{ name:	'Australia'	, cont :'Oceania'	},
+{ name:	'Cook Islands'	, cont :'Oceania'	},
+{ name:	'Fiji'	, cont :'Oceania'	},
+{ name:	'French Polynesia'	, cont :'Oceania'	},
+{ name:	'Guam'	, cont :'Oceania'	},
+{ name:	'Kiribati'	, cont :'Oceania'	},
+{ name:	'Marshall Islands'	, cont :'Oceania'	},
+{ name:	'Micronesia (Federated States of)'	, cont :'Oceania'	},
+{ name:	'Nauru'	, cont :'Oceania'	},
+{ name:	'New Caledonia'	, cont :'Oceania'	},
+{ name:	'New Zealand'	, cont :'Oceania'	},
+{ name:	'Niue'	, cont :'Oceania'	},
+{ name:	'Norfolk Island'	, cont :'Oceania'	},
+{ name:	'Northern Mariana Islands'	, cont :'Oceania'	},
+{ name:	'Palau'	, cont :'Oceania'	},
+{ name:	'Papua New Guinea'	, cont :'Oceania'	},
+{ name:	'Pitcairn'	, cont :'Oceania'	},
+{ name:	'Samoa'	, cont :'Oceania'	},
+{ name:	'Solomon Islands'	, cont :'Oceania'	},
+{ name:	'Tokelau'	, cont :'Oceania'	},
+{ name:	'Tonga'	, cont :'Oceania'	},
+{ name:	'Tuvalu'	, cont :'Oceania'	},
+{ name:	'Vanuatu'	, cont :'Oceania'	},
+{ name:	'Wallis and Futuna Islands'	, cont :'Oceania'	},
+
+
 
 ];
 
-// List of African Countries
-
-// 'Algeria'
-// 'Angola'
-// 'Benin'
-// 'Botswana'
-// 'Burkina Faso'
-// 'Burundi'
-// 'Cabo Verde'
-// 'Cameroon'
-// 'Central African Republic'
-// 'Chad'
-// 'Comoros'
-// 'Congo'
-// 'Cote d'Ivoire'
-// 'Democratic Republic of the Congo'
-// 'Djibouti'
-// 'Egypt'
-// 'Equatorial Guinea'
-// 'Eritrea'
-// 'Ethiopia'
-// 'Gabon'
-// 'Gambia'
-// 'Ghana'
-// 'Guinea'
-// 'Guinea-Bissau'
-// 'Kenya'
-// 'Lesotho'
-// 'Liberia'
-// 'Libya'
-// 'Madagascar'
-// 'Malawi'
-// 'Mali'
-// 'Mauritania'
-// 'Mauritius'
-// 'Mayotte'
-// 'Morocco'
-// 'Mozambique'
-// 'Namibia'
-// 'Niger'
-// 'Nigeria'
-// 'Rwanda'
-// 'Réunion'
-// 'Saint Helena'
-// 'Sao Tome and Principe'
-// 'Senegal'
-// 'Seychelles'
-// 'Sierra Leone'
-// 'Somalia'
-// 'South Africa'
-// 'South Sudan'
-// 'Sudan'
-// 'Swaziland'
-// 'Togo'
-// 'Tunisia'
-// 'Uganda'
-// 'United Republic of Tanzania'
-// 'Western Sahara'
-// 'Zambia'
-// 'Zimbabwe'
 

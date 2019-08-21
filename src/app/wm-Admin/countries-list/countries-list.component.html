@@ -173,7 +173,7 @@
                     Asia
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description>
+            <mat-panel-description>               
                 <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
                     <label>Select All Countries under Asia </label>
                 </mat-checkbox>
@@ -227,6 +227,29 @@
             </ul>
             <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
         </mat-expansion-panel>
+
+      
+      <mat-expansion-panel (opened)="getCountryList('Europe')">
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                  Europe
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+              <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                  <label>Select All Countries under Europe </label>
+              </mat-checkbox>
+          </mat-panel-description>
+          <ul class="columns">
+              <li *ngFor="let country of countryByContFilter;let i = index">
+                  <mat-checkbox [(ngModel)]="country.state">
+                      <label>{{country.name}} </label>
+                  </mat-checkbox>
+              </li>
+          </ul>
+          <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
+      </mat-expansion-panel>
+      <!-- North America-->
         <mat-expansion-panel (opened)="getCountryList('NAmerica')">
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -247,5 +270,50 @@
             </ul>
             <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
         </mat-expansion-panel>
+
+        <!-- South America-->
+        <mat-expansion-panel (opened)="getCountryList('SAmerica')">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    South America
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description>
+                <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                    <label>Select All Countries under South America </label>
+                </mat-checkbox>
+            </mat-panel-description>
+            <ul class="columns">
+                <li *ngFor="let country of countryByContFilter;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state">
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
+            <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
+        </mat-expansion-panel>
+
+        <!--Oceania-->
+        <mat-expansion-panel (opened)="getCountryList('Oceania')">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                   Oceania
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description>
+                <mat-checkbox (checked)="isAllChecked()" (change)="checkAll($event)">
+                    <label>Select All Countries under Oceania </label>
+                </mat-checkbox>
+            </mat-panel-description>
+            <ul class="columns">
+                <li *ngFor="let country of countryByContFilter;let i = index">
+                    <mat-checkbox [(ngModel)]="country.state">
+                        <label>{{country.name}} </label>
+                    </mat-checkbox>
+                </li>
+            </ul>
+            <button mat-raised-button class="mat-raised-button mat-primary" (click)="submit()">Save</button>
+        </mat-expansion-panel>
+
 
     </mat-accordion>
